@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();  
         spriteRenderer = GetComponent<SpriteRenderer>();    
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (idle)
         {
