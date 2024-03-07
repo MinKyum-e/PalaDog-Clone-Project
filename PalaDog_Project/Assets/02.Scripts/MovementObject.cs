@@ -13,9 +13,10 @@ public class MovementObject : MonoBehaviour
     private void Update()
     {
         float x = virtualJoystick.Horizontal();
-        
 
 
+        if (x > 0) x = 1;
+        else if (x < 0) x = -1;
         rigid.velocity = new Vector2(x, 0) * moveSpeed;
     }
 
