@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+  - enabled: 0
+    path: Assets/01.Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 0
+    path: Assets/01.Scenes/99.Study/MobileTouch.unity
+    guid: c35e1d69c8aff504792c1dd832f592ef
+  - enabled: 1
+    path: Assets/01.Scenes/01.Main/SurvivalMode.unity
+    guid: 7f0af6863fe94964ca0f233849f7e376
   m_configObjects: {}
