@@ -27,7 +27,7 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        cameraPosition = new Vector3(cameraInterval, 0, -10);
+        cameraPosition = new Vector3(cameraInterval, 2, -10);
         height = Camera.main.orthographicSize;
         width = height * Screen.width / Screen.height;
     }

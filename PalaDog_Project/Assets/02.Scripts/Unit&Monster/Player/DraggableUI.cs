@@ -9,9 +9,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     private Transform previousParent; // 해당 오브젝트가 직전에 소속되어 잇었던 부모 transform
     private RectTransform rect;// UI 위치 제어를 위한 RectTransform
     private CanvasGroup canvasGroup; //UI의 알파값과 상호작용 제어를 위한 Canvasgroup
-    private float yMax;
-    private float yMedian;
-    private float yMin;
+
 
     public int unit_idx;
 
@@ -20,7 +18,6 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         canvas = FindObjectOfType<Canvas>().transform;
         rect = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-        yMax = 0.5f; yMedian = -1.0f; yMin = -1.5f;
     }
 
 
@@ -44,20 +41,22 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         Vector3 spawnPoint;
         spawnPoint = Camera.main.ScreenToWorldPoint( eventData.position );
         Transform playerTransform = GameManager.Instance.player.transform;
-       
-        spawnPoint.y = Mathf.Clamp(spawnPoint.y, playerTransform.position.y + yMin, playerTransform.position.y + yMax);
+
+        //spawnPoint.y = Mathf.Clamp(spawnPoint.y, playerTransform.position.y + yMin, playerTransform.position.y + yMax);
+        spawnPoint.y = playerTransform.position.y;
         spawnPoint.z = GameManager.Instance.player.transform.position.z;
 
 
         GameObject unit = GameManager.Instance.pool.Get(unit_idx);
         unit.transform.position = spawnPoint;
-        if (spawnPoint.y > playerTransform.position.y +  yMedian)
-            unit.GetComponent<SpriteRenderer>().sortingOrder = 0;
-        else
-            unit.GetComponent<SpriteRenderer>().sortingOrder=2;
+        unit.tag = "Unit";
+        unit.GetComponent<SpriteRenderer>().sortingOrder = 6;
+        /* if (spawnPoint.y > playerTransform.position.y +  yMedian)
+             unit.GetComponent<SpriteRenderer>().sortingOrder = 4;
+         else
+             unit.GetComponent<SpriteRenderer>().sortingOrder=6;*/
 
-        Debug.Log($" {unit.transform.position}");
-        
+
         if (transform.parent == canvas)
         {
             transform.SetParent(previousParent);

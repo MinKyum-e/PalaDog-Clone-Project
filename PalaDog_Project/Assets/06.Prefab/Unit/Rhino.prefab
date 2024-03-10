@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2978016298893509498}
   - component: {fileID: 120346881545279482}
   - component: {fileID: 429552541940808591}
+  - component: {fileID: 3788102992525740870}
   m_Layer: 0
   m_Name: Rhino
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -97,5 +98,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e288c466014614a9f95e7385afeb6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.5
+  unitID: 1
+  Name: 
+  HP: 0
+  curHP: 0
+  Damage: 0
+  Range: 0
+  MoveSpeed: 0
   moveDir: {x: 1, y: 0, z: 0}
+--- !u!50 &3788102992525740870
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4252131678514782868}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

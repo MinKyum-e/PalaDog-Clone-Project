@@ -61,8 +61,7 @@ public class ParallaxBackground : MonoBehaviour
 		{
 			// 가장 멀리 떨어진 배경 레이어의 이동 속도 = 0
 			layerMoveSpeed[i] = 1 - (backgrounds[i].transform.position.z - cameraTransform.position.z) / farthestBackDistance;
-			// 이동속도 확인용 (테스트 후 삭제)
-			Debug.Log($"{layerMoveSpeed[i]}, 실제 이동속도 = {layerMoveSpeed[i] * parallaxSpeed}");
+
 		}
 	}
 

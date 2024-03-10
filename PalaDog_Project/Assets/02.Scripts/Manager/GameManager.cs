@@ -5,10 +5,12 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
    public static GameManager Instance;
-    public PlayerController player;
+    public Player player;
     public PoolManager pool;
+    public Parser parser;
     private void Awake()
     {
         Instance = this;
+        
     }
 }
