@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
     private bool idle = true;
     private Vector2 moveDir = Vector2.zero;
     private Rigidbody2D rigid;
+    private SpriteRenderer spriteRenderer;
 
     [SerializeField]
     private float moveSpeed = 10;
@@ -22,8 +24,16 @@ public class Player : MonoBehaviour
     {
         animator = GetComponent<Animator>();  
         rigid = GetComponent<Rigidbody2D>();
+        spriteRenderer  = GetComponent<SpriteRenderer>();   
     }
 
+    private void Update()
+    {
+        if (curHP <= 0)
+        {
+            Die();
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -50,5 +60,23 @@ public class Player : MonoBehaviour
     public void setIdle(bool x)
     {
         idle = x;
+    }
+
+    public void Hit(int Damage)
+    {
+
+        spriteRenderer.color = Color.red;
+        curHP -= Damage;
+
+    }
+
+    void Die()
+    {
+        print("Game Over");
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }

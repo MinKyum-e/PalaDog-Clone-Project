@@ -104,30 +104,41 @@ public class Enemy : MonoBehaviour
         return attack_target;
     }
 
+    public void Hit(int Damage)
+    {
+
+        spriteRenderer.color = Color.red;
+        curHP -= Damage;
+
+    }
+
     IEnumerator attack()
     {
-        while(true)
+        while (true)
         {
             GameObject attack_target = setAttackTarget("Unit");
-            if (attack_target != null)
+            if (attack_target != null && Mathf.Abs(attack_target.transform.position.x - transform.position.x) <= Range)
             {
                 stop = true;
-
                 yield return new WaitForSeconds(0.2f);
-                spriteRenderer.color = Color.red; 
-                if(Mathf.Abs(attack_target.transform.position.x - transform.position.x) <= Range)
-                if (attack_target.tag == "Player")
+                attack_target = setAttackTarget("Unit");
+                if (attack_target != null && Mathf.Abs(attack_target.transform.position.x - transform.position.x) <= Range)
                 {
-                    attack_target.GetComponent<Player>().curHP -= Damage;
+                    if (attack_target.tag == "Player")
+                    {
+                        attack_target.GetComponent<Player>().Hit(Damage);
+                    }
+                    else if (attack_target.tag == "Unit")
+                    {
+
+                        attack_target.GetComponent<Unit>().Hit(Damage);
+                    }
+                    yield return new WaitForSeconds(0.2f);
+                    attack_target.GetComponent<SpriteRenderer>().color = Color.white;
                 }
-                else if (attack_target.tag == "Unit")
-                {
-                    attack_target.GetComponent<Unit>().curHP -= Damage;
-                }
-                
-                yield return new WaitForSeconds(0.5f);
-                spriteRenderer.color = Color.white;
-                stop = false;
+               
+                attack_target = setAttackTarget("Unit");
+                stop = attack_target != null;
             }
             yield return null;
         }

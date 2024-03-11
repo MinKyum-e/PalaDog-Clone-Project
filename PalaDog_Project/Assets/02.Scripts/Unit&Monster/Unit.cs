@@ -91,26 +91,37 @@ public class Unit : MonoBehaviour
         return attack_target;
     }
 
+    public void Hit(int Damage)
+    {
+
+        spriteRenderer.color = Color.red;
+        curHP -= Damage;
+        
+    }
+
     IEnumerator attack()
     {
         while (true)
         {
             GameObject attack_target = setAttackTarget("Enemy");
-            if (attack_target != null)
+            if (attack_target != null && Mathf.Abs(attack_target.transform.position.x - transform.position.x) <= Range)
             {
                 stop = true;
                 yield return new WaitForSeconds(0.2f);
-                spriteRenderer.color = Color.red;
-                if (Mathf.Abs(attack_target.transform.position.x - transform.position.x) <= Range)
+                attack_target = setAttackTarget("Enemy");
+                if (attack_target != null && Mathf.Abs(attack_target.transform.position.x - transform.position.x) <= Range)
                 {
                     if (attack_target.tag == "Enemy")
                     {
-                        attack_target.GetComponent<Enemy>().curHP -= Damage;
+                        attack_target.GetComponent<Enemy>().Hit(Damage);
+                        
                     }
+                    yield return new WaitForSeconds(0.2f);
+                    attack_target.GetComponent<SpriteRenderer>().color = Color.white;
                 }
-                yield return new WaitForSeconds(0.5f);
-                spriteRenderer.color = Color.white;
-                stop = false;
+                    
+                attack_target = setAttackTarget("Enemy");
+                stop = attack_target != null;
             }
             yield return null;
         }
@@ -120,5 +131,17 @@ public class Unit : MonoBehaviour
     {
         gameObject.SetActive(false);
         gameObject.transform.position = Vector3.zero;
+    }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if(other.tag == "Wall")
+            stop = true;
+        
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.tag == "Wall")
+            stop = false;
     }
 }
