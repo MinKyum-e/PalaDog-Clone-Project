@@ -8,7 +8,7 @@ using UnityEngine.Windows;
 
 public class Unit : MonoBehaviour
 {
-   public int unitID = 0;
+    public int unitID = 0;
     public string Name;
     public int HP;
     public int curHP;
@@ -51,9 +51,9 @@ public class Unit : MonoBehaviour
     {
         if (!stop)
         { 
-        Vector2 nextPosition = rigid.position + moveDir * MoveSpeed * Time.fixedDeltaTime;
-        rigid.MovePosition(nextPosition);
-        rigid.velocity = Vector2.zero;
+            Vector2 nextPosition = rigid.position + moveDir * MoveSpeed * Time.fixedDeltaTime;
+            rigid.MovePosition(nextPosition);
+            rigid.velocity = Vector2.zero;
         }
     }
 

@@ -8,8 +8,6 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private Transform target;
     [SerializeField]
-    float cameraInterval = 3;
-    [SerializeField]
     private bool lerpCamera = false;
     [SerializeField]
     private float cameraMoveSpeed = 3.0f;
@@ -27,7 +25,7 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        cameraPosition = new Vector3(cameraInterval, 2, -10);
+        cameraPosition = new Vector3(0,2.169f,-10);
         height = Camera.main.orthographicSize;
         width = height * Screen.width / Screen.height;
     }

@@ -48,9 +48,10 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
 
         GameObject unit = GameManager.Instance.pool.Get(unit_idx);
-        unit.transform.position = spawnPoint;
+
+        unit.transform.position = new Vector3(spawnPoint.x, spawnPoint.y + 0.4f, Random.Range(-1, 1));
         unit.tag = "Unit";
-        unit.GetComponent<SpriteRenderer>().sortingOrder = 6;
+        unit.GetComponent<SpriteRenderer>().sortingOrder = 4;
         /* if (spawnPoint.y > playerTransform.position.y +  yMedian)
              unit.GetComponent<SpriteRenderer>().sortingOrder = 4;
          else

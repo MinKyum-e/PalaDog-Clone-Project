@@ -70,7 +70,7 @@ public class ParallaxBackground : MonoBehaviour
 		// 카메라가 이동한 거리 = 카메라의 현재 위치 - 시작 위치
 		distance = cameraTransform.position.x - cameraStartPosition.x;
 		// 배경의 x 위치를 현재 카메라의 x 위치로 설정
-		transform.position = new Vector3(cameraTransform.position.x, transform.position.y, 0);
+		transform.position = new Vector3(cameraTransform.position.x, transform.position.y, transform.position.z);
 
 		// 레이어별로 현재 배경이 출력되는 offset 설정
 		for ( int i = 0; i < materials.Length; ++ i )
