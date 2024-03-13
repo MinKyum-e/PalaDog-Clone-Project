@@ -42,7 +42,6 @@ public class Enemy : MonoBehaviour
         setStatus();
         curHP = HP;
         StartCoroutine(attack());
-        spriteRenderer.color = Color.white;
         stop = false;
     }
     private void Update()
@@ -124,6 +123,7 @@ public class Enemy : MonoBehaviour
                 attack_target = setAttackTarget("Unit");
                 if (attack_target != null && Mathf.Abs(attack_target.transform.position.x - transform.position.x) <= Range)
                 {
+                    Color tmp = attack_target.GetComponent<SpriteRenderer>().color;
                     if (attack_target.tag == "Player")
                     {
                         attack_target.GetComponent<Player>().Hit(Damage);
@@ -134,7 +134,7 @@ public class Enemy : MonoBehaviour
                         attack_target.GetComponent<Unit>().Hit(Damage);
                     }
                     yield return new WaitForSeconds(0.2f);
-                    attack_target.GetComponent<SpriteRenderer>().color = Color.white;
+                    attack_target.GetComponent<SpriteRenderer>().color = tmp;
                 }
                
                 attack_target = setAttackTarget("Unit");

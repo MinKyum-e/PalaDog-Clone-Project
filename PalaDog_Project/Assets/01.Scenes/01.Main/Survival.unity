@@ -1835,6 +1835,8 @@ MonoBehaviour:
   - {fileID: 4252131678514782868, guid: 866667054dd37984b8cd85a7f08b9d38, type: 3}
   - {fileID: 4252131678514782868, guid: 21356eeaa172e8442ab1ab7d84cd5fbf, type: 3}
   - {fileID: 564750637644340419, guid: 2638a840d8a36364dae3132a8ecdf2e1, type: 3}
+  - {fileID: 7665680707901871439, guid: a5bccebe11360464bbe414a85f945b88, type: 3}
+  - {fileID: 2730792912833137444, guid: 10a9df8ebdd529a44a79c35831672854, type: 3}
 --- !u!4 &1363075207
 Transform:
   m_ObjectHideFlags: 0
@@ -2154,6 +2156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1660743375}
   - component: {fileID: 1660743376}
+  - component: {fileID: 1660743377}
   m_Layer: 0
   m_Name: EnemySpawnPoint
   m_TagString: Untagged
@@ -2183,7 +2186,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1660743374}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7336451149af1264d9f3a570fdd8b206, type: 3}
   m_Name: 
@@ -2191,6 +2194,23 @@ MonoBehaviour:
   enemyID: 2
   spawnCoolTime: 5
   maxSpawnNum: 10
+--- !u!114 &1660743377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660743374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c71d733dab637449f03473ff238e07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageNum: 1
+  waveNum: 1
+  cur_stageNum: 0
+  cur_waveNum: 0
+  group_cnt: 0
 --- !u!1 &1829501522
 GameObject:
   m_ObjectHideFlags: 0

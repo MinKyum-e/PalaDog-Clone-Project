@@ -106,6 +106,7 @@ public class Unit : MonoBehaviour
             GameObject attack_target = setAttackTarget("Enemy");
             if (attack_target != null && Mathf.Abs(attack_target.transform.position.x - transform.position.x) <= Range)
             {
+                Color tmp = attack_target.GetComponent<SpriteRenderer>().color;
                 stop = true;
                 yield return new WaitForSeconds(0.2f);
                 attack_target = setAttackTarget("Enemy");
@@ -117,7 +118,7 @@ public class Unit : MonoBehaviour
                         
                     }
                     yield return new WaitForSeconds(0.2f);
-                    attack_target.GetComponent<SpriteRenderer>().color = Color.white;
+                    attack_target.GetComponent<SpriteRenderer>().color = tmp;
                 }
                     
                 attack_target = setAttackTarget("Enemy");
