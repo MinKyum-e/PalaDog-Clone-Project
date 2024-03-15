@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1030754394783475505}
   - component: {fileID: 2854450555631447956}
-  - component: {fileID: 4914863318930418174}
   - component: {fileID: 5439893784749071591}
   - component: {fileID: 2547378301894080669}
+  - component: {fileID: 1669024859805665611}
+  - component: {fileID: -555550494583932046}
   m_Layer: 0
   m_Name: Enemy3
   m_TagString: Untagged
@@ -76,9 +77,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a01087ce1455c7e4c8f2410c26afcfd2, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_Sprite: {fileID: 1923737014, guid: a268284187687874f83708798555fc6c, type: 3}
+  m_Color: {r: 0.65494436, g: 1, b: 0.41037738, a: 1}
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 2}
@@ -87,26 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4914863318930418174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2730792912833137444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71702c13b2ca06d458a543ee4315a71b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unitID: 2
-  Name: 
-  HP: 0
-  curHP: 0
-  Damage: 0
-  Range: 0
-  MoveSpeed: 0
-  moveDir: {x: 1, y: 0}
 --- !u!50 &5439893784749071591
 Rigidbody2D:
   serializedVersion: 4
@@ -169,3 +150,50 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &1669024859805665611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730792912833137444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0b006f5a35a3ea448fd2ba266b02f5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 2
+  ID: 2
+  Name: 
+  HP: 0
+  curHP: 0
+  Damage: 0
+  Range: 0
+  MoveSpeed: 0
+  moveDir: {x: 0, y: 0}
+  isWalk: 0
+  rigid: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  animator: {fileID: 0}
+  main_target: {fileID: 0}
+--- !u!95 &-555550494583932046
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730792912833137444}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4097d89d9f821b64dafc1d07c2c49fdc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

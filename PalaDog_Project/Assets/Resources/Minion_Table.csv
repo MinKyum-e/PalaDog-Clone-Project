@@ -1,5 +1,5 @@
 몬스터 테이블,,,,,
 ~~~~,,,,,
 ID,Name,HP,Damage,Range,MoveSpeed
-0,Unit1,50,7,10.6,1.5
-1,Unit2,200,5,2,1
+0,Unit1,50,7,6,1.5
+1,Rhino,100,3,2,1.5

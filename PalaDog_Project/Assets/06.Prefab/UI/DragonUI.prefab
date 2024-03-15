@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1512740037108060816}
   - component: {fileID: 1374094802939973288}
   - component: {fileID: -5975736690811852862}
+  - component: {fileID: 6487059902212249732}
   m_Layer: 5
   m_Name: DragonUI
   m_TagString: Untagged
@@ -89,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f1755b1c1a635f46b87990a102d6146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minion_idx: 0
 --- !u!225 &-5975736690811852862
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -101,3 +103,24 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!95 &6487059902212249732
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5807302529124953811}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 36f7a30cb302cd343a83850998c55812, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

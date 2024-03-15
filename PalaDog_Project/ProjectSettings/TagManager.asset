@@ -9,6 +9,7 @@ TagManager:
   - Die
   - Wall
   - Minion
+  - EnemyBase
   layers:
   - Default
   - TransparentFX
