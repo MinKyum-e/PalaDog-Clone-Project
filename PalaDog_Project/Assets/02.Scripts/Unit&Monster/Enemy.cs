@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour
 
     void setStatus()
     {
-        List<Dictionary<string, object>> unit_status_list = GameManager.Instance.parser.data_Unitstatus;
+        List<Dictionary<string, object>> unit_status_list = GameManager.Instance.parser.data_EnemyTable;
         try
         {
             Name = unit_status_list[unitID]["Name"].ToString();

@@ -17,12 +17,12 @@ public class EnemySpawner : MonoBehaviour
     {
         while(true)
         {
-            List < GameObject > enemys = GameManager.Instance.pool.pools[enemyID];
+            List < GameObject > enemys = GameManager.Instance.enemy_pool.pools[enemyID];
             int cnt = 0;
             foreach(GameObject e in enemys) { if (e.activeSelf) cnt++; }
             if (cnt < maxSpawnNum)
             {
-                GameObject enemy = GameManager.Instance.pool.Get(2);
+                GameObject enemy = GameManager.Instance.enemy_pool.Get(2);
                 enemy.transform.position = transform.position;
                 enemy.tag = "Enemy";
             }

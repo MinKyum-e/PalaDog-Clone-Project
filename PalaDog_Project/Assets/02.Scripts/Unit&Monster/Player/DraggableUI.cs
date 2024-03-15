@@ -47,7 +47,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         spawnPoint.z = GameManager.Instance.player.transform.position.z;
 
 
-        GameObject unit = GameManager.Instance.pool.Get(unit_idx);
+        GameObject unit = GameManager.Instance.friendly_pool.Get(unit_idx);
 
         unit.transform.position = new Vector3(spawnPoint.x, spawnPoint.y + 0.4f, Random.Range(-1, 1));
         unit.tag = "Unit";

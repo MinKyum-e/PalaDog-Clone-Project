@@ -13,9 +13,10 @@ public class PoolManager : MonoBehaviour
     private void Awake()
     {
         pools = new List<GameObject>[prefabs.Length];
-        for(int i=0;i<pools.Length; i++)
+
+        for(int i=0;i<pools.Length;i++)
         {
-            pools[i] = new List<GameObject>();
+            pools[i] =new List<GameObject>();
         }
     }
 
@@ -40,5 +41,15 @@ public class PoolManager : MonoBehaviour
         return select;
     }
 
+    public void ResetPool()
+    {
+        for(int i=0;i<pools.Length;i++)
+        {
+            foreach(GameObject item in pools[i])
+            {
+                Destroy(item.gameObject);
+            }
+        }
+    }
 
 }

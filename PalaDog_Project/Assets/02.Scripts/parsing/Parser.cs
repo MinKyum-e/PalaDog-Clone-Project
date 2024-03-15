@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Parser : MonoBehaviour
 {
-    public List<Dictionary<string, object>> data_Unitstatus = null;
+    public List<Dictionary<string, object>> data_UnitTable = null;
+    public List<Dictionary<string, object>> data_EnemyTable = null;
     public List<Dictionary<string, object>> data_WaveTable = null;
-    private void Awake()
+
+    public void Awake()
     {
 
-       data_Unitstatus = CSVReader.Read("unit_status");
+        data_UnitTable = CSVReader.Read("Unit_Table");
+        data_EnemyTable = CSVReader.Read("Enemy_Table");
        data_WaveTable = CSVReader.Read("Wave_Table");
     }
 }

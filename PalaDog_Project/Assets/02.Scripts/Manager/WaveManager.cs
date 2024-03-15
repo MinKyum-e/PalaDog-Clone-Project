@@ -28,45 +28,43 @@ public class Monster
         this.monster_index = wave_MonsterIndex;
         this.monster_num = wave_MonsterNum;
         this.monster_spawnTime = wave_SpawnTime;
-        this.last_spawnTime = 0;
+        this.last_spawnTime = -100;
     }
 };
 
 public class WaveManager : MonoBehaviour
 {
-    public int stageNum = 1;
-    public int waveNum = 1;
-    public int cur_stageNum = 1;
-    public int cur_waveNum = 1;
+    public int stageNum;
+    public int waveNum;
+    public int cur_stageNum;
+    public int cur_waveNum;
     public List<Monster> monster_list;
-    public int group_cnt = 0;
 
 
 
     public WaveTable[] waveTables = null;
-    
+
+    private void Awake()
+    {
+        init();
+    }
 
     private void Start()
     {
-
         List<Dictionary<string, object>> wave_data = GameManager.Instance.parser.data_WaveTable;
         waveTables = new WaveTable[wave_data.Count];
         SetWaveTables(wave_data, waveTables);
-        monster_list = new List<Monster>();
     }
+
 
     private void Update()
     {
-
-
         if(stageNum != cur_stageNum || waveNum != cur_waveNum) //monsterlist 세팅
         {
-            //초기화
-            monster_list = new List<Monster>();
-            group_cnt = 0;
+            //리스트 초기화
+            monster_list.Clear();
             cur_stageNum = stageNum;
             cur_waveNum = waveNum;
-            monster_list.Clear();
 
             //monsterlist 세팅
             foreach(WaveTable waveTable in waveTables)
@@ -95,7 +93,7 @@ public class WaveManager : MonoBehaviour
     {
         for(int i=0;i<=num;i++)
         {
-            GameObject clone = GameManager.Instance.pool.Get(idx);
+            GameObject clone = GameManager.Instance.enemy_pool.Get(idx);
             Color c = clone.GetComponent<SpriteRenderer>().color;
             //clone.GetComponent<SpriteRenderer>().color = new Color(c.r, c.g,  c.b, 1);
             clone.transform.position = new Vector3(transform.position.x, transform.position.y, Random.Range(-1, 1));
@@ -132,4 +130,17 @@ public class WaveManager : MonoBehaviour
     {
         print(waveTables[idx].Wave_MonsterNum);
     }
+
+    private void ClearMonsterList()
+    {
+        monster_list.Clear();
+    }
+    private void init()
+    {
+        stageNum = 1;
+        waveNum = 1;
+        cur_stageNum = 0;
+        cur_waveNum = 0;
+        monster_list = new List<Monster>();
+}
 }

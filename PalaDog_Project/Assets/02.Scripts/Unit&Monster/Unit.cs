@@ -59,7 +59,7 @@ public class Unit : MonoBehaviour
 
     void setStatus()
     {
-        List<Dictionary<string, object>> unit_status_list = GameManager.Instance.parser.data_Unitstatus;
+        List<Dictionary<string, object>> unit_status_list = GameManager.Instance.parser.data_UnitTable;
         try
         {
             Name = unit_status_list[unitID]["Name"].ToString();
@@ -79,7 +79,6 @@ public class Unit : MonoBehaviour
 
         foreach (GameObject u in units)
         {
-            print(u.name);
             if (!u.activeSelf) { continue; }
             float tmp_diff = Mathf.Abs(u.transform.position.x - transform.position.x);
             if (tmp_diff < diff && tmp_diff <= Range)

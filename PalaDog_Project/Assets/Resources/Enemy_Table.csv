@@ -1,0 +1,6 @@
+﻿enemy테이블,,,,,
+11,,,,,
+ID,Name,HP,Damage,Range,MoveSpeed
+0,enemy1,100,2,1.5,1
+1,enemy2,200,10,5,0.5
+2,enemy3,150,1,1,2

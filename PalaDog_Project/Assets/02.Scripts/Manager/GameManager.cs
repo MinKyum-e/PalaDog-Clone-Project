@@ -1,25 +1,66 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+
+public enum GameState
+{
+    GAME_OVER, 
+    GAME_PLAY, 
+    GAME_PAUSE,
+}
 
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance = null;
     public Player player;
-    public PoolManager pool;
+    public PoolManager enemy_pool;
+    public PoolManager friendly_pool;
     public Parser parser;
+    public UIManager uiManager;
+
+
+    public GameState state;
+    
 
     private void Awake()
     {
         if(null == instance)
         {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);//씬 전환되도 삭제 안됨
         }
         else
         {//씬 이동됐는데 게임 매니저가 존재할 경우 자신을 삭제
             Destroy(this.gameObject );
         }
+    }
+    private void Start()
+    {
+        InitGame();
+    }
+    private void Update()
+    {
+        //게임 로직
+        switch(state)
+        {
+            case GameState.GAME_PLAY:
+
+                break;
+            case GameState.GAME_OVER:
+                GameOver();
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    RestartGame();
+                }
+                break;
+            case GameState.GAME_PAUSE:
+                PauseGame();
+                break;
+            default: 
+                break;
+        }
+        
     }
 
     public static GameManager Instance //게임매니저 인스턴스 접근
@@ -36,11 +77,15 @@ public class GameManager : MonoBehaviour
 
     public void InitGame()
     {
-
+        Time.timeScale = 1.0f;
+        player.transform.position = Vector3.zero;
+        state = GameState.GAME_PLAY;
+        uiManager.SetCurrentPage(UIPageInfo.GamePlay);
+        
     }
     public void PauseGame()
     {
-
+        Time.timeScale = 0;
     }
     public void ContinueGame()
     {
@@ -48,10 +93,13 @@ public class GameManager : MonoBehaviour
     }
     public void RestartGame()
     {
-
+        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    public void StopGame()
+    public void GameOver()
     {
-      
+        uiManager.SetCurrentPage(UIPageInfo.GameOver);
+        Time.timeScale = 0;
+        
     }
 }

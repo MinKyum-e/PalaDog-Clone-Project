@@ -72,11 +72,6 @@ public class Player : MonoBehaviour
 
     void Die()
     {
-        print("Game Over");
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+        GameManager.Instance.state = GameState.GAME_OVER;
     }
 }
