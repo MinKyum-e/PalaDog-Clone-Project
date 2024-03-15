@@ -6,9 +6,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Windows;
 
-public class Unit : MonoBehaviour
+public class Minion : MonoBehaviour
 {
-    public int unitID = 0;
+    public int MinionID = 0;
     public string Name;
     public int HP;
     public int curHP;
@@ -59,14 +59,14 @@ public class Unit : MonoBehaviour
 
     void setStatus()
     {
-        List<Dictionary<string, object>> unit_status_list = GameManager.Instance.parser.data_UnitTable;
+        List<Dictionary<string, object>> Minion_status_list = GameManager.Instance.parser.data_MinionTable;
         try
         {
-            Name = unit_status_list[unitID]["Name"].ToString();
-            HP = (int)unit_status_list[unitID]["HP"];
-            Damage = (int)unit_status_list[unitID]["Damage"];
-            Range = float.Parse(unit_status_list[unitID]["Range"].ToString());
-            MoveSpeed = float.Parse(unit_status_list[unitID]["MoveSpeed"].ToString());
+            Name = Minion_status_list[MinionID]["Name"].ToString();
+            HP = (int)Minion_status_list[MinionID]["HP"];
+            Damage = (int)Minion_status_list[MinionID]["Damage"];
+            Range = float.Parse(Minion_status_list[MinionID]["Range"].ToString());
+            MoveSpeed = float.Parse(Minion_status_list[MinionID]["MoveSpeed"].ToString());
         }
         catch { Debug.Log("status Setting Error"); }
     }
@@ -75,9 +75,9 @@ public class Unit : MonoBehaviour
     {
         GameObject attack_target = null;
         float diff = 1000000; 
-        GameObject[] units = GameObject.FindGameObjectsWithTag(target_tag);
+        GameObject[] minions = GameObject.FindGameObjectsWithTag(target_tag);
 
-        foreach (GameObject u in units)
+        foreach (GameObject u in minions)
         {
             if (!u.activeSelf) { continue; }
             float tmp_diff = Mathf.Abs(u.transform.position.x - transform.position.x);

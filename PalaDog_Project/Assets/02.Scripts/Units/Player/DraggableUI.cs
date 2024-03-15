@@ -11,7 +11,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     private CanvasGroup canvasGroup; //UI의 알파값과 상호작용 제어를 위한 Canvasgroup
 
 
-    public int unit_idx;
+    public int minion_idx;
 
     private void Awake()
     {
@@ -47,11 +47,11 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         spawnPoint.z = GameManager.Instance.player.transform.position.z;
 
 
-        GameObject unit = GameManager.Instance.friendly_pool.Get(unit_idx);
+        GameObject minion = GameManager.Instance.minion_pool.Get(minion_idx);
 
-        unit.transform.position = new Vector3(spawnPoint.x, spawnPoint.y + 0.4f, Random.Range(-1, 1));
-        unit.tag = "Unit";
-        unit.GetComponent<SpriteRenderer>().sortingOrder = 4;
+        minion.transform.position = new Vector3(spawnPoint.x, spawnPoint.y + 0.4f, Random.Range(-1, 1));
+        minion.tag = "Minion";
+        minion.GetComponent<SpriteRenderer>().sortingOrder = 4;
         /* if (spawnPoint.y > playerTransform.position.y +  yMedian)
              unit.GetComponent<SpriteRenderer>().sortingOrder = 4;
          else

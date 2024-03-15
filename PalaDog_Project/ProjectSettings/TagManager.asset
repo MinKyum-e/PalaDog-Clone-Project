@@ -6,9 +6,9 @@ TagManager:
   tags:
   - Parser
   - Enemy
-  - Unit
   - Die
   - Wall
+  - Minion
   layers:
   - Default
   - TransparentFX

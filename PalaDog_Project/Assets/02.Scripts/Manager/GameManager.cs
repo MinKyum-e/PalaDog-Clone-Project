@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     private static GameManager instance = null;
     public Player player;
     public PoolManager enemy_pool;
-    public PoolManager friendly_pool;
+    public PoolManager minion_pool;
     public Parser parser;
     public UIManager uiManager;
 

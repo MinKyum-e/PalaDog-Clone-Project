@@ -9,7 +9,7 @@ using UnityEngine.Windows;
 
 public class Enemy : MonoBehaviour
 {
-    public int unitID = 0;
+    public int enemyID = 0;
     public string Name;
     public int HP;
     public int curHP;
@@ -66,14 +66,14 @@ public class Enemy : MonoBehaviour
 
     void setStatus()
     {
-        List<Dictionary<string, object>> unit_status_list = GameManager.Instance.parser.data_EnemyTable;
+        List<Dictionary<string, object>> enemy_status_list = GameManager.Instance.parser.data_EnemyTable;
         try
         {
-            Name = unit_status_list[unitID]["Name"].ToString();
-            HP = (int)unit_status_list[unitID]["HP"];
-            Damage = (int)unit_status_list[unitID]["Damage"];
-            Range = float.Parse(unit_status_list[unitID]["Range"].ToString());
-            MoveSpeed = float.Parse(unit_status_list[unitID]["MoveSpeed"].ToString());
+            Name = enemy_status_list[enemyID]["Name"].ToString();
+            HP = (int)enemy_status_list[enemyID]["HP"];
+            Damage = (int)enemy_status_list[enemyID]["Damage"];
+            Range = float.Parse(enemy_status_list[enemyID]["Range"].ToString());
+            MoveSpeed = float.Parse(enemy_status_list[enemyID]["MoveSpeed"].ToString());
         }
         catch { Debug.Log("status Setting Error"); }
     }
@@ -115,12 +115,12 @@ public class Enemy : MonoBehaviour
     {
         while (true)
         {
-            GameObject attack_target = setAttackTarget("Unit");
+            GameObject attack_target = setAttackTarget("Minion");
             if (attack_target != null && Mathf.Abs(attack_target.transform.position.x - transform.position.x) <= Range)
             {
                 stop = true;
                 yield return new WaitForSeconds(0.2f);
-                attack_target = setAttackTarget("Unit");
+                attack_target = setAttackTarget("Minion");
                 if (attack_target != null && Mathf.Abs(attack_target.transform.position.x - transform.position.x) <= Range)
                 {
                     Color tmp = attack_target.GetComponent<SpriteRenderer>().color;
@@ -128,16 +128,16 @@ public class Enemy : MonoBehaviour
                     {
                         attack_target.GetComponent<Player>().Hit(Damage);
                     }
-                    else if (attack_target.tag == "Unit")
+                    else if (attack_target.tag == "Minion")
                     {
 
-                        attack_target.GetComponent<Unit>().Hit(Damage);
+                        attack_target.GetComponent<Minion>().Hit(Damage);
                     }
                     yield return new WaitForSeconds(0.2f);
                     attack_target.GetComponent<SpriteRenderer>().color = tmp;
                 }
                
-                attack_target = setAttackTarget("Unit");
+                attack_target = setAttackTarget("Minion");
                 stop = attack_target != null;
             }
             yield return null;

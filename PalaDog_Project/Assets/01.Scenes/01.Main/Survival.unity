@@ -926,7 +926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1036454085}
   enemy_pool: {fileID: 98083844}
-  friendly_pool: {fileID: 1363075206}
+  minion_pool: {fileID: 1363075206}
   parser: {fileID: 1780654597}
   uiManager: {fileID: 425420192}
   state: 1
@@ -1943,7 +1943,7 @@ GameObject:
   - component: {fileID: 1363075207}
   - component: {fileID: 1363075206}
   m_Layer: 0
-  m_Name: FriendlyPool
+  m_Name: MinionPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
