@@ -36,8 +36,8 @@ public class WaveManager : MonoBehaviour
 {
     public int stageNum = 1;
     public int waveNum = 1;
-    public int cur_stageNum = 0;
-    public int cur_waveNum = 0;
+    public int cur_stageNum = 1;
+    public int cur_waveNum = 1;
     public List<Monster> monster_list;
     public int group_cnt = 0;
 
@@ -57,6 +57,8 @@ public class WaveManager : MonoBehaviour
 
     private void Update()
     {
+
+
         if(stageNum != cur_stageNum || waveNum != cur_waveNum) //monsterlist 세팅
         {
             //초기화
