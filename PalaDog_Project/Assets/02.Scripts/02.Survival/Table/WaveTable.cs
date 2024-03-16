@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public enum WaveType                   //웨이브의 종류/일반
 {
-    Normal,
+    Normal ,
     Boss
 };
 /// <summary>

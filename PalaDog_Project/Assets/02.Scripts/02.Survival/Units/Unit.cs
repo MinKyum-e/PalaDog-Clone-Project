@@ -48,7 +48,7 @@ public abstract class Unit : MonoBehaviour
         {
             ID = 98;
             Name = "enemyBase";
-            HP = 100;
+            HP = 500;
             MoveSpeed = 0;
         }
         else if(Type == UnitType.Enemy)

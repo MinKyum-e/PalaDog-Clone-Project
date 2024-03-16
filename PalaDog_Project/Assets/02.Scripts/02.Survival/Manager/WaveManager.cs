@@ -34,8 +34,6 @@ public class WaveMonster
 
 public class WaveManager : MonoBehaviour
 {
-    public int stageNum;
-    public int waveNum;
     public int cur_stageNum;
     public int cur_waveNum;
     public List<WaveMonster> monster_list;
@@ -59,12 +57,12 @@ public class WaveManager : MonoBehaviour
 
     private void Update()
     {
-        if(stageNum != cur_stageNum || waveNum != cur_waveNum) //monsterlist 세팅
+        if(GameManager.Instance.stage != cur_stageNum || GameManager.Instance.wave != cur_waveNum) //monsterlist 세팅
         {
             //리스트 초기화
             monster_list.Clear();
-            cur_stageNum = stageNum;
-            cur_waveNum = waveNum;
+            cur_stageNum = GameManager.Instance.stage;
+            cur_waveNum = GameManager.Instance.wave;
 
             //monsterlist 세팅
             foreach(WaveTable waveTable in waveTables)
@@ -137,8 +135,7 @@ public class WaveManager : MonoBehaviour
     }
     private void init()
     {
-        stageNum = 1;
-        waveNum = 1;
+     
         cur_stageNum = 0;
         cur_waveNum = 0;
         monster_list = new List<WaveMonster>();

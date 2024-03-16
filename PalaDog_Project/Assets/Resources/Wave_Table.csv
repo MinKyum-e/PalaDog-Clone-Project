@@ -1,6 +1,9 @@
 ﻿웨이브 테이블,,,,,,,,,
 ~~~~~~~~~~~,,,,,,,,,
 Wave_Index,Wave_Name,Wave_DevName,Wave_Group,Wave_StageNum,Wave_WaveNum,Wave_WaveType,Wave_SpawnTime,Wave_MonsterIndex,Wave_MonsterNum
-0,1_1,1스테이지1,1,1,1,Normal,20,0,4
-1,1_1,1스테이지1,1,1,1,Normal,20,1,2
-2,1_1,1스테이지1,1,1,1,Normal,20,2,2
+0,1_1,1스테이지1,1,1,1,Normal,20,0,1
+1,1_1,1스테이지1,1,1,1,Normal,20,1,1
+2,1_1,1스테이지1,1,1,1,Normal,20,2,1
+3,1_1,1스테이지1,1,1,2,Normal,10,0,15
+4,1_1,1스테이지1,1,1,2,Normal,10,1,15
+5,1_1,1스테이지1,1,1,2,Normal,10,2,15

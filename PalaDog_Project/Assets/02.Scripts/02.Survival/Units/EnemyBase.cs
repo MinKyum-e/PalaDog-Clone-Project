@@ -13,11 +13,17 @@ public class EnemyBase : Unit
 
     private void Update()
     {
-        if (curHP <= 0)
+        if (curHP <= (HP/2) && GameManager.Instance.wave ==1)
+        {
+            GameManager.Instance.WaveChange(2);
+        }
+
+        if(curHP<=0)
         {
             Die();
         }
     }
+
     public override void Die()
     {
         GameManager.Instance.state = GameState.GAME_STAGE_CLEAR;

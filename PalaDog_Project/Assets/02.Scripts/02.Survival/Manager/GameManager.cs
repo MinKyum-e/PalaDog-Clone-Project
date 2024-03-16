@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public enum GameState
@@ -20,6 +21,13 @@ public class GameManager : MonoBehaviour
     public PoolManager minion_pool;
     public Parser parser;
     public UIManager uiManager;
+    public Stage_text st;
+    
+    public int wave = 1;
+    public int stage = 1;
+
+    public int finalWave = 2;
+    public int finalstage = 1;
 
 
     public GameState state;
@@ -84,7 +92,10 @@ public class GameManager : MonoBehaviour
         player.transform.position = Vector3.zero;
         state = GameState.GAME_PLAY;
         uiManager.SetCurrentPage(UIPageInfo.GamePlay);
-        
+        wave = 1;
+        stage = 1;
+        st.stageWaveUpdate(stage, wave);
+
     }
     public void PauseGame()
     {
@@ -104,6 +115,12 @@ public class GameManager : MonoBehaviour
         uiManager.SetCurrentPage(UIPageInfo.GameOver);
         Time.timeScale = 0;
         
+    }
+
+    public void WaveChange(int i)
+    {
+        wave = i;
+        st.stageWaveUpdate(stage, wave);
     }
 
     public void StageClear()
