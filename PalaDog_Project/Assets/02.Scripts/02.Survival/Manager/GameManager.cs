@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
+
 public enum GameState
 {
     GAME_OVER, 
@@ -15,20 +16,21 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
+    public int MAX_STAGE ;
+
     private static GameManager instance = null;
     public Player_fix player;
+    public EnemyBase enemyBase;
     public PoolManager enemy_pool;
     public PoolManager minion_pool;
     public Parser parser;
     public UIManager uiManager;
     public Stage_text st;
+    public WaveManager waveManager;
     
     public int wave = 1;
     public int stage = 1;
-
-    public int finalWave = 2;
-    public int finalstage = 1;
-
+    
 
     public GameState state;
     
@@ -38,6 +40,7 @@ public class GameManager : MonoBehaviour
         if(null == instance)
         {
             instance = this;
+
         }
         else
         {//씬 이동됐는데 게임 매니저가 존재할 경우 자신을 삭제
@@ -117,15 +120,32 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void WaveChange(int i)
+    public void WaveChange()
     {
-        wave = i;
+        wave++;
         st.stageWaveUpdate(stage, wave);
     }
 
     public void StageClear()
     {
-        uiManager.SetCurrentPage(UIPageInfo.GameStageClear);
-        Time.timeScale = 0;
+        if( stage != MAX_STAGE)
+        {
+            
+            stage++;
+            wave = 1;
+            waveManager.ClearMonsterObjectOnStage();
+            player.transform.position = Vector3.zero;
+            state = GameState.GAME_PLAY;
+            st.stageWaveUpdate(stage, wave);
+            enemyBase.gameObject.SetActive(true);
+
+        }
+        else
+        {
+            uiManager.SetCurrentPage(UIPageInfo.GameStageClear);
+            Time.timeScale = 0;
+        }
+        
+        
     }
 }

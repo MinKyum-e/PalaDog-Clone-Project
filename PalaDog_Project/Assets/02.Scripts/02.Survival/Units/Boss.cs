@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
-public class Enemy_fix : Monster
+public class Boss : Monster
 {
     private void Awake()
     {
@@ -16,6 +15,7 @@ public class Enemy_fix : Monster
     {
         setStatus();
         curHP = HP;
+        moveDir = Vector2.left;
         StartCoroutine(NormalAttack("Player", "Minion"));
         isWalk = true;
     }
@@ -23,19 +23,19 @@ public class Enemy_fix : Monster
     {
         if (curHP <= 0)
         {
+            GameManager.Instance.state = GameState.GAME_STAGE_CLEAR;
             Die();
         }
-
     }
 
     void FixedUpdate()
     {
         if (isWalk)
         {
-
             SetMoveDir("Player");
             Move();
         }
 
     }
+
 }

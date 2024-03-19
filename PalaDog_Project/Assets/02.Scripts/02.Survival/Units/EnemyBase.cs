@@ -13,20 +13,37 @@ public class EnemyBase : Unit
 
     private void Update()
     {
-        if (curHP <= (HP/2) && GameManager.Instance.wave ==1)
-        {
-            GameManager.Instance.WaveChange(2);
-        }
-
-        if(curHP<=0)
+        if (curHP <= 0)
         {
             Die();
         }
+        else if (curHP <= (HP * 0.25f) && GameManager.Instance.wave == 2)
+        {
+            GameManager.Instance.WaveChange();
+        }
+        else if(curHP <= (HP*0.5f) && GameManager.Instance.wave == 1)
+        {
+            GameManager.Instance.WaveChange();
+        }
+        
+
+        
     }
 
     public override void Die()
     {
-        GameManager.Instance.state = GameState.GAME_STAGE_CLEAR;
+        if(GameManager.Instance.waveManager.wave_type == WaveType.Boss)
+        {
+            GameManager.Instance.WaveChange();
+
+        }
+        else
+        {
+
+            GameManager.Instance.state = GameState.GAME_STAGE_CLEAR;
+
+        }
+        gameObject.SetActive(false);
     }
 
 }

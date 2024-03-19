@@ -5,4 +5,5 @@ public enum UnitType
     Minion,
     Enemy,
     EnemyBase,
+    Boss,
 }

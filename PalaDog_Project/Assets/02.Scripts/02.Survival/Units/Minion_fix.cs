@@ -9,13 +9,13 @@ public class Minion_fix : Monster
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        main_target = GameObject.FindGameObjectWithTag("EnemyBase");
     }
     private void OnEnable()
     {
         setStatus();
         curHP = HP;
-        StartCoroutine(NormalAttack("Enemy"));
+        moveDir = Vector2.right;
+        StartCoroutine(NormalAttack("EnemyMainTarget", "Enemy"));
         isWalk = true;
     }
     private void Update()
@@ -30,15 +30,6 @@ public class Minion_fix : Monster
     {
         if (isWalk)
         {
-            if(main_target.activeSelf != false)
-            {
-                moveDir = new Vector2(main_target.transform.position.x - rigid.position.x, 0).normalized;
-            }
-            else
-            {
-                moveDir = Vector2.right;
-            }
-            
             Move();
         }
 

@@ -51,7 +51,7 @@ public abstract class Unit : MonoBehaviour
             HP = 500;
             MoveSpeed = 0;
         }
-        else if(Type == UnitType.Enemy)
+        else if(Type == UnitType.Enemy || Type == UnitType.Boss)
         {
             List<Dictionary<string, object>> enemy_status_list = GameManager.Instance.parser.data_EnemyTable;
             try
@@ -82,9 +82,15 @@ public abstract class Unit : MonoBehaviour
     {
         isWalk = x;
     }
-    private void OnTrigger(Collider other)
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (other.tag == "Wall")
+        if (collision.tag == "Wall")
+            moveDir = Vector2.zero;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Wall")
             moveDir = Vector2.zero;
     }
 

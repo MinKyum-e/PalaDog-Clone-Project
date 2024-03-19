@@ -28,7 +28,7 @@ public class WaveMonster
         this.monster_index = wave_MonsterIndex;
         this.monster_num = wave_MonsterNum;
         this.monster_spawnTime = wave_SpawnTime;
-        this.last_spawnTime = -100;
+        this.last_spawnTime = -9999999;
     }
 };
 
@@ -37,10 +37,10 @@ public class WaveManager : MonoBehaviour
     public int cur_stageNum;
     public int cur_waveNum;
     public List<WaveMonster> monster_list;
-
-
-
     public WaveTable[] waveTables = null;
+    public List<Coroutine> coroutine_list ;
+
+    public WaveType wave_type = WaveType.Normal;
 
     private void Awake()
     {
@@ -63,6 +63,7 @@ public class WaveManager : MonoBehaviour
             monster_list.Clear();
             cur_stageNum = GameManager.Instance.stage;
             cur_waveNum = GameManager.Instance.wave;
+            foreach(Coroutine c in coroutine_list) { StopCoroutine(c); }
 
             //monsterlist 세팅
             foreach(WaveTable waveTable in waveTables)
@@ -70,6 +71,8 @@ public class WaveManager : MonoBehaviour
                 if(waveTable.Wave_StageNum == cur_stageNum && waveTable.Wave_WaveNum == cur_waveNum)
                 {
                     monster_list.Add(new WaveMonster(waveTable.Wave_MonsterIndex, waveTable.Wave_MonsterNum, waveTable.Wave_SpawnTime));
+                    wave_type = waveTable.Wave_WaveType;
+
                 }
             }
         }
@@ -78,9 +81,9 @@ public class WaveManager : MonoBehaviour
             //spawn time, last spawn time 비교 후 소환
             foreach(WaveMonster monster in monster_list)
             {
-                if((Time.time - monster.last_spawnTime) > monster.monster_spawnTime)
+                if((Time.time - monster.last_spawnTime) > monster.monster_spawnTime )
                 {
-                    StartCoroutine(SpawnMonster(monster.monster_index, monster.monster_num));
+                    coroutine_list.Add(StartCoroutine(SpawnMonster(monster.monster_index, monster.monster_num)));
                     monster.last_spawnTime = Time.time;
                 }
             }
@@ -89,7 +92,7 @@ public class WaveManager : MonoBehaviour
 
     IEnumerator SpawnMonster(int idx, int num)
     {
-        for(int i=0;i<=num;i++)
+        for(int i=0;i<num;i++)
         {
             GameObject clone = GameManager.Instance.enemy_pool.Get(idx);
             Color c = clone.GetComponent<SpriteRenderer>().color;
@@ -139,5 +142,22 @@ public class WaveManager : MonoBehaviour
         cur_stageNum = 0;
         cur_waveNum = 0;
         monster_list = new List<WaveMonster>();
-}
+        coroutine_list = new List<Coroutine>();
+    }
+
+    public void ClearMonsterObjectOnStage()
+    {
+        GameObject[] alive_enemys = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] alive_minions = GameObject.FindGameObjectsWithTag("Minion");
+        foreach(GameObject e in alive_enemys)
+        {
+            if(e.activeSelf)
+             e.GetComponent<Enemy_fix>().Die();
+        }
+        foreach (GameObject m in alive_minions)
+        {
+            if (m.activeSelf)
+                m.GetComponent<Minion_fix >().Die();
+        }
+    }
 }

@@ -5,18 +5,26 @@ using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class Monster : Unit
 {
-    public GameObject main_target;
 
 
-    private Unit setAttackTarget( string target_tag)
+    public Unit setAttackTarget( string main_target_tag, string target_tag)
     {
         GameObject attack_target = null;
+        GameObject main_target = GameObject.FindGameObjectWithTag(main_target_tag);
 
-        float diff = Mathf.Abs(main_target.transform.position.x - transform.position.x);
-        if (main_target.activeSelf && diff <= Range)
-        {
-            attack_target = main_target;
+        float diff;
+        try { 
+            diff = Mathf.Abs(main_target.transform.position.x - transform.position.x);
+            if (diff <= Range)
+                attack_target = main_target;
         }
+        catch 
+        {
+            print("SetAttackTarget: maintarget missing set diff 99999");
+            diff = 9999999; 
+        }
+
+
         GameObject[] units = GameObject.FindGameObjectsWithTag(target_tag);
 
         foreach (GameObject u in units)
@@ -33,11 +41,11 @@ public class Monster : Unit
         else { return null; }
         
     }
-    public IEnumerator NormalAttack( string target_tag)
+    public IEnumerator NormalAttack(string main_target_tag, string target_tag)
     {
         while (true)
         {
-            Unit attack_target = setAttackTarget(target_tag);
+            Unit attack_target = setAttackTarget(main_target_tag, target_tag);
             if (attack_target != null)
             {
                 isWalk = false;
@@ -45,6 +53,9 @@ public class Monster : Unit
                 attack_target.Hit(Damage);
                 yield return new WaitForSeconds(0.5f);
                 attack_target.GetComponent<SpriteRenderer>().color = Color.white;
+            }
+            else
+            {
                 isWalk = true;
             }
             yield return null;
@@ -53,7 +64,20 @@ public class Monster : Unit
     public override void Die()
     {
         gameObject.SetActive(false);
-        gameObject.transform.position = Vector3.zero;
+        gameObject.transform.position = new Vector3(100, 0, 0);
     }
+    public void SetMoveDir(string main_target_tag)
+    {
+        GameObject main_target = GameObject.FindGameObjectWithTag(main_target_tag);
+        try
+        {
+            moveDir = new Vector3((main_target.transform.position.x - transform.position.x), 0, 0).normalized;
+        }
+        catch
+        {
 
+            print("SetAttackTarget: maintarget missing");
+            
+        }
+    }
 }
