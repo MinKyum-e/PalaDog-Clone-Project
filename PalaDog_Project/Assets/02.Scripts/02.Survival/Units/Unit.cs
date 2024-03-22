@@ -53,7 +53,7 @@ public abstract class Unit : MonoBehaviour
         }
         else if(Type == UnitType.Enemy || Type == UnitType.Boss)
         {
-            List<Dictionary<string, object>> enemy_status_list = GameManager.Instance.parser.data_EnemyTable;
+            List<Dictionary<string, object>> enemy_status_list = Parser.Instance.data_EnemyTable;
             try
             {
                 Name = enemy_status_list[ID]["Name"].ToString();
@@ -66,7 +66,7 @@ public abstract class Unit : MonoBehaviour
         }
         else if(Type == UnitType.Minion)
         {
-            List<Dictionary<string, object>> Minion_status_list = GameManager.Instance.parser.data_MinionTable;
+            List<Dictionary<string, object>> Minion_status_list = Parser.Instance.data_MinionTable;
             try
             {
                 Name = Minion_status_list[ID]["Name"].ToString();

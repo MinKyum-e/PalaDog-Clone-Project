@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField]
     private Transform target;
     [SerializeField]
     private bool lerpCamera = false;
@@ -25,6 +24,7 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
+        target = Player_fix.Instance.transform;
         cameraPosition = new Vector3(0,2.169f,-10);
         height = Camera.main.orthographicSize;
         width = height * Screen.width / Screen.height;

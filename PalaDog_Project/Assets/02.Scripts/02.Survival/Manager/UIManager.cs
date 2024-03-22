@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -9,7 +10,8 @@ public class UIManager : MonoBehaviour
 
     public GameObject GamePlay;
     public GameObject GameOver;
-    public GameObject GameStageClear;
+    public GameObject GameChapterClear;
+    public GameObject GameClear;
 
 
     private UIPageInfo CurrentPageInfo;
@@ -21,6 +23,10 @@ public class UIManager : MonoBehaviour
         {
             _instance = this;
         }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void SetCurrentPage(UIPageInfo pageInfo)
@@ -30,7 +36,8 @@ public class UIManager : MonoBehaviour
 
         GamePlay.SetActive(false);
         GameOver.SetActive(false);
-        GameStageClear.SetActive(false);
+        GameChapterClear.SetActive(false);
+        GameClear.SetActive(false);
 
         if (CurrentPageInfo == UIPageInfo.GamePlay)
         {
@@ -40,9 +47,13 @@ public class UIManager : MonoBehaviour
         {
             GameOver.SetActive(true);
         }
-        else if (CurrentPageInfo == UIPageInfo.GameStageClear)
+        else if (CurrentPageInfo == UIPageInfo.GameChapterClear)
         {
-            GameStageClear.SetActive(true);
+            GameChapterClear.SetActive(true);
+        }
+        else if(CurrentPageInfo == UIPageInfo.GameClear)
+        {
+            GameClear.SetActive(true);
         }
     }
 }

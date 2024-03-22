@@ -6,5 +6,6 @@ public enum UIPageInfo
 {
     GamePlay,
     GameOver,
-    GameStageClear,
+    GameChapterClear,
+    GameClear,
 }

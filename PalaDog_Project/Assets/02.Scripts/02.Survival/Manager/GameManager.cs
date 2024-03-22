@@ -8,26 +8,26 @@ using UnityEngine.UI;
 
 public enum GameState
 {
+    GAME_IDLE,
     GAME_OVER, 
     GAME_PLAY, 
     GAME_PAUSE,
-    GAME_STAGE_CLEAR
+    
+    GAME_STAGE_CLEAR,
+    GAME_CHAPTER_CLEAR,
+    GAME_CLEAR,
+    
 }
 
 public class GameManager : MonoBehaviour
 {
     public int MAX_STAGE ;
+    public int STAGE_PER_CHAPTER;
+    public int MAX_CHAPTER;
 
     private static GameManager instance = null;
-    public Player_fix player;
-    public EnemyBase enemyBase;
-    public PoolManager enemy_pool;
-    public PoolManager minion_pool;
-    public Parser parser;
-    public UIManager uiManager;
-    public Stage_text st;
-    public WaveManager waveManager;
-    
+
+    public int chapter = 1;
     public int wave = 1;
     public int stage = 1;
     
@@ -37,10 +37,12 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if(null == instance)
+        if(null == instance) //게임 완전처음시작할때만
         {
             instance = this;
-
+            wave = 1;
+            stage = 1;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {//씬 이동됐는데 게임 매니저가 존재할 경우 자신을 삭제
@@ -49,8 +51,14 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        InitGame();
+        print("START");
+        Player_fix.Instance.transform.position = Vector3.zero;
+        state = GameState.GAME_PLAY;
+        Time.timeScale = 1.0f;
+        GameObject.Find("EnemyBase").SetActive(true);
+        UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
     }
+
     private void Update()
     {
         //게임 로직
@@ -68,7 +76,14 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.GAME_STAGE_CLEAR:
                 StageClear();
-
+                break;
+            case GameState.GAME_CHAPTER_CLEAR:
+                ChapterClear();
+                break;
+            case GameState.GAME_CLEAR:
+                GameClear();
+                break;
+            case GameState.GAME_IDLE:
                 break;
 
             default: 
@@ -89,17 +104,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void InitGame()
-    {
-        Time.timeScale = 1.0f;
-        player.transform.position = Vector3.zero;
-        state = GameState.GAME_PLAY;
-        uiManager.SetCurrentPage(UIPageInfo.GamePlay);
-        wave = 1;
-        stage = 1;
-        st.stageWaveUpdate(stage, wave);
-
-    }
     public void PauseGame()
     {
         Time.timeScale = 0;
@@ -110,42 +114,65 @@ public class GameManager : MonoBehaviour
     }
     public void RestartGame()
     {
-        
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        wave = 1;
+        stage = 1;
+        chapter = 1;
+        Time.timeScale = 1;
+        state = GameState.GAME_PLAY;
+        UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
+        Player_fix.Instance.curHP = Player_fix.Instance.HP;
+        Player_fix.Instance.transform.position = Vector3.zero;
+        SceneManager.LoadScene("Chapter1");
     }
     public void GameOver()
     {
-        uiManager.SetCurrentPage(UIPageInfo.GameOver);
+        UIManager.Instance.SetCurrentPage(UIPageInfo.GameOver);
         Time.timeScale = 0;
-        
+        state = GameState.GAME_IDLE;
     }
 
     public void WaveChange()
     {
         wave++;
-        st.stageWaveUpdate(stage, wave);
     }
 
     public void StageClear()
     {
-        if( stage != MAX_STAGE)
-        {
-            
-            stage++;
-            wave = 1;
-            waveManager.ClearMonsterObjectOnStage();
-            player.transform.position = Vector3.zero;
-            state = GameState.GAME_PLAY;
-            st.stageWaveUpdate(stage, wave);
-            enemyBase.gameObject.SetActive(true);
+        stage++;
+        wave = 1;
+        WaveManager.Instance.ClearMonsterObjectOnStage();
+        Player_fix.Instance.transform.position = Vector3.zero;
+        Player_fix.Instance.curHP = Player_fix.Instance.HP;
+        state = GameState.GAME_PLAY;
+        EnemyBase.Instance().gameObject.SetActive(true);
 
-        }
-        else
-        {
-            uiManager.SetCurrentPage(UIPageInfo.GameStageClear);
-            Time.timeScale = 0;
-        }
-        
+    }
+    public void ChangeChapter()
+    {
+        Time.timeScale = 1;
+        state = GameState.GAME_PLAY;
+        Player_fix.Instance.transform.position = Vector3.zero;
+        Player_fix.Instance.curHP = Player_fix.Instance.HP;
+        SceneManager.LoadScene("Chapter" + chapter);
+
+    }
+    public void ChapterClear()
+    {
+        stage++;
+        wave = 1;
+        //씬 체인지 구현
+        chapter = stage / STAGE_PER_CHAPTER + 1;
+        UIManager.Instance.SetCurrentPage(UIPageInfo.GameChapterClear);
+        state = GameState.GAME_IDLE;
+        Player_fix.Instance.transform.position = Vector3.zero;
+        print("chapter change : " + chapter);
+        Time.timeScale = 0;
         
     }
+    public void GameClear()
+    {
+        Time.timeScale = 0;
+        UIManager.Instance.SetCurrentPage(UIPageInfo.GameClear);
+    }
+
 }

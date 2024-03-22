@@ -7,7 +7,7 @@ public class TitleButtonEvent : MonoBehaviour
 {
     public void OnClickStart()
     {
-        SceneManager.LoadScene("Survival");
+        SceneManager.LoadScene("Chapter1");
     }
 
 }

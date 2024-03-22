@@ -10,7 +10,7 @@ public class BtnEvent : MonoBehaviour
 
     private void Start()
     {
-        player = GameManager.Instance.player;
+        player = Player_fix.Instance;
         spriteRenderer = player.GetComponent<SpriteRenderer>();
     }
 
@@ -38,6 +38,15 @@ public class BtnEvent : MonoBehaviour
 
         player.moveDir = Vector2.zero;
         player.isWalk = false;
+    }
+
+    public void Restart()
+    {
+        GameManager.Instance.RestartGame();
+    }
+    public void ChapterChange()
+    {
+        GameManager.Instance.ChangeChapter();
     }
 
 }

@@ -34,22 +34,40 @@ public class WaveMonster
 
 public class WaveManager : MonoBehaviour
 {
+    private static WaveManager instance; 
     public int cur_stageNum;
     public int cur_waveNum;
     public List<WaveMonster> monster_list;
     public WaveTable[] waveTables = null;
     public List<Coroutine> coroutine_list ;
-
+    private PoolManager monsterPool;
     public WaveType wave_type = WaveType.Normal;
 
     private void Awake()
     {
-        init();
+        if(instance == null)
+        {
+            instance = this; 
+        }
+        cur_stageNum = 0;
+        cur_waveNum = 0;
+        monster_list = new List<WaveMonster>();
+        coroutine_list = new List<Coroutine>();
+        monsterPool = GameObject.FindGameObjectWithTag("EnemyPool").GetComponent<PoolManager>();
+
+    }
+    public static WaveManager Instance
+    {
+        get{
+            if (instance == null)
+                return null;
+            return instance;
+        }
     }
 
     private void Start()
     {
-        List<Dictionary<string, object>> wave_data = GameManager.Instance.parser.data_WaveTable;
+        List<Dictionary<string, object>> wave_data = Parser.Instance.data_WaveTable;
         waveTables = new WaveTable[wave_data.Count];
         SetWaveTables(wave_data, waveTables);
     }
@@ -94,7 +112,7 @@ public class WaveManager : MonoBehaviour
     {
         for(int i=0;i<num;i++)
         {
-            GameObject clone = GameManager.Instance.enemy_pool.Get(idx);
+            GameObject clone = monsterPool.Get(idx);
             Color c = clone.GetComponent<SpriteRenderer>().color;
             //clone.GetComponent<SpriteRenderer>().color = new Color(c.r, c.g,  c.b, 1);
             clone.transform.position = new Vector3(transform.position.x, transform.position.y, Random.Range(-1, 1));
@@ -136,14 +154,7 @@ public class WaveManager : MonoBehaviour
     {
         monster_list.Clear();
     }
-    private void init()
-    {
-     
-        cur_stageNum = 0;
-        cur_waveNum = 0;
-        monster_list = new List<WaveMonster>();
-        coroutine_list = new List<Coroutine>();
-    }
+
 
     public void ClearMonsterObjectOnStage()
     {

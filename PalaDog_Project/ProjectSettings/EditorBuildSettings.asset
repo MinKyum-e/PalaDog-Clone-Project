@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/01.Scenes/Title.unity
     guid: fdbb9d58465280d48970a58fb0d05378
   - enabled: 1
-    path: Assets/01.Scenes/Survival.unity
+    path: Assets/01.Scenes/Chapter1.unity
     guid: 1ac565c42b0c91148b4bf90a84a87e44
+  - enabled: 1
+    path: Assets/01.Scenes/Chapter2.unity
+    guid: 4b633e934b3a805429b7221ff0c41034
   m_configObjects: {}

@@ -23,7 +23,15 @@ public class Boss : Monster
     {
         if (curHP <= 0)
         {
-            GameManager.Instance.state = GameState.GAME_STAGE_CLEAR;
+            if(GameManager.Instance.chapter ==  GameManager.Instance.MAX_CHAPTER)
+            {
+                GameManager.Instance.state = GameState.GAME_CLEAR;
+            }
+            else
+            {
+                GameManager.Instance.state = GameState.GAME_CHAPTER_CLEAR;
+            }
+            
             Die();
         }
     }

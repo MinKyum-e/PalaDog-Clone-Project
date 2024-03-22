@@ -11,8 +11,8 @@ public class Stage_text : MonoBehaviour
         tmp = GetComponent<TMP_Text>();
     }
 
-    public void stageWaveUpdate(int stage, int wave)
+    public void Update()
     {
-        tmp.text = "stage : " + stage + "-" + wave;
+        tmp.text = "stage : " + GameManager.Instance.stage + "-" + GameManager.Instance.wave;
     }
 }

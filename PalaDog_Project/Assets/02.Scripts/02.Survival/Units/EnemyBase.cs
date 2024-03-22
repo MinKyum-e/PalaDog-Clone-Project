@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class EnemyBase : Unit
 {
+    public static EnemyBase instance = null;
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
+    public static EnemyBase Instance()
+    {
+        return instance;
+    }
+
 
     private void OnEnable()
     {
@@ -32,7 +45,7 @@ public class EnemyBase : Unit
 
     public override void Die()
     {
-        if(GameManager.Instance.waveManager.wave_type == WaveType.Boss)
+        if(WaveManager.Instance.wave_type == WaveType.Boss)
         {
             GameManager.Instance.WaveChange();
 
