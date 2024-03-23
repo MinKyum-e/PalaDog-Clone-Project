@@ -15,7 +15,7 @@ public class Monster : Unit
         float diff;
         try { 
             diff = Mathf.Abs(main_target.transform.position.x - transform.position.x);
-            if (diff <= Range)
+            if (diff <= atkRange)
                 attack_target = main_target;
         }
         catch 
@@ -31,7 +31,7 @@ public class Monster : Unit
         {
             if (!u.activeSelf) { continue; }
             float tmp_diff = Mathf.Abs(u.transform.position.x - transform.position.x);
-            if (tmp_diff < diff && tmp_diff <= Range)
+            if (tmp_diff < diff && tmp_diff <= atkRange)
             {
                 diff = tmp_diff;
                 attack_target = u;
@@ -50,7 +50,7 @@ public class Monster : Unit
             {
                 isWalk = false;
                 attack_target.GetComponent<SpriteRenderer>().color = Color.red ;
-                attack_target.Hit(Damage);
+                attack_target.Hit(atk);
                 yield return new WaitForSeconds(0.5f);
                 attack_target.GetComponent<SpriteRenderer>().color = Color.white;
             }

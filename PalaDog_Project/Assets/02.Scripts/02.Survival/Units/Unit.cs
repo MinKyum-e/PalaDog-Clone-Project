@@ -7,12 +7,16 @@ public abstract class Unit : MonoBehaviour
 {
     public UnitType Type;
     public int ID;
-    public string Name;
+    public string unit_name;
+    public int group;
+    public int cost;
     public int HP;
     public int curHP;
-    public int Damage;
-    public float Range;
-    public float MoveSpeed;
+    public int atk;
+    public float atkRange;
+    public float atkSpeed;
+    public float moveSpeed;
+    public int skill;
     public Vector2 moveDir;
     public bool isWalk = false;
 
@@ -27,7 +31,7 @@ public abstract class Unit : MonoBehaviour
     public void Move()
     {
         animator.SetBool("isWalk", isWalk);
-        Vector3 nextPos = rigid.position + moveDir * MoveSpeed * Time.fixedDeltaTime;
+        Vector3 nextPos = rigid.position + moveDir * moveSpeed * Time.fixedDeltaTime;
         rigid.MovePosition(nextPos);
         rigid.velocity = Vector2.zero;
     }
@@ -40,27 +44,27 @@ public abstract class Unit : MonoBehaviour
         if(Type == UnitType.Player)
         {
             ID = 99;
-            Name = "player";
+            unit_name = "player";
             HP = 100;
-            MoveSpeed = 10;
+            moveSpeed = 10;
         }
         else if(Type == UnitType.EnemyBase)
         {
             ID = 98;
-            Name = "enemyBase";
+            unit_name = "enemyBase";
             HP = 500;
-            MoveSpeed = 0;
+            moveSpeed = 0;
         }
         else if(Type == UnitType.Enemy || Type == UnitType.Boss)
         {
             List<Dictionary<string, object>> enemy_status_list = Parser.Instance.data_EnemyTable;
             try
             {
-                Name = enemy_status_list[ID]["Name"].ToString();
+                unit_name = enemy_status_list[ID]["Name"].ToString();
                 HP = (int)enemy_status_list[ID]["HP"];
-                Damage = (int)enemy_status_list[ID]["Damage"];
-                Range = float.Parse(enemy_status_list[ID]["Range"].ToString());
-                MoveSpeed = float.Parse(enemy_status_list[ID]["MoveSpeed"].ToString());
+                atk = (int)enemy_status_list[ID]["Damage"];
+                atkRange = float.Parse(enemy_status_list[ID]["Range"].ToString());
+                moveSpeed = float.Parse(enemy_status_list[ID]["MoveSpeed"].ToString());
             }
             catch { Debug.Log("status Setting Error"); }
         }
@@ -69,11 +73,16 @@ public abstract class Unit : MonoBehaviour
             List<Dictionary<string, object>> Minion_status_list = Parser.Instance.data_MinionTable;
             try
             {
-                Name = Minion_status_list[ID]["Name"].ToString();
-                HP = (int)Minion_status_list[ID]["HP"];
-                Damage = (int)Minion_status_list[ID]["Damage"];
-                Range = float.Parse(Minion_status_list[ID]["Range"].ToString());
-                MoveSpeed = float.Parse(Minion_status_list[ID]["MoveSpeed"].ToString());
+                unit_name = Minion_status_list[ID]["Unit_GameName"].ToString();
+                group = (int)Minion_status_list[ID]["Unit_Group"];
+                cost = (int)Minion_status_list[ID]["Unit_Cost"];
+                HP = (int)Minion_status_list[ID]["Unit_HP"];
+                atk = (int)Minion_status_list[ID]["Unit_Atk"];
+                atkRange = float.Parse(Minion_status_list[ID]["Unit_AtkRange"].ToString());
+                atkSpeed = float.Parse(Minion_status_list[ID]["Unit_AtkSpeed"].ToString());
+                moveSpeed = float.Parse(Minion_status_list[ID]["Unit_MoveSpeed"].ToString());
+                skill = (int)Minion_status_list[ID]["Unit_Skill"];
+
             }
             catch { Debug.Log("status Setting Error"); }
         }
