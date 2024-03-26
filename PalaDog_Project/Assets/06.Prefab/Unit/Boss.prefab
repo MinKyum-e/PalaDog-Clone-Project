@@ -183,16 +183,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45cec76ee153df24798e6f1131ed52ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 4
-  ID: 0
-  Name: 
+  ID: 3
+  unitName: 
   HP: 0
   curHP: 0
-  Damage: 0
-  Range: 0
-  MoveSpeed: 0
+  moveSpeed: 0
   moveDir: {x: 0, y: 0}
   isWalk: 0
   rigid: {fileID: 0}
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
+  atk: 0
+  atkRange: 0
+  atkSpeed: 0
+  group: 0

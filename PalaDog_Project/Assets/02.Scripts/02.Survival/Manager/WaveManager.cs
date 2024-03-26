@@ -163,12 +163,12 @@ public class WaveManager : MonoBehaviour
         foreach(GameObject e in alive_enemys)
         {
             if(e.activeSelf)
-             e.GetComponent<Enemy_fix>().Die();
+             e.GetComponent<Enemy>().Die();
         }
         foreach (GameObject m in alive_minions)
         {
             if (m.activeSelf)
-                m.GetComponent<Minion_fix >().Die();
+                m.GetComponent<Minion>().Die();
         }
     }
 }

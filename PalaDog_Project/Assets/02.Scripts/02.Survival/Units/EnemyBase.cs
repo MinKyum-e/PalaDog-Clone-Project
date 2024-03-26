@@ -59,4 +59,11 @@ public class EnemyBase : Unit
         gameObject.SetActive(false);
     }
 
+    public override void setStatus()
+    {
+        ID = 98;
+        unitName = "enemyBase";
+        HP = 500;
+        moveSpeed = 0;
+    }
 }

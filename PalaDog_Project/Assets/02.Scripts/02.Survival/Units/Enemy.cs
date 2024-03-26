@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
-public class Boss : Monster
+public class Enemy : Monster
 {
-    int skill;
     int grade;
     int gold;
     private void Awake()
@@ -18,7 +18,6 @@ public class Boss : Monster
     {
         setStatus();
         curHP = HP;
-        moveDir = Vector2.left;
         StartCoroutine(NormalAttack("Player", "Minion"));
         isWalk = true;
     }
@@ -26,25 +25,7 @@ public class Boss : Monster
     {
         if (curHP <= 0)
         {
-            if(GameManager.Instance.chapter ==  GameManager.Instance.MAX_CHAPTER)
-            {
-                GameManager.Instance.state = GameState.GAME_CLEAR;
-            }
-            else
-            {
-                GameManager.Instance.state = GameState.GAME_CHAPTER_CLEAR;
-            }
-            
             Die();
-        }
-    }
-
-    void FixedUpdate()
-    {
-        if (isWalk)
-        {
-            SetMoveDir("Player");
-            Move();
         }
 
     }
@@ -67,7 +48,7 @@ public class Boss : Monster
     }
     public override Unit setAttackTarget(string main_target_tag, string target_tag)
     {
-
+       
         GameObject target = null;
         GameObject main_target = GameObject.FindGameObjectWithTag(main_target_tag);
         //주인공 공격할 수 있으면 공격
@@ -79,7 +60,7 @@ public class Boss : Monster
             {
                 return main_target.GetComponent<Unit>();
             }
-
+                
         }
         catch
         {
@@ -112,4 +93,14 @@ public class Boss : Monster
         else { return null; }
     }
 
+    void FixedUpdate()
+    {
+        if (isWalk)
+        {
+
+            SetMoveDir("Player");
+            Move();
+        }
+
+    }
 }

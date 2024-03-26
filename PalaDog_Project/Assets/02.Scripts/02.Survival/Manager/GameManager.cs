@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         print("START");
-        Player_fix.Instance.transform.position = Vector3.zero;
+        Player.Instance.transform.position = Vector3.zero;
         state = GameState.GAME_PLAY;
         Time.timeScale = 1.0f;
         GameObject.Find("EnemyBase").SetActive(true);
@@ -120,8 +120,8 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         state = GameState.GAME_PLAY;
         UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
-        Player_fix.Instance.curHP = Player_fix.Instance.HP;
-        Player_fix.Instance.transform.position = Vector3.zero;
+        Player.Instance.curHP = Player.Instance.HP;
+        Player.Instance.transform.position = Vector3.zero;
         SceneManager.LoadScene("Chapter1");
     }
     public void GameOver()
@@ -141,8 +141,8 @@ public class GameManager : MonoBehaviour
         stage++;
         wave = 1;
         WaveManager.Instance.ClearMonsterObjectOnStage();
-        Player_fix.Instance.transform.position = Vector3.zero;
-        Player_fix.Instance.curHP = Player_fix.Instance.HP;
+        Player.Instance.transform.position = Vector3.zero;
+        Player.Instance.curHP = Player.Instance.HP;
         state = GameState.GAME_PLAY;
         EnemyBase.Instance().gameObject.SetActive(true);
 
@@ -151,8 +151,8 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         state = GameState.GAME_PLAY;
-        Player_fix.Instance.transform.position = Vector3.zero;
-        Player_fix.Instance.curHP = Player_fix.Instance.HP;
+        Player.Instance.transform.position = Vector3.zero;
+        Player.Instance.curHP = Player.Instance.HP;
         SceneManager.LoadScene("Chapter" + chapter);
 
     }
@@ -164,8 +164,7 @@ public class GameManager : MonoBehaviour
         chapter = stage / STAGE_PER_CHAPTER + 1;
         UIManager.Instance.SetCurrentPage(UIPageInfo.GameChapterClear);
         state = GameState.GAME_IDLE;
-        Player_fix.Instance.transform.position = Vector3.zero;
-        print("chapter change : " + chapter);
+        Player.Instance.transform.position = Vector3.zero;
         Time.timeScale = 0;
         
     }

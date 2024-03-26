@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Player_fix : Unit
+public class Player : Unit
 {
-    private static Player_fix instance;
+    private static Player instance;
+    int auraLV;
+    int[] skill;
 
     private void Awake()
     {
@@ -43,7 +45,7 @@ public class Player_fix : Unit
 
     }
 
-    public static Player_fix Instance //게임매니저 인스턴스 접근
+    public static Player Instance //게임매니저 인스턴스 접근
     {
         get
         {
@@ -56,7 +58,17 @@ public class Player_fix : Unit
     }
     public override void Die()
     {
+        isWalk = false;
+        moveDir = Vector2.zero;
         GameManager.Instance.GameOver();
+    }
+
+    public override void setStatus()
+    {
+        ID = 99;
+        unitName = "player";
+        HP = 100;
+        moveSpeed = 10;
     }
 
 

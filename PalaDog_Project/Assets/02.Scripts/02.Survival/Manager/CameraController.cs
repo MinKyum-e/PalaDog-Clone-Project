@@ -24,7 +24,7 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        target = Player_fix.Instance.transform;
+        target = Player.Instance.transform;
         cameraPosition = new Vector3(0,3.3f,-10);
         height = Camera.main.orthographicSize;
         width = height * Screen.width / Screen.height;

@@ -40,7 +40,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnDrag(PointerEventData eventData)
     {
-        float player_y = Camera.main.WorldToScreenPoint(Player_fix.Instance.transform.position).y;
+        float player_y = Camera.main.WorldToScreenPoint(Player.Instance.transform.position).y;
         rect.position = new Vector3(eventData.position.x, player_y+70f, 0);
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(eventData.position);
         float leftBound = auraCollider.bounds.min.x;
@@ -62,7 +62,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         float rightBount = auraCollider.bounds.max.x;
         if (spawnPoint.x >= leftBound && spawnPoint.x <= rightBount)
         {
-            Transform playerTransform = Player_fix.Instance.transform;
+            Transform playerTransform = Player.Instance.transform;
 
             //spawnPoint.y = Mathf.Clamp(spawnPoint.y, playerTransform.position.y + yMin, playerTransform.position.y + yMax);
             spawnPoint.y = playerTransform.position.y;

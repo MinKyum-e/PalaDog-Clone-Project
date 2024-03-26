@@ -5,12 +5,12 @@ using UnityEngine;
 public class BtnEvent : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Player_fix player;
+    private Player player;
     private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
-        player = Player_fix.Instance;
+        player = Player.Instance;
         spriteRenderer = player.GetComponent<SpriteRenderer>();
     }
 
