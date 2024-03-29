@@ -67,7 +67,7 @@ public class WaveManager : MonoBehaviour
 
     private void Start()
     {
-        List<Dictionary<string, object>> wave_data = Parser.Instance.data_WaveTable;
+        List<Dictionary<string, object>> wave_data = Parser.data_WaveTable;
         waveTables = new WaveTable[wave_data.Count];
         SetWaveTables(wave_data, waveTables);
     }

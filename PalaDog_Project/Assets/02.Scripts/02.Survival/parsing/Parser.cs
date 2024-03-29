@@ -5,9 +5,9 @@ using UnityEngine;
 public class Parser : MonoBehaviour
 {
     private static Parser instance = null;
-    public List<Dictionary<string, object>> data_MinionTable = null;
-    public List<Dictionary<string, object>> data_EnemyTable = null;
-    public List<Dictionary<string, object>> data_WaveTable = null;
+    public static List<Dictionary<string, object>> data_MinionTable = null;
+    public static List<Dictionary<string, object>> data_EnemyTable = null;
+    public static List<Dictionary<string, object>> data_WaveTable = null;
 
     public void Awake()
     {

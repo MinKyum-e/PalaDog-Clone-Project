@@ -32,10 +32,12 @@ public class EnemyBase : Unit
         }
         else if (curHP <= (HP * 0.25f) && GameManager.Instance.wave == 2)
         {
+            print("!!!!");
             GameManager.Instance.WaveChange();
         }
         else if(curHP <= (HP*0.5f) && GameManager.Instance.wave == 1)
         {
+            print("!");
             GameManager.Instance.WaveChange();
         }
         

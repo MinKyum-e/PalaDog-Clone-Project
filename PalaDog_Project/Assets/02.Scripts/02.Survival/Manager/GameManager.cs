@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -24,12 +25,14 @@ public class GameManager : MonoBehaviour
     public int MAX_STAGE ;
     public int STAGE_PER_CHAPTER;
     public int MAX_CHAPTER;
+    public int MAX_COST;
 
     private static GameManager instance = null;
 
     public int chapter = 1;
     public int wave = 1;
     public int stage = 1;
+    public int cur_cost= 0;
     
 
     public GameState state;
@@ -114,15 +117,19 @@ public class GameManager : MonoBehaviour
     }
     public void RestartGame()
     {
+        Time.timeScale = 1;
         wave = 1;
         stage = 1;
         chapter = 1;
-        Time.timeScale = 1;
-        state = GameState.GAME_PLAY;
+        cur_cost = 0;
+        EnemyBase.Instance().curHP = EnemyBase.Instance().HP;
         UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
         Player.Instance.curHP = Player.Instance.HP;
         Player.Instance.transform.position = Vector3.zero;
+        state = GameState.GAME_PLAY;
         SceneManager.LoadScene("Chapter1");
+
+       
     }
     public void GameOver()
     {
@@ -140,7 +147,9 @@ public class GameManager : MonoBehaviour
     {
         stage++;
         wave = 1;
+        
         WaveManager.Instance.ClearMonsterObjectOnStage();
+        cur_cost = 0;
         Player.Instance.transform.position = Vector3.zero;
         Player.Instance.curHP = Player.Instance.HP;
         state = GameState.GAME_PLAY;
@@ -151,8 +160,10 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         state = GameState.GAME_PLAY;
+        cur_cost = 0;
         Player.Instance.transform.position = Vector3.zero;
         Player.Instance.curHP = Player.Instance.HP;
+        state = GameState.GAME_PLAY;
         SceneManager.LoadScene("Chapter" + chapter);
 
     }
@@ -173,5 +184,14 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         UIManager.Instance.SetCurrentPage(UIPageInfo.GameClear);
     }
+    public bool CheckCost(int cost)
+    {
+        return (cur_cost + cost <= MAX_COST);
+    }
 
+    public void UpdateCost(int cost)
+    {
+        cur_cost += cost;
+
+    }
 }

@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.227121, y: -10.1688175, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -34817699, guid: a268284187687874f83708798555fc6c, type: 3}
+  m_Sprite: {fileID: -274915325, guid: 894176192164f2745848aa032e38c848, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,20 +100,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b6b89997f1efb4f82e7608acf3372c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
   ID: 1
-  Name: 
+  unitName: 
   HP: 0
   curHP: 0
-  Damage: 0
-  Range: 0
-  MoveSpeed: 0
+  moveSpeed: 0
   moveDir: {x: 0, y: 0}
   isWalk: 0
   rigid: {fileID: 0}
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
-  main_target: {fileID: 0}
+  atk: 0
+  atkRange: 0
+  atkSpeed: 0
+  group: 0
+  cost: 0
+  skill: 0
 --- !u!50 &3788102992525740870
 Rigidbody2D:
   serializedVersion: 4
@@ -177,7 +179,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.82, y: 0.91}
+    oldSize: {x: 7.03, y: 7.3}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

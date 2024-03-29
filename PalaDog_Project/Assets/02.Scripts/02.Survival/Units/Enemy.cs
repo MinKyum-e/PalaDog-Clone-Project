@@ -18,7 +18,10 @@ public class Enemy : Monster
     {
         setStatus();
         curHP = HP;
+
         StartCoroutine(NormalAttack("Player", "Minion"));
+        
+
         isWalk = true;
     }
     private void Update()
@@ -32,7 +35,7 @@ public class Enemy : Monster
 
     public override void setStatus()
     {
-        List<Dictionary<string, object>> enemy_status_list = Parser.Instance.data_EnemyTable;
+        List<Dictionary<string, object>> enemy_status_list = Parser.data_EnemyTable;
         try
         {
             name = enemy_status_list[ID]["Monster_GameName"].ToString();
@@ -92,7 +95,14 @@ public class Enemy : Monster
         }
         else { return null; }
     }
+    public override void Die()
+    {
+        isWalk = false;
+        atkTarget = null;
+        gameObject.SetActive(false);
+        gameObject.transform.position = new Vector3(100, 0, 0);
 
+    }
     void FixedUpdate()
     {
         if (isWalk)

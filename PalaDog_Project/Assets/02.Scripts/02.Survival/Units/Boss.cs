@@ -51,7 +51,7 @@ public class Boss : Monster
 
     public override void setStatus()
     {
-        List<Dictionary<string, object>> enemy_status_list = Parser.Instance.data_EnemyTable;
+        List<Dictionary<string, object>> enemy_status_list = Parser.data_EnemyTable;
         try
         {
             name = enemy_status_list[ID]["Monster_GameName"].ToString();
@@ -64,6 +64,14 @@ public class Boss : Monster
             moveSpeed = float.Parse(enemy_status_list[ID]["Monster_MoveSpeed"].ToString());
         }
         catch { Debug.Log("status Setting Error"); }
+    }
+    public override void Die()
+    {
+        isWalk = false;
+        atkTarget = null;
+        gameObject.SetActive(false);
+        gameObject.transform.position = new Vector3(100, 0, 0);
+        
     }
     public override Unit setAttackTarget(string main_target_tag, string target_tag)
     {

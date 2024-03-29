@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class Minion: Monster
 {
@@ -21,12 +22,13 @@ public class Minion: Monster
         moveDir = Vector2.right;
         StartCoroutine(NormalAttack("EnemyMainTarget", "Enemy"));
         isWalk = true;
+        GameManager.Instance.UpdateCost(cost); //cost 추가
     }
 
 
     public override void setStatus()
     {
-        List<Dictionary<string, object>> Minion_status_list = Parser.Instance.data_MinionTable;
+        List<Dictionary<string, object>> Minion_status_list = Parser.data_MinionTable;
         try
         {
             unitName = Minion_status_list[ID]["Unit_GameName"].ToString();
@@ -58,7 +60,14 @@ public class Minion: Monster
         }
 
     }
-
+    public override void Die()
+    {
+        isWalk = false;
+        atkTarget = null;
+        gameObject.SetActive(false);
+        gameObject.transform.position = new Vector3(100, 0, 0);
+        GameManager.Instance.cur_cost -= cost;
+    }
     public override Unit setAttackTarget(string main_target_tag, string target_tag)
     {
         //기존 타켓이 존재하면 그냥 return

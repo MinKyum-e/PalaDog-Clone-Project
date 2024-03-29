@@ -38,13 +38,7 @@ public abstract class Monster : Unit
             yield return null;
         }
     }
-    public override void Die()
-    {
-        isWalk = false;
-        atkTarget = null;
-        gameObject.SetActive(false);
-        gameObject.transform.position = new Vector3(100, 0, 0);
-    }
+    
     public void SetMoveDir(string main_target_tag)
     {
         GameObject main_target = GameObject.FindGameObjectWithTag(main_target_tag);

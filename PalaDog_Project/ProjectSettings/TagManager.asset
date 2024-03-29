@@ -13,6 +13,7 @@ TagManager:
   - EnemyPool
   - MinionPool
   - Aura
+  - null
   layers:
   - Default
   - TransparentFX
