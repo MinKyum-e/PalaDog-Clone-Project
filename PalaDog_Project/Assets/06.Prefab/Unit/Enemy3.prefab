@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -555550494583932046}
   m_Layer: 0
   m_Name: Enemy3
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,20 +162,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b006f5a35a3ea448fd2ba266b02f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 2
-  ID: 2
-  Name: 
-  HP: 0
+  ID: 10021
   curHP: 0
-  Damage: 0
-  Range: 0
-  MoveSpeed: 0
   moveDir: {x: 0, y: 0}
   isWalk: 0
   rigid: {fileID: 0}
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
-  main_target: {fileID: 0}
 --- !u!95 &-555550494583932046
 Animator:
   serializedVersion: 5

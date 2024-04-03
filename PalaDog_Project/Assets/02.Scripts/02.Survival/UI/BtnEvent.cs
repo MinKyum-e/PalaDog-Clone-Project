@@ -16,7 +16,7 @@ public class BtnEvent : MonoBehaviour
 
     public void LeftBtnDown()
     {
-        spriteRenderer.flipX = false;
+        spriteRenderer.flipX = true;
         player.moveDir = Vector2.left;
         player.isWalk = true;
     }
@@ -28,7 +28,7 @@ public class BtnEvent : MonoBehaviour
 
     public void RightBtnDown()
     {
-        spriteRenderer.flipX = true;
+        spriteRenderer.flipX = false;
         player.moveDir = Vector2.right;
         player.isWalk = true;
     }

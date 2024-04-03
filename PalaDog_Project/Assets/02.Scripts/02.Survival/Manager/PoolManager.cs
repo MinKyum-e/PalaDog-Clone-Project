@@ -1,14 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
+
+
 
 public class PoolManager : MonoBehaviour
 {
     //프리펩들을 보관할 변수
     public GameObject[] prefabs;
-    //풀 담당을 하는 리스트들
 
+    public Dictionary<int, int> index_dict; //index -> prefab index
+
+    //풀 담당을 하는 리스트들
     public List<GameObject>[] pools;
     private void Awake()
     {
@@ -18,26 +25,52 @@ public class PoolManager : MonoBehaviour
         {
             pools[i] =new List<GameObject>();
         }
+        index_dict = new Dictionary<int, int>();
+        
+    }
+    public void Start()
+    {
+        for (int i = 0; i < prefabs.Length; i++)
+        {
+            
+            int id = -1;
+            switch(prefabs[i].tag)
+            {
+                case "Enemy":
+                    id = prefabs[i].gameObject.GetComponent<Enemy>().ID;
+                    break;
+                case "Boss":
+                    id = prefabs[i].gameObject.GetComponent<Boss>().ID;
+                    break;
+                case "Minion":
+                    id = prefabs[i].gameObject.GetComponent<Minion>().ID;
+                    break;
+
+            }
+            index_dict[id] = i;
+        }
     }
 
-    public GameObject Get(int index)
+    public GameObject Get(int ID)
     {
         GameObject select = null;
-        foreach(GameObject item in pools[index]) 
+
+
+        foreach (GameObject item in pools[index_dict[ID]])
         {
-            if(!item.activeSelf)
+            if (!item.activeSelf)
             {
                 select = item;
                 select.SetActive(true);
                 break;
             }
         }
-
-        if(select == null)
+        if (select == null)
         {
-            select = Instantiate(prefabs[index], transform);
-            pools[index].Add(select);
+            select = Instantiate(prefabs[index_dict[ID]], transform);
+            pools[index_dict[ID]].Add(select);
         }
+
         return select;
     }
 

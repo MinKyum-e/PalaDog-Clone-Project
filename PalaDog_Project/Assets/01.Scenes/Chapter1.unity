@@ -340,7 +340,7 @@ Transform:
   m_GameObject: {fileID: 98083842}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 35, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1222,6 +1222,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1635026876}
     m_Modifications:
+    - target: {fileID: 1374094802939973288, guid: 1a7996a922026ef4886192fe598ff64b, type: 3}
+      propertyPath: minion_idx
+      value: 10111
+      objectReference: {fileID: 0}
     - target: {fileID: 5807302529124953811, guid: 1a7996a922026ef4886192fe598ff64b, type: 3}
       propertyPath: m_Name
       value: DragonUI
@@ -1604,9 +1608,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482e3dafd0344e34c8bcff5cb444b0c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MAX_STAGE: 4
-  STAGE_PER_CHAPTER: 2
-  MAX_CHAPTER: 2
+  STAGE_PER_CHAPTER: 1
+  MAX_CHAPTER: 1
   MAX_COST: 20
   chapter: 1
   wave: 1
@@ -3506,7 +3509,7 @@ Transform:
   m_GameObject: {fileID: 1660743374}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25.5, y: 0.4000001, z: 0}
+  m_LocalPosition: {x: 26.5, y: 0.4000001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4551,7 +4554,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 585552583372562678, guid: c57173344f4a7294d978ad0e48571bd4, type: 3}
       propertyPath: minion_idx
-      value: 1
+      value: 10211
       objectReference: {fileID: 0}
     - target: {fileID: 1036313589625189314, guid: c57173344f4a7294d978ad0e48571bd4, type: 3}
       propertyPath: m_Name
@@ -4791,7 +4794,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2566297952991753735, guid: 99460ae3c7b032f449392d07625809ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.43
+      value: 24.163
       objectReference: {fileID: 0}
     - target: {fileID: 2566297952991753735, guid: 99460ae3c7b032f449392d07625809ac, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4850,6 +4853,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8989298957295721825, guid: dc30fb566df24a84c83e978d692cf7a3, type: 3}
+      propertyPath: isWalk
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8989298957295721825, guid: dc30fb566df24a84c83e978d692cf7a3, type: 3}
+      propertyPath: ray_max
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119939098666278749, guid: dc30fb566df24a84c83e978d692cf7a3, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119939098666278749, guid: dc30fb566df24a84c83e978d692cf7a3, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2201908351887090627, guid: dc30fb566df24a84c83e978d692cf7a3, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.37
@@ -4906,9 +4925,17 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2329952108903258313, guid: dc30fb566df24a84c83e978d692cf7a3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2901959845032010533, guid: dc30fb566df24a84c83e978d692cf7a3, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2901959845032010533, guid: dc30fb566df24a84c83e978d692cf7a3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5124528786153669121, guid: dc30fb566df24a84c83e978d692cf7a3, type: 3}
       propertyPath: m_IsActive
@@ -4916,6 +4943,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5789888707286982079, guid: dc30fb566df24a84c83e978d692cf7a3, type: 3}
       propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8065908332598517497, guid: dc30fb566df24a84c83e978d692cf7a3, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8838706612542053695, guid: dc30fb566df24a84c83e978d692cf7a3, type: 3}

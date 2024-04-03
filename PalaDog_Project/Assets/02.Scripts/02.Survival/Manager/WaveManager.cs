@@ -28,7 +28,7 @@ public class WaveMonster
         this.monster_index = wave_MonsterIndex;
         this.monster_num = wave_MonsterNum;
         this.monster_spawnTime = wave_SpawnTime;
-        this.last_spawnTime = -9999999;
+        this.last_spawnTime = -99999999;
     }
 };
 
@@ -38,7 +38,7 @@ public class WaveManager : MonoBehaviour
     public int cur_stageNum;
     public int cur_waveNum;
     public List<WaveMonster> monster_list;
-    public WaveTable[] waveTables = null;
+    
     public List<Coroutine> coroutine_list ;
     private PoolManager monsterPool;
     public WaveType wave_type = WaveType.Normal;
@@ -65,12 +65,6 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        List<Dictionary<string, object>> wave_data = Parser.data_WaveTable;
-        waveTables = new WaveTable[wave_data.Count];
-        SetWaveTables(wave_data, waveTables);
-    }
 
 
     private void Update()
@@ -84,12 +78,12 @@ public class WaveManager : MonoBehaviour
             foreach(Coroutine c in coroutine_list) { StopCoroutine(c); }
 
             //monsterlist ¼¼ÆÃ
-            foreach(WaveTable waveTable in waveTables)
+            foreach(KeyValuePair<int, WaveInfo>  waveTable in Parser.wave_info_dict)
             {
-                if(waveTable.Wave_StageNum == cur_stageNum && waveTable.Wave_WaveNum == cur_waveNum)
+                if(waveTable.Value.Wave_StageNum == cur_stageNum && waveTable.Value.Wave_WaveNum == cur_waveNum)
                 {
-                    monster_list.Add(new WaveMonster(waveTable.Wave_MonsterIndex, waveTable.Wave_MonsterNum, waveTable.Wave_SpawnTime));
-                    wave_type = waveTable.Wave_WaveType;
+                    monster_list.Add(new WaveMonster(waveTable.Value.Wave_MonsterIndex, waveTable.Value.Wave_MonsterNum, waveTable.Value.Wave_SpawnTime));
+                    wave_type = waveTable.Value.Wave_WaveType;
 
                 }
             }
@@ -122,33 +116,6 @@ public class WaveManager : MonoBehaviour
         yield return null;
     }
 
-    private void SetWaveTables(List<Dictionary<string, object>> wave_data,  WaveTable[] waveTables)
-    {
-        foreach (Dictionary<string, object> wave in wave_data)
-        {
-            int idx = (int)wave["Wave_Index"];
-            waveTables[idx].Wave_Index = (int)wave["Wave_Index"];
-            waveTables[idx].Wave_Name = wave["Wave_Name"].ToString();
-            waveTables[idx].Wave_DevName = wave["Wave_DevName"].ToString();
-            waveTables[idx].Wave_Group = (int)wave["Wave_Group"];
-            waveTables[idx].Wave_StageNum = (int)wave["Wave_StageNum"];
-            waveTables[idx].Wave_WaveNum = (int)wave["Wave_WaveNum"];
-
-            if (wave["Wave_WaveType"].ToString() == "Normal")
-                waveTables[idx].Wave_WaveType = WaveType.Normal;
-            else
-                waveTables[idx].Wave_WaveType = WaveType.Boss;
-
-            waveTables[idx].Wave_SpawnTime = float.Parse(wave["Wave_SpawnTime"].ToString());
-            waveTables[idx].Wave_MonsterIndex = (int)wave["Wave_MonsterIndex"];
-            waveTables[idx].Wave_MonsterNum = (int)wave["Wave_MonsterNum"];
-        }
-    }
-
-    private void PrintWaveTable(WaveTable[] waveTables, int idx)
-    {
-        print(waveTables[idx].Wave_MonsterNum);
-    }
 
     private void ClearMonsterList()
     {

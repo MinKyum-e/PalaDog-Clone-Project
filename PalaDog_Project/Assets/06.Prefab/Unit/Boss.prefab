@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -2766077184619143042}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: EnemyMainTarget
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,17 +183,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45cec76ee153df24798e6f1131ed52ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 3
-  unitName: 
-  HP: 0
+  ID: 20001
   curHP: 0
-  moveSpeed: 0
   moveDir: {x: 0, y: 0}
   isWalk: 0
   rigid: {fileID: 0}
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
-  atk: 0
-  atkRange: 0
-  atkSpeed: 0
-  group: 0

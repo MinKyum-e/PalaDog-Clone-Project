@@ -18,8 +18,9 @@ public class Player : Unit
             animator = GetComponent<Animator>();
             rigid = GetComponent<Rigidbody2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
+            unitInfo = new UnitInfo();
             DontDestroyOnLoad(gameObject);
-            setStatus();
+            
         }
         else
         {
@@ -27,9 +28,10 @@ public class Player : Unit
         }
         
     }
-    private void OnEnable()
+    private void Start()
     {
-        curHP = HP;
+        setStatus();
+        curHP = unitInfo.HP;
     }
 
     private void Update()
@@ -65,10 +67,12 @@ public class Player : Unit
 
     public override void setStatus()
     {
-        ID = 99;
-        unitName = "player";
-        HP = 100;
-        moveSpeed = 10;
+        try
+        {
+            unitInfo = Parser.minion_info_dict[ID];
+        }
+        catch { Debug.Log("status Setting Error Player"); }
+        
     }
 
 

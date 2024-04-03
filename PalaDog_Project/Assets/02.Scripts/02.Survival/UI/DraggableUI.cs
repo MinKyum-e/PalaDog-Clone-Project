@@ -61,7 +61,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         float leftBound = auraCollider.bounds.min.x;
         float rightBount = auraCollider.bounds.max.x;
         //소환전 맥스 코스트 확인
-        if (spawnPoint.x >= leftBound && spawnPoint.x <= rightBount && GameManager.Instance.CheckCost((int)Parser.data_MinionTable[minion_idx]["Unit_Cost"]) == true)
+        if (spawnPoint.x >= leftBound && spawnPoint.x <= rightBount && GameManager.Instance.CheckCost(Parser.minion_info_dict[minion_idx].cost) == true)
         {
             Transform playerTransform = Player.Instance.transform;
 
@@ -69,15 +69,11 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             spawnPoint.y = playerTransform.position.y;
             spawnPoint.z = playerTransform.position.z;
 
-
             Minion minion = poolManager.Get(minion_idx).GetComponent<Minion>();
             minion.transform.position = new Vector3(spawnPoint.x, spawnPoint.y + 0.4f, Random.Range(-1, 1));
             minion.tag = "Minion";
             minion.GetComponent<SpriteRenderer>().sortingOrder = 4;
-            /* if (spawnPoint.y > playerTransform.position.y +  yMedian)
-                 unit.GetComponent<SpriteRenderer>().sortingOrder = 4;
-             else
-                 unit.GetComponent<SpriteRenderer>().sortingOrder=6;*/
+            GameManager.Instance.cur_cost += minion.info.cost;
         }
 
 

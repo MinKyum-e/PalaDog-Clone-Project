@@ -1,35 +1,35 @@
 
-public class UnitTable
+public class UnitInfo
 {
-    int index;
-    string name;
-    int HP;
-    int curHP;
-    float moveSpeed;
+    public int index;
+    public string name;
+    public int HP;
+    public float moveSpeed;
 }
 
-public class HeroTable : UnitTable
+public class PlayerInfo : UnitInfo
 {
-    int auraLV;
-    int[] skill;
+    public int auraLV;
+    public int[] skill;
 }
 
-public class MonsterTable : UnitTable
+public class MonsterInfo : UnitInfo
 {
-    int group;
-    int atk;
-    float atkRange;
-    float atkSpeed;
+    public int group;
+    public int atk;
+    public float atkRange;
+    public float atkSpeed;
 }
 
-public class MinionTable : MonsterTable
+public class MinionInfo : MonsterInfo
 {
-    int skill;
-    int cost;
+    public int skill;
+    public int cost;
 }
 
-public class EnemyTable : MonsterTable
+public class EnemyInfo : MonsterInfo
 {
-    int grade;
-
+    public int gold;
+    public int grade;
+    public int[] skill;
 }

@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Boss : Monster
 {
-    int skill;
-    int grade;
-    int gold;
+    EnemyInfo info;
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -17,10 +15,12 @@ public class Boss : Monster
     private void OnEnable()
     {
         setStatus();
-        curHP = HP;
+
+        curHP = info.HP;
         moveDir = Vector2.left;
         StartCoroutine(NormalAttack("Player", "Minion"));
         isWalk = true;
+        
     }
     private void Update()
     {
@@ -51,17 +51,11 @@ public class Boss : Monster
 
     public override void setStatus()
     {
-        List<Dictionary<string, object>> enemy_status_list = Parser.data_EnemyTable;
         try
         {
-            name = enemy_status_list[ID]["Monster_GameName"].ToString();
-            grade = (int)enemy_status_list[ID]["Monster_Grade"];
-            gold = (int)enemy_status_list[ID]["Monsater_Gold"];
-            HP = (int)enemy_status_list[ID]["Monster_HP"];
-            atk = (int)enemy_status_list[ID]["Monster_Atk"];
-            atkRange = float.Parse(enemy_status_list[ID]["Monster_AtkRange"].ToString());
-            atkSpeed = float.Parse(enemy_status_list[ID]["Monster_AtkSpeed"].ToString());
-            moveSpeed = float.Parse(enemy_status_list[ID]["Monster_MoveSpeed"].ToString());
+            info = Parser.enemy_info_dict[ID];
+            unitInfo = info;
+            monster_info = info;
         }
         catch { Debug.Log("status Setting Error"); }
     }
@@ -83,7 +77,7 @@ public class Boss : Monster
         try
         {
             dist = DistanceToTarget(main_target.transform.position, transform.position);
-            if (dist <= atkRange)
+            if (dist <= info.atkRange)
             {
                 return main_target.GetComponent<Unit>();
             }
@@ -92,10 +86,10 @@ public class Boss : Monster
         catch
         {
             print("SetAttackTarget: maintarget missing set diff 99999");
-            dist = 9999999;
+            dist = 99999999;
         }
 
-        if (atkTarget != null && DistanceToTarget(atkTarget.transform.position, transform.position) <= atkRange)
+        if (atkTarget != null && DistanceToTarget(atkTarget.transform.position, transform.position) <= info.atkRange)
         {
             return atkTarget;
         }
@@ -106,7 +100,7 @@ public class Boss : Monster
         {
             if (!u.activeSelf) { continue; }
             float tmp_dist = DistanceToTarget(u.transform.position, transform.position);
-            if (tmp_dist < dist && tmp_dist <= atkRange)
+            if (tmp_dist < dist && tmp_dist <= info.atkRange)
             {
                 dist = tmp_dist;
                 target = u;

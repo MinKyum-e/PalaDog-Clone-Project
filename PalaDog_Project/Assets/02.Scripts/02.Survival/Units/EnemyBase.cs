@@ -7,10 +7,12 @@ public class EnemyBase : Unit
     public static EnemyBase instance = null;
     private void Awake()
     {
+        unitInfo = new UnitInfo();
         if(instance == null)
         {
             instance = this;
         }
+
     }
     public static EnemyBase Instance()
     {
@@ -21,7 +23,7 @@ public class EnemyBase : Unit
     private void OnEnable()
     {
         setStatus();
-        curHP = HP;
+        curHP = unitInfo.HP;
     }
 
     private void Update()
@@ -30,14 +32,12 @@ public class EnemyBase : Unit
         {
             Die();
         }
-        else if (curHP <= (HP * 0.25f) && GameManager.Instance.wave == 2)
+        else if (curHP <= (unitInfo.HP * 0.25f) && GameManager.Instance.wave == 2)
         {
-            print("!!!!");
             GameManager.Instance.WaveChange();
         }
-        else if(curHP <= (HP*0.5f) && GameManager.Instance.wave == 1)
+        else if(curHP <= (unitInfo.HP * 0.5f) && GameManager.Instance.wave == 1)
         {
-            print("!");
             GameManager.Instance.WaveChange();
         }
         
@@ -64,8 +64,8 @@ public class EnemyBase : Unit
     public override void setStatus()
     {
         ID = 98;
-        unitName = "enemyBase";
-        HP = 500;
-        moveSpeed = 0;
+        unitInfo.name= "enemyBase";
+        unitInfo.HP = 2000;
+        unitInfo.moveSpeed = 0;
     }
 }

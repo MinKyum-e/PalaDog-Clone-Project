@@ -22,7 +22,6 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
-    public int MAX_STAGE ;
     public int STAGE_PER_CHAPTER;
     public int MAX_CHAPTER;
     public int MAX_COST;
@@ -54,7 +53,6 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        print("START");
         Player.Instance.transform.position = Vector3.zero;
         state = GameState.GAME_PLAY;
         Time.timeScale = 1.0f;
@@ -122,9 +120,9 @@ public class GameManager : MonoBehaviour
         stage = 1;
         chapter = 1;
         cur_cost = 0;
-        EnemyBase.Instance().curHP = EnemyBase.Instance().HP;
+        EnemyBase.Instance().curHP = EnemyBase.Instance().unitInfo.HP;
         UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
-        Player.Instance.curHP = Player.Instance.HP;
+        Player.Instance.curHP = Player.Instance.unitInfo.HP;
         Player.Instance.transform.position = Vector3.zero;
         state = GameState.GAME_PLAY;
         SceneManager.LoadScene("Chapter1");
@@ -151,7 +149,7 @@ public class GameManager : MonoBehaviour
         WaveManager.Instance.ClearMonsterObjectOnStage();
         cur_cost = 0;
         Player.Instance.transform.position = Vector3.zero;
-        Player.Instance.curHP = Player.Instance.HP;
+        Player.Instance.curHP = Player.Instance.unitInfo.HP;
         state = GameState.GAME_PLAY;
         EnemyBase.Instance().gameObject.SetActive(true);
 
@@ -162,7 +160,7 @@ public class GameManager : MonoBehaviour
         state = GameState.GAME_PLAY;
         cur_cost = 0;
         Player.Instance.transform.position = Vector3.zero;
-        Player.Instance.curHP = Player.Instance.HP;
+        Player.Instance.curHP = Player.Instance.unitInfo.HP;
         state = GameState.GAME_PLAY;
         SceneManager.LoadScene("Chapter" + chapter);
 

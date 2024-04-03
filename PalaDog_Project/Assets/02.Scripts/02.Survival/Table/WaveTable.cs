@@ -9,7 +9,7 @@ public enum WaveType                   //웨이브의 종류/일반
 /// <summary>
 /// 웨이브 시스템 관리를 위한 웨이브 테이블
 /// </summary>
-public struct WaveTable
+public class WaveInfo
 {
     public int Wave_Index;                 //웨이브의 테이블 내 고유 인덱스
     public string Wave_Name;               //웨이브의 이름(스테이지 및 웨이브 순서 명시)

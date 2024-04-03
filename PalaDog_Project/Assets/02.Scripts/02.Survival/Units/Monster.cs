@@ -3,10 +3,7 @@ using UnityEngine;
 
 public abstract class Monster : Unit
 {
-    public int atk;
-    public float atkRange;
-    public float atkSpeed;
-    public int group;
+    protected MonsterInfo monster_info;
     protected Unit atkTarget;
 
     public abstract Unit setAttackTarget(string main_target_tag, string target_tag);
@@ -27,8 +24,8 @@ public abstract class Monster : Unit
             {
                 isWalk = false;
                 atkTarget.GetComponent<SpriteRenderer>().color = Color.red ;//추후 애니메이션 적용
-                atkTarget.Hit(atk);
-                yield return new WaitForSeconds(atkSpeed);
+                atkTarget.Hit(monster_info.atk);
+                yield return new WaitForSeconds(monster_info.atkSpeed);
                 atkTarget.GetComponent<SpriteRenderer>().color = Color.white;
             }
             else
