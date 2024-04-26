@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 2566297952991753735}
   - component: {fileID: 8462966890175395936}
   - component: {fileID: 832194165419299287}
+  - component: {fileID: 1439707381466935915}
+  - component: {fileID: 5602645280692507424}
   m_Layer: 0
   m_Name: EnemyBase
-  m_TagString: Enemy
+  m_TagString: EnemyMainTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,15 +99,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24b1699d882564479866b478ed0d110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 3
+  actor: {fileID: 0}
+--- !u!114 &1439707381466935915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2962780789457043413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 537fa3fe36a7371439c35a70cc5c2c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5602645280692507424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2962780789457043413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac3f11d0498ae2743b6142f625ddec3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   ID: 0
-  Name: 
-  HP: 0
-  curHP: 0
-  Damage: 0
-  Range: 0
-  MoveSpeed: 0
-  moveDir: {x: 0, y: 0}
   isWalk: 0
   rigid: {fileID: 0}
   spriteRenderer: {fileID: 0}

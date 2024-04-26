@@ -1,26 +1,21 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+
 using UnityEngine;
 
-public class Player : Unit
+public class Player: MonoBehaviour
 {
+    public Actor actor;
+    public Actions action;
     private static Player instance;
     int auraLV;
-    int[] skill;
 
     private void Awake()
     {
         if(instance == null)
         {
             instance = this;
-            animator = GetComponent<Animator>();
-            rigid = GetComponent<Rigidbody2D>();
-            spriteRenderer = GetComponent<SpriteRenderer>();
-            unitInfo = new UnitInfo();
             DontDestroyOnLoad(gameObject);
-            
+            actor = GetComponent<Actor>();
+            action = GetComponent<Actions>();
         }
         else
         {
@@ -31,19 +26,19 @@ public class Player : Unit
     private void Start()
     {
         setStatus();
-        curHP = unitInfo.HP;
+        actor.cur_status.HP = actor.status.HP;
     }
 
     private void Update()
     {
-        if (curHP <= 0)
+        if (actor.cur_status.HP <= 0)
         {
             Die();
         }
     }
     private void FixedUpdate()
     {
-        Move();
+        action.Move();
 
     }
 
@@ -58,18 +53,20 @@ public class Player : Unit
             return instance;
         }
     }
-    public override void Die()
+    public void Die()
     {
-        isWalk = false;
-        moveDir = Vector2.zero;
+        actor.isWalk = false;
+        actor.cur_status.moveDir = Vector2.zero;
         GameManager.Instance.GameOver();
     }
 
-    public override void setStatus()
+    public void setStatus()
     {
         try
         {
-            unitInfo = Parser.minion_info_dict[ID];
+            actor.status = Parser.minion_status_dict[actor.ID].common;
+            actor.cur_status = Parser.minion_status_dict[actor.ID].common;
+            auraLV = 1;
         }
         catch { Debug.Log("status Setting Error Player"); }
         

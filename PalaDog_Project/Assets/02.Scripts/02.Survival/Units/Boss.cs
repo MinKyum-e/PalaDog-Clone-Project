@@ -2,29 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss : Monster
+public class Boss: MonoBehaviour
 {
-    EnemyInfo info;
+    Actor actor;
+    Actions action;
+    PoolManager poolManager;
+    GameObject player;
+    GameObject atkTarget;
+    public int grade;
+    public int gold;
     private void Awake()
     {
-        rigid = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
-
+        actor = GetComponent<Actor>();
+        poolManager = GameObject.FindGameObjectWithTag("MinionPool").GetComponent<PoolManager>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        action = GetComponent<Actions>();
     }
     private void OnEnable()
     {
         setStatus();
+        actor.cur_status.HP = actor.status.HP;
+        atkTarget = null;
+        StartCoroutine(NormalAttack());
+        actor.isWalk = true;
 
-        curHP = info.HP;
-        moveDir = Vector2.left;
-        StartCoroutine(NormalAttack("Player", "Minion"));
-        isWalk = true;
-        
     }
     private void Update()
     {
-        if (curHP <= 0)
+        if (actor.cur_status.HP <= 0)
         {
             if(GameManager.Instance.chapter ==  GameManager.Instance.MAX_CHAPTER)
             {
@@ -41,45 +46,68 @@ public class Boss : Monster
 
     void FixedUpdate()
     {
-        if (isWalk)
+        if (actor.isWalk)
         {
-            SetMoveDir("Player");
-            Move();
+            action.SetMoveDir("Player");
+            action.Move();
         }
 
     }
 
-    public override void setStatus()
+    public void setStatus()
     {
         try
         {
-            info = Parser.enemy_info_dict[ID];
-            unitInfo = info;
-            monster_info = info;
+            actor.status = Parser.enemy_status_dict[actor.ID].common;
+            actor.cur_status = Parser.enemy_status_dict[actor.ID].common;
+            gold = Parser.enemy_status_dict[actor.ID].gold;
         }
         catch { Debug.Log("status Setting Error"); }
     }
-    public override void Die()
+    public void Die()
     {
-        isWalk = false;
+        actor.isWalk = false;
         atkTarget = null;
         gameObject.SetActive(false);
         gameObject.transform.position = new Vector3(100, 0, 0);
-        
+        GameManager.Instance.UpdateGold(gold);
     }
-    public override Unit setAttackTarget(string main_target_tag, string target_tag)
+
+    public IEnumerator NormalAttack()
+    {
+        while (true)
+        {
+            //타켓지정
+            atkTarget = setAttackTarget();
+
+            //attack
+            if (atkTarget != null)
+            {
+                actor.isWalk = false;
+                atkTarget.GetComponent<SpriteRenderer>().color = Color.red;//추후 애니메이션 적용
+                atkTarget.GetComponent<Actions>().Hit(actor.cur_status.atk);
+                yield return new WaitForSeconds(actor.cur_status.atkSpeed);
+                atkTarget.GetComponent<SpriteRenderer>().color = Color.white;
+            }
+            else
+            {
+                actor.isWalk = true;
+            }
+            yield return null;
+        }
+    }
+    public GameObject setAttackTarget()
     {
 
         GameObject target = null;
-        GameObject main_target = GameObject.FindGameObjectWithTag(main_target_tag);
         //주인공 공격할 수 있으면 공격
         float dist;
         try
         {
-            dist = DistanceToTarget(main_target.transform.position, transform.position);
-            if (dist <= info.atkRange)
+            dist = Utils.DistanceToTarget(player.transform.position, transform.position);
+            if (dist <= actor.cur_status.atkRange)
             {
-                return main_target.GetComponent<Unit>();
+                return player;
             }
 
         }
@@ -89,26 +117,27 @@ public class Boss : Monster
             dist = 99999999;
         }
 
-        if (atkTarget != null && DistanceToTarget(atkTarget.transform.position, transform.position) <= info.atkRange)
+        if (atkTarget != null && Utils.DistanceToTarget(atkTarget.transform.position, transform.position) <= actor.cur_status.atkRange)
         {
             return atkTarget;
         }
 
-        GameObject[] units = GameObject.FindGameObjectsWithTag(target_tag);
-
-        foreach (GameObject u in units)
+        foreach (List<GameObject> units in poolManager.pools)
         {
-            if (!u.activeSelf) { continue; }
-            float tmp_dist = DistanceToTarget(u.transform.position, transform.position);
-            if (tmp_dist < dist && tmp_dist <= info.atkRange)
+            foreach (GameObject u in units)
             {
-                dist = tmp_dist;
-                target = u;
+                if (!u.activeSelf) { continue; }
+                float tmp_dist = Utils.DistanceToTarget(u.transform.position, transform.position);
+                if (tmp_dist < dist && tmp_dist <= actor.cur_status.atkRange)
+                {
+                    dist = tmp_dist;
+                    target = u;
+                }
             }
         }
         if (target != null)
         {
-            atkTarget = target.GetComponent<Unit>();
+            atkTarget = target;
             return atkTarget;
         }
         else { return null; }

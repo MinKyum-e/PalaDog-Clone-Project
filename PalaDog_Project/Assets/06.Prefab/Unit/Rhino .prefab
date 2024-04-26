@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 3788102992525740870}
   - component: {fileID: 1443960828587737596}
   - component: {fileID: -8316002642092362135}
+  - component: {fileID: -1105536197994656282}
+  - component: {fileID: 5948047812024575994}
   m_Layer: 0
   m_Name: 'Rhino '
   m_TagString: Minion
@@ -31,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.227121, y: -10.1688175, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.33, y: 0.33, z: 0.33}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -100,14 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b6b89997f1efb4f82e7608acf3372c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 10211
-  curHP: 0
-  moveDir: {x: 0, y: 0}
-  isWalk: 0
-  rigid: {fileID: 0}
-  spriteRenderer: {fileID: 0}
-  animator: {fileID: 0}
-  ray_max: 0
+  actor: {fileID: 0}
+  cost: 0
 --- !u!50 &3788102992525740870
 Rigidbody2D:
   serializedVersion: 4
@@ -201,3 +197,32 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-1105536197994656282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4252131678514782868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 537fa3fe36a7371439c35a70cc5c2c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5948047812024575994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4252131678514782868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac3f11d0498ae2743b6142f625ddec3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 10111
+  isWalk: 0
+  rigid: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  animator: {fileID: 0}

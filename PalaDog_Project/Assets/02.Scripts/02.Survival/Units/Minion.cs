@@ -2,44 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
-public class Minion: Monster
+public class Minion: MonoBehaviour
 {
-    public MinionInfo info;
+    public Actor actor;
+    Actions action;
+    PoolManager poolManager;
+    GameObject atkTarget;
+    GameObject enemyBase;
+    public int cost;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
-        rigid = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        info = new MinionInfo();
+        actor = GetComponent<Actor>();
+        poolManager = GameObject.FindGameObjectWithTag("EnemyPool").GetComponent<PoolManager>();
+        enemyBase = GameObject.FindGameObjectWithTag("EnemyMainTarget");
+        action = GetComponent<Actions>();
     }
     private void OnEnable()
     {
         
         setStatus();
-        curHP = info.HP;
-        moveDir = Vector2.right;
-        StartCoroutine(NormalAttack("EnemyMainTarget", "Enemy"));
-        isWalk = true;
+        actor.cur_status.HP = actor.status.HP;
+        actor.cur_status.moveDir = Vector2.right;
+        StartCoroutine(NormalAttack());
+        actor.isWalk = true;
         //GameManager.Instance.UpdateCost(info.cost); //cost 추가
-    }
-
-
-    public override void setStatus()
-    {
-        try
-        {
-            info = Parser.minion_info_dict[ID];
-            unitInfo = info;
-            monster_info = info;
-        }
-        catch { Debug.Log("status Setting Error Minion"); }
     }
     private void Update()
     {
-        if (curHP <= 0)
+        if (actor.cur_status.HP <= 0)
         {
             Die();
         }
@@ -47,37 +39,49 @@ public class Minion: Monster
 
     void FixedUpdate()
     {
-        if (isWalk)
+        if (actor.isWalk)
         {
-            Move();
+            action.Move();
         }
 
     }
-    public override void Die()
+
+
+    public void setStatus()
     {
-        isWalk = false;
+        try
+        {
+            actor.status = Parser.minion_status_dict[actor.ID].common;
+            actor.cur_status = Parser.minion_status_dict[actor.ID].common;
+            cost = Parser.minion_status_dict[actor.ID].cost;
+        }
+        catch { Debug.Log("status Setting Error Minion"); }
+    }
+
+    public void Die()
+    {
+        actor.isWalk = false;
         atkTarget = null;
         gameObject.SetActive(false);
         gameObject.transform.position = new Vector3(100, 0, 0);
-        GameManager.Instance.cur_cost -= info.cost;
+        GameManager.Instance.UpdateCost(-cost);
     }
-    public override Unit setAttackTarget(string main_target_tag, string target_tag)
+    public GameObject setAttackTarget()
     {
         //기존 타켓이 존재하면 그냥 return
-        if ( atkTarget != null && atkTarget.gameObject.activeSelf && DistanceToTarget(atkTarget.transform.position, transform.position) <=  info.atkRange)
+        if ( atkTarget != null && atkTarget.gameObject.activeSelf && Utils.DistanceToTarget(atkTarget.transform.position, transform.position) <=  actor.cur_status.atkRange)
         {
             return atkTarget;
         }
 
         GameObject target = null;
-        GameObject main_target = GameObject.FindGameObjectWithTag(main_target_tag);
 
         float dist;
         try
         {
-            dist = DistanceToTarget(main_target.transform.position, transform.position);
-            if (dist <= info.atkRange)
-                target = main_target;
+            dist = Utils.DistanceToTarget(enemyBase.transform.position, transform.position);
+            if (dist <= actor.cur_status.atkRange)
+                target = enemyBase;
         }
         catch
         {
@@ -85,24 +89,48 @@ public class Minion: Monster
             dist = 9999999;
         }
 
-
-        GameObject[] units = GameObject.FindGameObjectsWithTag(target_tag);
-
-        foreach (GameObject u in units)
+        foreach (List<GameObject> units in poolManager.pools)
         {
-            if (!u.activeSelf) { continue; }
-            float tmp_dist = DistanceToTarget(u.transform.position, transform.position);
-            if (tmp_dist < dist && tmp_dist <= info.atkRange)
+            foreach (GameObject u in units)
             {
-                dist = tmp_dist;
-                target = u;
+                if (!u.activeSelf) { continue; }
+                float tmp_dist = Utils.DistanceToTarget(u.transform.position, transform.position);
+                if (tmp_dist < dist && tmp_dist <= actor.cur_status.atkRange)
+                {
+                    dist = tmp_dist;
+                    target = u;
+                }
             }
         }
         if (target != null)
         {
-            atkTarget = target.GetComponent<Unit>();
+            atkTarget = target;
             return atkTarget;
         }
         else { return null; }
+    }
+
+    public IEnumerator NormalAttack()
+    {
+        while (true)
+        {
+            //타켓지정
+            atkTarget = setAttackTarget();
+
+            //attack
+            if (atkTarget != null)
+            {
+                actor.isWalk = false;
+                atkTarget.GetComponent<SpriteRenderer>().color = Color.red;//추후 애니메이션 적용
+                atkTarget.GetComponent<Actions>().Hit(actor.cur_status.atk);
+                yield return new WaitForSeconds(actor.cur_status.atkSpeed);
+                atkTarget.GetComponent<SpriteRenderer>().color = Color.white;
+            }
+            else
+            {
+                actor.isWalk = true;
+            }
+            yield return null;
+        }
     }
 }

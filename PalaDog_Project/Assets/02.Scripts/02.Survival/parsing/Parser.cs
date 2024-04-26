@@ -9,9 +9,9 @@ public class Parser : MonoBehaviour
     public static List<Dictionary<string, object>> data_EnemyTable = null;
     public static List<Dictionary<string, object>> data_WaveTable = null;
 
-    public static Dictionary<int, EnemyInfo> enemy_info_dict = null;
+    public static Dictionary<int, EnemyStatus> enemy_status_dict = null;
     public static Dictionary<int, WaveInfo> wave_info_dict = null;
-    public static Dictionary<int, MinionInfo> minion_info_dict = null;
+    public static Dictionary<int, MinionStatus> minion_status_dict = null;
 
     public void Awake()
     {
@@ -22,46 +22,49 @@ public class Parser : MonoBehaviour
             data_EnemyTable = CSVReader.Read("DT_MonsterTable", 19);
             data_WaveTable = CSVReader.Read("DT_WaveTable", 10);
             
-            enemy_info_dict = new Dictionary<int, EnemyInfo>();
+            enemy_status_dict = new Dictionary<int, EnemyStatus>();
             wave_info_dict = new Dictionary<int, WaveInfo>();
-            minion_info_dict = new Dictionary<int, MinionInfo>();
+            minion_status_dict = new Dictionary<int, MinionStatus>();
 
             //몬스터 유닛 정보들어있는 class 만들기
             foreach (var d in data_EnemyTable)
             {
                 int idx = (int)d["Monster_Index"];
-                enemy_info_dict[idx] = new EnemyInfo();
-                enemy_info_dict[idx].skill = new int[3];
-                enemy_info_dict[idx].name = d["Monster_GameName"].ToString();
+                EnemyStatus e = new EnemyStatus();
+                e.common.skill = new int[3];
+                e.common.name = d["Monster_GameName"].ToString();
                 //enemy_info_dict[idx].grade = (int)d["Monster_Grade"];
-                enemy_info_dict[idx].gold = (int)d["Monster_Gold"];
-                enemy_info_dict[idx].HP = (int)d["Monster_HP"];
-                enemy_info_dict[idx].atk = (int)d["Monster_Atk"];
-                enemy_info_dict[idx].atkSpeed = float.Parse(d["Monster_AtkSpeed"].ToString());
-                enemy_info_dict[idx].atkRange = float.Parse(d["Monster_AtkRange"].ToString());
-                enemy_info_dict[idx].moveSpeed = float.Parse(d["Monster_MoveSpeed"].ToString());
-                enemy_info_dict[idx].skill[0] = (int)d["Monster_Skill1"];
-                enemy_info_dict[idx].skill[1] = (int)d["Monster_Skill2"];
-                enemy_info_dict[idx].skill[2] = (int)d["Monster_Skill3"];
-                
+                e.gold = (int)d["Monster_Gold"];
+                e.common.HP = (int)d["Monster_HP"];
+                e.common.atk = (int)d["Monster_Atk"];
+                e.common.atkSpeed = float.Parse(d["Monster_AtkSpeed"].ToString());
+                e.common.atkRange = float.Parse(d["Monster_AtkRange"].ToString());
+                e.common.moveSpeed = float.Parse(d["Monster_MoveSpeed"].ToString());
+                e.common.skill[0] = (int)d["Monster_Skill1"];
+                e.common.skill[1] = (int)d["Monster_Skill2"];
+                e.common.skill[2] = (int)d["Monster_Skill3"];
+                e.common.moveDir = Vector2.left;
+
+                enemy_status_dict[idx] = e;
             }
 
             foreach (var d in data_MinionTable)
             {
                 
                 int idx = (int)d["Chr_Index"];
-                
-                minion_info_dict[idx] = new MinionInfo();
-                minion_info_dict[idx].skill = (int)d["Chr_Skill"];
-                minion_info_dict[idx].name = d["Chr_GameName"].ToString();
+                MinionStatus s = new MinionStatus();
+                s.common.skill = new int[3];
+                s.common.skill[0] = (int)d["Chr_Skill"];
+                s.common.name = d["Chr_GameName"].ToString();
                 //enemy_info_dict[idx].grade = (int)d["Monster_Grade"];
-                minion_info_dict[idx].cost = (int)d["Chr_Cost"];
-                minion_info_dict[idx].HP = (int)d["Chr_HP"];
-                minion_info_dict[idx].atk = (int)d["Chr_Atk"];
-                minion_info_dict[idx].atkSpeed = float.Parse(d["Chr_AtkSpeed"].ToString());
-                minion_info_dict[idx].atkRange = float.Parse(d["Chr_AtkRange"].ToString());
-                minion_info_dict[idx].moveSpeed = float.Parse(d["Chr_MoveSpeed"].ToString());
-
+                s.cost = (int)d["Chr_Cost"];
+                s.common.HP = (int)d["Chr_HP"];
+                s.common.atk = (int)d["Chr_Atk"];
+                s.common.atkSpeed = float.Parse(d["Chr_AtkSpeed"].ToString());
+                s.common.atkRange = float.Parse(d["Chr_AtkRange"].ToString());
+                s.common.moveSpeed = float.Parse(d["Chr_MoveSpeed"].ToString());
+               s.common.moveDir = Vector2.right;
+                minion_status_dict[idx] = s;
             }
             //웨이브 정보
             foreach (var wave in data_WaveTable)

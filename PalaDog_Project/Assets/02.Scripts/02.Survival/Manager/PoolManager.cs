@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
+
 using System.Collections.Generic;
-using System.Reflection;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
+
 using UnityEngine;
 
 
@@ -32,21 +29,7 @@ public class PoolManager : MonoBehaviour
     {
         for (int i = 0; i < prefabs.Length; i++)
         {
-            
-            int id = -1;
-            switch(prefabs[i].tag)
-            {
-                case "Enemy":
-                    id = prefabs[i].gameObject.GetComponent<Enemy>().ID;
-                    break;
-                case "Boss":
-                    id = prefabs[i].gameObject.GetComponent<Boss>().ID;
-                    break;
-                case "Minion":
-                    id = prefabs[i].gameObject.GetComponent<Minion>().ID;
-                    break;
-
-            }
+            int id = prefabs[i].gameObject.GetComponent<Actor>().ID;
             index_dict[id] = i;
         }
     }

@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBase : Unit
+public class EnemyBase: MonoBehaviour
 {
+    public Actor actor;
     public static EnemyBase instance = null;
     private void Awake()
     {
-        unitInfo = new UnitInfo();
         if(instance == null)
         {
             instance = this;
         }
-
+        actor = GetComponent<Actor>();
     }
     public static EnemyBase Instance()
     {
@@ -23,20 +23,20 @@ public class EnemyBase : Unit
     private void OnEnable()
     {
         setStatus();
-        curHP = unitInfo.HP;
+        actor.cur_status.HP = actor.status.HP;
     }
 
     private void Update()
     {
-        if (curHP <= 0)
+        if (actor.cur_status.HP <= 0)
         {
             Die();
         }
-        else if (curHP <= (unitInfo.HP * 0.25f) && GameManager.Instance.wave == 2)
+        else if (actor.cur_status.HP <= (actor.status.HP * 0.25f) && GameManager.Instance.wave == 2)
         {
             GameManager.Instance.WaveChange();
         }
-        else if(curHP <= (unitInfo.HP * 0.5f) && GameManager.Instance.wave == 1)
+        else if(actor.cur_status.HP <= (actor.status.HP * 0.5f) && GameManager.Instance.wave == 1)
         {
             GameManager.Instance.WaveChange();
         }
@@ -45,7 +45,7 @@ public class EnemyBase : Unit
         
     }
 
-    public override void Die()
+    public void Die()
     {
         if(WaveManager.Instance.wave_type == WaveType.Boss)
         {
@@ -61,11 +61,13 @@ public class EnemyBase : Unit
         gameObject.SetActive(false);
     }
 
-    public override void setStatus()
+    public void setStatus()
     {
-        ID = 98;
-        unitInfo.name= "enemyBase";
-        unitInfo.HP = 2000;
-        unitInfo.moveSpeed = 0;
+        actor.status = new CommonStatus();
+        actor.cur_status = new CommonStatus();
+        actor.ID = 98;
+        actor.status.name= "enemyBase";
+        actor.status.HP = 2000;
+        actor.status.moveSpeed = 0;
     }
 }

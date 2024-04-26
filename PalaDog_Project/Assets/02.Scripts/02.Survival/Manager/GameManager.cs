@@ -25,13 +25,16 @@ public class GameManager : MonoBehaviour
     public int STAGE_PER_CHAPTER;
     public int MAX_CHAPTER;
     public int MAX_COST;
+    public int MAX_FOOD;
 
     private static GameManager instance = null;
 
     public int chapter = 1;
     public int wave = 1;
     public int stage = 1;
-    public int cur_cost= 0;
+    private int cur_cost= 0;
+    private int cur_gold = 0;
+    private float cur_food = 0;
     
 
     public GameState state;
@@ -58,6 +61,8 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1.0f;
         GameObject.Find("EnemyBase").SetActive(true);
         UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
+        SetCost(0);
+        SetGold(0);
     }
 
     private void Update()
@@ -119,10 +124,12 @@ public class GameManager : MonoBehaviour
         wave = 1;
         stage = 1;
         chapter = 1;
-        cur_cost = 0;
-        EnemyBase.Instance().curHP = EnemyBase.Instance().unitInfo.HP;
+        SetCost(0);
+        SetGold(0);
+        SetFood (0);
+        EnemyBase.Instance().actor.cur_status.HP = EnemyBase.Instance().actor.status.HP;
         UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
-        Player.Instance.curHP = Player.Instance.unitInfo.HP;
+        Player.Instance.actor.cur_status.HP = Player.Instance.actor.status.HP;
         Player.Instance.transform.position = Vector3.zero;
         state = GameState.GAME_PLAY;
         SceneManager.LoadScene("Chapter1");
@@ -143,13 +150,15 @@ public class GameManager : MonoBehaviour
 
     public void StageClear()
     {
-        stage++;
-        wave = 1;
+        
         
         WaveManager.Instance.ClearMonsterObjectOnStage();
-        cur_cost = 0;
+        SetCost(0);
+        SetFood(0);
+        stage++;
+        wave = 1;
         Player.Instance.transform.position = Vector3.zero;
-        Player.Instance.curHP = Player.Instance.unitInfo.HP;
+        Player.Instance.actor.cur_status.HP = Player.Instance.actor.status.HP;
         state = GameState.GAME_PLAY;
         EnemyBase.Instance().gameObject.SetActive(true);
 
@@ -158,9 +167,11 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         state = GameState.GAME_PLAY;
-        cur_cost = 0;
+        wave = 1;
+        SetCost(0);
+        SetFood(0);
         Player.Instance.transform.position = Vector3.zero;
-        Player.Instance.curHP = Player.Instance.unitInfo.HP;
+        Player.Instance.actor.cur_status.HP = Player.Instance.actor.status.HP;
         state = GameState.GAME_PLAY;
         SceneManager.LoadScene("Chapter" + chapter);
 
@@ -187,9 +198,48 @@ public class GameManager : MonoBehaviour
         return (cur_cost + cost <= MAX_COST);
     }
 
+    public void SetCost(int cost)
+    {
+        cur_cost = cost;
+        CostUI.instance.SetCostUI();
+    }
+    public int GetCost() {
+        return cur_cost; }
+
     public void UpdateCost(int cost)
     {
         cur_cost += cost;
+        CostUI.instance.SetCostUI();
+    }
+    public bool CheckFood()
+    {
+        return (cur_food <= MAX_FOOD);
+    }
+    public void SetFood(float food)
+    {
+        cur_food = food;
+    }
+    public void UpdateFood(float food)
+    {
+        cur_food += food;
+    }
+    public float GetFood()
+    {
+        return cur_food;
+    }
 
+    public void UpdateGold(int gold)
+    {
+        cur_gold += gold;
+        GoldUI.instance.SetGoldUI();
+    }
+    public void SetGold(int gold)
+    {
+        cur_gold = gold;
+        GoldUI.instance.SetGoldUI();
+    }
+    public int GetGold()
+    {
+        return cur_gold;
     }
 }
