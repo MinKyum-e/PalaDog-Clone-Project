@@ -64,6 +64,7 @@ public class Minion: MonoBehaviour
         atkTarget = null;
         gameObject.SetActive(false);
         gameObject.transform.position = new Vector3(100, 0, 0);
+        StopCoroutine(NormalAttack());
         GameManager.Instance.UpdateCost(-cost);
     }
     public GameObject setAttackTarget()
@@ -121,10 +122,11 @@ public class Minion: MonoBehaviour
             if (atkTarget != null)
             {
                 actor.isWalk = false;
+                Color c = atkTarget.GetComponent<SpriteRenderer>().color;
                 atkTarget.GetComponent<SpriteRenderer>().color = Color.red;//추후 애니메이션 적용
                 atkTarget.GetComponent<Actions>().Hit(actor.cur_status.atk);
                 yield return new WaitForSeconds(actor.cur_status.atkSpeed);
-                atkTarget.GetComponent<SpriteRenderer>().color = Color.white;
+                atkTarget.GetComponent<SpriteRenderer>().color =c;
             }
             else
             {

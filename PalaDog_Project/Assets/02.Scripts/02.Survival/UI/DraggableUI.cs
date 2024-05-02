@@ -82,6 +82,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             transform.SetParent(previousParent);
             rect.position = previousParent.GetComponentInParent<RectTransform>().position;
             
+            
         }
 
 

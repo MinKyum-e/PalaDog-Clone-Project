@@ -9,3 +9,10 @@ public enum UIPageInfo
     GameChapterClear,
     GameClear,
 }
+
+public enum UI_UnitPanelInfo
+{
+    Unit1,
+    Unit2,
+    Unit3,
+}
