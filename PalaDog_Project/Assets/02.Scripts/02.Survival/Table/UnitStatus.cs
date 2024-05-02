@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 
+[Serializable]
 public struct CommonStatus
 {
     public int index;
@@ -10,8 +12,10 @@ public struct CommonStatus
     public float atkRange;
     public float atkSpeed;
     public int[] skill;
+    public Chr_job job;
     public Vector2 moveDir;
 }
+
 
 public struct PlayerStatus
 {

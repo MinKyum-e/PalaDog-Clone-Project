@@ -62,6 +62,14 @@ public class Parser : MonoBehaviour
                 s.common.atk = (int)d["Chr_Atk"];
                 s.common.atkSpeed = float.Parse(d["Chr_AtkSpeed"].ToString());
                 s.common.atkRange = float.Parse(d["Chr_AtkRange"].ToString());
+                //job»Æ¿Œ
+                if (d["Chr_Job"].ToString() == "melee")
+                    s.common.job = Chr_job.melee;
+                else if (d["Chr_Job"].ToString() == "projectile")
+                    s.common.job = Chr_job.projectile;
+                else if (d["Chr_Job"].ToString() == "magic")
+                    s.common.job = Chr_job.magic;
+
                 s.common.moveSpeed = float.Parse(d["Chr_MoveSpeed"].ToString());
                s.common.moveDir = Vector2.right;
                 minion_status_dict[idx] = s;

@@ -124,7 +124,9 @@ public class Minion: MonoBehaviour
                 actor.isWalk = false;
                 Color c = atkTarget.GetComponent<SpriteRenderer>().color;
                 atkTarget.GetComponent<SpriteRenderer>().color = Color.red;//추후 애니메이션 적용
-                atkTarget.GetComponent<Actions>().Hit(actor.cur_status.atk);
+                //공격속성무시 확인
+                if(Buff.CheckAttackIgnore(atkTarget.GetComponent<Actor>().cur_buff, actor.cur_status.job))
+                    atkTarget.GetComponent<Actions>().Hit(actor.cur_status.atk);
                 yield return new WaitForSeconds(actor.cur_status.atkSpeed);
                 atkTarget.GetComponent<SpriteRenderer>().color =c;
             }

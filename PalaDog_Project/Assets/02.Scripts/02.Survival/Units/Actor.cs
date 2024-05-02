@@ -1,11 +1,16 @@
 
 using UnityEngine;
 
+
+
 public class Actor : MonoBehaviour
 {
     public int ID;
     public CommonStatus status;
+    
     public CommonStatus cur_status;
+    public BuffStruct cur_buff = new BuffStruct();
+
     public bool isWalk = false;
 
     public Rigidbody2D rigid;

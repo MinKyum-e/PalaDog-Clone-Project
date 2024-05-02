@@ -21,3 +21,9 @@ public enum BuffName
     B,
     C
 }
+public enum Chr_job
+{
+    magic,
+    melee,
+    projectile,
+}

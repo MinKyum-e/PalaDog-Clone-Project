@@ -5103,6 +5103,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 10000
+  status:
+    index: 0
+    name: 
+    HP: 0
+    moveSpeed: 0
+    atk: 0
+    atkRange: 0
+    atkSpeed: 0
+    skill: 
+    job: 0
+    moveDir: {x: 0, y: 0}
+  cur_status:
+    index: 0
+    name: 
+    HP: 0
+    moveSpeed: 0
+    atk: 0
+    atkRange: 0
+    atkSpeed: 0
+    skill: 
+    job: 0
+    moveDir: {x: 0, y: 0}
+  cur_buff:
+    _melee_attack_ignore: 0
+    _magic_attack_ignore: 0
+    _projectile_attack_ignore: 0
   isWalk: 0
   rigid: {fileID: 0}
   spriteRenderer: {fileID: 0}
@@ -7711,7 +7737,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1709003714
 MonoBehaviour:
   m_ObjectHideFlags: 0
