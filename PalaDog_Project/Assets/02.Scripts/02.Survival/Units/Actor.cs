@@ -12,6 +12,8 @@ public class Actor : MonoBehaviour
     public BuffStruct cur_buff = new BuffStruct();
 
     public bool isWalk = false;
+    public bool can_use_skill = false;
+    public bool can_attack = true;
 
     public Rigidbody2D rigid;
     public SpriteRenderer spriteRenderer; 
@@ -22,6 +24,15 @@ public class Actor : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+
+    }
+    private void OnEnable()
+    {
+        cur_status.HP = status.HP;
+        cur_status.moveDir = Vector2.right;
+        isWalk = false;
+        can_use_skill = false;
+        can_attack = true;
     }
     //Ãß»ó
     /* public abstract void Die();

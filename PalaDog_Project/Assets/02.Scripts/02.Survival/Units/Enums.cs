@@ -10,7 +10,7 @@ public enum UnitType //안쓰는중
 
 public enum SkillName
 {
-    A,
+    FireWall = 10002,
     B, 
     C
 }

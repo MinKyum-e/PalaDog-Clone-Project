@@ -2,6 +2,16 @@ using System;
 using UnityEngine;
 
 [Serializable]
+public struct SkillInfo
+{
+    public string name;
+    public int range;
+    public int damange;
+    public int casting_time;
+    public int cool_time;
+    public int cast_range;
+}
+[Serializable]
 public struct CommonStatus
 {
     public int index;

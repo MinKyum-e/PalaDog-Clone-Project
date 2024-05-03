@@ -15,6 +15,7 @@ TagManager:
   - Aura
   - null
   - Boss
+  - SkillPool
   layers:
   - Default
   - TransparentFX

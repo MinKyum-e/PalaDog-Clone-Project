@@ -9,8 +9,12 @@ public class Minion: MonoBehaviour
     Actions action;
     PoolManager poolManager;
     GameObject atkTarget;
+    GameObject skillTarget;
     GameObject enemyBase;
+    public SkillInfo skill_info;
     public int cost;
+    
+    
 
     private void Awake()
     {
@@ -18,15 +22,27 @@ public class Minion: MonoBehaviour
         poolManager = GameObject.FindGameObjectWithTag("EnemyPool").GetComponent<PoolManager>();
         enemyBase = GameObject.FindGameObjectWithTag("EnemyMainTarget");
         action = GetComponent<Actions>();
+        
+        
+    }
+    private void Start()
+    {
+        if(Parser.skill_info_dict.TryGetValue(actor.cur_status.skill[0], out skill_info) == false)
+        {
+            actor.can_use_skill = false;
+        }
+        else
+        {
+            actor.can_use_skill = true;
+        }
     }
     private void OnEnable()
     {
         
         setStatus();
-        actor.cur_status.HP = actor.status.HP;
-        actor.cur_status.moveDir = Vector2.right;
+
         StartCoroutine(NormalAttack());
-        actor.isWalk = true;
+
         //GameManager.Instance.UpdateCost(info.cost); //cost 추가
     }
     private void Update()
@@ -34,6 +50,23 @@ public class Minion: MonoBehaviour
         if (actor.cur_status.HP <= 0)
         {
             Die();
+        }
+        else
+        {
+
+            if (actor.can_use_skill) 
+            {
+                //일반 유닛은 스킬 1개
+                skillTarget = setAttackTarget(skill_info.cast_range);
+                if (skillTarget != null)
+                {
+                    print("스킬사용!!!!!!!" + actor.cur_status.skill[0]);
+                    action.PlaySkill(actor.cur_status.skill[0], skillTarget);
+                    StartCoroutine(BoolTimer(skill_info.cool_time));
+                    
+                }
+
+            }
         }
     }
 
@@ -45,7 +78,12 @@ public class Minion: MonoBehaviour
         }
 
     }
-
+    public IEnumerator BoolTimer(int time)
+    {
+        actor.can_use_skill = false;
+        yield return new WaitForSeconds(time);
+        actor.can_use_skill = true;
+    }
 
     public void setStatus()
     {
@@ -67,10 +105,10 @@ public class Minion: MonoBehaviour
         StopCoroutine(NormalAttack());
         GameManager.Instance.UpdateCost(-cost);
     }
-    public GameObject setAttackTarget()
+    public GameObject setAttackTarget(float range)
     {
         //기존 타켓이 존재하면 그냥 return
-        if ( atkTarget != null && atkTarget.gameObject.activeSelf && Utils.DistanceToTarget(atkTarget.transform.position, transform.position) <=  actor.cur_status.atkRange)
+        if ( atkTarget != null && atkTarget.gameObject.activeSelf && Utils.DistanceToTarget(atkTarget.transform.position, transform.position) <= range)
         {
             return atkTarget;
         }
@@ -81,7 +119,7 @@ public class Minion: MonoBehaviour
         try
         {
             dist = Utils.DistanceToTarget(enemyBase.transform.position, transform.position);
-            if (dist <= actor.cur_status.atkRange)
+            if (dist <= range)
                 target = enemyBase;
         }
         catch
@@ -96,7 +134,7 @@ public class Minion: MonoBehaviour
             {
                 if (!u.activeSelf) { continue; }
                 float tmp_dist = Utils.DistanceToTarget(u.transform.position, transform.position);
-                if (tmp_dist < dist && tmp_dist <= actor.cur_status.atkRange)
+                if (tmp_dist < dist && tmp_dist <= range)
                 {
                     dist = tmp_dist;
                     target = u;
@@ -115,22 +153,22 @@ public class Minion: MonoBehaviour
     {
         while (true)
         {
-            //타켓지정
-            atkTarget = setAttackTarget();
-
             //attack
-            if (atkTarget != null)
+            atkTarget = setAttackTarget(actor.cur_status.atkRange);
+            if (atkTarget != null && actor.can_attack)
             {
-                actor.isWalk = false;
-                Color c = atkTarget.GetComponent<SpriteRenderer>().color;
-                atkTarget.GetComponent<SpriteRenderer>().color = Color.red;//추후 애니메이션 적용
-                //공격속성무시 확인
-                if(Buff.CheckAttackIgnore(atkTarget.GetComponent<Actor>().cur_buff, actor.cur_status.job))
-                    atkTarget.GetComponent<Actions>().Hit(actor.cur_status.atk);
-                yield return new WaitForSeconds(actor.cur_status.atkSpeed);
-                atkTarget.GetComponent<SpriteRenderer>().color =c;
+
+                    actor.isWalk = false;
+                    Color c = atkTarget.GetComponent<SpriteRenderer>().color;
+                    atkTarget.GetComponent<SpriteRenderer>().color = Color.red;//추후 애니메이션 적용
+                                                                               //공격속성무시 확인
+                    if (Buff.CheckAttackIgnore(atkTarget.GetComponent<Actor>().cur_buff, actor.cur_status.job))
+                        atkTarget.GetComponent<Actions>().Hit(actor.cur_status.atk);
+                    yield return new WaitForSeconds(actor.cur_status.atkSpeed);
+                    atkTarget.GetComponent<SpriteRenderer>().color = c;
+
             }
-            else
+            else if(actor.can_attack)
             {
                 actor.isWalk = true;
             }

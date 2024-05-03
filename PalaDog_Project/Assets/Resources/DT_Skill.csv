@@ -1,0 +1,9 @@
+DT_Skill,,,,,,,,,,,,,
+고유,,,,개별,,,,,,,,,
+ ID,명칭,,그룹,이름,,,,,,,,,
+유닛 인덱스,유닛 이름,유닛 개발명,유닛 그룹,유닛 인게임 명칭,,,,,,,,,
+"유닛 고유 인덱스
+",유닛 고유 이름,유닛 고유 개발명,유닛 고유 그룹,유닛의 인게임 명칭,,,,,,,,,
+Skill_Index,Skill_Name,Skill_Range,Skill_Damage,Skill_Casting,Skill_Cooltime,Skill_Cast_Range,,,,,,,
+int,string,string,string,string,,,,,,,,,
+10002,파이어월,2,100,1,10,5,,,,,,,

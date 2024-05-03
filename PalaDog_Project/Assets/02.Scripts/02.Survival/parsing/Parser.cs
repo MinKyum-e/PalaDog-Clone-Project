@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Parser : MonoBehaviour
@@ -8,10 +9,12 @@ public class Parser : MonoBehaviour
     public static List<Dictionary<string, object>> data_MinionTable = null;
     public static List<Dictionary<string, object>> data_EnemyTable = null;
     public static List<Dictionary<string, object>> data_WaveTable = null;
+    public static List<Dictionary<string, object>> data_SkillTable = null;
 
     public static Dictionary<int, EnemyStatus> enemy_status_dict = null;
     public static Dictionary<int, WaveInfo> wave_info_dict = null;
     public static Dictionary<int, MinionStatus> minion_status_dict = null;
+    public static Dictionary<int, SkillInfo> skill_info_dict = null;
 
     public void Awake()
     {
@@ -21,10 +24,12 @@ public class Parser : MonoBehaviour
             data_MinionTable = CSVReader.Read("DT_ChrTable", 20);
             data_EnemyTable = CSVReader.Read("DT_MonsterTable", 19);
             data_WaveTable = CSVReader.Read("DT_WaveTable", 10);
+            data_SkillTable = CSVReader.Read("DT_Skill", 7);
             
             enemy_status_dict = new Dictionary<int, EnemyStatus>();
             wave_info_dict = new Dictionary<int, WaveInfo>();
             minion_status_dict = new Dictionary<int, MinionStatus>();
+            skill_info_dict = new Dictionary<int, SkillInfo>();
 
             //몬스터 유닛 정보들어있는 class 만들기
             foreach (var d in data_EnemyTable)
@@ -96,7 +101,18 @@ public class Parser : MonoBehaviour
                 wave_info_dict[idx].Wave_MonsterNum = (int)wave["Wave_MonsterNum"];
             }
 
-
+            //스킬정보
+            foreach (var d in data_SkillTable)
+            {
+                int idx = (int)d["Skill_Index"];
+                SkillInfo e = new SkillInfo();
+                e.damange = (int)d["Skill_Damage"];
+                e.cool_time = (int)d["Skill_Cooltime"];
+                e.range = (int)d["Skill_Range"];
+                e.casting_time = (int)d["Skill_Casting"];
+                e.cast_range = (int)d["Skill_Cast_Range"];
+                skill_info_dict[idx] = e;
+            }
             DontDestroyOnLoad(gameObject);
         }
         else

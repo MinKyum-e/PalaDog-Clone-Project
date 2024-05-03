@@ -4,6 +4,7 @@ using UnityEngine;
 public class Actions: MonoBehaviour
 {
     Actor actor;
+    
     private void Awake()
     {
         actor = GetComponent<Actor>();    
@@ -40,14 +41,17 @@ public class Actions: MonoBehaviour
         }
     }
 
-    public bool Skill(int skill_idx, GameObject target)
+    public bool PlaySkill(int skill_idx, GameObject target)
     {
         //TODO
+        print(target.name);
         switch((SkillName)skill_idx)
         {
-            case SkillName.A:
+            case SkillName.FireWall:
+                StartCoroutine(SkillManager.Instance.FireWall((int)skill_idx, actor, target));
                 break;
             default:
+
                 return false;
         }
         return true;
