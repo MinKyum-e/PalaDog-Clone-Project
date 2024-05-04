@@ -12,7 +12,8 @@ public class Actions: MonoBehaviour
 
     public void Move()
     {
-        actor.animator.SetBool("isWalk", actor.isWalk);
+        if(actor.animator != null) 
+            actor.animator.SetBool("isWalk", actor.isWalk);
         if (actor.isWalk)
         {
             Vector3 nextPos = actor.rigid.position + actor.cur_status.moveDir * actor.cur_status.moveSpeed * Time.fixedDeltaTime;
@@ -45,16 +46,7 @@ public class Actions: MonoBehaviour
     {
         //TODO
         print(target.name);
-        switch((SkillName)skill_idx)
-        {
-            case SkillName.FireWall:
-                StartCoroutine(SkillManager.Instance.FireWall((int)skill_idx, actor, target));
-                break;
-            default:
-
-                return false;
-        }
-        return true;
+        return SkillManager.Instance.UseSkill((SkillName)skill_idx, actor, target);
     }
 
     public bool AddBuff(int buff_idx)

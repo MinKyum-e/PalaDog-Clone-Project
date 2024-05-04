@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyBase: MonoBehaviour
 {
     public Actor actor;
+    public Actions action;
     public static EnemyBase instance = null;
     private void Awake()
     {
@@ -13,12 +14,12 @@ public class EnemyBase: MonoBehaviour
             instance = this;
         }
         actor = GetComponent<Actor>();
+        action = GetComponent<Actions>();
     }
     public static EnemyBase Instance()
     {
         return instance;
     }
-
 
     private void OnEnable()
     {

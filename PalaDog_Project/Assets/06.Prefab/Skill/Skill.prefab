@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2623043a60bcf6f4c9922cac75f1f549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target_tag: Enemy
 --- !u!114 &4661203117996629350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +140,8 @@ MonoBehaviour:
     _magic_attack_ignore: 0
     _projectile_attack_ignore: 0
   isWalk: 0
+  can_use_skill: 0
+  can_attack: 1
   rigid: {fileID: 0}
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}

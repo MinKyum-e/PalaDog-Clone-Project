@@ -30,9 +30,6 @@ public class Actor : MonoBehaviour
     {
         cur_status.HP = status.HP;
         cur_status.moveDir = Vector2.right;
-        isWalk = false;
-        can_use_skill = false;
-        can_attack = true;
     }
     //Ãß»ó
     /* public abstract void Die();

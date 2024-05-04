@@ -8,17 +8,27 @@ public class SkillManager:MonoBehaviour
     private static SkillManager _instance;
     public static SkillManager Instance { get { return _instance; } }
     private PoolManager skillPool;
-    private PoolManager enemyPool;
-    private PoolManager minionPool;
 
     private void Awake()
     {
         _instance = this;
         skillPool = GameObject.FindGameObjectWithTag("SkillPool").GetComponent<PoolManager>();
-        enemyPool = GameObject.FindGameObjectWithTag("EnemyPool").GetComponent<PoolManager>();
-        minionPool = GameObject.FindGameObjectWithTag("MinionPool").GetComponent<PoolManager>();
     }
 
+    public bool UseSkill(SkillName index, Actor actor, GameObject target)
+    {
+        print(target.name);
+        switch (index)
+        {
+            case SkillName.FireWall:
+                StartCoroutine(FireWall((int)index, actor, target));
+                break;
+            default:
+
+                return false;
+        }
+        return true;
+    }
     //index로 스킬 정보가져오고 추후 actor damage 연산이 필요할 경우를 대비하여 actor도 가져옴 스킬 사용위치는 target위치로 설정
     public IEnumerator FireWall(int index, Actor actor, GameObject target)
     {
@@ -27,20 +37,29 @@ public class SkillManager:MonoBehaviour
         {
 
             GameObject skill_clone = skillPool.Get(index);
-        skill_clone.transform.position = target.transform.position;
+            skill_clone.transform.position = new Vector3(target.transform.position.x,0, 0);
+            skill_clone.transform.localScale = new Vector3(s.range, 1, 1);
+            
 
-        //캐스팅 시작
-        actor.can_attack = false;
-        actor.isWalk = false;
-        yield return new WaitForSeconds(s.casting_time);
-        actor.can_attack = true;
-        actor.isWalk = true;
-            //데미지 주기
-        BoxCollider2D clone_collider = skill_clone.GetComponent<BoxCollider2D>();
+            //캐스팅 시작
+            actor.can_attack = false;
+            actor.isWalk = false;
+            yield return new WaitForSeconds(s.casting_time);
+            actor.can_attack = true;
+            actor.isWalk = true;
+            // 딜계산
+            skill_clone.GetComponent<Actor>().cur_status.atk = s.damange;
+
+            //데미지 타이밍
+            BoxCollider2D clone_collider = skill_clone.GetComponent<BoxCollider2D>();
             clone_collider.enabled = true;
-        yield return new WaitForSeconds(0.1f);
+            skill_clone.GetComponent<SpriteRenderer>().color = Color.gray;
+            yield return new WaitForSeconds(0.1f);
+            skill_clone.GetComponent<SpriteRenderer>().color = Color.white;
             clone_collider.enabled = false;
-        skill_clone.SetActive(false);
+            //종료
+
+            skill_clone.SetActive(false);
         }
         yield return null;
     }

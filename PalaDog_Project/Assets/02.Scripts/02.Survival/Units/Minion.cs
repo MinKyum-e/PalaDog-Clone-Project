@@ -20,14 +20,18 @@ public class Minion: MonoBehaviour
     {
         actor = GetComponent<Actor>();
         poolManager = GameObject.FindGameObjectWithTag("EnemyPool").GetComponent<PoolManager>();
-        enemyBase = GameObject.FindGameObjectWithTag("EnemyMainTarget");
+        enemyBase = GameObject.Find("EnemyBase");
         action = GetComponent<Actions>();
         
         
     }
-    private void Start()
+
+
+
+    private void OnEnable()
     {
-        if(Parser.skill_info_dict.TryGetValue(actor.cur_status.skill[0], out skill_info) == false)
+        setStatus();
+        if (Parser.skill_info_dict.TryGetValue(actor.cur_status.skill[0], out skill_info) == false)
         {
             actor.can_use_skill = false;
         }
@@ -35,16 +39,12 @@ public class Minion: MonoBehaviour
         {
             actor.can_use_skill = true;
         }
-    }
-    private void OnEnable()
-    {
-        
-        setStatus();
-
         StartCoroutine(NormalAttack());
 
         //GameManager.Instance.UpdateCost(info.cost); //cost Ãß°¡
     }
+
+
     private void Update()
     {
         if (actor.cur_status.HP <= 0)
@@ -98,6 +98,7 @@ public class Minion: MonoBehaviour
 
     public void Die()
     {
+
         actor.isWalk = false;
         atkTarget = null;
         gameObject.SetActive(false);
