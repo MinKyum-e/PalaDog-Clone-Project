@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 17.522406, y: -4.1953, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -176,7 +176,7 @@ Animator:
   m_GameObject: {fileID: 7665680707901871439}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4097d89d9f821b64dafc1d07c2c49fdc, type: 2}
+  m_Controller: {fileID: 9100000, guid: 866de890044bc5540944c14bb6bd388f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -212,7 +212,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 10012
+  status:
+    index: 0
+    name: 
+    HP: 0
+    moveSpeed: 0
+    atk: 0
+    atkRange: 0
+    atkSpeed: 0
+    skill: 
+    job: 0
+    moveDir: {x: 0, y: 0}
+  cur_status:
+    index: 0
+    name: 
+    HP: 0
+    moveSpeed: 0
+    atk: 0
+    atkRange: 0
+    atkSpeed: 0
+    skill: 
+    job: 0
+    moveDir: {x: 0, y: 0}
+  cur_buff:
+    _melee_attack_ignore: 0
+    _magic_attack_ignore: 0
+    _projectile_attack_ignore: 0
   isWalk: 0
+  can_use_skill: 0
+  can_attack: 1
   rigid: {fileID: 0}
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}

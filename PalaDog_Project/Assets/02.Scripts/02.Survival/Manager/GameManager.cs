@@ -38,7 +38,8 @@ public class GameManager : MonoBehaviour
     
 
     public GameState state;
-    
+
+    private Vector3 player_defualt_position;
 
     private void Awake()
     {
@@ -56,7 +57,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        Player.Instance.transform.position = Vector3.zero;
+        player_defualt_position = Player.Instance.transform.position ;
         state = GameState.GAME_PLAY;
         Time.timeScale = 1.0f;
         GameObject.Find("EnemyBase").SetActive(true);
@@ -130,7 +131,7 @@ public class GameManager : MonoBehaviour
         EnemyBase.Instance().actor.cur_status.HP = EnemyBase.Instance().actor.status.HP;
         UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
         Player.Instance.actor.cur_status.HP = Player.Instance.actor.status.HP;
-        Player.Instance.transform.position = Vector3.zero;
+        Player.Instance.transform.position = player_defualt_position;
         state = GameState.GAME_PLAY;
         SceneManager.LoadScene("Chapter1");
 
@@ -157,7 +158,7 @@ public class GameManager : MonoBehaviour
         SetFood(0);
         stage++;
         wave = 1;
-        Player.Instance.transform.position = Vector3.zero;
+        Player.Instance.transform.position = player_defualt_position;
         Player.Instance.actor.cur_status.HP = Player.Instance.actor.status.HP;
         state = GameState.GAME_PLAY;
         EnemyBase.Instance().gameObject.SetActive(true);
@@ -170,7 +171,7 @@ public class GameManager : MonoBehaviour
         wave = 1;
         SetCost(0);
         SetFood(0);
-        Player.Instance.transform.position = Vector3.zero;
+        Player.Instance.transform.position = player_defualt_position;
         Player.Instance.actor.cur_status.HP = Player.Instance.actor.status.HP;
         state = GameState.GAME_PLAY;
         SceneManager.LoadScene("Chapter" + chapter);
@@ -184,7 +185,7 @@ public class GameManager : MonoBehaviour
         chapter = stage / STAGE_PER_CHAPTER + 1;
         UIManager.Instance.SetCurrentPage(UIPageInfo.GameChapterClear);
         state = GameState.GAME_IDLE;
-        Player.Instance.transform.position = Vector3.zero;
+        Player.Instance.transform.position = player_defualt_position;
         Time.timeScale = 0;
         
     }

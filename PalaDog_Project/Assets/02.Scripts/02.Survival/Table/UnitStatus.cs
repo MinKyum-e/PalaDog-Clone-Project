@@ -11,6 +11,8 @@ public struct SkillInfo
     public int cool_time;
     public int cast_range;
 }
+
+
 [Serializable]
 public struct CommonStatus
 {

@@ -10,6 +10,7 @@ public class Parser : MonoBehaviour
     public static List<Dictionary<string, object>> data_EnemyTable = null;
     public static List<Dictionary<string, object>> data_WaveTable = null;
     public static List<Dictionary<string, object>> data_SkillTable = null;
+    public static List<Dictionary<string, object>> data_ShopTable = null;
 
     public static Dictionary<int, EnemyStatus> enemy_status_dict = null;
     public static Dictionary<int, WaveInfo> wave_info_dict = null;
