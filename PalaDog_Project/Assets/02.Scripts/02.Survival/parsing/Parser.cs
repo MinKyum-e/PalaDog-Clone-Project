@@ -122,7 +122,9 @@ public class Parser : MonoBehaviour
             foreach (var d in data_ShopTable)
             {
                 int idx = (int)d["Shop_Index"];
+
                 ShopItemInfo e = new ShopItemInfo();
+                e.idx = idx;
                 e.name = d["Shop_Name"].ToString();
                 e.group = (int)d["Shop_Group"];
 

@@ -28,6 +28,7 @@ namespace ShopEnums
 
 public struct ShopItemInfo
 {
+    public int idx;
     public string name; //
     public int group;
     public ShopEnums.ListType list_type;

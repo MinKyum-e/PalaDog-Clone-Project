@@ -49,17 +49,19 @@ int,string,string,int,string,enum,int,enum,int,int,//string
 10043,Shop_Buff_GenFood_3,»óÁ¡_°­È­_½Ä·® È¹µæ_3·¹º§,1004,½Ä·® È¹µæ LV.3,Enforce,10042,Gold,500,4,½Ä·® È¹µæ ¼Óµµ 4·¹º§. 4½Ä·®/s
 10044,Shop_Buff_GenFood_4,»óÁ¡_°­È­_½Ä·® È¹µæ_4·¹º§,1004,½Ä·® È¹µæ LV.4,Enforce,10043,Gold,1100,8,½Ä·® È¹µæ ¼Óµµ 8·¹º§. 8½Ä·®/s
 10045,Shop_Buff_GenFood_5,»óÁ¡_°­È­_½Ä·® È¹µæ_5·¹º§,1004,½Ä·® È¹µæ LV.5,Enforce,10044,Gold,1800,16,½Ä·® È¹µæ ¼Óµµ 16·¹º§. 16½Ä·®/s
-20011,Shop_Unlock_Unit1_Normal_Tree1,»óÁ¡_ÇØÁ¦_À¯´Ö 1_ÀÏ¹Ý_Æ®¸®1,2000,(À¯´Ö1_ÀÏ¹Ý_Æ®¸®1) ÇØÁ¦,Unlock,0,Gold,0,10011,À¯´Ö1 ÀÏ¹Ý ´Ü°è ÇØ±Ý
-20021,Shop_Unlock_Unit1_Elite_Tree1,»óÁ¡_ÇØÁ¦_À¯´Ö 1_Á¤¿¹_Æ®¸®1,2001,(À¯´Ö1_Á¤¿¹_Æ®¸®1) ÇØÁ¦,Unlock,20011,Gold,100,10021,À¯´Ö1 Á¤¿¹ ´Ü°è 1Æ®¸® ÇØ±Ý
-20022,Shop_Unlock_Unit1_Elite_Tree2,»óÁ¡_ÇØÁ¦_À¯´Ö 1_Á¤¿¹_Æ®¸®2,2002,(À¯´Ö1_Á¤¿¹_Æ®¸®2) ÇØÁ¦,Unlock,20011,Gold,150,10022,À¯´Ö1 Á¤¿¹ ´Ü°è 2Æ®¸® ÇØ±Ý
-20023,Shop_Unlock_Unit1_Elite_Tree3,»óÁ¡_ÇØÁ¦_À¯´Ö 1_Á¤¿¹_Æ®¸®3,2003,(À¯´Ö1_Á¤¿¹_Æ®¸®3) ÇØÁ¦,Unlock,20011,Gold,150,10023,À¯´Ö1 Á¤¿¹ ´Ü°è 3Æ®¸® ÇØ±Ý
-20031,Shop_Unlock_Unit1_Hero_Tree1,»óÁ¡_ÇØÁ¦_À¯´Ö 1_¿µ¿õ_Æ®¸®1,2001,(À¯´Ö1_¿µ¿õ_Æ®¸®1) ÇØÁ¦,Unlock,20021,Gold,150,10031,À¯´Ö1 ¿µ¿õ ´Ü°è 1Æ®¸® ÇØ±Ý
-20032,Shop_Unlock_Unit1_Hero_Tree2,»óÁ¡_ÇØÁ¦_À¯´Ö 1_¿µ¿õ_Æ®¸®2,2002,(À¯´Ö1_¿µ¿õ_Æ®¸®2) ÇØÁ¦,Unlock,20022,Gold,180,10032,À¯´Ö1 ¿µ¿õ ´Ü°è 2Æ®¸® ÇØ±Ý
-20033,Shop_Unlock_Unit1_Hero_Tree3,»óÁ¡_ÇØÁ¦_À¯´Ö 1_¿µ¿õ_Æ®¸®3,2003,(À¯´Ö1_¿µ¿õ_Æ®¸®3) ÇØÁ¦,Unlock,20023,Gold,300,10033,À¯´Ö1 ¿µ¿õ ´Ü°è 3Æ®¸® ÇØ±Ý
-30011,Shop_Summon_Unit1_Normal_Tree1,»óÁ¡_¼ÒÈ¯_À¯´Ö 1_ÀÏ¹Ý_Æ®¸®1,3000,(À¯´Ö1_ÀÏ¹Ý_Æ®¸®1),Spawn,0,Food,10,10011,À¯´Ö1 ÀÏ¹Ý ´Ü°è ¼ÒÈ¯
-30021,Shop_Summon_Unit1_Elite_Tree1,»óÁ¡_¼ÒÈ¯_À¯´Ö 1_Á¤¿¹_Æ®¸®1,3001,(À¯´Ö1_Á¤¿¹_Æ®¸®1),Spawn,30011,Food,12,10021,À¯´Ö1 Á¤¿¹ ´Ü°è 1Æ®¸® ¼ÒÈ¯
-30022,Shop_Summon_Unit1_Elite_Tree2,»óÁ¡_¼ÒÈ¯_À¯´Ö 1_Á¤¿¹_Æ®¸®2,3002,(À¯´Ö1_Á¤¿¹_Æ®¸®2),Spawn,30011,Food,15,10022,À¯´Ö1 Á¤¿¹ ´Ü°è 2Æ®¸® ¼ÒÈ¯
-30023,Shop_Summon_Unit1_Elite_Tree3,»óÁ¡_¼ÒÈ¯_À¯´Ö 1_Á¤¿¹_Æ®¸®3,3003,(À¯´Ö1_Á¤¿¹_Æ®¸®3),Spawn,30011,Food,15,10023,À¯´Ö1 Á¤¿¹ ´Ü°è 3Æ®¸® ¼ÒÈ¯
-30031,Shop_Summon_Unit1_Hero_Tree1,»óÁ¡_¼ÒÈ¯_À¯´Ö 1_¿µ¿õ_Æ®¸®1,3001,(À¯´Ö1_¿µ¿õ_Æ®¸®1),Spawn,30021,Food,20,10031,À¯´Ö1 ¿µ¿õ ´Ü°è 1Æ®¸® ¼ÒÈ¯
-30032,Shop_Summon_Unit1_Hero_Tree2,»óÁ¡_¼ÒÈ¯_À¯´Ö 1_¿µ¿õ_Æ®¸®2,3002,(À¯´Ö1_¿µ¿õ_Æ®¸®2),Spawn,30022,Food,30,10032,À¯´Ö1 ¿µ¿õ ´Ü°è 2Æ®¸® ¼ÒÈ¯
-30033,Shop_Summon_Unit1_Hero_Tree3,»óÁ¡_¼ÒÈ¯_À¯´Ö 1_¿µ¿õ_Æ®¸®3,3003,(À¯´Ö1_¿µ¿õ_Æ®¸®3),Spawn,30023,Food,30,10033,À¯´Ö1 ¿µ¿õ ´Ü°è 3Æ®¸® ¼ÒÈ¯
+20011,Shop_Unlock_Unit1_Normal_Tree1,»óÁ¡_ÇØÁ¦_À¯´Ö 1_ÀÏ¹Ý_Æ®¸®1,2000,(À¯´Ö1_ÀÏ¹Ý_Æ®¸®1) ÇØÁ¦,Unlock,0,Gold,0,10111,À¯´Ö1 ÀÏ¹Ý ´Ü°è ÇØ±Ý
+20021,Shop_Unlock_Unit1_Elite_Tree1,»óÁ¡_ÇØÁ¦_À¯´Ö 1_Á¤¿¹_Æ®¸®1,2001,(À¯´Ö1_Á¤¿¹_Æ®¸®1) ÇØÁ¦,Unlock,20011,Gold,100,10121,À¯´Ö1 Á¤¿¹ ´Ü°è 1Æ®¸® ÇØ±Ý
+20022,Shop_Unlock_Unit1_Elite_Tree2,»óÁ¡_ÇØÁ¦_À¯´Ö 1_Á¤¿¹_Æ®¸®2,2002,(À¯´Ö1_Á¤¿¹_Æ®¸®2) ÇØÁ¦,Unlock,20011,Gold,150,10122,À¯´Ö1 Á¤¿¹ ´Ü°è 2Æ®¸® ÇØ±Ý
+20023,Shop_Unlock_Unit1_Elite_Tree3,»óÁ¡_ÇØÁ¦_À¯´Ö 1_Á¤¿¹_Æ®¸®3,2003,(À¯´Ö1_Á¤¿¹_Æ®¸®3) ÇØÁ¦,Unlock,20011,Gold,150,10123,À¯´Ö1 Á¤¿¹ ´Ü°è 3Æ®¸® ÇØ±Ý
+20031,Shop_Unlock_Unit1_Hero_Tree1,»óÁ¡_ÇØÁ¦_À¯´Ö 1_¿µ¿õ_Æ®¸®1,2001,(À¯´Ö1_¿µ¿õ_Æ®¸®1) ÇØÁ¦,Unlock,20021,Gold,150,10131,À¯´Ö1 ¿µ¿õ ´Ü°è 1Æ®¸® ÇØ±Ý
+20032,Shop_Unlock_Unit1_Hero_Tree2,»óÁ¡_ÇØÁ¦_À¯´Ö 1_¿µ¿õ_Æ®¸®2,2002,(À¯´Ö1_¿µ¿õ_Æ®¸®2) ÇØÁ¦,Unlock,20022,Gold,180,10132,À¯´Ö1 ¿µ¿õ ´Ü°è 2Æ®¸® ÇØ±Ý
+20033,Shop_Unlock_Unit1_Hero_Tree3,»óÁ¡_ÇØÁ¦_À¯´Ö 1_¿µ¿õ_Æ®¸®3,2003,(À¯´Ö1_¿µ¿õ_Æ®¸®3) ÇØÁ¦,Unlock,20023,Gold,300,10132,À¯´Ö1 ¿µ¿õ ´Ü°è 3Æ®¸® ÇØ±Ý
+30011,Shop_Summon_Unit1_Normal_Tree1,»óÁ¡_¼ÒÈ¯_À¯´Ö 1_ÀÏ¹Ý_Æ®¸®1,3000,(À¯´Ö1_ÀÏ¹Ý_Æ®¸®1),Spawn,0,Food,10,10111,À¯´Ö1 ÀÏ¹Ý ´Ü°è ¼ÒÈ¯
+30021,Shop_Summon_Unit1_Elite_Tree1,»óÁ¡_¼ÒÈ¯_À¯´Ö 1_Á¤¿¹_Æ®¸®1,3001,(À¯´Ö1_Á¤¿¹_Æ®¸®1),Spawn,30011,Food,12,10121,À¯´Ö1 Á¤¿¹ ´Ü°è 1Æ®¸® ¼ÒÈ¯
+30022,Shop_Summon_Unit1_Elite_Tree2,»óÁ¡_¼ÒÈ¯_À¯´Ö 1_Á¤¿¹_Æ®¸®2,3002,(À¯´Ö1_Á¤¿¹_Æ®¸®2),Spawn,30011,Food,15,10122,À¯´Ö1 Á¤¿¹ ´Ü°è 2Æ®¸® ¼ÒÈ¯
+30023,Shop_Summon_Unit1_Elite_Tree3,»óÁ¡_¼ÒÈ¯_À¯´Ö 1_Á¤¿¹_Æ®¸®3,3003,(À¯´Ö1_Á¤¿¹_Æ®¸®3),Spawn,30011,Food,15,10123,À¯´Ö1 Á¤¿¹ ´Ü°è 3Æ®¸® ¼ÒÈ¯
+30031,Shop_Summon_Unit1_Hero_Tree1,»óÁ¡_¼ÒÈ¯_À¯´Ö 1_¿µ¿õ_Æ®¸®1,3001,(À¯´Ö1_¿µ¿õ_Æ®¸®1),Spawn,30021,Food,20,10131,À¯´Ö1 ¿µ¿õ ´Ü°è 1Æ®¸® ¼ÒÈ¯
+30032,Shop_Summon_Unit1_Hero_Tree2,»óÁ¡_¼ÒÈ¯_À¯´Ö 1_¿µ¿õ_Æ®¸®2,3002,(À¯´Ö1_¿µ¿õ_Æ®¸®2),Spawn,30022,Food,30,10132,À¯´Ö1 ¿µ¿õ ´Ü°è 2Æ®¸® ¼ÒÈ¯
+30033,Shop_Summon_Unit1_Hero_Tree3,»óÁ¡_¼ÒÈ¯_À¯´Ö 1_¿µ¿õ_Æ®¸®3,3003,(À¯´Ö1_¿µ¿õ_Æ®¸®3),Spawn,30023,Food,30,10132,À¯´Ö1 ¿µ¿õ ´Ü°è 3Æ®¸® ¼ÒÈ¯
+20221,Shop_Unlock_Unit1_Normal_Tree1,»óÁ¡_ÇØÁ¦_À¯´Ö 1_ÀÏ¹Ý_Æ®¸®1,2000,(À¯´Ö1_ÀÏ¹Ý_Æ®¸®1) ÇØÁ¦,Unlock,0,Gold,0,10211,À¯´Ö1 ÀÏ¹Ý ´Ü°è ÇØ±Ý
+30221,Shop_Summon_Unit1_Normal_Tree1,»óÁ¡_¼ÒÈ¯_À¯´Ö 1_ÀÏ¹Ý_Æ®¸®1,3000,(À¯´Ö1_ÀÏ¹Ý_Æ®¸®1),Spawn,0,Food,10,10211,À¯´Ö1 ÀÏ¹Ý ´Ü°è ¼ÒÈ¯

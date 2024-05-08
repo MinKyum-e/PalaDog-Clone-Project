@@ -2,6 +2,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -13,10 +14,13 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     private CanvasGroup canvasGroup; //UI의 알파값과 상호작용 제어를 위한 Canvasgroup
     private PoolManager poolManager;
     private CircleCollider2D auraCollider;
+    private Transform food_text_transform;
 
 
     public int minion_idx;
-    
+    public int requisite_food;
+    ShopItemInfo spawn_info;
+
 
     private void Awake()
     {
@@ -26,6 +30,8 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         poolManager = GameObject.FindGameObjectWithTag("MinionPool").GetComponent<PoolManager>();
         auraCollider = GameObject.FindGameObjectWithTag("Aura").GetComponent<CircleCollider2D>();
         locker = GetComponent<UnitUnlock>();
+        food_text_transform = transform.GetChild(0);
+
     }
 
 
@@ -34,9 +40,9 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         if(locker.is_lock == false )
         {
             previousParent = transform.parent;
-
             transform.SetParent(canvas);
             transform.SetAsLastSibling();//가장 앞에 보이도록 마지막 자식으로 설정
+            food_text_transform.gameObject.SetActive(false);
 
             canvasGroup.alpha = 0.0f;
             canvasGroup.blocksRaycasts = false;
@@ -75,7 +81,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             float leftBound = auraCollider.bounds.min.x;
             float rightBount = auraCollider.bounds.max.x;
             //소환전 맥스 코스트 확인
-            if (spawnPoint.x >= leftBound && spawnPoint.x <= rightBount && GameManager.Instance.CheckCost(Parser.minion_status_dict[minion_idx].cost) == true)
+            if (spawnPoint.x >= leftBound && spawnPoint.x <= rightBount && GameManager.Instance.CheckCost(Parser.minion_status_dict[minion_idx].cost) == true && GameManager.Instance.GetFood() >=requisite_food)
             {
                 Transform playerTransform = Player.Instance.transform;
 
@@ -87,6 +93,8 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
                 minion.transform.position = new Vector3(spawnPoint.x, spawnPoint.y + 0.4f, Random.Range(-1, 1));
                 minion.tag = "Minion";
                 minion.GetComponent<SpriteRenderer>().sortingOrder = 4;
+
+                GameManager.Instance.UpdateFood(-requisite_food);
                 GameManager.Instance.UpdateCost(minion.cost);
             }
 
@@ -95,7 +103,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             {
                 transform.SetParent(previousParent);
                 rect.position = previousParent.GetComponentInParent<RectTransform>().position;
-
+                food_text_transform.gameObject.SetActive(true);
 
             }
 
