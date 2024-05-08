@@ -307,7 +307,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 4245338108311049354, guid: 1a7996a922026ef4886192fe598ff64b, type: 3}
+      propertyPath: locked_sprite
+      value: 
+      objectReference: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 4245338108311049354, guid: 1a7996a922026ef4886192fe598ff64b, type: 3}
       propertyPath: unlock_sprite
+      value: 
+      objectReference: {fileID: -274915325, guid: 894176192164f2745848aa032e38c848, type: 3}
+    - target: {fileID: 4245338108311049354, guid: 1a7996a922026ef4886192fe598ff64b, type: 3}
+      propertyPath: unlocked_sprite
       value: 
       objectReference: {fileID: -274915325, guid: 894176192164f2745848aa032e38c848, type: 3}
     - target: {fileID: 4245338108311049354, guid: 1a7996a922026ef4886192fe598ff64b, type: 3}

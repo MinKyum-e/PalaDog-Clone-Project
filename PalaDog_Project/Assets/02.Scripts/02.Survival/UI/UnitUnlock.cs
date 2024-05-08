@@ -18,7 +18,7 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
 
 
     public TMP_Text unlock_gold_text;
-    public Sprite unlock_sprite;
+    public Sprite unlocked_sprite;
     private Image image_renderer;
 
     private void Awake()
@@ -36,7 +36,7 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
         {
             GameManager.Instance.UpdateGold(-unlock_gold);
             is_lock = false;
-            image_renderer.sprite = unlock_sprite;
+            image_renderer.sprite = unlocked_sprite;
             unlock_gold_text.enabled = false;
         }
     }

@@ -1,17 +1,74 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+
+namespace ShopEnums
+{
+    public enum ListType
+    {
+        Enforce,
+        Unlock,
+        Spawn,
+    }
+
+    public enum GoodsType
+    {
+        Gold,
+        Food,
+    }
+
+    public enum UnLockType
+    {
+        InGameUnit,
+        Evolution
+    }
+}
+
+public struct ShopItemInfo
+{
+    public string name; //
+    public int group;
+    public ShopEnums.ListType list_type;
+    public int prelist;
+    public ShopEnums.GoodsType goods_type;
+    public int goods_value;
+    public int etc_value;
+}
 
 public class ShopManager : MonoBehaviour
 {
+    private static ShopManager instance = null;
+
     private List<int> unlocked_evoluation_unit_list;//진화 해금 unit_list
     private List<int> unlocked_ingame_unit_list;//인게임에서 골드로 사는 unit 해금 list
 
+    public static ShopManager Instance
+    {
+        get
+        {
+            if (null == instance)
+            {
+                return null;
+            }
+            return instance;
+        }
+    }
     private void Awake()
     {
-        unlocked_ingame_unit_list = new List<int>();
-        unlocked_evoluation_unit_list = new List<int>(); //게임종료시에 저장되게 구현했다면 이거 바꾸기
+        if (null == instance) //게임 완전처음시작할때만
+        {
+            instance = this;
+            unlocked_ingame_unit_list = new List<int>();
+            unlocked_evoluation_unit_list = new List<int>(); //게임종료시에 저장되게 구현했다면 이거 바꾸기
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {//씬 이동됐는데 게임 매니저가 존재할 경우 자신을 삭제
+            Destroy(gameObject);
+        }
+
     }
 
     /// <summary>
@@ -54,5 +111,10 @@ public class ShopManager : MonoBehaviour
             default:
                 return false;
         }
+    }
+
+    public void ClearInGameUnlockedList()
+    {
+        unlocked_ingame_unit_list.Clear();
     }
 }

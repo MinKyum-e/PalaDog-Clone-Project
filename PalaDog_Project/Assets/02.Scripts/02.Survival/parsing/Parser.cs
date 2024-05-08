@@ -16,6 +16,7 @@ public class Parser : MonoBehaviour
     public static Dictionary<int, WaveInfo> wave_info_dict = null;
     public static Dictionary<int, MinionStatus> minion_status_dict = null;
     public static Dictionary<int, SkillInfo> skill_info_dict = null;
+    public static Dictionary<int, ShopItemInfo> shop_item_info_dict = null;
 
     public void Awake()
     {
@@ -26,11 +27,13 @@ public class Parser : MonoBehaviour
             data_EnemyTable = CSVReader.Read("DT_MonsterTable", 19);
             data_WaveTable = CSVReader.Read("DT_WaveTable", 10);
             data_SkillTable = CSVReader.Read("DT_Skill", 7);
+            data_ShopTable = CSVReader.Read("DT_ShopTable", 29);
             
             enemy_status_dict = new Dictionary<int, EnemyStatus>();
             wave_info_dict = new Dictionary<int, WaveInfo>();
             minion_status_dict = new Dictionary<int, MinionStatus>();
             skill_info_dict = new Dictionary<int, SkillInfo>();
+            shop_item_info_dict= new Dictionary<int, ShopItemInfo>();
 
             //몬스터 유닛 정보들어있는 class 만들기
             foreach (var d in data_EnemyTable)
@@ -113,6 +116,42 @@ public class Parser : MonoBehaviour
                 e.casting_time = (int)d["Skill_Casting"];
                 e.cast_range = (int)d["Skill_Cast_Range"];
                 skill_info_dict[idx] = e;
+            }
+
+            //상점 아이템 정보
+            foreach (var d in data_ShopTable)
+            {
+                int idx = (int)d["Shop_Index"];
+                ShopItemInfo e = new ShopItemInfo();
+                e.name = d["Shop_Name"].ToString();
+                e.group = (int)d["Shop_Group"];
+
+                switch (d["Shop_ListType"].ToString())
+                {
+                    case "Enforce":
+                        e.list_type = ShopEnums.ListType.Enforce;
+                        break;
+                    case "Unlock":
+                        e.list_type = ShopEnums.ListType.Unlock;
+                        break;
+                    case "Spawn":
+                        e.list_type = ShopEnums.ListType.Spawn;
+                        break;
+                }
+                e.prelist = (int)d["Shop_PreList"];
+                switch (d["Shop_GoodsType"].ToString())
+                {
+                    case "Gold":
+                        e.goods_type = ShopEnums.GoodsType.Gold;
+                        break;
+                    case "Food":
+                        e.goods_type = ShopEnums.GoodsType.Food;
+                        break;
+                }
+
+                e.goods_value = (int)d["Shop_GoodsValue"];
+                e.etc_value = (int)d["Shop_etcValue"];
+                shop_item_info_dict[idx] = e;   
             }
             DontDestroyOnLoad(gameObject);
         }
