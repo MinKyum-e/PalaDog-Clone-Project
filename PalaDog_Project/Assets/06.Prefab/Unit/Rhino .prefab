@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 6
   m_Sprite: {fileID: -274915325, guid: 894176192164f2745848aa032e38c848, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -103,6 +103,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 0}
+  skill_info:
+    name: 
+    range: 0
+    damange: 0
+    casting_time: 0
+    cool_time: 0
+    cast_range: 0
   cost: 0
 --- !u!50 &3788102992525740870
 Rigidbody2D:
@@ -222,7 +229,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 10111
+  status:
+    index: 0
+    name: 
+    HP: 0
+    moveSpeed: 0
+    atk: 0
+    atkRange: 0
+    atkSpeed: 0
+    skill: 
+    job: 0
+    moveDir: {x: 0, y: 0}
+  cur_status:
+    index: 0
+    name: 
+    HP: 0
+    moveSpeed: 0
+    atk: 0
+    atkRange: 0
+    atkSpeed: 0
+    skill: 
+    job: 0
+    moveDir: {x: 0, y: 0}
+  cur_buff:
+    _melee_attack_ignore: 0
+    _magic_attack_ignore: 0
+    _projectile_attack_ignore: 0
   isWalk: 0
+  can_use_skill: 0
+  can_attack: 1
   rigid: {fileID: 0}
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}

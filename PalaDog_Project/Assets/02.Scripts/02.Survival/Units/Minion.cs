@@ -106,6 +106,8 @@ public class Minion: MonoBehaviour
         StopCoroutine(NormalAttack());
         GameManager.Instance.UpdateCost(-cost);
     }
+
+
     public GameObject setAttackTarget(float range)
     {
         //기존 타켓이 존재하면 그냥 return
