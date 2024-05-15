@@ -15,7 +15,7 @@ public class SkillDamageTrigger : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         print("target : "+ collision.name);
-        if(target_tag == collision.tag && Buff.CheckAttackIgnore(collision.GetComponent<Actor>().cur_buff, actor.cur_status.job))
+        if(collision.gameObject.activeSelf && target_tag == collision.tag && Buff.CheckAttackIgnore(collision.GetComponent<Actor>().cur_buff, actor.cur_status.job))
             collision.GetComponent<Actions>().Hit(actor.cur_status.atk);
     }
 }

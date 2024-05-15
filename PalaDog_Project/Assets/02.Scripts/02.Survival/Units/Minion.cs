@@ -162,7 +162,7 @@ public class Minion: MonoBehaviour
         {
             //attack
             atkTarget = setAttackTarget(actor.cur_status.atkRange);
-            if (atkTarget != null && actor.can_attack)
+            if (atkTarget != null && actor.can_attack && atkTarget.activeSelf)
             {
 
                     actor.isWalk = false;

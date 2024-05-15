@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Knight
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 211c1032dc3896142850fea9fedcfe42, type: 3}
+    - {fileID: 2800000, guid: 43a8d62678de3e44ab3ad8ec00953c97, type: 3}
+    - {fileID: 2800000, guid: 7f261849a214e3044aed230c5f8d4f76, type: 3}
+    - {fileID: 2800000, guid: daecd13d50a7e5a458f3edefad84a1b9, type: 3}
+    - {fileID: 2800000, guid: 8ca6f46f115bcad489068606ef728c7a, type: 3}
+    - {fileID: 2800000, guid: af03b72f9cf65634aa68202f06730f5f, type: 3}
+    - {fileID: 2800000, guid: 899e1e8c5f0680f42bfded8ddbf7efc7, type: 3}
+    - {fileID: 2800000, guid: 3cf46aeea7996b948945e869c34e3253, type: 3}
+    - {fileID: 2800000, guid: 029096daef5f4514cb6dec469aea3140, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - 211c1032dc3896142850fea9fedcfe42: 21300000
+    - 43a8d62678de3e44ab3ad8ec00953c97: 21300000
+    - 7f261849a214e3044aed230c5f8d4f76: 21300000
+    - 029096daef5f4514cb6dec469aea3140: 21300000
+    - 899e1e8c5f0680f42bfded8ddbf7efc7: 21300000
+    - daecd13d50a7e5a458f3edefad84a1b9: 21300000
+    - 3cf46aeea7996b948945e869c34e3253: 21300000
+    - af03b72f9cf65634aa68202f06730f5f: 21300000
+    - 8ca6f46f115bcad489068606ef728c7a: 21300000
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 211c1032dc3896142850fea9fedcfe42, type: 3}
+  - {fileID: 21300000, guid: 43a8d62678de3e44ab3ad8ec00953c97, type: 3}
+  - {fileID: 21300000, guid: 7f261849a214e3044aed230c5f8d4f76, type: 3}
+  - {fileID: 21300000, guid: 029096daef5f4514cb6dec469aea3140, type: 3}
+  - {fileID: 21300000, guid: 899e1e8c5f0680f42bfded8ddbf7efc7, type: 3}
+  - {fileID: 21300000, guid: daecd13d50a7e5a458f3edefad84a1b9, type: 3}
+  - {fileID: 21300000, guid: 3cf46aeea7996b948945e869c34e3253, type: 3}
+  - {fileID: 21300000, guid: af03b72f9cf65634aa68202f06730f5f, type: 3}
+  - {fileID: 21300000, guid: 8ca6f46f115bcad489068606ef728c7a, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - "\uCEF4\uD3EC\uC9C0\uC158 1_00000"
+  - "\uCEF4\uD3EC\uC9C0\uC158 1_00001"
+  - "\uCEF4\uD3EC\uC9C0\uC158 1_00002"
+  - "\uCEF4\uD3EC\uC9C0\uC158 \uAE30\uBCF8\uC2A4\uD0E0\uB5291_00004"
+  - "\uCEF4\uD3EC\uC9C0\uC158 1_00007"
+  - "\uCEF4\uD3EC\uC9C0\uC158 1_00003"
+  - "\uCEF4\uD3EC\uC9C0\uC158 1_00008"
+  - "\uCEF4\uD3EC\uC9C0\uC158 1_00006"
+  - "\uCEF4\uD3EC\uC9C0\uC158 1_00005"
+  m_RenderDataMap: {}
+  m_Tag: Knight
+  m_IsVariant: 0
