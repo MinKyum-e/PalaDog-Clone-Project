@@ -31,7 +31,7 @@ public class Actions: MonoBehaviour
 
     public void NormalAttack()
     {
-        if(actor.atkTarget != null && actor.atkTarget.activeSelf && Utils.DistanceToTarget(actor.transform.position, actor.atkTarget.transform.position) <= actor.cur_status.atkRange)
+        if(actor.atkTarget != null && actor.atkTarget.activeSelf)/* && Utils.DistanceToTarget(actor.transform.position, actor.atkTarget.transform.position) <= actor.cur_status.atkRange)*/
         {
             actor.atkTarget.GetComponent<Actions>().Hit(CalDagamge());
             
