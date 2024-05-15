@@ -33,6 +33,7 @@ public class Enemy: MonoBehaviour
         actor.can_use_skill = false;
         actor.isDie = false;
         action.can_action = true;
+        
     }
     private void Update()
     {
@@ -149,6 +150,7 @@ public class Enemy: MonoBehaviour
     }
     public void Die()
     {
+        actor.spriteRenderer.color = Color.white;
         gameObject.SetActive(false);
         gameObject.transform.position = new Vector3(100, 0, 0);
         GameManager.Instance.UpdateGold(gold);

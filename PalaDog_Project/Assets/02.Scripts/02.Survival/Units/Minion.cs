@@ -41,7 +41,7 @@ public class Minion: MonoBehaviour
         }
 
         StartCoroutine(NormalAttack());
-
+        
         //GameManager.Instance.UpdateCost(info.cost); //cost Ãß°¡
     }
 
@@ -103,6 +103,7 @@ public class Minion: MonoBehaviour
     {
 
         actor.isWalk = false;
+        actor.spriteRenderer.color = Color.white;
         atkTarget = null;
         gameObject.SetActive(false);
         gameObject.transform.position = new Vector3(100, 0, 0);

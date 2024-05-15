@@ -1,4 +1,6 @@
 
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Actions: MonoBehaviour
@@ -32,6 +34,7 @@ public class Actions: MonoBehaviour
         if(actor.atkTarget != null && actor.atkTarget.activeSelf && Utils.DistanceToTarget(actor.transform.position, actor.atkTarget.transform.position) <= actor.cur_status.atkRange)
         {
             actor.atkTarget.GetComponent<Actions>().Hit(CalDagamge());
+            
         }
     }
 
@@ -41,9 +44,6 @@ public class Actions: MonoBehaviour
         actor.can_search = true;
         actor.can_attack = true;
     }
-
-
-
 
 
 
@@ -63,6 +63,11 @@ public class Actions: MonoBehaviour
     {
         actor.spriteRenderer.color = Color.red;
         actor.cur_status.HP -= Damage;
+        StartCoroutine(WaitHit());
+    }
+    private IEnumerator WaitHit()
+    {
+        yield return new WaitForSeconds(0.05f);
         actor.spriteRenderer.color = Color.white;
     }
 
