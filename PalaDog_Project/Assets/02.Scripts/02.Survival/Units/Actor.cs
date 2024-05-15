@@ -11,13 +11,21 @@ public class Actor : MonoBehaviour
     public CommonStatus cur_status;
     public BuffStruct cur_buff = new BuffStruct();
 
-    public bool isWalk = false;
-    public bool can_use_skill = false;
+
+    public GameObject atkTarget;
+    public bool isWalk = true;
+    public bool isDie = false;
+    public bool is_faint = false;
+    public bool hit_time = false;
+    public bool can_search = true;
     public bool can_attack = true;
+    public bool can_use_skill = false;
 
     public Rigidbody2D rigid;
     public SpriteRenderer spriteRenderer; 
     public Animator animator;
+
+    public int final_damage;
 
     private void Awake()
     {

@@ -4,16 +4,53 @@ using UnityEngine;
 public class Actions: MonoBehaviour
 {
     Actor actor;
+
+    public bool can_action;
     
     private void Awake()
     {
         actor = GetComponent<Actor>();    
+        
     }
+
+    public void StartUnitAction()
+    {
+        actor.isWalk = false;
+        actor.can_search = false;
+        actor.can_attack = false;
+    }
+
+    public int CalDagamge()
+    {
+        //버프
+        //디버프
+        return actor.cur_status.atk;
+    }
+
+    public void NormalAttack()
+    {
+        if(actor.atkTarget != null && actor.atkTarget.activeSelf && Utils.DistanceToTarget(actor.transform.position, actor.atkTarget.transform.position) <= actor.cur_status.atkRange)
+        {
+            actor.atkTarget.GetComponent<Actions>().Hit(CalDagamge());
+        }
+    }
+
+    public void EndUnitAction()
+    {
+        can_action = true;
+        actor.can_search = true;
+        actor.can_attack = true;
+    }
+
+
+
+
+
 
     public void Move()
     {
-        if(actor.animator != null) 
-            actor.animator.SetBool("isWalk", actor.isWalk);
+/*        if(actor.animator != null) 
+            actor.animator.SetBool("isWalk", actor.isWalk);*/
         if (actor.isWalk)
         {
             Vector3 nextPos = actor.rigid.position + actor.cur_status.moveDir * actor.cur_status.moveSpeed * Time.fixedDeltaTime;
@@ -24,7 +61,9 @@ public class Actions: MonoBehaviour
     }
     public void Hit(int Damage)
     {
+        actor.spriteRenderer.color = Color.red;
         actor.cur_status.HP -= Damage;
+        actor.spriteRenderer.color = Color.white;
     }
 
     public void SetMoveDir(string main_target_tag)

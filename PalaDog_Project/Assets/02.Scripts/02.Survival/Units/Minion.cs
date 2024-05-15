@@ -39,6 +39,7 @@ public class Minion: MonoBehaviour
         {
             actor.can_use_skill = true;
         }
+
         StartCoroutine(NormalAttack());
 
         //GameManager.Instance.UpdateCost(info.cost); //cost Ãß°¡
@@ -74,6 +75,8 @@ public class Minion: MonoBehaviour
     {
         if (actor.isWalk)
         {
+            if (actor.animator != null)
+                actor.animator.SetBool("isWalk", actor.isWalk); 
             action.Move();
         }
 

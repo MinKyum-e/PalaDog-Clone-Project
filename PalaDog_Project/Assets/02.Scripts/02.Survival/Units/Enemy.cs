@@ -9,13 +9,12 @@ public class Enemy: MonoBehaviour
     Actions action;
     PoolManager poolManager;
     GameObject player;
-    GameObject atkTarget;
     public int grade;
     public int gold;
 
     private void Awake()
     {
-        actor = GetComponent<Actor>();
+        actor = GetComponent<Actor>();  
         poolManager = GameObject.FindGameObjectWithTag("MinionPool").GetComponent<PoolManager>();
         player = GameObject.FindGameObjectWithTag("Player");
         action = GetComponent<Actions>();
@@ -24,28 +23,68 @@ public class Enemy: MonoBehaviour
     {
         setStatus();
         actor.cur_status.HP = actor.status.HP;
-        atkTarget = null;
-        StartCoroutine(NormalAttack());
+        actor.atkTarget = null;
+
         actor.isWalk = true;
-        
+        actor.is_faint = false;
+        actor.hit_time = false;
+        actor.can_search = true;
+        actor.can_attack = true;
+        actor.can_use_skill = false;
+        actor.isDie = false;
+        action.can_action = true;
     }
     private void Update()
     {
+        if(actor.atkTarget == null)
+        {
+
+            actor.isWalk = true;
+        }
         if (actor.cur_status.HP <= 0)
         {
-            Die();
+            actor.isDie = true;
+            action.can_action = false;
+            actor.isWalk = false;
+            actor.can_search = false;
+            actor.atkTarget = null;
+            actor.animator.Play("Die");
         }
+
+        if(actor.is_faint)
+        {
+            action.can_action= true;
+        }
+
+        if(action.can_action)
+        {
+            if (actor.can_search)
+            {
+                actor.atkTarget = setAttackTarget();
+            }
+
+            if (actor.can_use_skill && actor.atkTarget != null)
+            {
+                action.can_action = false;
+                actor.animator.SetTrigger("Skill");
+            }
+            else if (actor.can_attack && actor.atkTarget != null)
+            {
+                action.can_action = false;
+                actor.animator.SetTrigger("Attack");
+            }
+        }
+        
 
     }
     void FixedUpdate()
     {
+        //걷기
         if (actor.isWalk)
         {
-
             action.SetMoveDir("Player");
             action.Move();
         }
-
     }
 
     public void setStatus()
@@ -59,29 +98,7 @@ public class Enemy: MonoBehaviour
         catch { Debug.Log("status Setting Error"); }
     }
 
-    public IEnumerator NormalAttack()
-    {
-        while (true)
-        {
-            //타켓지정
-            atkTarget = setAttackTarget();
 
-            //attack
-            if (atkTarget != null)
-            {
-                actor.isWalk = false;
-                atkTarget.GetComponent<SpriteRenderer>().color = Color.red;//추후 애니메이션 적용
-                atkTarget.GetComponent<Actions>().Hit(actor.cur_status.atk);
-                yield return new WaitForSeconds(actor.cur_status.atkSpeed);
-                atkTarget.GetComponent<SpriteRenderer>().color = Color.white;
-            }
-            else
-            {
-                actor.isWalk = true;
-            }
-            yield return null;
-        }
-    }
 
     public GameObject setAttackTarget()
     {
@@ -104,16 +121,16 @@ public class Enemy: MonoBehaviour
             dist = 9999999;
         }
 
-        if (atkTarget != null && Utils.DistanceToTarget(atkTarget.transform.position, transform.position) <= actor.cur_status.atkRange)
+        if (actor.atkTarget != null && Utils.DistanceToTarget(actor.atkTarget.transform.position, transform.position) <= actor.cur_status.atkRange)
         {
-            return atkTarget;
+            return actor.atkTarget;
         }
 
         foreach(List<GameObject> units in poolManager.pools)
         {
             foreach (GameObject u in units)
             {
-                if (!u.activeSelf) { continue; }
+                if (!u.activeSelf || u.GetComponent<Actor>().isDie) { continue; }
                 float tmp_dist = Utils.DistanceToTarget(u.transform.position, transform.position);
                 if (tmp_dist < dist && tmp_dist <= actor.cur_status.atkRange)
                 {
@@ -125,15 +142,13 @@ public class Enemy: MonoBehaviour
 
         if (target != null)
         {
-            atkTarget = target;
-            return atkTarget;
+            actor.atkTarget = target;
+            return actor.atkTarget;
         }
         else { return null; }
     }
     public void Die()
     {
-        actor.isWalk = false;
-        atkTarget = null;
         gameObject.SetActive(false);
         gameObject.transform.position = new Vector3(100, 0, 0);
         GameManager.Instance.UpdateGold(gold);

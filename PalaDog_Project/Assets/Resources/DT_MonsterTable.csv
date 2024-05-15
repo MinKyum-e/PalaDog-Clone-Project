@@ -18,7 +18,7 @@ DT_SkillTable 인덱스 값 입력
 스킬 없을 시 0"
 Monster_Index,Monster_Name,Monster_DevName,Monster_Group,Monster_GameName,Monster_Grade,Monster_Gold,Monster_HP,Monster_Atk,Monster_AtkRange,Monster_AtkSpeed,Monster_MoveSpeed,Monster_Skill1,Monster_Skill2,Monster_Skill3
 int,string,string,string,string,enum,int,int,int,int,float,float,int,int,int
-10011,Monster1_Normal_001,몬스터1_일반_001,1001,몬스터1,일반,50,80,20,1,1,1,0,0,0
+10011,Monster1_Normal_001,몬스터1_일반_001,1001,몬스터1,일반,50,80,20,2,1,1,0,0,0
 10012,Monster1_Normal_002,몬스터1_일반_002,1001,몬스터1,일반,80,100,30,3,1,1,0,0,0
 10021,Monster2_Normal_001,몬스터2_일반_001,1002,몬스터2,일반,75,60,50,3,1.2,0.8,0,0,0
 20001,Boss1_Boss_001,보스1_보스_001,2001,보스1,보스,100,1000,60,1,1,1,10002,0,0
