@@ -37,9 +37,23 @@ public class Enemy: MonoBehaviour
     }
     private void Update()
     {
-        if(actor.atkTarget == null)
-        {
 
+        AnimatorStateInfo stateInfo = actor.animator.GetCurrentAnimatorStateInfo(0);
+
+        // 현재 애니메이터 상태가 타겟 애니메이션 상태와 일치하는지 확인합니다.
+        if (stateInfo.IsName("Attack"))
+        {
+            // 타겟 애니메이션 상태의 속도를 설정합니다.
+            actor.animator.speed = actor.cur_status.atkSpeed;
+        }
+        else
+        {
+            // 타겟 애니메이션 상태가 아닐 때 기본 속도로 되돌립니다.
+            actor.animator.speed = 1.0f;
+        }
+
+        if (actor.atkTarget == null)
+        {
             actor.isWalk = true;
         }
         if (actor.cur_status.HP <= 0)
@@ -75,8 +89,6 @@ public class Enemy: MonoBehaviour
                 actor.animator.SetTrigger("Attack");
             }
         }
-        
-
     }
     void FixedUpdate()
     {

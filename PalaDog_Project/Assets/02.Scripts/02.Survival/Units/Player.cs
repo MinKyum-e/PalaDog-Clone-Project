@@ -27,6 +27,7 @@ public class Player: MonoBehaviour
     {
         setStatus();
         actor.cur_status.HP = actor.status.HP;
+        actor.cur_status.moveDir = Vector2.zero;
     }
 
     private void Update()

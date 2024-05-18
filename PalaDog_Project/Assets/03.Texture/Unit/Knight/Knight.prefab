@@ -171,7 +171,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.55}
+  m_Offset: {x: -0.7320266, y: 4.9356847}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.17}
@@ -182,7 +182,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.18, y: 1.1}
+  m_Size: {x: 7.169137, y: 9.871369}
   m_EdgeRadius: 0
 --- !u!95 &6273787158847200887
 Animator:
@@ -194,7 +194,7 @@ Animator:
   m_GameObject: {fileID: 7098081600307430445}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: eb96efe53fcd6d04d8bf39405afbb9c3, type: 2}
+  m_Controller: {fileID: 9100000, guid: f569707b149493046a54ee4e265e208b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -245,6 +245,7 @@ MonoBehaviour:
     _magic_attack_ignore: 0
     _projectile_attack_ignore: 0
   atkTarget: {fileID: 0}
+  skillTarget: {fileID: 0}
   isWalk: 0
   isDie: 0
   is_faint: 0

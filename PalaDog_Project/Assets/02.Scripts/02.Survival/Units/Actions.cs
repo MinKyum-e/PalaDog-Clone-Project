@@ -45,18 +45,25 @@ public class Actions: MonoBehaviour
         actor.can_attack = true;
     }
 
+    public IEnumerator SkillTimer(int time)
+    {
+        actor.can_use_skill = false;
+        yield return new WaitForSeconds(time);
+        actor.can_use_skill = true;
+    }
+
 
 
     public void Move()
     {
 /*        if(actor.animator != null) 
             actor.animator.SetBool("isWalk", actor.isWalk);*/
-        if (actor.isWalk)
-        {
-            Vector3 nextPos = actor.rigid.position + actor.cur_status.moveDir * actor.cur_status.moveSpeed * Time.fixedDeltaTime;
-            actor.rigid.MovePosition(nextPos);
-            actor.rigid.velocity = Vector2.zero;
-        }
+/*        if (actor.isWalk)
+        {*/
+        Vector3 nextPos = actor.rigid.position + actor.cur_status.moveDir * actor.cur_status.moveSpeed * Time.fixedDeltaTime;
+        actor.rigid.MovePosition(nextPos);
+        actor.rigid.velocity = Vector2.zero;
+        //}
 
     }
     public void Hit(int Damage)

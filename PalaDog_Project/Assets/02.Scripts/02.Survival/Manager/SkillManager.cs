@@ -39,14 +39,15 @@ public class SkillManager:MonoBehaviour
             GameObject skill_clone = skillPool.Get(index);
             skill_clone.transform.position = new Vector3(target.transform.position.x,0, 0);
             skill_clone.transform.localScale = new Vector3(s.range, 1, 1);
-            
+
 
             //캐스팅 시작
-            actor.can_attack = false;
             actor.isWalk = false;
+            actor.can_search = false;
+            actor.can_attack = false;
             yield return new WaitForSeconds(s.casting_time);
+            actor.can_search = true;
             actor.can_attack = true;
-            actor.isWalk = true;
             // 딜계산
             skill_clone.GetComponent<Actor>().cur_status.atk = s.damange;
 

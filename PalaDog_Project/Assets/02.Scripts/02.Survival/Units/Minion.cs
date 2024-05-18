@@ -6,10 +6,8 @@ using UnityEngine;
 public class Minion: MonoBehaviour
 {
     public Actor actor;
-    Actions action;
+    public Actions action;
     PoolManager poolManager;
-    GameObject atkTarget;
-    GameObject skillTarget;
     GameObject enemyBase;
     public SkillInfo skill_info;
     public int cost;
@@ -39,8 +37,18 @@ public class Minion: MonoBehaviour
         {
             actor.can_use_skill = true;
         }
+        actor.cur_status.HP = actor.status.HP;
+        actor.atkTarget = null;
 
-        StartCoroutine(NormalAttack());
+        actor.isWalk = true;
+        actor.is_faint = false;
+        actor.hit_time = false;
+        actor.can_search = true;
+        actor.can_attack = true;
+        actor.isDie = false;
+        action.can_action = true;
+
+/*        StartCoroutine(NormalAttack());*/
         
         //GameManager.Instance.UpdateCost(info.cost); //cost 추가
     }
@@ -48,25 +56,81 @@ public class Minion: MonoBehaviour
 
     private void Update()
     {
-        if (actor.cur_status.HP <= 0)
+        /* if (actor.cur_status.HP <= 0)
+         {
+             Die();
+         }
+         else
+         {
+ */
+        /*   if (actor.can_use_skill) 
+           {
+               //일반 유닛은 스킬 1개
+
+
+           }*/
+
+        AnimatorStateInfo stateInfo = actor.animator.GetCurrentAnimatorStateInfo(0);
+
+        // 현재 애니메이터 상태가 타겟 애니메이션 상태와 일치하는지 확인합니다.
+        if (stateInfo.IsName("Attack"))
         {
-            Die();
+            // 타겟 애니메이션 상태의 속도를 설정합니다.
+            actor.animator.speed = actor.cur_status.atkSpeed;
         }
         else
         {
+            // 타겟 애니메이션 상태가 아닐 때 기본 속도로 되돌립니다.
+            actor.animator.speed = 1.0f;
+        }
 
-            if (actor.can_use_skill) 
+
+
+        if (actor.atkTarget == null)
+        {
+            actor.isWalk = true;
+        }
+        if (actor.cur_status.HP <= 0)
+        {
+            actor.isDie = true;
+            action.can_action = false;
+            actor.isWalk = false;
+            actor.can_search = false;
+            actor.atkTarget = null;
+            actor.animator.Play("Die");
+        }
+
+        if (actor.is_faint)
+        {
+            action.can_action = true;
+        }
+
+        if (action.can_action)
+        {
+            if (actor.can_search)
             {
-                //일반 유닛은 스킬 1개
-                skillTarget = setAttackTarget(skill_info.cast_range);
-                if (skillTarget != null)
+                actor.atkTarget = setAttackTarget(actor.cur_status.atkRange);
+                actor.skillTarget = setAttackTarget(skill_info.cast_range);
+            }
+
+            if (actor.can_use_skill && actor.atkTarget != null)
+            {
+                action.can_action = false;
+                actor.animator.SetTrigger("Skill");
+
+                if (actor.skillTarget != null)
                 {
                     print("스킬사용!!!!!!!" + actor.cur_status.skill[0]);
-                    action.PlaySkill(actor.cur_status.skill[0], skillTarget);
-                    StartCoroutine(BoolTimer(skill_info.cool_time));
-                    
+                    action.PlaySkill(actor.cur_status.skill[0], actor.skillTarget);
+                    StartCoroutine(action.SkillTimer(skill_info.cool_time));
                 }
 
+                action.can_action = true;
+            }
+            else if (actor.can_attack && actor.atkTarget != null)
+            {
+                action.can_action = false;
+                actor.animator.SetTrigger("Attack");
             }
         }
     }
@@ -75,18 +139,13 @@ public class Minion: MonoBehaviour
     {
         if (actor.isWalk)
         {
-            if (actor.animator != null)
-                actor.animator.SetBool("isWalk", actor.isWalk); 
+            /*if (actor.animator != null)
+                actor.animator.SetBool("isWalk", actor.isWalk); */
             action.Move();
         }
 
     }
-    public IEnumerator BoolTimer(int time)
-    {
-        actor.can_use_skill = false;
-        yield return new WaitForSeconds(time);
-        actor.can_use_skill = true;
-    }
+
 
     public void setStatus()
     {
@@ -101,13 +160,9 @@ public class Minion: MonoBehaviour
 
     public void Die()
     {
-
-        actor.isWalk = false;
         actor.spriteRenderer.color = Color.white;
-        atkTarget = null;
         gameObject.SetActive(false);
         gameObject.transform.position = new Vector3(100, 0, 0);
-        StopCoroutine(NormalAttack());
         GameManager.Instance.UpdateCost(-cost);
     }
 
@@ -115,9 +170,9 @@ public class Minion: MonoBehaviour
     public GameObject setAttackTarget(float range)
     {
         //기존 타켓이 존재하면 그냥 return
-        if ( atkTarget != null && atkTarget.gameObject.activeSelf && Utils.DistanceToTarget(atkTarget.transform.position, transform.position) <= range)
+        if ( actor.atkTarget != null && actor.atkTarget.gameObject.activeSelf && Utils.DistanceToTarget(actor.atkTarget.transform.position, transform.position) <= range)
         {
-            return atkTarget;
+            return actor.atkTarget;
         }
 
         GameObject target = null;
@@ -126,7 +181,7 @@ public class Minion: MonoBehaviour
         try
         {
             dist = Utils.DistanceToTarget(enemyBase.transform.position, transform.position);
-            if (dist <= range)
+            if (dist <= range && ! enemyBase.GetComponent<Actor>().isDie)
                 target = enemyBase;
         }
         catch
@@ -139,7 +194,7 @@ public class Minion: MonoBehaviour
         {
             foreach (GameObject u in units)
             {
-                if (!u.activeSelf) { continue; }
+                if (!u.activeSelf || u.GetComponent<Actor>().isDie) { continue; }
                 float tmp_dist = Utils.DistanceToTarget(u.transform.position, transform.position);
                 if (tmp_dist < dist && tmp_dist <= range)
                 {
@@ -150,13 +205,13 @@ public class Minion: MonoBehaviour
         }
         if (target != null)
         {
-            atkTarget = target;
-            return atkTarget;
+            actor.atkTarget = target;
+            return actor.atkTarget;
         }
         else { return null; }
     }
 
-    public IEnumerator NormalAttack()
+  /*  public IEnumerator NormalAttack()
     {
         while (true)
         {
@@ -181,5 +236,5 @@ public class Minion: MonoBehaviour
             }
             yield return null;
         }
-    }
+    }*/
 }

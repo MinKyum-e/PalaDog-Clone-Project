@@ -13,6 +13,7 @@ public class Actor : MonoBehaviour
 
 
     public GameObject atkTarget;
+    public GameObject skillTarget;
     public bool isWalk = true;
     public bool isDie = false;
     public bool is_faint = false;
@@ -37,7 +38,8 @@ public class Actor : MonoBehaviour
     private void OnEnable()
     {
         cur_status.HP = status.HP;
-        cur_status.moveDir = Vector2.right;
+
+        /*cur_status.moveDir = Vector2.right;*/
     }
     //Ãß»ó
     /* public abstract void Die();
