@@ -20,6 +20,10 @@ public class HPbar : MonoBehaviour
         {
             transform.localScale = new Vector3(scale_X *ratio , transform.localScale.y, transform.localScale.z);
         }
+        else
+        {
+            transform.localScale = new Vector3(0, transform.localScale.y, transform.localScale.z);
+        }
         
     }
 }

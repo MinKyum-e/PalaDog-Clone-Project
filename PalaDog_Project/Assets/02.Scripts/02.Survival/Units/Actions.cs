@@ -45,7 +45,7 @@ public class Actions: MonoBehaviour
         actor.can_action = true;
         actor.can_search = true;
         actor.can_attack = true;
-        
+        actor.isWalk = true;
     }
 
     public IEnumerator SkillTimer(int time)

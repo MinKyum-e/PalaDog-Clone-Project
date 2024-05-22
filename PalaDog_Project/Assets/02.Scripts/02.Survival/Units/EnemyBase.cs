@@ -31,6 +31,7 @@ public class EnemyBase: MonoBehaviour
     {
         if (actor.cur_status.HP <= 0)
         {
+            actor.isDie = true;
             Die();
         }
         else if (actor.cur_status.HP <= (actor.status.HP * 0.25f) && GameManager.Instance.wave == 2)
