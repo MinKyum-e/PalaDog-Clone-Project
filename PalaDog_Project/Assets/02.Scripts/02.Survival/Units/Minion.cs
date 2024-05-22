@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -9,7 +10,6 @@ public class Minion: MonoBehaviour
     public Actions action;
     PoolManager poolManager;
     GameObject enemyBase;
-    public SkillInfo skill_info;
     public int cost;
     
     
@@ -29,7 +29,7 @@ public class Minion: MonoBehaviour
     private void OnEnable()
     {
         setStatus();
-        if (Parser.skill_info_dict.TryGetValue(actor.cur_status.skill[0], out skill_info) == false)
+        if (Parser.skill_info_dict.TryGetValue(actor.cur_status.skill[0], out actor.skill_info) == false)
         {
             actor.can_use_skill = false;
         }
@@ -46,7 +46,7 @@ public class Minion: MonoBehaviour
         actor.can_search = true;
         actor.can_attack = true;
         actor.isDie = false;
-        action.can_action = true;
+        actor.can_action = true;
 
 /*        StartCoroutine(NormalAttack());*/
         
@@ -88,12 +88,13 @@ public class Minion: MonoBehaviour
 
         if (actor.atkTarget == null)
         {
+            
             actor.isWalk = true;
         }
         if (actor.cur_status.HP <= 0)
         {
             actor.isDie = true;
-            action.can_action = false;
+            actor.can_action = false;
             actor.isWalk = false;
             actor.can_search = false;
             actor.atkTarget = null;
@@ -102,35 +103,39 @@ public class Minion: MonoBehaviour
 
         if (actor.is_faint)
         {
-            action.can_action = true;
+            actor.can_action = true;
         }
 
-        if (action.can_action)
+        if (actor.can_action)
         {
             if (actor.can_search)
             {
                 actor.atkTarget = setAttackTarget(actor.cur_status.atkRange);
-                actor.skillTarget = setAttackTarget(skill_info.cast_range);
+                actor.skillTarget = setAttackTarget(actor.skill_info.cast_range);
             }
-
+            
             if (actor.can_use_skill && actor.atkTarget != null)
             {
-                action.can_action = false;
-                actor.animator.SetTrigger("Skill");
-
-                if (actor.skillTarget != null)
+                if(actor.skillTarget.activeSelf && actor.skillTarget.GetComponent<Actor>().isDie == false)
                 {
-                    print("스킬사용!!!!!!!" + actor.cur_status.skill[0]);
-                    action.PlaySkill(actor.cur_status.skill[0], actor.skillTarget);
-                    StartCoroutine(action.SkillTimer(skill_info.cool_time));
-                }
+                    actor.can_action = false;
+                    actor.animator.SetTrigger("Skill");
 
-                action.can_action = true;
+/*                    if (actor.skillTarget != null)
+                    {
+                        print("스킬사용!!!!!!!" + actor.cur_status.skill[0]);
+                        action.PlaySkill(actor.cur_status.skill[0], actor.skillTarget);
+                        
+                    }*/
+                }
             }
             else if (actor.can_attack && actor.atkTarget != null)
             {
-                action.can_action = false;
-                actor.animator.SetTrigger("Attack");
+                if (actor.atkTarget.activeSelf && actor.atkTarget.GetComponent<Actor>().isDie == false)
+                {
+                    actor.can_action = false;
+                    actor.animator.SetTrigger("Attack");
+                }
             }
         }
     }

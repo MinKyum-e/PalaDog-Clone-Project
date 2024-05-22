@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1374094802939973288}
   - component: {fileID: 4245338108311049354}
   - component: {fileID: -5975736690811852862}
-  - component: {fileID: 6487059902212249732}
   m_Layer: 5
   m_Name: DragonUI
   m_TagString: Untagged
@@ -92,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minion_idx: 0
+  requisite_food: 0
 --- !u!114 &4245338108311049354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,6 +105,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   is_lock: 1
+  unlock_gold: 0
+  can_unlock: 0
+  shop_index: 0
+  prerequisite: 0
+  unlock_gold_text: {fileID: 0}
+  draggableUI: {fileID: 0}
+  unlocked_sprite: {fileID: 0}
 --- !u!225 &-5975736690811852862
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -117,24 +124,3 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!95 &6487059902212249732
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5807302529124953811}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 36f7a30cb302cd343a83850998c55812, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0

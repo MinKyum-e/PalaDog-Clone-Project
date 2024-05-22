@@ -32,7 +32,7 @@ public class Enemy: MonoBehaviour
         actor.can_attack = true;
         actor.can_use_skill = false;
         actor.isDie = false;
-        action.can_action = true;
+        actor.can_action = true;
         
     }
     private void Update()
@@ -59,7 +59,7 @@ public class Enemy: MonoBehaviour
         if (actor.cur_status.HP <= 0)
         {
             actor.isDie = true;
-            action.can_action = false;
+            actor.can_action = false;
             actor.isWalk = false;
             actor.can_search = false;
             actor.atkTarget = null;
@@ -68,10 +68,10 @@ public class Enemy: MonoBehaviour
 
         if(actor.is_faint)
         {
-            action.can_action= true;
+            actor.can_action= true;
         }
 
-        if(action.can_action)
+        if(actor.can_action)
         {
             if (actor.can_search)
             {
@@ -80,13 +80,19 @@ public class Enemy: MonoBehaviour
 
             if (actor.can_use_skill && actor.atkTarget != null)
             {
-                action.can_action = false;
-                actor.animator.SetTrigger("Skill");
+                if (actor.skillTarget.activeSelf && actor.skillTarget.GetComponent<Actor>().isDie == false)
+                {
+                    actor.can_action = false;
+                    actor.animator.SetTrigger("Skill");
+                }
             }
             else if (actor.can_attack && actor.atkTarget != null)
             {
-                action.can_action = false;
-                actor.animator.SetTrigger("Attack");
+                if (actor.atkTarget.activeSelf && actor.atkTarget.GetComponent<Actor>().isDie == false)
+                {
+                    actor.can_action = false;
+                    actor.animator.SetTrigger("Attack");
+                }
             }
         }
     }

@@ -1,13 +1,13 @@
 
+using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Actions: MonoBehaviour
 {
     Actor actor;
 
-    public bool can_action;
+    
     
     private void Awake()
     {
@@ -20,6 +20,8 @@ public class Actions: MonoBehaviour
         actor.isWalk = false;
         actor.can_search = false;
         actor.can_attack = false;
+        actor.can_use_skill = false;
+        actor.can_action = false;
     }
 
     public int CalDagamge()
@@ -40,14 +42,14 @@ public class Actions: MonoBehaviour
 
     public void EndUnitAction()
     {
-        can_action = true;
+        actor.can_action = true;
         actor.can_search = true;
         actor.can_attack = true;
+        
     }
 
     public IEnumerator SkillTimer(int time)
     {
-        actor.can_use_skill = false;
         yield return new WaitForSeconds(time);
         actor.can_use_skill = true;
     }
@@ -93,11 +95,11 @@ public class Actions: MonoBehaviour
         }
     }
 
-    public bool PlaySkill(int skill_idx, GameObject target)
+    public bool PlaySkill(int skill_slot_idx)
     {
         //TODO
-        print(target.name);
-        return SkillManager.Instance.UseSkill((SkillName)skill_idx, actor, target);
+        StartCoroutine(SkillTimer(actor.skill_info.cool_time));
+        return SkillManager.Instance.UseSkill((SkillName)actor.cur_status.skill[skill_slot_idx], actor, actor.skillTarget);
     }
 
     public bool AddBuff(int buff_idx)

@@ -18,10 +18,12 @@ public class Actor : MonoBehaviour
     public bool isDie = false;
     public bool is_faint = false;
     public bool hit_time = false;
+    public bool can_action = true;
     public bool can_search = true;
     public bool can_attack = true;
     public bool can_use_skill = false;
 
+    public SkillInfo skill_info;
     public Rigidbody2D rigid;
     public SpriteRenderer spriteRenderer; 
     public Animator animator;

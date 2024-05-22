@@ -6,6 +6,7 @@ public class SkillDamageTrigger : MonoBehaviour
 {
     Actor actor;
     public string target_tag;
+
     private void Awake()
     {
         actor = GetComponent<Actor>();
@@ -16,6 +17,8 @@ public class SkillDamageTrigger : MonoBehaviour
     {
         print("target : "+ collision.name);
         if(collision.gameObject.activeSelf && target_tag == collision.tag && Buff.CheckAttackIgnore(collision.GetComponent<Actor>().cur_buff, actor.cur_status.job))
+        {
             collision.GetComponent<Actions>().Hit(actor.cur_status.atk);
+        }
     }
 }
