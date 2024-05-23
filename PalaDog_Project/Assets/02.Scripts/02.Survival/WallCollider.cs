@@ -5,8 +5,8 @@ using DG.Tweening; //import
 
 public class WallCollider : MonoBehaviour
 {
-    public float recoilDistance = 1f;
-    public float recoilDuration = 0.01f;
+    public float recoilDistance = 1.5f;
+    public float recoilDuration = 0.2f;
     public Vector2 recoilDirection;
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -28,4 +28,5 @@ public class WallCollider : MonoBehaviour
             actor.cur_status.moveDir = Vector2.zero;
         }
     }
+
 }

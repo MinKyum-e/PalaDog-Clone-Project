@@ -21,8 +21,8 @@ Chr_Index,Chr_Name,Chr_DevName,Chr_Group,Chr_GameName,Chr_Grade,Chr_Cost,Chr_Job
 int,string,string,string,string,enum,int,enum,int,int,int,float,float,int
 10000,Player_Player_001,ÇÃ·¹ÀÌ¾î_ÇÃ·¹ÀÌ¾î_001,100,ºÀ¿ïÀÌ,Player,0,melee,200,0,0,0,4,0
 10111,Unit1_Normal_001,À¯´Ö1_ÀÏ¹Ý_001,101,À¯´Ö1_°Ë»ç,Normal,1,melee,50,50,1,1,1,10001
-10121,Unit1_Elite_001,À¯´Ö1_Á¤¿¹_001,101,À¯´Ö1_°ø°ÝÇü,Elite,2,melee,80,80,1,1,1,11111
-10122,Unit1_Elite_002,À¯´Ö1_Á¤¿¹_002,101,À¯´Ö1_±â»çÇü,Elite,2,melee,100,60,1,0.5,0.8,10001
+10121,Unit1_Elite_001,À¯´Ö1_Á¤¿¹_001,101,À¯´Ö1_°ø°ÝÇü,Elite,2,melee,150,50,1,1,0.8,11111
+10122,Unit1_Elite_002,À¯´Ö1_Á¤¿¹_002,101,À¯´Ö1_±â»çÇü,Elite,2,melee,100,60,1,1,1,10001
 10123,Unit1_Elite_003,À¯´Ö1_Á¤¿¹_003,101,À¯´Ö1_¾Ï»ìÀÚÇü,Elite,3,melee,60,100,1.5,1.5,1.5,10001
 10131,Unit1_Hero_001,À¯´Ö1_¿µ¿õ_001,101,À¯´Ö1_°ø°ÝÇü¿µ¿õ,Hero,4,melee,120,120,1,1,1,10001
 10132,Unit1_Hero_002,À¯´Ö1_¿µ¿õ_002,101,À¯´Ö1_±â»çÇü¿µ¿õ,Hero,4,melee,180,60,1,0.5,0.8,10001

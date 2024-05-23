@@ -25,10 +25,16 @@ public class KnockBack : MonoBehaviour
         print("target : " + collision.name);
         if (collision.gameObject.activeSelf && collision.name != "EnemyBase"&& target_tag == collision.tag && Buff.CheckAttackIgnore(collision.GetComponent<Actor>().cur_buff, actor.cur_status.job))
         {
-            collision.GetComponent<Actions>().Hit(actor.cur_status.atk);
+            
             Vector3 target_position = collision.transform.position;
-            if(target_position.x < boxCollider.bounds.max.x)
-                 collision.GetComponent<Rigidbody2D>().DOMove(new Vector3(boxCollider.bounds.max.x, target_position.y, target_position.z), 0.3f);
+            if(target_position.x < boxCollider.bounds.max.x )
+            {
+                collision.GetComponent<Actor>().isWalk = false;
+                collision.GetComponent<Actions>().Hit(actor.cur_status.atk);
+                collision.transform.DOMove(new Vector3(boxCollider.bounds.max.x, target_position.y, target_position.z), 0.3f);
+                
+            }
+                
         }
     }
 }
