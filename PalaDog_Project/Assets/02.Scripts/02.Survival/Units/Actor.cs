@@ -10,17 +10,18 @@ public class Actor : MonoBehaviour
     
     public CommonStatus cur_status;
     public BuffStruct cur_buff = new BuffStruct();
+    public PoolManager enemy_poolManager;
+    public PoolManager minion_poolManager;
+
+
 
 
     public GameObject atkTarget;
     public GameObject skillTarget;
-    public bool isWalk = true;
     public bool isDie = false;
     public bool is_faint = false;
-    public bool hit_time = false;
+    public bool can_walk = true;
     public bool can_action = true;
-    public bool can_search = true;
-    public bool can_attack = true;
     public bool can_use_skill = false;
 
     public SkillInfo skill_info;
@@ -35,6 +36,8 @@ public class Actor : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        enemy_poolManager = GameObject.FindGameObjectWithTag("EnemyPool").GetComponent<PoolManager>();
+        minion_poolManager = GameObject.FindGameObjectWithTag("MinionPool").GetComponent<PoolManager>();
 
     }
     private void OnEnable()

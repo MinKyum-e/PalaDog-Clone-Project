@@ -18,26 +18,26 @@ public class BtnEvent : MonoBehaviour
     {
         spriteRenderer.flipX = true;
         player.actor.cur_status.moveDir = Vector2.left;
-        player.actor.isWalk = true;
+        player.actor.can_walk = true;
     }
     public void LeftBtnUp() 
     {
         player.actor.cur_status.moveDir = Vector2.zero ;
-        player.actor.isWalk = false;
+        player.actor.can_walk = false;
     }
 
     public void RightBtnDown()
     {
         spriteRenderer.flipX = false;
         player.actor.cur_status.moveDir = Vector2.right;
-        player.actor.isWalk = true;
+        player.actor.can_walk = true;
     }
 
     public void RightBtnUp() 
     {
 
         player.actor.cur_status.moveDir = Vector2.zero;
-        player.actor.isWalk = false;
+        player.actor.can_walk = false;
     }
 
     public void Restart()

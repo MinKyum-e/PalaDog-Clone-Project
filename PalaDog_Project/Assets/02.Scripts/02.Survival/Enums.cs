@@ -29,3 +29,5 @@ public enum Chr_job
     melee,
     projectile,
 }
+
+

@@ -24,7 +24,6 @@ public class Boss: MonoBehaviour
         actor.cur_status.HP = actor.status.HP;
         atkTarget = null;
         StartCoroutine(NormalAttack());
-        actor.isWalk = true;
 
     }
     private void Update()
@@ -46,7 +45,7 @@ public class Boss: MonoBehaviour
 
     void FixedUpdate()
     {
-        if (actor.isWalk)
+        if (actor.can_action)
         {
             action.SetMoveDir("Player");
             action.Move();
@@ -66,7 +65,7 @@ public class Boss: MonoBehaviour
     }
     public void Die()
     {
-        actor.isWalk = false;
+        actor.can_action = false;
         atkTarget = null;
         gameObject.SetActive(false);
         gameObject.transform.position = new Vector3(100, 0, 0);
@@ -83,7 +82,7 @@ public class Boss: MonoBehaviour
             //attack
             if (atkTarget != null)
             {
-                actor.isWalk = false;
+                actor.can_action = false;
                 atkTarget.GetComponent<SpriteRenderer>().color = Color.red;//추후 애니메이션 적용
                 atkTarget.GetComponent<Actions>().Hit(actor.cur_status.atk);
                 yield return new WaitForSeconds(actor.cur_status.atkSpeed);
@@ -91,7 +90,7 @@ public class Boss: MonoBehaviour
             }
             else
             {
-                actor.isWalk = true;
+                actor.can_action = true;
             }
             yield return null;
         }

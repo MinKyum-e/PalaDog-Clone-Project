@@ -3,39 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class Enemy: MonoBehaviour
+public class Enemy: Unit
 {
-    Actor actor;
-    Actions action;
-    PoolManager poolManager;
+/*    Actor actor;
+  *//*  Actions action;*//*
+    PoolManager poolManager;*/
     GameObject player;
     public int grade;
     public int gold;
 
     private void Awake()
     {
-        actor = GetComponent<Actor>();  
-        poolManager = GameObject.FindGameObjectWithTag("MinionPool").GetComponent<PoolManager>();
+/*        actor = GetComponent<Actor>();
+        poolManager = GameObject.FindGameObjectWithTag("MinionPool").GetComponent<PoolManager>();*/
         player = GameObject.FindGameObjectWithTag("Player");
-        action = GetComponent<Actions>();
+/*        action = GetComponent<Actions>();*/
     }
-    private void OnEnable()
+/*    private void OnEnable()
     {
         setStatus();
         actor.cur_status.HP = actor.status.HP;
         actor.atkTarget = null;
 
-        actor.isWalk = true;
         actor.is_faint = false;
-        actor.hit_time = false;
-        actor.can_search = true;
-        actor.can_attack = true;
         actor.can_use_skill = false;
         actor.isDie = false;
         actor.can_action = true;
-        
-    }
-    private void Update()
+
+    }*/
+/*    private void Update()
     {
 
         AnimatorStateInfo stateInfo = actor.animator.GetCurrentAnimatorStateInfo(0);
@@ -50,64 +46,63 @@ public class Enemy: MonoBehaviour
         {
             // 타겟 애니메이션 상태가 아닐 때 기본 속도로 되돌립니다.
             actor.animator.speed = 1.0f;
-        }
+        }*/
 
-        if (actor.atkTarget == null)
-        {
-            actor.isWalk = true;
-        }
-        if (actor.cur_status.HP <= 0)
-        {
-            actor.isDie = true;
-            actor.can_action = false;
-            actor.isWalk = false;
-            actor.can_search = false;
-            actor.atkTarget = null;
-            actor.animator.Play("Die");
-        }
-
-        if(actor.is_faint)
-        {
-            actor.can_action= true;
-        }
-
-        if(actor.can_action)
-        {
-            if (actor.can_search)
-            {
-                actor.atkTarget = setAttackTarget();
-            }
-
-            if (actor.can_use_skill && actor.atkTarget != null)
-            {
-                if (actor.skillTarget.activeSelf && actor.skillTarget.GetComponent<Actor>().isDie == false)
+        /*        if (actor.atkTarget == null)
                 {
+                    actor.isWalk = true;
+                }*//*
+                if (actor.cur_status.HP <= 0)
+                {
+                    actor.isDie = true;
                     actor.can_action = false;
-                    actor.animator.SetTrigger("Skill");
+                    actor.atkTarget = null;
+                    actor.animator.Play("Die");
+                }
+
+        *//*        if(actor.is_faint)
+                {
+                }
+                else
+                {
+
+                }*//*
+
+                if(actor.can_action)
+                {
+                    *//*            if (actor.can_search)
+                                {
+
+                                }
+
+                                if (actor.can_use_skill && actor.atkTarget != null)
+                                {
+                                    if (actor.skillTarget.activeSelf && actor.skillTarget.GetComponent<Actor>().isDie == false)
+                                    {
+                                        actor.can_action = false;
+                                        actor.animator.SetTrigger("Skill");
+                                    }
+                                }*//*
+                    actor.atkTarget = setAttackTarget();
+                    if (actor.atkTarget != null &&actor.atkTarget.activeSelf && actor.atkTarget.GetComponent<Actor>().isDie == false)
+                    {
+                        actor.can_action = false;
+                        actor.animator.SetTrigger("Attack");
+                    }
                 }
             }
-            else if (actor.can_attack && actor.atkTarget != null)
+            void FixedUpdate()
             {
-                if (actor.atkTarget.activeSelf && actor.atkTarget.GetComponent<Actor>().isDie == false)
+                //걷기
+                if (actor.can_action)
                 {
-                    actor.can_action = false;
-                    actor.animator.SetTrigger("Attack");
+
+                    action.Move();action.SetMoveDir("Player");
+
                 }
-            }
-        }
-    }
-    void FixedUpdate()
-    {
-        //걷기
-        if (actor.isWalk)
-        {
-            
-            action.Move();action.SetMoveDir("Player");
+            }*/
 
-        }
-    }
-
-    public void setStatus()
+        public override void setStatus()
     {
         try
         {
@@ -120,7 +115,7 @@ public class Enemy: MonoBehaviour
 
 
 
-    public GameObject setAttackTarget()
+    public override GameObject setAttackTarget(GameObject cur_target, float range, UnitType unitType)
     {
        
         GameObject target = null;
@@ -146,7 +141,8 @@ public class Enemy: MonoBehaviour
             return actor.atkTarget;
         }
 
-        foreach(List<GameObject> units in poolManager.pools)
+        PoolManager targetPool = ((unitType == UnitType.Enemy) ? actor.enemy_poolManager : actor.minion_poolManager);
+        foreach (List<GameObject> units in targetPool.pools)
         {
             foreach (GameObject u in units)
             {
@@ -167,7 +163,7 @@ public class Enemy: MonoBehaviour
         }
         else { return null; }
     }
-    public void Die()
+    public override void Die()
     {
         actor.spriteRenderer.color = Color.white;
         gameObject.SetActive(false);

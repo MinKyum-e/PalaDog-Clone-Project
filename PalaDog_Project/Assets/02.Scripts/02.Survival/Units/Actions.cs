@@ -18,10 +18,6 @@ public class Actions: MonoBehaviour
 
     public void StartUnitAction()
     {
-        actor.isWalk = false;
-        actor.can_search = false;
-        actor.can_attack = false;
-        actor.can_use_skill = false;
         actor.can_action = false;
     }
 
@@ -44,9 +40,6 @@ public class Actions: MonoBehaviour
     public void EndUnitAction()
     {
         actor.can_action = true;
-        actor.can_search = true;
-        actor.can_attack = true;
-        actor.isWalk = true;
     }
 
     public IEnumerator SkillTimer(int time)
@@ -59,14 +52,9 @@ public class Actions: MonoBehaviour
 
     public void Move()
     {
-/*        if(actor.animator != null) 
-            actor.animator.SetBool("isWalk", actor.isWalk);*/
-/*        if (actor.isWalk)
-        {*/
         Vector3 nextPos = actor.rigid.position + actor.cur_status.moveDir * actor.cur_status.moveSpeed * Time.fixedDeltaTime;
         actor.rigid.MovePosition(nextPos);
         actor.rigid.velocity = Vector2.zero;
-        //}
 
     }
     public void Hit(int Damage)
@@ -115,6 +103,22 @@ public class Actions: MonoBehaviour
         }
         return true;
     }
+
+/*    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Wall")
+        {
+            actor.cur_status.moveDir = Vector2.zero;
+        }
+
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Wall")
+        {
+            actor.cur_status.moveDir = Vector2.zero;
+        }
+    }*/
 
 
 }

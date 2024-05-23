@@ -10,6 +10,7 @@ public struct SkillInfo
     public int casting_time;
     public int cool_time;
     public int cast_range;
+    public bool target_check;
 }
 
 

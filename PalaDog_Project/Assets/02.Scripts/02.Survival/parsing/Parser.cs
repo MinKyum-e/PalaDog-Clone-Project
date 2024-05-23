@@ -115,6 +115,7 @@ public class Parser : MonoBehaviour
                 e.range = (int)d["Skill_Range"];
                 e.casting_time = (int)d["Skill_Casting"];
                 e.cast_range = (int)d["Skill_Cast_Range"];
+                e.target_check = true;
                 skill_info_dict[idx] = e;
             }
 

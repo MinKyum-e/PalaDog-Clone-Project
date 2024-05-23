@@ -1036,7 +1036,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 411105347108442885, guid: 7c3f18fb8a5a5884aa7d48a9560c987b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6442733411108289478, guid: 7c3f18fb8a5a5884aa7d48a9560c987b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2813,7 +2813,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2870,7 +2870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recoilDistance: 1
   recoilDuration: 0.1
-  recoilDirection: {x: -1, y: 0}
+  recoilDirection: {x: -1, y: 0, z: 0}
 --- !u!1 &922954534
 GameObject:
   m_ObjectHideFlags: 0
@@ -4176,7 +4176,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -4206,7 +4206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recoilDistance: 1
   recoilDuration: 0.1
-  recoilDirection: {x: 1, y: 0}
+  recoilDirection: {x: 1, y: 0, z: 0}
 --- !u!50 &1549540653
 Rigidbody2D:
   serializedVersion: 4
@@ -5061,6 +5061,10 @@ PrefabInstance:
     - target: {fileID: 8492332868758309772, guid: fbd34c8710b639446bf64bb2a43fcb57, type: 3}
       propertyPath: m_Name
       value: KnockBack (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8492332868758309772, guid: fbd34c8710b639446bf64bb2a43fcb57, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6476,6 +6480,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: KnockBack
       objectReference: {fileID: 0}
+    - target: {fileID: 8492332868758309772, guid: fbd34c8710b639446bf64bb2a43fcb57, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6492,6 +6500,10 @@ PrefabInstance:
     - target: {fileID: 4560634313287605006, guid: 027ccf4fdce56424baea4a7fe71a2eee, type: 3}
       propertyPath: m_Name
       value: Tanker_rare
+      objectReference: {fileID: 0}
+    - target: {fileID: 4560634313287605006, guid: 027ccf4fdce56424baea4a7fe71a2eee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6847063393426370594, guid: 027ccf4fdce56424baea4a7fe71a2eee, type: 3}
       propertyPath: m_LocalPosition.x

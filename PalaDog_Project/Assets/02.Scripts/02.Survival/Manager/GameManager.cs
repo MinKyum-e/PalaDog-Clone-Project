@@ -132,6 +132,7 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
         Player.Instance.actor.cur_status.HP = Player.Instance.actor.status.HP;
         Player.Instance.transform.position = player_defualt_position;
+        Player.Instance.actor.can_action = true;
         state = GameState.GAME_PLAY;
         SceneManager.LoadScene("Chapter1");
 

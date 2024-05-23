@@ -39,7 +39,10 @@ public class Player: MonoBehaviour
     }
     private void FixedUpdate()
     {
-        action.Move();
+        if(actor.can_action)
+        {
+            action.Move();
+        }
 
     }
 
@@ -56,7 +59,7 @@ public class Player: MonoBehaviour
     }
     public void Die()
     {
-        actor.isWalk = false;
+        actor.can_action = false;
         actor.cur_status.moveDir = Vector2.zero;
         GameManager.Instance.GameOver();
     }
