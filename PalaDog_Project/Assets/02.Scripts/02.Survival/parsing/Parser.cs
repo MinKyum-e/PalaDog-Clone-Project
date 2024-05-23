@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -9,14 +10,18 @@ public class Parser : MonoBehaviour
     public static List<Dictionary<string, object>> data_MinionTable = null;
     public static List<Dictionary<string, object>> data_EnemyTable = null;
     public static List<Dictionary<string, object>> data_WaveTable = null;
-    public static List<Dictionary<string, object>> data_SkillTable = null;
+    public static List<Dictionary<string, object>> data_SkillInfo = null;
     public static List<Dictionary<string, object>> data_ShopTable = null;
+    public static List<Dictionary<string, object>> data_SkillTable = null;
+    public static List<Dictionary<string, object>> data_SkillEffectTable = null;
 
     public static Dictionary<int, EnemyStatus> enemy_status_dict = null;
     public static Dictionary<int, WaveInfo> wave_info_dict = null;
     public static Dictionary<int, MinionStatus> minion_status_dict = null;
     public static Dictionary<int, SkillInfo> skill_info_dict = null;
     public static Dictionary<int, ShopItemInfo> shop_item_info_dict = null;
+    public static Dictionary<int, SkillEntry> skill_table_dict = null;
+    public static Dictionary<int, SkillEffectEntry> skill_effect_table_dict = null;
 
     public void Awake()
     {
@@ -26,14 +31,20 @@ public class Parser : MonoBehaviour
             data_MinionTable = CSVReader.Read("DT_ChrTable", 20);
             data_EnemyTable = CSVReader.Read("DT_MonsterTable", 19);
             data_WaveTable = CSVReader.Read("DT_WaveTable", 10);
-            data_SkillTable = CSVReader.Read("DT_Skill", 7);
+            data_SkillInfo = CSVReader.Read("DT_Skill", 7);
             data_ShopTable = CSVReader.Read("DT_ShopTable", 29);
-            
+            data_SkillTable = CSVReader.Read("DT_SkillTable", 43);
+
+            data_SkillEffectTable = CSVReader.Read("DT_SkillEffectTable", 3);
+
+
             enemy_status_dict = new Dictionary<int, EnemyStatus>();
             wave_info_dict = new Dictionary<int, WaveInfo>();
             minion_status_dict = new Dictionary<int, MinionStatus>();
             skill_info_dict = new Dictionary<int, SkillInfo>();
             shop_item_info_dict= new Dictionary<int, ShopItemInfo>();
+            skill_table_dict = new Dictionary<int, SkillEntry>();
+            skill_effect_table_dict = new Dictionary<int, SkillEffectEntry>();
 
             //몬스터 유닛 정보들어있는 class 만들기
             foreach (var d in data_EnemyTable)
@@ -106,7 +117,7 @@ public class Parser : MonoBehaviour
             }
 
             //스킬정보
-            foreach (var d in data_SkillTable)
+            foreach (var d in data_SkillInfo)
             {
                 int idx = (int)d["Skill_Index"];
                 SkillInfo e = new SkillInfo();
@@ -117,6 +128,94 @@ public class Parser : MonoBehaviour
                 e.cast_range = (int)d["Skill_Cast_Range"];
                 e.target_check = true;
                 skill_info_dict[idx] = e;
+            }
+
+            //찐스킬정보
+            foreach (var d in data_SkillTable)
+            {
+                int idx = (int)d["Skill_Index"];
+                SkillEntry e = new SkillEntry();
+                e.index = idx;
+                e.group = (int)d["Skill_Group"];
+
+                string act = d["Skill_Act"].ToString();
+                string[] act_strings = Enum.GetNames(typeof(SkillAct));
+                for(int i=0;i<act_strings.Length;i++)
+                {
+                    if (act_strings[i].Equals(act))
+                    {
+                        e.act = (SkillAct)i;
+                        break;
+                    }
+                }
+                e.coolTime = (int)d["Skill_CoolTime"];
+                string target_search_type = d["Skill_Type"].ToString();
+                string[] target_search_type_strings = Enum.GetNames(typeof(TargetSearchType));
+                for (int i = 0; i < target_search_type_strings.Length; i++)
+                {
+                    if (target_search_type_strings[i].Equals(act))
+                    {
+                        e.target_search_type = (TargetSearchType)i;
+                        break;
+                    }
+                }
+
+                string target_type = d["Skill_TargetType"].ToString();
+                string[] target_type_strings = Enum.GetNames(typeof(UnitType));
+                for (int i = 0; i < target_type_strings.Length; i++)
+                {
+                    if (target_type_strings[i].Equals(act))
+                    {
+                        e.target_type = (UnitType)i;
+                        break;
+                    }
+                }
+                e.target_search_value = (int)d["Skill_TypeValue"];
+                string base_stat = d["Skill_BaseStat"].ToString();
+                string[] base_stat_strings = Enum.GetNames(typeof(BaseStat));
+                for (int i = 0; i < base_stat_strings.Length; i++)
+                {
+                    if (base_stat_strings[i].Equals(act))
+                    {
+                        e.base_stat = (BaseStat)i;
+                        break;
+                    }
+                }
+
+                e.DMGCoeff = float.Parse(d["Skill_DMGCoeff"].ToString());
+                e.need_searching = d["Skill_TargetSearching"].Equals("TRUE");
+
+                e.skill_effects = new SkillEffect[2];
+
+                for(int i=1;i<=2;i++)
+                {
+
+                    e.skill_effects[i-1].index = (int)d["Skill_Effect" + i+"Index"];
+                    e.skill_effects[i-1].value = (int)d["Skill_Effect" + i + "Value"];
+                    e.skill_effects[i-1].duration = (int)d["Skill_Effect" + i + "Duration"];
+                }
+                skill_table_dict[idx] = e;
+            }
+
+            //스킬 이펙트 정보
+            foreach (var d in data_SkillEffectTable)
+            {
+                /*int idx = (int)d["SkillEffect_Index"];*/
+                SkillEffectEntry e = new SkillEffectEntry();
+                /*e.index = idx;*/
+
+
+                string type = d["SkillEffect_Type"].ToString();
+                string[] type_strings = Enum.GetNames(typeof(SkillEffectType));
+                for (int i = 0; i < type_strings.Length; i++)
+                {
+                    if (type_strings[i].Equals(type))
+                    {
+                        e.type = (SkillEffectType)i;
+                        break;
+                    }
+                }/*
+                skill_effect_table_dict[idx] = e;*/
             }
 
             //상점 아이템 정보

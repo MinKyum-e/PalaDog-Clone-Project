@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using UnityEngine;
 
@@ -12,6 +13,42 @@ public struct SkillInfo
     public int cast_range;
     public bool target_check;
 }
+
+[Serializable]
+public struct SkillEffectEntry
+{
+    public int index;
+    public SkillEffectType type;
+}
+
+
+[Serializable]
+public struct SkillEffect
+{
+    public int index;
+    public float value;
+    public float duration;
+}
+
+
+[Serializable]
+public struct SkillEntry
+{
+    public int index;
+    public int group;
+    public SkillAct act;
+    public int coolTime;
+    public TargetSearchType target_search_type;
+    public UnitType target_type;
+    public int target_search_value;
+    public BaseStat base_stat;
+    public float DMGCoeff;
+    public bool need_searching;
+    public SkillEffect[] skill_effects;
+
+}
+
+
 
 
 [Serializable]
