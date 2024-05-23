@@ -3,12 +3,13 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+
 public class Actions: MonoBehaviour
 {
     Actor actor;
 
-    
-    
+
+
     private void Awake()
     {
         actor = GetComponent<Actor>();    
@@ -115,19 +116,5 @@ public class Actions: MonoBehaviour
         return true;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.tag == "Wall")
-        {
-            actor.cur_status.moveDir = Vector2.zero;
-        }
 
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Wall")
-        {
-            actor.cur_status.moveDir = Vector2.zero;
-        }
-    }
 }

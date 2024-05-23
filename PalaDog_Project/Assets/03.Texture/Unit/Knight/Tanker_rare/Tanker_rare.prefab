@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.43, y: 14.18, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.32, z: 0.3}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 848101298722069739}
@@ -105,13 +105,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actor: {fileID: 0}
   action: {fileID: 0}
-  skill_info:
-    name: 
-    range: 0
-    damange: 0
-    casting_time: 0
-    cool_time: 0
-    cast_range: 0
   cost: 0
 --- !u!50 &4901830690378444073
 Rigidbody2D:
@@ -251,9 +244,17 @@ MonoBehaviour:
   isDie: 0
   is_faint: 0
   hit_time: 0
+  can_action: 1
   can_search: 1
   can_attack: 1
   can_use_skill: 0
+  skill_info:
+    name: 
+    range: 0
+    damange: 0
+    casting_time: 0
+    cool_time: 0
+    cast_range: 0
   rigid: {fileID: 0}
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
@@ -270,7 +271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 537fa3fe36a7371439c35a70cc5c2c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  can_action: 0
 --- !u!1001 &5198152063812032175
 PrefabInstance:
   m_ObjectHideFlags: 0

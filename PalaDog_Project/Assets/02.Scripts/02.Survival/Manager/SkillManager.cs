@@ -48,7 +48,7 @@ public class SkillManager:MonoBehaviour
             GameObject skill_clone = skillPool.Get(index);
             skill_clone.GetComponent<Actor>().cur_status.atk = s.damange;
             skill_clone.transform.localScale = new Vector3(s.range, 5, 1);
-            skill_clone.transform.position = new Vector3(actor.transform.position.x + 0.5f, 0, 0);
+            skill_clone.transform.position = new Vector3(actor.transform.position.x + 0.5f, actor.transform.position.y, 0);
             BoxCollider2D clone_collider = skill_clone.GetComponent<BoxCollider2D>();
             clone_collider.enabled = true;
             yield return new WaitForSeconds(0.1f);

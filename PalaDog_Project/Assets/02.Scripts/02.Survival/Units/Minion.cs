@@ -110,8 +110,8 @@ public class Minion: MonoBehaviour
         {
             if (actor.can_search)
             {
-                actor.atkTarget = setAttackTarget(actor.cur_status.atkRange);
-                actor.skillTarget = setAttackTarget(actor.skill_info.cast_range);
+                actor.atkTarget = setAttackTarget(actor.atkTarget, actor.cur_status.atkRange);
+                actor.skillTarget = setAttackTarget(actor.atkTarget, actor.skill_info.cast_range);
             }
             
             if (actor.can_use_skill && actor.atkTarget != null)
@@ -172,12 +172,12 @@ public class Minion: MonoBehaviour
     }
 
 
-    public GameObject setAttackTarget(float range)
+    public GameObject setAttackTarget(GameObject attack_target, float range)
     {
         //기존 타켓이 존재하면 그냥 return
-        if ( actor.atkTarget != null && actor.atkTarget.gameObject.activeSelf && Utils.DistanceToTarget(actor.atkTarget.transform.position, transform.position) <= range)
+        if (attack_target != null && attack_target.gameObject.activeSelf && Utils.DistanceToTarget(attack_target.transform.position, transform.position) <= range)
         {
-            return actor.atkTarget;
+            return attack_target;
         }
 
         GameObject target = null;
@@ -210,8 +210,8 @@ public class Minion: MonoBehaviour
         }
         if (target != null)
         {
-            actor.atkTarget = target;
-            return actor.atkTarget;
+            attack_target = target;
+            return attack_target;
         }
         else { return null; }
     }

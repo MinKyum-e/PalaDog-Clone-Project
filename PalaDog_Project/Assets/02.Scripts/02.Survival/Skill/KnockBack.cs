@@ -28,7 +28,7 @@ public class KnockBack : MonoBehaviour
             collision.GetComponent<Actions>().Hit(actor.cur_status.atk);
             Vector3 target_position = collision.transform.position;
             if(target_position.x < boxCollider.bounds.max.x)
-                 collision.gameObject.transform.DOMove(new Vector3(boxCollider.bounds.max.x, target_position.y, target_position.z), 0.3f);
+                 collision.GetComponent<Rigidbody2D>().DOMove(new Vector3(boxCollider.bounds.max.x, target_position.y, target_position.z), 0.3f);
         }
     }
 }

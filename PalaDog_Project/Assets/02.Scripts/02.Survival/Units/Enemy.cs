@@ -101,8 +101,9 @@ public class Enemy: MonoBehaviour
         //°È±â
         if (actor.isWalk)
         {
-            action.SetMoveDir("Player");
-            action.Move();
+            
+            action.Move();action.SetMoveDir("Player");
+
         }
     }
 

@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 17.522406, y: -4.1953, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -238,9 +238,24 @@ MonoBehaviour:
     _melee_attack_ignore: 0
     _magic_attack_ignore: 0
     _projectile_attack_ignore: 0
+  atkTarget: {fileID: 0}
+  skillTarget: {fileID: 0}
   isWalk: 0
-  can_use_skill: 0
+  isDie: 0
+  is_faint: 0
+  hit_time: 0
+  can_action: 1
+  can_search: 1
   can_attack: 1
+  can_use_skill: 0
+  skill_info:
+    name: 
+    range: 0
+    damange: 0
+    casting_time: 0
+    cool_time: 0
+    cast_range: 0
   rigid: {fileID: 0}
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
+  final_damage: 0

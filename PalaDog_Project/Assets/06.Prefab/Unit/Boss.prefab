@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 17.522406, y: -4.1953, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2279608185993994973}
@@ -200,7 +200,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 537fa3fe36a7371439c35a70cc5c2c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  can_action: 0
 --- !u!114 &5269193388516678299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,13 +240,22 @@ MonoBehaviour:
     _magic_attack_ignore: 0
     _projectile_attack_ignore: 0
   atkTarget: {fileID: 0}
+  skillTarget: {fileID: 0}
   isWalk: 0
   isDie: 0
   is_faint: 0
   hit_time: 0
+  can_action: 1
   can_search: 1
   can_attack: 1
   can_use_skill: 0
+  skill_info:
+    name: 
+    range: 0
+    damange: 0
+    casting_time: 0
+    cool_time: 0
+    cast_range: 0
   rigid: {fileID: 0}
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
