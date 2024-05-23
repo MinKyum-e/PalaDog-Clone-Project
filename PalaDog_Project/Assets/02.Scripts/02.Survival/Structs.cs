@@ -26,7 +26,7 @@ public struct SkillEffectEntry
 public struct SkillEffect
 {
     public int index;
-    public float value;
+    public int value;
     public float duration;
 }
 
@@ -40,13 +40,23 @@ public struct SkillEntry
     public int coolTime;
     public TargetSearchType target_search_type;
     public UnitType target_type;
-    public int target_search_value;
+    public int target_search_num;
     public BaseStat base_stat;
     public float DMGCoeff;
     public bool need_searching;
+    public float searching_range;
     public SkillEffect[] skill_effects;
 
 }
+
+[Serializable]
+public struct ActorSkillInfo
+{
+    public SkillEntry entry;
+    public bool can_use_skill;
+    public GameObject target;
+}
+
 
 
 

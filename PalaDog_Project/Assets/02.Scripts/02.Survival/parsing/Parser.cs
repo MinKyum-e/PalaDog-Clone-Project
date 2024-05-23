@@ -75,6 +75,8 @@ public class Parser : MonoBehaviour
                 MinionStatus s = new MinionStatus();
                 s.common.skill = new int[3];
                 s.common.skill[0] = (int)d["Chr_Skill"];
+                s.common.skill[1] = 0;
+                s.common.skill[2] = 0;
                 s.common.name = d["Chr_GameName"].ToString();
                 //enemy_info_dict[idx].grade = (int)d["Monster_Grade"];
                 s.cost = (int)d["Chr_Cost"];
@@ -170,7 +172,7 @@ public class Parser : MonoBehaviour
                         break;
                     }
                 }
-                e.target_search_value = (int)d["Skill_TypeValue"];
+                e.target_search_num = (int)d["Skill_TypeValue"];
                 string base_stat = d["Skill_BaseStat"].ToString();
                 string[] base_stat_strings = Enum.GetNames(typeof(BaseStat));
                 for (int i = 0; i < base_stat_strings.Length; i++)
@@ -194,15 +196,17 @@ public class Parser : MonoBehaviour
                     e.skill_effects[i-1].value = (int)d["Skill_Effect" + i + "Value"];
                     e.skill_effects[i-1].duration = (int)d["Skill_Effect" + i + "Duration"];
                 }
+
+                e.searching_range = float.Parse(d["Skill_TargetSearchingRange"].ToString());
                 skill_table_dict[idx] = e;
             }
 
             //스킬 이펙트 정보
             foreach (var d in data_SkillEffectTable)
             {
-                /*int idx = (int)d["SkillEffect_Index"];*/
+                int idx = (int)d["SkillEffect_Index"];
                 SkillEffectEntry e = new SkillEffectEntry();
-                /*e.index = idx;*/
+                e.index = idx;
 
 
                 string type = d["SkillEffect_Type"].ToString();
@@ -214,8 +218,8 @@ public class Parser : MonoBehaviour
                         e.type = (SkillEffectType)i;
                         break;
                     }
-                }/*
-                skill_effect_table_dict[idx] = e;*/
+                }
+                skill_effect_table_dict[idx] = e;
             }
 
             //상점 아이템 정보

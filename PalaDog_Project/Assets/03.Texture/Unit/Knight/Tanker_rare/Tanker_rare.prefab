@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 6847063393426370594}
   - component: {fileID: 7919420740843153133}
-  - component: {fileID: 475619288490614440}
   - component: {fileID: 4901830690378444073}
   - component: {fileID: 8261430505434223716}
   - component: {fileID: 7415006826904762556}
   - component: {fileID: 8492712671786618694}
   - component: {fileID: 6979754268440187385}
+  - component: {fileID: 475619288490614440}
+  - component: {fileID: -2044870732233463124}
   m_Layer: 0
   m_Name: Tanker_rare
   m_TagString: Minion
@@ -91,21 +92,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &475619288490614440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4560634313287605006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94b6b89997f1efb4f82e7608acf3372c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actor: {fileID: 0}
-  action: {fileID: 0}
-  cost: 0
 --- !u!50 &4901830690378444073
 Rigidbody2D:
   serializedVersion: 4
@@ -238,23 +224,14 @@ MonoBehaviour:
     _melee_attack_ignore: 0
     _magic_attack_ignore: 0
     _projectile_attack_ignore: 0
+  enemy_poolManager: {fileID: 0}
+  minion_poolManager: {fileID: 0}
   atkTarget: {fileID: 0}
-  skillTarget: {fileID: 0}
-  isWalk: 0
   isDie: 0
   is_faint: 0
-  hit_time: 0
+  can_walk: 1
   can_action: 1
-  can_search: 1
-  can_attack: 1
-  can_use_skill: 0
-  skill_info:
-    name: 
-    range: 0
-    damange: 0
-    casting_time: 0
-    cool_time: 0
-    cast_range: 0
+  skills: []
   rigid: {fileID: 0}
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
@@ -269,6 +246,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 537fa3fe36a7371439c35a70cc5c2c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &475619288490614440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4560634313287605006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94b6b89997f1efb4f82e7608acf3372c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actor: {fileID: 0}
+  action: {fileID: 0}
+  atkType: 0
+  cost: 0
+--- !u!114 &-2044870732233463124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4560634313287605006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5903e0c3476548940a2667f51dc367fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &5198152063812032175

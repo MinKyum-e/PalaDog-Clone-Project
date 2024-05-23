@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 31465017346817393}
   - component: {fileID: 6069248076371825854}
-  - component: {fileID: 7171520234449864668}
   - component: {fileID: 3437042106269158073}
   - component: {fileID: 1094816498083934224}
   - component: {fileID: 6273787158847200887}
-  - component: {fileID: 6275667472389048291}
   - component: {fileID: 707089632183771369}
+  - component: {fileID: 6275667472389048291}
+  - component: {fileID: 7171520234449864668}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Minion
@@ -91,22 +91,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7171520234449864668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7098081600307430445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94b6b89997f1efb4f82e7608acf3372c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actor: {fileID: 0}
-  action: {fileID: 0}
-  atkType: 0
-  cost: 0
 --- !u!50 &3437042106269158073
 Rigidbody2D:
   serializedVersion: 4
@@ -200,18 +184,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6275667472389048291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7098081600307430445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 537fa3fe36a7371439c35a70cc5c2c15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &707089632183771369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,23 +226,43 @@ MonoBehaviour:
   enemy_poolManager: {fileID: 0}
   minion_poolManager: {fileID: 0}
   atkTarget: {fileID: 0}
-  skillTarget: {fileID: 0}
   isDie: 0
   is_faint: 0
+  can_walk: 1
   can_action: 1
-  can_use_skill: 0
-  skill_info:
-    name: 
-    range: 0
-    damange: 0
-    casting_time: 0
-    cool_time: 0
-    cast_range: 0
-    target_check: 0
+  skills: []
   rigid: {fileID: 0}
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
   final_damage: 0
+--- !u!114 &6275667472389048291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7098081600307430445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 537fa3fe36a7371439c35a70cc5c2c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7171520234449864668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7098081600307430445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94b6b89997f1efb4f82e7608acf3372c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actor: {fileID: 0}
+  action: {fileID: 0}
+  atkType: 0
+  cost: 0
 --- !u!1001 &8931938873692002556
 PrefabInstance:
   m_ObjectHideFlags: 0

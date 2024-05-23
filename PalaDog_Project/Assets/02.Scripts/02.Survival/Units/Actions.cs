@@ -7,13 +7,14 @@ using UnityEngine;
 public class Actions: MonoBehaviour
 {
     Actor actor;
+    Skill skill;
 
 
 
     private void Awake()
     {
         actor = GetComponent<Actor>();    
-        
+        skill = GetComponent<Skill>();
     }
 
     public void StartUnitAction()
@@ -42,10 +43,10 @@ public class Actions: MonoBehaviour
         actor.can_action = true;
     }
 
-    public IEnumerator SkillTimer(int time)
+    public IEnumerator SkillTimer(int skill_slot_idx)
     {
-        yield return new WaitForSeconds(time);
-        actor.can_use_skill = true;
+        yield return new WaitForSeconds(actor.skills[skill_slot_idx].entry.coolTime);
+        actor.skills[skill_slot_idx].can_use_skill = true;
     }
 
 
@@ -87,8 +88,8 @@ public class Actions: MonoBehaviour
     public bool PlaySkill(int skill_slot_idx)
     {
         //TODO
-        StartCoroutine(SkillTimer(actor.skill_info.cool_time));
-        return SkillManager.Instance.UseSkill((SkillName)actor.cur_status.skill[skill_slot_idx], actor, actor.skillTarget);
+        StartCoroutine(SkillTimer(skill_slot_idx));
+        return skill.UseSkill((SkillName)actor.cur_status.skill[skill_slot_idx], actor, actor.skills[skill_slot_idx].target);
     }
 
     public bool AddBuff(int buff_idx)
@@ -96,8 +97,7 @@ public class Actions: MonoBehaviour
         //TODO
         switch((BuffName)buff_idx)
         {
-            case BuffName.A:
-                break;
+
             default:
                 return false;
         }

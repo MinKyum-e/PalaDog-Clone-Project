@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -12,19 +13,12 @@ public abstract class Unit : MonoBehaviour
 
     private void OnEnable()
     {
+
         actor = GetComponent<Actor>();
         action = GetComponent<Actions>();
-
         atkType = (gameObject.tag == "Enemy") ? UnitType.Minion : UnitType.Enemy;
         setStatus();
-        if (Parser.skill_info_dict.TryGetValue(actor.cur_status.skill[0], out actor.skill_info) == false)
-        {
-            actor.can_use_skill = false;
-        }
-        else
-        {
-            actor.can_use_skill = true;
-        }
+
         actor.cur_status.HP = actor.status.HP;
         actor.atkTarget = null;
 
@@ -35,7 +29,22 @@ public abstract class Unit : MonoBehaviour
         /*        StartCoroutine(NormalAttack());*/
 
         //GameManager.Instance.UpdateCost(info.cost); //cost 추가
+        for (int i = 0; i < 3; i++)
+        {
+            SkillEntry entry;
+            if (Parser.skill_table_dict.TryGetValue(actor.cur_status.skill[i], out entry))
+            {
+                actor.skills[i].entry = entry;
+                actor.skills[i].can_use_skill = (entry.act == SkillAct.P);
+            }
+            else
+            {
+                actor.skills[i].can_use_skill = false;
+            }
+
+        }
     }
+
 
 
     private void Update()
@@ -78,28 +87,43 @@ public abstract class Unit : MonoBehaviour
 
         if (actor.can_action)
         {
-            if (actor.can_use_skill)
+
+            //스킬 우선 실행
+            for (int i = 0; i < 3; i++)
             {
-                //타켓 지정 필요?
-                if (actor.skill_info.target_check)
+                if (actor.skills[i].entry.act == SkillAct.A)//패시브만 실행되야함
+                    continue;
+
+                if (actor.skills[i].can_use_skill)
                 {
-                    //스킬 고유 타겟 지정 방식 채택
-                    actor.skillTarget = setAttackTarget(actor.skillTarget, actor.skill_info.cast_range, atkType);
-                    if (actor.can_use_skill && actor.skillTarget != null && actor.skillTarget.GetComponent<Actor>().isDie == false)
+                    //타켓 지정 가능?
+                    if (actor.skills[i].entry.need_searching)
+                    {
+                        //스킬 고유 타겟 지정 방식 선택
+                        actor.skills[i].target = setAttackTarget(actor.skills[i].target, actor.skills[i].entry.searching_range, atkType);
+                        if (actor.can_action && actor.skills[i].target != null && actor.skills[i].target.GetComponent<Actor>().isDie == false)
+                        {
+                            actor.can_action = false;
+                            actor.skills[i].can_use_skill = false;
+                            actor.animator.SetTrigger("Skill");
+                        }
+                    }
+                    else
                     {
                         actor.can_action = false;
-                        actor.can_use_skill = false;
+                        actor.skills[i].can_use_skill = false;
                         actor.animator.SetTrigger("Skill");
                     }
-                }
-                else
-                {
-                    actor.can_action = false;
-                    actor.animator.SetTrigger("Skill");
+
                 }
             }
-            else
+
+            
+
+            //일반공격(차순)
+            if (actor.can_action)
             {
+
                 actor.atkTarget = setAttackTarget(actor.atkTarget, actor.cur_status.atkRange, atkType);
                 if (actor.atkTarget != null && actor.atkTarget.GetComponent<Actor>().isDie == false)
                 {
@@ -109,6 +133,7 @@ public abstract class Unit : MonoBehaviour
             }
         }
 
+        
     }
 
     void FixedUpdate()

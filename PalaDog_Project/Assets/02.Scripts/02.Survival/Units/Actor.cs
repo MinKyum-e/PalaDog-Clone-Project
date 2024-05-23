@@ -1,6 +1,7 @@
 
 using UnityEngine;
 
+using System.Collections.Generic;
 
 
 public class Actor : MonoBehaviour
@@ -14,17 +15,13 @@ public class Actor : MonoBehaviour
     public PoolManager minion_poolManager;
 
 
-
-
     public GameObject atkTarget;
-    public GameObject skillTarget;
     public bool isDie = false;
     public bool is_faint = false;
     public bool can_walk = true;
     public bool can_action = true;
-    public bool can_use_skill = false;
 
-    public SkillInfo skill_info;
+    public ActorSkillInfo[] skills;
     public Rigidbody2D rigid;
     public SpriteRenderer spriteRenderer; 
     public Animator animator;
@@ -38,7 +35,11 @@ public class Actor : MonoBehaviour
         animator = GetComponent<Animator>();
         enemy_poolManager = GameObject.FindGameObjectWithTag("EnemyPool").GetComponent<PoolManager>();
         minion_poolManager = GameObject.FindGameObjectWithTag("MinionPool").GetComponent<PoolManager>();
-
+        skills = new ActorSkillInfo[3];
+        for(int i=0;i<3;i++)
+        {
+            skills[i] = new ActorSkillInfo();
+        }
     }
     private void OnEnable()
     {

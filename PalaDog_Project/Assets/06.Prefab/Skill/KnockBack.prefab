@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac3f11d0498ae2743b6142f625ddec3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 11111
+  ID: 10021
   status:
     index: 0
     name: 
@@ -141,23 +141,14 @@ MonoBehaviour:
     _melee_attack_ignore: 0
     _magic_attack_ignore: 0
     _projectile_attack_ignore: 0
+  enemy_poolManager: {fileID: 0}
+  minion_poolManager: {fileID: 0}
   atkTarget: {fileID: 0}
-  skillTarget: {fileID: 0}
-  isWalk: 0
   isDie: 0
   is_faint: 0
-  hit_time: 0
+  can_walk: 1
   can_action: 1
-  can_search: 1
-  can_attack: 1
-  can_use_skill: 0
-  skill_info:
-    name: 
-    range: 0
-    damange: 0
-    casting_time: 0
-    cool_time: 0
-    cast_range: 0
+  skills: []
   rigid: {fileID: 0}
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
