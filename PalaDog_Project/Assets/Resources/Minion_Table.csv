@@ -1,5 +1,0 @@
-몬스터 테이블,,,,,,,,,,,
-~~~~,,,,,,,,,,,
-Unit_Index,Unit_Name,Unit_DevName,Unit_Group,Unit_GameName,Unit_Cost,Unit_HP,Unit_Atk,Unit_AtkRange,Unit_AtkSpeed,Unit_MoveSpeed,Unit_Skill
-0,Dragon,Dragon,0,Dragon,1,100,10,6,0.5,2,0
-1,Rhino,Rhino,1,Rhino,2,150,20,3,2,2,1

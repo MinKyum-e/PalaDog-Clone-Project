@@ -155,7 +155,7 @@ public class Parser : MonoBehaviour
                 string[] target_search_type_strings = Enum.GetNames(typeof(TargetSearchType));
                 for (int i = 0; i < target_search_type_strings.Length; i++)
                 {
-                    if (target_search_type_strings[i].Equals(act))
+                    if (target_search_type_strings[i].Equals(target_search_type))
                     {
                         e.target_search_type = (TargetSearchType)i;
                         break;
@@ -166,7 +166,7 @@ public class Parser : MonoBehaviour
                 string[] target_type_strings = Enum.GetNames(typeof(UnitType));
                 for (int i = 0; i < target_type_strings.Length; i++)
                 {
-                    if (target_type_strings[i].Equals(act))
+                    if (target_type_strings[i].Equals(target_type))
                     {
                         e.target_type = (UnitType)i;
                         break;
@@ -177,7 +177,7 @@ public class Parser : MonoBehaviour
                 string[] base_stat_strings = Enum.GetNames(typeof(BaseStat));
                 for (int i = 0; i < base_stat_strings.Length; i++)
                 {
-                    if (base_stat_strings[i].Equals(act))
+                    if (base_stat_strings[i].Equals(base_stat))
                     {
                         e.base_stat = (BaseStat)i;
                         break;

@@ -54,11 +54,18 @@ public struct ActorSkillInfo
 {
     public SkillEntry entry;
     public bool can_use_skill;
-    public GameObject target;
+    public Actor target;
 }
 
 
+public struct BuffStruct
+{
+    public bool full_immune;
+    public bool _melee_attack_ignore;
+    public bool _magic_attack_ignore;
+    public bool _projectile_attack_ignore;
 
+}
 
 
 [Serializable]

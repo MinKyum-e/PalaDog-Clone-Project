@@ -7,7 +7,7 @@ using UnityEngine;
 public class Actions: MonoBehaviour
 {
     Actor actor;
-    Skill skill;
+    public Skill skill;
 
 
 
@@ -22,7 +22,7 @@ public class Actions: MonoBehaviour
         actor.can_action = false;
     }
 
-    public int CalDagamge()
+    public int CalDagamge()//미사용
     {
         //버프
         //디버프
@@ -33,7 +33,7 @@ public class Actions: MonoBehaviour
     {
         if(actor.atkTarget != null && actor.atkTarget.activeSelf)/* && Utils.DistanceToTarget(actor.transform.position, actor.atkTarget.transform.position) <= actor.cur_status.atkRange)*/
         {
-            actor.atkTarget.GetComponent<Actions>().Hit(CalDagamge());
+            actor.atkTarget.GetComponent<Actions>().Hit(actor.cur_status.atk, actor.cur_status.job);
             
         }
     }
@@ -58,11 +58,40 @@ public class Actions: MonoBehaviour
         actor.rigid.velocity = Vector2.zero;
 
     }
-    public void Hit(int Damage)
+    public bool CheckAttackIgnore(BuffStruct buff, Chr_job job)
     {
-        actor.spriteRenderer.color = Color.red;
-        actor.cur_status.HP -= Damage;
-        StartCoroutine(WaitHit());
+        if (buff.full_immune)
+            return false;
+
+        switch (job)
+        {
+            
+            case Chr_job.melee:
+                if (buff._melee_attack_ignore) return false;
+                break;
+            case Chr_job.magic:
+                if (buff._magic_attack_ignore) return false;
+                break;
+            case Chr_job.projectile:
+                if (buff._projectile_attack_ignore) return false;
+                break;
+        }
+        return true;
+    }
+
+    public void Hit(int Damage, Chr_job attaker_job)
+    {
+        if(CheckAttackIgnore(actor.cur_buff, attaker_job))
+        {
+            actor.spriteRenderer.color = Color.red;
+            actor.cur_status.HP -= Damage;
+            StartCoroutine(WaitHit());
+        }
+        else
+        {
+            print(Enum.GetName(typeof(Chr_job), attaker_job) + "  공격 무효!!1");
+        }
+        
     }
     private IEnumerator WaitHit()
     {
@@ -89,7 +118,7 @@ public class Actions: MonoBehaviour
     {
         //TODO
         StartCoroutine(SkillTimer(skill_slot_idx));
-        return skill.UseSkill((SkillName)actor.cur_status.skill[skill_slot_idx], actor, actor.skills[skill_slot_idx].target);
+        return skill.UseSkill((SkillName)actor.cur_status.skill[skill_slot_idx], actor.skills[skill_slot_idx].target);
     }
 
     public bool AddBuff(int buff_idx)

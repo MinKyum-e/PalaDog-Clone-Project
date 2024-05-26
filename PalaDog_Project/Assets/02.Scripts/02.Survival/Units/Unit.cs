@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -9,6 +10,7 @@ public abstract class Unit : MonoBehaviour
 {
     public Actor actor;
     public Actions action;
+    public Skill skill;
     public UnitType atkType;
 
     private void OnEnable()
@@ -21,10 +23,10 @@ public abstract class Unit : MonoBehaviour
 
         actor.cur_status.HP = actor.status.HP;
         actor.atkTarget = null;
-
         actor.is_faint = false;
         actor.isDie = false;
         actor.can_action = true;
+        skill = GetComponent<Skill>();
 
         /*        StartCoroutine(NormalAttack());*/
 
@@ -94,25 +96,35 @@ public abstract class Unit : MonoBehaviour
                 if (actor.skills[i].entry.act == SkillAct.A)//패시브만 실행되야함
                     continue;
 
-                if (actor.skills[i].can_use_skill)
+                if (actor.can_action && actor.skills[i].can_use_skill)
                 {
                     //타켓 지정 가능?
                     if (actor.skills[i].entry.need_searching)
                     {
                         //스킬 고유 타겟 지정 방식 선택
-                        actor.skills[i].target = setAttackTarget(actor.skills[i].target, actor.skills[i].entry.searching_range, atkType);
-                        if (actor.can_action && actor.skills[i].target != null && actor.skills[i].target.GetComponent<Actor>().isDie == false)
+                        List<Actor> targets = skill.SearchingTargets((SkillName)actor.skills[i].entry.index);
+
+                        if(targets.Count >0)
                         {
-                            actor.can_action = false;
-                            actor.skills[i].can_use_skill = false;
-                            actor.animator.SetTrigger("Skill");
+                            actor.skills[i].target =targets[0];
+                            print("!!!!!!!!!!!!!!!!!!!!!" + actor.skills[i].target.name);
+                            if (actor.can_action && actor.skills[i].target != null && actor.skills[i].target.GetComponent<Actor>().isDie == false)
+                            {
+                                actor.can_action = false;
+                                actor.skills[i].can_use_skill = false;
+                                actor.animator.SetTrigger("Skill" + i);
+
+                                print((SkillName)actor.skills[i].entry.index);
+                            }
                         }
+                        
                     }
                     else
                     {
                         actor.can_action = false;
                         actor.skills[i].can_use_skill = false;
-                        actor.animator.SetTrigger("Skill");
+                        actor.animator.SetTrigger("Skill" + i);
+                        print((SkillName)actor.skills[i].entry.index);
                     }
 
                 }

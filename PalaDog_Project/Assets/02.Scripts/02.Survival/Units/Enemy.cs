@@ -14,95 +14,10 @@ public class Enemy: Unit
 
     private void Awake()
     {
-/*        actor = GetComponent<Actor>();
-        poolManager = GameObject.FindGameObjectWithTag("MinionPool").GetComponent<PoolManager>();*/
         player = GameObject.FindGameObjectWithTag("Player");
-/*        action = GetComponent<Actions>();*/
     }
-/*    private void OnEnable()
-    {
-        setStatus();
-        actor.cur_status.HP = actor.status.HP;
-        actor.atkTarget = null;
 
-        actor.is_faint = false;
-        actor.can_use_skill = false;
-        actor.isDie = false;
-        actor.can_action = true;
-
-    }*/
-/*    private void Update()
-    {
-
-        AnimatorStateInfo stateInfo = actor.animator.GetCurrentAnimatorStateInfo(0);
-
-        // 현재 애니메이터 상태가 타겟 애니메이션 상태와 일치하는지 확인합니다.
-        if (stateInfo.IsName("Attack"))
-        {
-            // 타겟 애니메이션 상태의 속도를 설정합니다.
-            actor.animator.speed = actor.cur_status.atkSpeed;
-        }
-        else
-        {
-            // 타겟 애니메이션 상태가 아닐 때 기본 속도로 되돌립니다.
-            actor.animator.speed = 1.0f;
-        }*/
-
-        /*        if (actor.atkTarget == null)
-                {
-                    actor.isWalk = true;
-                }*//*
-                if (actor.cur_status.HP <= 0)
-                {
-                    actor.isDie = true;
-                    actor.can_action = false;
-                    actor.atkTarget = null;
-                    actor.animator.Play("Die");
-                }
-
-        *//*        if(actor.is_faint)
-                {
-                }
-                else
-                {
-
-                }*//*
-
-                if(actor.can_action)
-                {
-                    *//*            if (actor.can_search)
-                                {
-
-                                }
-
-                                if (actor.can_use_skill && actor.atkTarget != null)
-                                {
-                                    if (actor.skillTarget.activeSelf && actor.skillTarget.GetComponent<Actor>().isDie == false)
-                                    {
-                                        actor.can_action = false;
-                                        actor.animator.SetTrigger("Skill");
-                                    }
-                                }*//*
-                    actor.atkTarget = setAttackTarget();
-                    if (actor.atkTarget != null &&actor.atkTarget.activeSelf && actor.atkTarget.GetComponent<Actor>().isDie == false)
-                    {
-                        actor.can_action = false;
-                        actor.animator.SetTrigger("Attack");
-                    }
-                }
-            }
-            void FixedUpdate()
-            {
-                //걷기
-                if (actor.can_action)
-                {
-
-                    action.Move();action.SetMoveDir("Player");
-
-                }
-            }*/
-
-        public override void setStatus()
+  public override void setStatus()
     {
         try
         {

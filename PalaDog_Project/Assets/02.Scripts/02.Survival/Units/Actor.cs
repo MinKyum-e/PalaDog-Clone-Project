@@ -10,7 +10,7 @@ public class Actor : MonoBehaviour
     public CommonStatus status;
     
     public CommonStatus cur_status;
-    public BuffStruct cur_buff = new BuffStruct();
+    public BuffStruct cur_buff;
     public PoolManager enemy_poolManager;
     public PoolManager minion_poolManager;
 
@@ -44,12 +44,15 @@ public class Actor : MonoBehaviour
     private void OnEnable()
     {
         cur_status.HP = status.HP;
-
+        cur_buff = new BuffStruct();
         /*cur_status.moveDir = Vector2.right;*/
     }
     //Ãß»ó
     /* public abstract void Die();
      public abstract void setStatus();*/
-
+    private void OnDisable()
+    {
+        
+    }
 }
 

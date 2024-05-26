@@ -2,10 +2,10 @@ DT_SkillEffectTable,,,
 스킬 효과 인덱스,스킬 효과 이름,스킬 효과 타입,스킬 효과 설명
 SkillEffect_Index,SkillEffect_Name,SkillEffect_Type,SkillEffect_Description
 int,string,enum,//string
+0,,Buff,
 1,,Buff,
 2,,Buff,
 3,,Buff,
-4,,Buff,
+4,,Debuff,
 5,,Debuff,
 6,,Debuff,
-7,,Debuff,

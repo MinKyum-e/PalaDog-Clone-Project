@@ -42,8 +42,8 @@ ID 참조)
 효과 2 지속시간",,
 Skill_Index,Skill_Name,Skill_DevName,Skill_Group,Skill_Act,Skill_CoolTime,Skill_Type,Skill_TargetType,Skill_TypeValue,Skill_BaseStat,Skill_DMGCoeff,Skill_Effect1Index,Skill_Effect1Value,Skill_Effect1Duration,Skill_Effect2Index,Skill_Effect2Value,Skill_Effect2Duration,Skill_TargetSearching,Skill_TargetSearchingRange
 int,string,string,int,enum,float,enum,enum,int,enum,float,int,int,int,enum,float,float,,
-10011,Skill_Knight_Advanced_001,자가 치유,1004,P,7,Target,Unit,1,None,0,2,30,2,1,5,5,FALSE,5
-10021,Skill_Knight_Hero_001,방패 펼치기,1004,P,30,Target,Unit,3,None,0,4,0,10,-1,0,0,TRUE,5
-20011,Skill_Bat_Boss_001,날개치기,1008,P,0,Range,Unit,5,Atk,0.4,6,8,0,-1,0,0,TRUE,5
-20012,Skill_Bat_Boss_002,흡혈,1002,P,5,Range,Unit,5,Atk,1.2,2,100,1,4,100,1,TRUE,5
+10011,Skill_Knight_Advanced_001,자가 치유,1004,P,15,Target,Unit,1,None,0,1,2,10,2,30,10,FALSE,5
+10021,Skill_Knight_Hero_001,방패 펼치기,1004,P,30,Target,Unit,3,None,0,3,0,10,-1,0,0,TRUE,2
+20011,Skill_Bat_Boss_001,날개치기,1008,P,7,Range,Unit,5,Atk,0.4,6,8,0,-1,0,0,TRUE,5
+20012,Skill_Bat_Boss_002,흡혈,1002,P,15,Range,Unit,5,Atk,1.2,-1,100,5,4,10,3,TRUE,5
 30011,Skill_Player_Player_001,치유의 오라,1002,A,60,Ora,Unit,99,None,0,4,100,15,-1,0,0,FALSE,5

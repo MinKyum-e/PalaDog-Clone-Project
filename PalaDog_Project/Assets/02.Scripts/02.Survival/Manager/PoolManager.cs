@@ -12,27 +12,43 @@ public class PoolManager : MonoBehaviour
 
     public Dictionary<int, int> index_dict; //index -> prefab index
 
+    public GameObject player;
+
     //풀 담당을 하는 리스트들
     public List<GameObject>[] pools;
     private void Awake()
     {
-        pools = new List<GameObject>[prefabs.Length];
+        if(gameObject.name == "MinionPool")
+        {
+            pools = new List<GameObject>[prefabs.Length + 1];
+        }
+        else
+        {
+            pools = new List<GameObject>[prefabs.Length ];
+        }
+        
 
         for(int i=0;i<pools.Length;i++)
         {
             pools[i] =new List<GameObject>();
         }
         index_dict = new Dictionary<int, int>();
-        
     }
     public void Start()
     {
+
+        if (gameObject.name == "MinionPool")
+        {
+            pools[pools.Length - 1].Add(GameObject.Find("Player"));
+        }
+        
         for (int i = 0; i < prefabs.Length; i++)
         {
             int id = prefabs[i].gameObject.GetComponent<Actor>().ID;
             index_dict[id] = i;
         }
-    }
+
+    } 
 
     public GameObject Get(int ID)
     {

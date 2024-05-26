@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,38 +9,48 @@ using static UnityEngine.GraphicsBuffer;
 //범위, 데미지, 캐스팅시간, 쿨타임 알고있다고 치고
 public class Skill:MonoBehaviour
 {
-  /*  private static SkillManager _instance;
-    public static SkillManager Instance { get { return _instance; } }*/
+    private struct Candidate
+    {
+        public float dist;
+        public GameObject target;
+    }
+    /*  private static SkillManager _instance;
+      public static SkillManager Instance { get { return _instance; } }*/
     private PoolManager skillPool;
+    private Actor actor;
 
     private void Awake()
     {
        /* _instance = this;*/
         skillPool = GameObject.FindGameObjectWithTag("SkillPool").GetComponent<PoolManager>();
+        actor = GetComponent<Actor>();
     }
 
-    public List<Actor> SearchingMainTarget(SkillName index, Actor actor)
+    public List<Actor> SearchingTargets(SkillName index)
     {
-        switch (index)
+        SkillEntry s = Parser.skill_table_dict[(int)index];
+        switch (s.target_search_type)
         {
-            case SkillName.KnockBack:
-                return null;
-            case SkillName.SelfHealing:
-                return NearTargets((int)index, actor);
+            case TargetSearchType.Target:
+                return NearTargets(s);
+            case TargetSearchType.Range:
+                return RangeTargets(s);
             default:
                 return null;
         }
     }
 
-    public bool UseSkill(SkillName index, Actor actor, GameObject target)//스킬 인덱스, 시전자, 타겟
+    public bool UseSkill(SkillName index, Actor target)//스킬 인덱스, 시전자, 타겟
     {
-        switch (index)
+        SkillEntry s = Parser.skill_table_dict[(int)index];
+        List<Actor> targets = SearchingTargets(index);
+        switch (s.base_stat)
         {
-            case SkillName.KnockBack:
-                StartCoroutine(RangeSKill((int)index, actor, target));
+            case BaseStat.None:
+                NoneTypeBuff(s, targets);
                 break;
-            case SkillName.SelfHealing:
-                SelfHealing((int)index, actor);
+            case BaseStat.Atk:
+                AttackTypeBuff(s, targets);
                 break;
             default:
 
@@ -48,35 +59,75 @@ public class Skill:MonoBehaviour
         return true;
     }
 
-    public void SelfHealing(int index, Actor actor)
+/*    public void SelfHealing(SkillEntry s)
     {
-        SkillEntry s = Parser.skill_table_dict[(int)index];
-        List<Actor> target_list = NearTargets((int)index, actor);
+        List<Actor> target_list = NearTargets(s);
         print("자가치유!!! : " + target_list[0].name);
         //list 첫 유닛한태 버프 적용하기
-        BuffSystem buffSystem = target_list[0].transform.Find("Buff").GetComponent<BuffSystem>();
-        for(int i=0;i<s.skill_effects.Length;i++)
+        if(target_list.Count > 0)
         {
-            if (s.skill_effects[i].index == -1) continue;
-            buffSystem.Apply((BuffName)s.skill_effects[i].index, s.skill_effects[i].value, s.skill_effects[i].duration);
+            BuffSystem buffSystem = target_list[0].transform.Find("Buff").GetComponent<BuffSystem>();
+
+            for (int i = 0; i < s.skill_effects.Length; i++)
+            {
+                if (s.skill_effects[i].index == -1) continue;
+                buffSystem.Apply((BuffName)s.skill_effects[i].index, s.skill_effects[i].value, s.skill_effects[i].duration, 0);
+            }
         }
         
+    }*/
+
+    public void NoneTypeBuff(SkillEntry s, List<Actor> target_list)
+    {
+        if(target_list.Count > 0)
+        {
+            for (int i = 0; i < target_list.Count; i++)
+            {
+
+                print("방패 펼치기!! : " + target_list[i].name);
+                BuffSystem buffSystem = target_list[i].transform.Find("Buff").GetComponent<BuffSystem>();
+                for (int j = 0; j < s.skill_effects.Length; j++)
+                {
+                    if (s.skill_effects[j].index == -1) continue;
+                    buffSystem.Apply((BuffName)s.skill_effects[j].index, s.skill_effects[j].value, s.skill_effects[j].duration, 0);
+                }
+                
+                
+            }
+        }
         
+
     }
 
-    private struct Candidate
+    public void AttackTypeBuff(SkillEntry s, List<Actor> target_list)
     {
-        public float dist;
-        public GameObject target;
+        if (target_list.Count > 0)
+        {
+            for (int i = 0; i < target_list.Count; i++)
+            {
+                BuffSystem buffSystem = target_list[i].transform.Find("Buff").GetComponent<BuffSystem>();
+                for (int j = 0; j < s.skill_effects.Length; j++)
+                {
+                    if (s.skill_effects[j].index == -1) continue;
+                    target_list[i].gameObject.GetComponent<Actions>().Hit((int)((float)actor.cur_status.atk * s.DMGCoeff), actor.cur_status.job);
+                    buffSystem.Apply((BuffName)s.skill_effects[j].index, s.skill_effects[j].value, s.skill_effects[j].duration, 0);
+                }
+
+
+            }
+        }
+
+
     }
-    public List<Actor> NearTargets(int index, Actor actor)
+
+
+
+    public List<Actor> NearTargets(SkillEntry s)
     {
-        SkillEntry s = Parser.skill_table_dict[index];
         List<Actor> result = new List<Actor>();
-
         List<Candidate> candidates = new List<Candidate>();
         PoolManager targetPool = ((s.target_type == UnitType.Enemy) ? actor.enemy_poolManager : actor.minion_poolManager);
-
+        print(targetPool.name);
         //스킬 범위 내에 있는 애들 찾기
         foreach (List<GameObject> units in targetPool.pools)
         {
@@ -97,42 +148,49 @@ public class Skill:MonoBehaviour
         //sort
         List<Candidate> sorted_candidates = candidates.OrderBy(x=>x.dist).ToList();
 
-        for(int i=0;i<s.target_search_num;i++)
+        for(int i=0;i<sorted_candidates.Count;i++)
         {
+            if (s.target_search_num <= i) break;
             result.Add(sorted_candidates[i].target.GetComponent<Actor>());  
         }
         return result;
 
     }
 
-    public void RangeTargets(int index, Actor actor, GameObject main_target)
-    {
-        SkillInfo s = Parser.skill_info_dict[index];
-
-    }
 
     public void OraTargets()
     {
 
     }
 
-    public IEnumerator RangeSKill(int index, Actor actor, GameObject target)
+
+    public List<Actor> RangeTargets(SkillEntry s)
     {
-        SkillEntry s = Parser.skill_table_dict[index];
-        if (target.activeSelf == true)
+        List<Actor> result = new List<Actor>();
+
+        PoolManager targetPool = ((s.target_type == UnitType.Enemy) ? actor.enemy_poolManager : actor.minion_poolManager);
+
+        //스킬 범위 내에 있는 애들 찾기
+        foreach (List<GameObject> units in targetPool.pools)
         {
-            GameObject skill_clone = skillPool.Get(index);
-            skill_clone.GetComponent<Actor>().cur_status.atk = actor.cur_status.atk;
-            skill_clone.transform.localScale = new Vector3(5, 5, 1);
-            skill_clone.transform.position = new Vector3(actor.transform.position.x + 0.5f, actor.transform.position.y, 0);
-            BoxCollider2D clone_collider = skill_clone.GetComponent<BoxCollider2D>();
-            clone_collider.enabled = true;
-            yield return new WaitForSeconds(0.1f);
-            clone_collider.enabled = false;
-            skill_clone.transform.position = new Vector3(0, 100, 0);
-            skill_clone.SetActive(false);
+            foreach (GameObject u in units)
+            {
+                if (u.GetComponent<Actor>().isDie) { continue; }
+                float tmp_dist = Utils.DistanceToTarget(u.transform.position, transform.position);
+                if (tmp_dist <= s.searching_range)
+                {
+                    if(actor.cur_status.moveDir.x > 0  && (u.transform.position.x - actor.transform.position.x) <= 0)
+                        continue;
+                    if (actor.cur_status.moveDir.x < 0 && (u.transform.position.x - actor.transform.position.x) >= 0)
+                        continue;
+             
+                    result.Add(u.GetComponent<Actor>());   
+                }
+            }
         }
+        return result;
     }
+
 
 
 

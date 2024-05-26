@@ -23,13 +23,13 @@ public class KnockBack : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         print("target : " + collision.name);
-        if (collision.gameObject.activeSelf && collision.name != "EnemyBase"&& target_tag == collision.tag && Buff.CheckAttackIgnore(collision.GetComponent<Actor>().cur_buff, actor.cur_status.job))
+        if (collision.gameObject.activeSelf && collision.name != "EnemyBase"&& target_tag == collision.tag)
         {
             
             Vector3 target_position = collision.transform.position;
             if(target_position.x < boxCollider.bounds.max.x )
             {
-                collision.GetComponent<Actions>().Hit(actor.cur_status.atk);
+                collision.GetComponent<Actions>().Hit(actor.cur_status.atk, Chr_job.melee);
                 collision.transform.DOMove(new Vector3(boxCollider.bounds.max.x, target_position.y, target_position.z), 0.3f);
                 
             }

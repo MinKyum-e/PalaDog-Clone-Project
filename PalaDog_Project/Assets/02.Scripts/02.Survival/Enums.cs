@@ -10,8 +10,8 @@ public enum UnitType //안쓰는중
 
 public enum SkillName
 {
-    KnockBack = 10021,
     SelfHealing = 10011,
+    ShieldDeployment = 10021,
     WingFlap = 20011,
     LifeDrain = 20012,
     HealingAura = 30011,
@@ -52,7 +52,7 @@ public enum BuffName
     ATKBoost = 0,
     ATKSpeedBoost,
     Heal,
-    Immune,
+    FullImmune,
     Poison,
     Stun,
     KnockBack,
