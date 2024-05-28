@@ -14,10 +14,15 @@ public class CostUI: MonoBehaviour
         tmp = GetComponent<TMP_Text>();
     }
 
+    private void Update()
+    {
+        SetCostUI();
+    }
+
     public void SetCostUI()
     {
 
-        tmp.text = "Cost : " + GameManager.Instance.GetCost() + " / " + GameManager.Instance.MAX_COST;
+        tmp.text = "Cost : " + GameManager.Instance.cur_cost + " / " + GameManager.Instance.MAX_COST;
 
     }
 

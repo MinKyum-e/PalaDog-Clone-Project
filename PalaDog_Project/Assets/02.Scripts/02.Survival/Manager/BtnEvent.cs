@@ -49,4 +49,14 @@ public class BtnEvent : MonoBehaviour
         GameManager.Instance.ChangeChapter();
     }
 
+    public void ShowMeTheGold()
+    {
+        GameManager.Instance.cur_gold += 10000;
+    }
+
+    public void ShowMeTheFood()
+    {
+        GameManager.Instance.cur_food += 1000;
+    }
+
 }

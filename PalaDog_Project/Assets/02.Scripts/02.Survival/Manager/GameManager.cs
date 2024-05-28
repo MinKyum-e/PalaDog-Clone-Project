@@ -1,3 +1,4 @@
+using ShopEnums;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -32,9 +33,10 @@ public class GameManager : MonoBehaviour
     public int chapter = 1;
     public int wave = 1;
     public int stage = 1;
-    private int cur_cost= 0;
-    private int cur_gold = 0;
-    private float cur_food = 0;
+    private int _cur_cost= 0;
+    private int _cur_gold = 0;
+    private float _cur_food = 0;
+    private float _food_per_time = 1;
     
 
     public GameState state;
@@ -62,14 +64,16 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1.0f;
         GameObject.Find("EnemyBase").SetActive(true);
         UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
-        SetCost(0);
-        SetGold(0);
+        cur_cost = 0;
+        cur_gold = 0;
     }
 
     private void Update()
     {
+        if (cur_food < MAX_FOOD)
+            cur_food +=Time.deltaTime * _food_per_time;
         //게임 로직
-        switch(state)
+        switch (state)
         {
             case GameState.GAME_PLAY:
 
@@ -111,6 +115,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void ResetBaseStat()
+    {
+        MAX_COST = ShopManager.Instance.GetEnforceValue(EnforceType.MAX_Cost, 0);
+        MAX_FOOD = ShopManager.Instance.GetEnforceValue(EnforceType.MAX_Food, 0);
+        food_per_time = ShopManager.Instance.GetEnforceValue(EnforceType.Gain_Food, 0);
+        
+    }
     public void PauseGame()
     {
         Time.timeScale = 0;
@@ -125,9 +136,9 @@ public class GameManager : MonoBehaviour
         wave = 1;
         stage = 1;
         chapter = 1;
-        SetCost(0);
-        SetGold(0);
-        SetFood (0);
+        cur_cost = 0;
+        cur_gold = 0;
+        cur_food = 0;
         EnemyBase.Instance().actor.cur_status.HP = EnemyBase.Instance().actor.status.HP;
         UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
         Player.Instance.actor.cur_status.HP = Player.Instance.actor.status.HP;
@@ -152,17 +163,16 @@ public class GameManager : MonoBehaviour
 
     public void StageClear()
     {
-        
-        
         WaveManager.Instance.ClearMonsterObjectOnStage();
-        SetCost(0);
-        SetFood(0);
+        cur_cost = 0;
+        cur_food = 0;
         stage++;
         wave = 1;
         Player.Instance.transform.position = player_defualt_position;
         Player.Instance.actor.cur_status.HP = Player.Instance.actor.status.HP;
         state = GameState.GAME_PLAY;
         EnemyBase.Instance().gameObject.SetActive(true);
+        EnemyBase.Instance().GetComponent<Actor>().isDie = false;
 
     }
     public void ChangeChapter()
@@ -170,8 +180,8 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         state = GameState.GAME_PLAY;
         wave = 1;
-        SetCost(0);
-        SetFood(0);
+        cur_cost = 0;
+        cur_food = 0;
         Player.Instance.transform.position = player_defualt_position;
         Player.Instance.actor.cur_status.HP = Player.Instance.actor.status.HP;
         state = GameState.GAME_PLAY;
@@ -190,58 +200,44 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         
     }
+    
+
     public void GameClear()
     {
         Time.timeScale = 0;
         UIManager.Instance.SetCurrentPage(UIPageInfo.GameClear);
+    }
+
+
+    public float food_per_time
+    {
+        get { return _food_per_time; }
+        set { _food_per_time = value; }
+    }
+   
+
+    public int cur_cost
+    {
+        get { return _cur_cost; }
+        set { _cur_cost = value; }
+    }
+    public float cur_food
+    {
+        get { return _cur_food;}
+        set { _cur_food = value; }
+    }
+    public int cur_gold
+    {
+        get { return _cur_gold; }
+        set { _cur_gold = value; }
     }
     public bool CheckCost(int cost)
     {
         return (cur_cost + cost <= MAX_COST);
     }
 
-    public void SetCost(int cost)
-    {
-        cur_cost = cost;
-        CostUI.instance.SetCostUI();
-    }
-    public int GetCost() {
-        return cur_cost; }
-
-    public void UpdateCost(int cost)
-    {
-        cur_cost += cost;
-        CostUI.instance.SetCostUI();
-    }
     public bool CheckFood()
     {
         return (cur_food <= MAX_FOOD);
-    }
-    public void SetFood(float food)
-    {
-        cur_food = food;
-    }
-    public void UpdateFood(float food)
-    {
-        cur_food += food;
-    }
-    public float GetFood()
-    {
-        return cur_food;
-    }
-
-    public void UpdateGold(int gold)
-    {
-        cur_gold += gold;
-        GoldUI.instance.SetGoldUI();
-    }
-    public void SetGold(int gold)
-    {
-        cur_gold = gold;
-        GoldUI.instance.SetGoldUI();
-    }
-    public int GetGold()
-    {
-        return cur_gold;
     }
 }

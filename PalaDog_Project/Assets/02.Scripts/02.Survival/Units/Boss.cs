@@ -7,11 +7,12 @@ public class Boss: Enemy
 
     public override void Die()
     {
+        
         if(GameManager.Instance.chapter == GameManager.Instance.MAX_CHAPTER)
-            {
+        {
             GameManager.Instance.state = GameState.GAME_CLEAR;
         }
-            else
+        else
         {
             GameManager.Instance.state = GameState.GAME_CHAPTER_CLEAR;
         }
@@ -19,7 +20,6 @@ public class Boss: Enemy
 
         gameObject.SetActive(false);
         gameObject.transform.position = new Vector3(100, 0, 0);
-        GameManager.Instance.UpdateGold(gold);
     }
 
 }

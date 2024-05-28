@@ -30,7 +30,7 @@ public class Minion: Unit
         actor.spriteRenderer.color = Color.white;
         gameObject.SetActive(false);
         gameObject.transform.position = new Vector3(100, 0, 0);
-        GameManager.Instance.UpdateCost(-cost);
+        GameManager.Instance.cur_cost -= cost;
     }
 
 

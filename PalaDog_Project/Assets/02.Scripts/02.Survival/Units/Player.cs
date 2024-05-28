@@ -6,16 +6,18 @@ public class Player: MonoBehaviour
     public Actor actor;
     public Actions action;
     private static Player instance;
-    int auraLV;
+    public Transform aura;
 
     private void Awake()
     {
         if(instance == null)
         {
             instance = this;
+
             DontDestroyOnLoad(gameObject);
             actor = GetComponent<Actor>();
             action = GetComponent<Actions>();
+            aura = transform.Find("Aura");
         }
         else
         {
@@ -46,6 +48,13 @@ public class Player: MonoBehaviour
 
     }
 
+    public void SetAuraRange(int value)
+    {
+        aura.localScale = new Vector3(value, value, value);
+    }
+
+    
+
     public static Player Instance //게임매니저 인스턴스 접근
     {
         get
@@ -70,7 +79,7 @@ public class Player: MonoBehaviour
         {
             actor.status = Parser.minion_status_dict[actor.ID].common;
             actor.cur_status = Parser.minion_status_dict[actor.ID].common;
-            auraLV = 1;
+            aura.localScale = new Vector3(30, 30, 30);
         }
         catch { Debug.Log("status Setting Error Player"); }
         

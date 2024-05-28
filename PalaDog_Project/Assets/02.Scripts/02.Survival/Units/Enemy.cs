@@ -83,7 +83,7 @@ public class Enemy: Unit
         actor.spriteRenderer.color = Color.white;
         gameObject.SetActive(false);
         gameObject.transform.position = new Vector3(100, 0, 0);
-        GameManager.Instance.UpdateGold(gold);
+        GameManager.Instance.cur_gold +=gold;
     }
 
 }

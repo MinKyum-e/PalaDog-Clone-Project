@@ -15,10 +15,15 @@ public class GoldUI : MonoBehaviour
         tmp = GetComponent<TMP_Text>();
     }
 
+    private void Update()
+    {
+        SetGoldUI();
+    }
+
     public void SetGoldUI()
     {
 
-        tmp.text = "Gold : " + GameManager.Instance.GetGold();
+        tmp.text = "Gold : " + GameManager.Instance.cur_gold;
     }
 
 }

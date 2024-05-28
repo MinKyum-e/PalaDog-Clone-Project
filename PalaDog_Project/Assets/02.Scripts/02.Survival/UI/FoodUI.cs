@@ -20,7 +20,7 @@ public class FoodUI : MonoBehaviour
     static void SetFoodUI()
     {
         
-        tmp.text = "Food : " + (int)GameManager.Instance.GetFood() + " / " + GameManager.Instance.MAX_FOOD ;
+        tmp.text = "Food : " + (int)GameManager.Instance.cur_food   + " / " + GameManager.Instance.MAX_FOOD ;
     }
 
 }

@@ -58,7 +58,7 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (is_lock && GameManager.Instance.GetGold() >= unlock_gold && ShopManager.Instance.CheckPrerequisite(ShopEnums.UnLockType.InGameUnit, prerequisite))
+        if (is_lock && GameManager.Instance.cur_gold >= unlock_gold && ShopManager.Instance.CheckPrerequisite(ShopEnums.UnLockType.InGameUnit, prerequisite))
         {
             UnLock();
         }
@@ -66,7 +66,7 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
 
     public void UnLock()
     {
-        GameManager.Instance.UpdateGold(-unlock_gold);
+        GameManager.Instance.cur_gold -= unlock_gold;
         is_lock = false;
         image_renderer.sprite = unlocked_sprite;
         unlock_gold_text.text = draggableUI.requisite_food.ToString();
