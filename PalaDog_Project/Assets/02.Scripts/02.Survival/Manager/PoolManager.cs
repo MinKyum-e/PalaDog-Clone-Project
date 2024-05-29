@@ -1,6 +1,5 @@
 
 using System.Collections.Generic;
-
 using UnityEngine;
 
 
@@ -49,17 +48,21 @@ public class PoolManager : MonoBehaviour
         }
 
     } 
+    public int GetUnitCount(int id)
+    {
+        return pools[index_dict[id]].Count;
+    }
 
-    public GameObject Get(int ID)
+    public GameObject Get(int ID, Vector3 spawnPoint)
     {
         GameObject select = null;
 
 
-        foreach (GameObject item in pools[index_dict[ID]])
+        for(int i=0;i< pools[index_dict[ID]].Count;i++)
         {
-            if (!item.activeSelf)
+            if (!pools[index_dict[ID]][i].activeSelf)
             {
-                select = item;
+                select = pools[index_dict[ID]][i];
                 select.SetActive(true);
                 break;
             }
@@ -67,6 +70,12 @@ public class PoolManager : MonoBehaviour
         if (select == null)
         {
             select = Instantiate(prefabs[index_dict[ID]], transform);
+            var sr = select.GetComponent<SpriteRenderer>();
+            float prev = sr.sortingOrder;
+            sr.sortingOrder = sr.sortingOrder -pools[index_dict[ID]].Count;
+            print(-1 + (sr.sortingOrder - prev) / 50);
+            select.transform.position = new Vector3(spawnPoint.x, spawnPoint.y+0.4f, -1f + ((prev - (float)sr.sortingOrder)/15f));
+
             pools[index_dict[ID]].Add(select);
         }
 

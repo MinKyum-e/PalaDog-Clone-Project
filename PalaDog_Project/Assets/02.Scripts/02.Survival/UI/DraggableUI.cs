@@ -19,7 +19,6 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public int minion_idx;
     public int requisite_food;
-    ShopItemInfo spawn_info;
 
 
     private void Awake()
@@ -87,12 +86,8 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
                 //spawnPoint.y = Mathf.Clamp(spawnPoint.y, playerTransform.position.y + yMin, playerTransform.position.y + yMax);
                 spawnPoint.y = playerTransform.position.y;
-                spawnPoint.z = playerTransform.position.z;
-
-                Minion minion = poolManager.Get(minion_idx).GetComponent<Minion>();
-                minion.transform.position = new Vector3(spawnPoint.x, spawnPoint.y + 0.4f, Random.Range(-1, 1));
+                Minion minion = poolManager.Get(minion_idx, spawnPoint).GetComponent<Minion>();
                 minion.tag = "Minion";
-                minion.GetComponent<SpriteRenderer>().sortingOrder = 4;
 
                 GameManager.Instance.cur_food -=requisite_food;
                 GameManager.Instance.cur_cost +=minion.cost;

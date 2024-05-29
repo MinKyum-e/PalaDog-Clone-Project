@@ -42,6 +42,7 @@ public class WaveManager : MonoBehaviour
     public List<Coroutine> coroutine_list ;
     private PoolManager monsterPool;
     public WaveType wave_type = WaveType.Normal;
+    int sort_num;
 
     private void Awake()
     {
@@ -106,10 +107,9 @@ public class WaveManager : MonoBehaviour
     {
         for(int i=0;i<num;i++)
         {
-            GameObject clone = monsterPool.Get(idx);
+            GameObject clone = monsterPool.Get(idx, transform.position);
             Color c = clone.GetComponent<SpriteRenderer>().color;
             //clone.GetComponent<SpriteRenderer>().color = new Color(c.r, c.g,  c.b, 1);
-            clone.transform.position = new Vector3(transform.position.x, transform.position.y, Random.Range(-1, 1));
             clone.tag = "Enemy";
             yield return new WaitForSeconds(0.5f);
         }

@@ -53,6 +53,27 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: New Layer 1
+  - name: BackGround
+    uniqueID: 363429673
+    locked: 0
+  - name: EnemyBase
+    uniqueID: 983927875
+    locked: 0
+  - name: Aura
+    uniqueID: 1355018475
+    locked: 0
+  - name: Enemy
+    uniqueID: 2759510633
+    locked: 0
+  - name: Minion
+    uniqueID: 2983789821
+    locked: 0
+  - name: UniqueUnit
+    uniqueID: 191429799
+    locked: 0
+  - name: Player
     uniqueID: 1244293725
+    locked: 0
+  - name: UI
+    uniqueID: 2219946601
     locked: 0
