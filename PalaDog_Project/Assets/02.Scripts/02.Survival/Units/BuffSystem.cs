@@ -73,15 +73,19 @@ public class BuffSystem : MonoBehaviour
     }
     private void KnockBack(float value, float dir)
     {
-        
-        if(dir > 0)
+        /*        
+                if(!actor.cur_buff.full_immune)
+                {*/
+        if (dir > 0)
         {
             actor.transform.DOMove(new Vector3(actor.transform.position.x + value, actor.transform.position.y, actor.transform.position.z), 0.3f);
         }
         else
         {
-            actor.transform.DOMove(new Vector3(actor.transform.position.x -value, actor.transform.position.y, actor.transform.position.z), 0.3f);
+            actor.transform.DOMove(new Vector3(actor.transform.position.x - value, actor.transform.position.y, actor.transform.position.z), 0.3f);
         }
+    //}
+        
     }
 
 

@@ -82,7 +82,7 @@ public class Enemy: Unit
     {
         actor.spriteRenderer.color = Color.white;
         gameObject.SetActive(false);
-        gameObject.transform.position = new Vector3(100, 0, 0);
+        gameObject.transform.position = new Vector3(100, 0, gameObject.transform.position.z);
         GameManager.Instance.cur_gold +=gold;
     }
 

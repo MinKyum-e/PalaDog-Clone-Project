@@ -9,7 +9,7 @@
  참조 인덱스",웨이브 내 몬스터 수
 Wave_Index,Wave_Name,Wave_DevName,Wave_Group,Wave_StageNum,Wave_WaveNum,Wave_WaveType,Wave_SpawnTime,Wave_MonsterIndex,Wave_MonsterNum
 int,string,string,int,int,int,enum,int,int,int
-10111,Stage1_Wave1_001,스테이지1_웨이브1_001,1011,1,1,Normal,5,10011,1
+10111,Stage1_Wave1_001,스테이지1_웨이브1_001,1011,1,1,Normal,4,10011,1
 10112,Stage1_Wave1_001,스테이지1_웨이브1_001,1011,1,1,Normal,6,10012,1
 10121,Stage1_Wave2_001,스테이지1_웨이브2_001,1012,1,2,Normal,10,10011,3
 10122,Stage1_Wave2_001,스테이지1_웨이브2_002,1012,1,2,Normal,15,10012,3
@@ -22,8 +22,8 @@ int,string,string,int,int,int,enum,int,int,int
 20112,,,1011,2,1,Normal,10,10012,1
 20121,Stage1_Wave2_001,스테이지1_웨이브2_001,1012,2,2,Normal,10,10011,3
 20122,Stage1_Wave2_001,스테이지1_웨이브2_002,1012,2,2,Normal,15,10012,3
-20131,Stage1_Wave3_001,스테이지1_웨이브3_001,1013,2,3,Boss,3,10012,1
-20132,Stage1_Wave3_002,스테이지1_웨이브3_002,1013,2,3,Boss,3,10011,1
+20131,Stage1_Wave3_001,스테이지1_웨이브3_001,1013,2,3,Normal,3,10012,1
+20132,Stage1_Wave3_002,스테이지1_웨이브3_002,1013,2,3,Normal,3,10011,1
 20141,Stage1_Wave3_001,스테이지1_웨이브3_001,1013,2,4,Boss,10,10012,1
 20142,Stage1_Wave3_002,스테이지1_웨이브3_002,1013,2,4,Boss,15,10011,1
 20143,Stage1_Wave3_003,스테이지1_웨이브3_003,1013,2,4,Boss,99999999,20001,1
@@ -42,8 +42,8 @@ int,string,string,int,int,int,enum,int,int,int
 40112,,,1011,4,1,Normal,10,10012,1
 40121,Stage1_Wave2_001,스테이지1_웨이브2_001,1012,4,2,Normal,10,10011,3
 40122,Stage1_Wave2_001,스테이지1_웨이브2_002,1012,4,2,Normal,15,10012,3
-40131,Stage1_Wave3_001,스테이지1_웨이브3_001,1013,4,3,Boss,3,10012,1
-40132,Stage1_Wave3_002,스테이지1_웨이브3_002,1013,4,3,Boss,3,10011,1
+40131,Stage1_Wave3_001,스테이지1_웨이브3_001,1013,4,3,Normal,3,10012,1
+40132,Stage1_Wave3_002,스테이지1_웨이브3_002,1013,4,3,Normal,3,10011,1
 40141,Stage1_Wave3_001,스테이지1_웨이브3_001,1013,4,4,Boss,10,10012,1
 40142,Stage1_Wave3_002,스테이지1_웨이브3_002,1013,4,4,Boss,15,10011,1
 40143,Stage1_Wave3_003,스테이지1_웨이브3_003,1013,4,4,Boss,99999999,20001,1

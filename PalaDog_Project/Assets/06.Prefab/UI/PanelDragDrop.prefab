@@ -4332,6 +4332,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: sheepUI
       objectReference: {fileID: 0}
+    - target: {fileID: 4060395582158229733, guid: f085167a06d160c41ad89209c15fbe38, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4060395582158229733, guid: f085167a06d160c41ad89209c15fbe38, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4060395582158229733, guid: f085167a06d160c41ad89209c15fbe38, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4060395582158229733, guid: f085167a06d160c41ad89209c15fbe38, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -51.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6607689741871018170, guid: f085167a06d160c41ad89209c15fbe38, type: 3}
       propertyPath: m_Pivot.x
       value: 0

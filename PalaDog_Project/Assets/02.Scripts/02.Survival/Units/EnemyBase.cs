@@ -49,7 +49,7 @@ public class EnemyBase: MonoBehaviour
 
     public void Die()
     {
-        if(WaveManager.Instance.wave_type == WaveType.Boss)
+        if(WaveManager.Instance.CheckBossStage())
         {
             GameManager.Instance.WaveChange();
 

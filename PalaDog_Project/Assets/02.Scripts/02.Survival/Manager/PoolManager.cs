@@ -13,6 +13,8 @@ public class PoolManager : MonoBehaviour
 
     public GameObject player;
 
+    int[] sort_order;
+
     //풀 담당을 하는 리스트들
     public List<GameObject>[] pools;
     private void Awake()
@@ -27,11 +29,12 @@ public class PoolManager : MonoBehaviour
         }
         
 
-        for(int i=0;i<pools.Length;i++)
+        for (int i=0;i<pools.Length;i++)
         {
             pools[i] =new List<GameObject>();
         }
         index_dict = new Dictionary<int, int>();
+        sort_order = new int[prefabs.Length];
     }
     public void Start()
     {
@@ -63,6 +66,9 @@ public class PoolManager : MonoBehaviour
             if (!pools[index_dict[ID]][i].activeSelf)
             {
                 select = pools[index_dict[ID]][i];
+                var sr = select.GetComponent<SpriteRenderer>();
+                int prev = sr.sortingOrder;
+                select.transform.position = new Vector3(spawnPoint.x, spawnPoint.y + 0.4f, select.transform.position.z);
                 select.SetActive(true);
                 break;
             }
@@ -71,10 +77,11 @@ public class PoolManager : MonoBehaviour
         {
             select = Instantiate(prefabs[index_dict[ID]], transform);
             var sr = select.GetComponent<SpriteRenderer>();
-            float prev = sr.sortingOrder;
-            sr.sortingOrder = sr.sortingOrder -pools[index_dict[ID]].Count;
-            print(-1 + (sr.sortingOrder - prev) / 50);
-            select.transform.position = new Vector3(spawnPoint.x, spawnPoint.y+0.4f, -1f + ((prev - (float)sr.sortingOrder)/15f));
+
+            int prev = sr.sortingOrder;
+            sr.sortingOrder = sr.sortingOrder + sort_order[index_dict[ID]];
+            select.transform.position = new Vector3(spawnPoint.x, spawnPoint.y + 0.4f, 1f - (prev/1000) - (sort_order[index_dict[ID]]++ / 5f));
+            
 
             pools[index_dict[ID]].Add(select);
         }
@@ -84,6 +91,8 @@ public class PoolManager : MonoBehaviour
 
     public void ResetPool()
     {
+        for (int i = 0; i < sort_order.Length; i++)
+            sort_order[i] = 0;
         for(int i=0;i<pools.Length;i++)
         {
             foreach(GameObject item in pools[i])

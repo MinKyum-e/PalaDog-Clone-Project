@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class TitleButtonEvent : MonoBehaviour
 {
-    public void OnClickStart()
+    public void OnClickStart(string secne_name)
     {
-        SceneManager.LoadScene("Chapter1");
+        SceneManager.LoadScene(secne_name);
     }
 
 }

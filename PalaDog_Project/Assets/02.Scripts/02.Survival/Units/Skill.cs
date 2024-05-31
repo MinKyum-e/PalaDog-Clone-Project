@@ -16,13 +16,11 @@ public class Skill:MonoBehaviour
     }
     /*  private static SkillManager _instance;
       public static SkillManager Instance { get { return _instance; } }*/
-    private PoolManager skillPool;
     private Actor actor;
 
     private void Awake()
     {
        /* _instance = this;*/
-        skillPool = GameObject.FindGameObjectWithTag("SkillPool").GetComponent<PoolManager>();
         actor = GetComponent<Actor>();
     }
 
@@ -84,7 +82,6 @@ public class Skill:MonoBehaviour
             for (int i = 0; i < target_list.Count; i++)
             {
 
-                print("¹æÆÐ ÆîÄ¡±â!! : " + target_list[i].name);
                 BuffSystem buffSystem = target_list[i].transform.Find("Buff").GetComponent<BuffSystem>();
                 for (int j = 0; j < s.skill_effects.Length; j++)
                 {

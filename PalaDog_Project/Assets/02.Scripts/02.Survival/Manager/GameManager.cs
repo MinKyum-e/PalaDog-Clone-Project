@@ -151,7 +151,8 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
-        UIManager.Instance.SetCurrentPage(UIPageInfo.GameOver);
+         UIManager.Instance.SetCurrentPage(UIPageInfo.GameOver);
+        //SceneManager.LoadScene("GameOver");
         Time.timeScale = 0;
         state = GameState.GAME_IDLE;
     }
@@ -163,6 +164,8 @@ public class GameManager : MonoBehaviour
 
     public void StageClear()
     {
+        //clear 이벤트 만들기
+
         WaveManager.Instance.ClearMonsterObjectOnStage();
         cur_cost = 0;
         cur_food = 0;

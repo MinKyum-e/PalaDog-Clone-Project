@@ -103,6 +103,19 @@ public class WaveManager : MonoBehaviour
         }
     }
 
+    public bool CheckBossStage()
+    {
+        foreach (KeyValuePair<int, WaveInfo> waveTable in Parser.wave_info_dict)
+        {
+            if (cur_stageNum == waveTable.Value.Wave_StageNum &&  waveTable.Value.Wave_WaveType == WaveType.Boss)
+            {
+                return true;
+
+            }
+        }
+        return false;
+    }
+
     IEnumerator SpawnMonster(int idx, int num)
     {
         for(int i=0;i<num;i++)
