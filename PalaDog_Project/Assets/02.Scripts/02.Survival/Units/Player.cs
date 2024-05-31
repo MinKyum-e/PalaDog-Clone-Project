@@ -35,9 +35,9 @@ public class Player: MonoBehaviour
     private void Update()
     {
         //키보드 입력
-        float moveHorizontal = Input.GetAxisRaw("Horizontal");
+       /* float moveHorizontal = Input.GetAxisRaw("Horizontal");
         actor.spriteRenderer.flipX = moveHorizontal < 0;
-       actor.cur_status.moveDir = new Vector2 (moveHorizontal, 0);
+       actor.cur_status.moveDir = new Vector2 (moveHorizontal, 0);*/
 
         if (actor.cur_status.HP <= 0)
         {

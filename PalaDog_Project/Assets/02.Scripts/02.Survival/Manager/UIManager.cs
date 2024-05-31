@@ -55,5 +55,9 @@ public class UIManager : MonoBehaviour
         {
             GameClear.SetActive(true);
         }
+        else if(CurrentPageInfo == UIPageInfo.Spawn)
+        {
+
+        }
     }
 }

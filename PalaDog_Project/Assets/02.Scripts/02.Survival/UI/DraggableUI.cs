@@ -55,6 +55,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         if(locker.is_lock == false)
         {
+            UIManager.Instance.SetCurrentPage(UIPageInfo.Spawn);
             float player_y = Camera.main.WorldToScreenPoint(Player.Instance.transform.position).y;
             rect.position = new Vector3(eventData.position.x, player_y + 70f, 0);
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(eventData.position);
@@ -73,8 +74,9 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     }
     public void OnEndDrag(PointerEventData eventData)
     {
-        if(locker.is_lock == false)
+        if(locker.is_lock == false )
         {
+            UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
             Vector3 spawnPoint;
             spawnPoint = Camera.main.ScreenToWorldPoint(eventData.position);
             float leftBound = auraCollider.bounds.min.x;
@@ -107,6 +109,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             canvasGroup.blocksRaycasts = true;
             FadeEffect.Instance.gameObject.SetActive(false);
             Time.timeScale = 1f;
+            
         }
         
     }
