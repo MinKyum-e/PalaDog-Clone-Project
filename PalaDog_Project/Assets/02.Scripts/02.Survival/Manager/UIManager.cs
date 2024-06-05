@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     public GameObject GameOver;
     public GameObject GameChapterClear;
     public GameObject GameClear;
+    public GameObject GameResourse;
 
 
     private UIPageInfo CurrentPageInfo;
@@ -38,10 +39,12 @@ public class UIManager : MonoBehaviour
         GameOver.SetActive(false);
         GameChapterClear.SetActive(false);
         GameClear.SetActive(false);
+        GameResourse.SetActive(false);  
 
         if (CurrentPageInfo == UIPageInfo.GamePlay)
         {
             GamePlay.SetActive(true);
+            GameResourse.SetActive(true);
         }
         else if (CurrentPageInfo == UIPageInfo.GameOver)
         {
@@ -57,7 +60,7 @@ public class UIManager : MonoBehaviour
         }
         else if(CurrentPageInfo == UIPageInfo.Spawn)
         {
-
+            GameResourse.SetActive(true);
         }
     }
 }

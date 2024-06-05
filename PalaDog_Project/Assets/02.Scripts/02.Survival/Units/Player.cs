@@ -39,9 +39,10 @@ public class Player: MonoBehaviour
         actor.spriteRenderer.flipX = moveHorizontal < 0;
        actor.cur_status.moveDir = new Vector2 (moveHorizontal, 0);*/
 
-        if (actor.cur_status.HP <= 0)
+        if (actor.cur_status.HP <= 0 && actor.can_action)
         {
-            Die();
+            actor.can_action = false;
+            actor.animator.Play("Die");
         }
     }
     private void FixedUpdate()
@@ -73,9 +74,11 @@ public class Player: MonoBehaviour
     }
     public void Die()
     {
-        actor.can_action = false;
+
         actor.cur_status.moveDir = Vector2.zero;
+        actor.can_action = true;
         GameManager.Instance.GameOver();
+        
     }
 
     public void setStatus()

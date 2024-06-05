@@ -142,7 +142,7 @@ public class WaveManager : MonoBehaviour
         GameObject[] alive_minions = GameObject.FindGameObjectsWithTag("Minion");
         foreach(GameObject e in alive_enemys)
         {
-            if(e.activeSelf)
+            if(e.activeSelf && e.name != "EnemyBase")
              e.GetComponent<Enemy>().Die();
         }
         foreach (GameObject m in alive_minions)

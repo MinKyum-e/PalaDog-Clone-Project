@@ -42,14 +42,14 @@ public class AccordionUI: MonoBehaviour
     private void Expand()
     {
         // ÄÜÅÙÃ÷¸¦ º¸¿©ÁÜ
-        DOTween.To(() => content.localPosition, x => content.localPosition = x, new Vector3(0, 600, 0), 0.2f)
+        DOTween.To(() => content.anchoredPosition, x => content.anchoredPosition = x, new Vector2(0,0), 0.2f)
             .SetEase(Ease.OutSine);
     }
 
     private void Collapse()
     {
         // ÄÜÅÙÃ÷¸¦ ¼û±è
-        DOTween.To(() => content.localPosition, x => content.localPosition = x, new Vector3(-200, 600, 0), 0.2f)
+        DOTween.To(() => content.anchoredPosition, x => content.anchoredPosition = x, new Vector2(-200,  0), 0.2f)
             .SetEase(Ease.OutSine);
 
     }

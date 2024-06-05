@@ -9,6 +9,7 @@ public enum UIPageInfo
     GameChapterClear,
     GameClear,
     Spawn,
+    GameResourse
 }
 
 public enum UI_UnitPanelInfo

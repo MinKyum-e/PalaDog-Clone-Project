@@ -56,11 +56,11 @@ TagManager:
   - name: BackGround
     uniqueID: 363429673
     locked: 0
-  - name: EnemyBase
-    uniqueID: 983927875
-    locked: 0
   - name: Aura
     uniqueID: 1355018475
+    locked: 0
+  - name: Shadow
+    uniqueID: 2571230973
     locked: 0
   - name: Enemy
     uniqueID: 2759510633
@@ -76,4 +76,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 2219946601
+    locked: 0
+  - name: EnemyBase
+    uniqueID: 983927875
     locked: 0

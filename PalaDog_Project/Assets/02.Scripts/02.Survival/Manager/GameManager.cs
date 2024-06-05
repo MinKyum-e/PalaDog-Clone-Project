@@ -151,7 +151,8 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
-         UIManager.Instance.SetCurrentPage(UIPageInfo.GameOver);
+        WaveManager.Instance.ClearMonsterObjectOnStage();
+        UIManager.Instance.SetCurrentPage(UIPageInfo.GameOver);
         //SceneManager.LoadScene("GameOver");
         Time.timeScale = 0;
         state = GameState.GAME_IDLE;
@@ -180,6 +181,7 @@ public class GameManager : MonoBehaviour
     }
     public void ChangeChapter()
     {
+        WaveManager.Instance.ClearMonsterObjectOnStage();
         Time.timeScale = 1;
         state = GameState.GAME_PLAY;
         wave = 1;
