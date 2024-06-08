@@ -22,7 +22,7 @@ public class CostUI: MonoBehaviour
     public void SetCostUI()
     {
 
-        tmp.text = "Cost : " + GameManager.Instance.cur_cost + " / " + GameManager.Instance.MAX_COST;
+        tmp.text = GameManager.Instance.cur_cost.ToString() + " / " + GameManager.Instance.MAX_COST.ToString();
 
     }
 

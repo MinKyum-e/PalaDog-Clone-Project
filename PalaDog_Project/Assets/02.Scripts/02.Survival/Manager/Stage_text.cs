@@ -13,6 +13,6 @@ public class Stage_text : MonoBehaviour
 
     public void Update()
     {
-        tmp.text = "stage : " + GameManager.Instance.stage + "-" + GameManager.Instance.wave;
+        tmp.text = GameManager.Instance.stage.ToString() + "-" + GameManager.Instance.wave.ToString();
     }
 }

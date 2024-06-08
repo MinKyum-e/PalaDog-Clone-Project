@@ -23,7 +23,7 @@ public class GoldUI : MonoBehaviour
     public void SetGoldUI()
     {
 
-        tmp.text = "Gold : " + GameManager.Instance.cur_gold;
+        tmp.text = GameManager.Instance.cur_gold.ToString();
     }
 
 }
