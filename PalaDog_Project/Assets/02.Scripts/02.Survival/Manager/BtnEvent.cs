@@ -16,6 +16,7 @@ public class BtnEvent : MonoBehaviour
 
     public void LeftBtnDown()
     {
+        SoundManager.Instance.PlayPLAYERSFX(SoundManager.PLAYER_SFX_CLIP.WALK);
         player.actor.animator.SetBool("isWalk", true);
         spriteRenderer.flipX = true;
         player.actor.cur_status.moveDir = Vector2.left;
@@ -23,6 +24,7 @@ public class BtnEvent : MonoBehaviour
     }
     public void LeftBtnUp() 
     {
+        SoundManager.Instance.StopPLAYERSFX();
         player.actor.animator.SetBool("isWalk", false);
         player.actor.cur_status.moveDir = Vector2.zero ;
         player.actor.can_walk = false;
@@ -30,6 +32,7 @@ public class BtnEvent : MonoBehaviour
 
     public void RightBtnDown()
     {
+        SoundManager.Instance.PlayPLAYERSFX(SoundManager.PLAYER_SFX_CLIP.WALK);
         player.actor.animator.SetBool("isWalk", true);
         spriteRenderer.flipX = false;
         player.actor.cur_status.moveDir = Vector2.right;
@@ -38,6 +41,7 @@ public class BtnEvent : MonoBehaviour
 
     public void RightBtnUp() 
     {
+        SoundManager.Instance.StopPLAYERSFX();
         player.actor.animator.SetBool("isWalk", false);
         player.actor.cur_status.moveDir = Vector2.zero;
         player.actor.can_walk = false;

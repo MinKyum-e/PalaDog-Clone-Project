@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
         cur_cost = 0;
         cur_gold = 0;
-        //SoundManager.Instance.PlayBGM(SoundManager.BGM_CLIP.ingame);
+        SoundManager.Instance.PlayBGM(SoundManager.BGM_CLIP.ingame);
     }
 
     private void Update()
@@ -130,6 +130,16 @@ public class GameManager : MonoBehaviour
     public void ContinueGame()
     {
 
+    }
+
+    public void GoTitle()
+    {
+        Destroy(Player.Instance.gameObject);
+        Destroy(SoundManager.Instance.gameObject);
+        Destroy(Parser.Instance.gameObject);
+        Destroy(ShopManager.Instance.gameObject);
+        Destroy(GameManager.Instance.gameObject);
+        SceneManager.LoadScene("Title");
     }
     public void RestartGame()
     {

@@ -2197,6 +2197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 944484232}
   - component: {fileID: 944484231}
+  - component: {fileID: 944484233}
   m_Layer: 0
   m_Name: BtnEvent
   m_TagString: Untagged
@@ -2231,6 +2232,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &944484233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944484230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dcbd5389af99714b88ead8e1caa08f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1110195588
 GameObject:
   m_ObjectHideFlags: 0
@@ -2313,9 +2326,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_bgmClip:
-  - {fileID: 8300000, guid: a59913d583f56ca4fa8922f12eb9d2b3, type: 3}
+  - {fileID: 8300000, guid: c5e2a73ad4706440f93bf05df0b465fe, type: 3}
   - {fileID: 8300000, guid: 63bc0faa3ccffda419f746c5232cb51d, type: 3}
-  m_sfxClip: []
+  m_sfxClip:
+  - {fileID: 8300000, guid: 8226ee1db3a68d245a301a2ce76f6577, type: 3}
+  start_time:
+  - 0.35
+  m_player_sfxClip:
+  - {fileID: 8300000, guid: b993df4a93c1d304ab19d8b2eb88c9a5, type: 3}
 --- !u!224 &1197545718 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2502885738795706709, guid: 0b9e35d3cf6ed9642b0ce821c00d320a, type: 3}
@@ -6543,16 +6561,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BtnEvent, Assembly-CSharp
-        m_MethodName: Restart
+      - m_Target: {fileID: 619850038}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: GoTitle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Title
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1001 &3343768775250372367
@@ -10742,9 +10760,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BtnEvent, Assembly-CSharp
-        m_MethodName: Restart
+      - m_Target: {fileID: 619850038}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11282,9 +11300,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BtnEvent, Assembly-CSharp
-        m_MethodName: Restart
+      - m_Target: {fileID: 619850038}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: GoTitle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

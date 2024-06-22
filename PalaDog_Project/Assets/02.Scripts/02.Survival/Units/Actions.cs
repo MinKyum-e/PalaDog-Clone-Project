@@ -34,7 +34,8 @@ public class Actions: MonoBehaviour
         if(actor.atkTarget != null && actor.atkTarget.activeSelf)/* && Utils.DistanceToTarget(actor.transform.position, actor.atkTarget.transform.position) <= actor.cur_status.atkRange)*/
         {
             actor.atkTarget.GetComponent<Actions>().Hit(actor.cur_status.atk, actor.cur_status.job);
-            
+            SoundManager.Instance.SetVolumeSFX(0.4f);
+            SoundManager.Instance.PlaySFX(SoundManager.SFX_CLIP.NormalAttack);
         }
     }
 
@@ -48,6 +49,8 @@ public class Actions: MonoBehaviour
         yield return new WaitForSeconds(actor.skills[skill_slot_idx].entry.coolTime);
         actor.skills[skill_slot_idx].can_use_skill = true;
     }
+
+
 
 
 
