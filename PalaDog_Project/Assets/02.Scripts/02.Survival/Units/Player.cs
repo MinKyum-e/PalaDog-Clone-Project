@@ -87,7 +87,7 @@ public class Player: MonoBehaviour
         {
             actor.status = Parser.minion_status_dict[actor.ID].common;
             actor.cur_status = Parser.minion_status_dict[actor.ID].common;
-            aura.localScale = new Vector3(30, 30, 30);
+            aura.localScale = new Vector3(5, 5, 5);
         }
         catch { Debug.Log("status Setting Error Player"); }
         

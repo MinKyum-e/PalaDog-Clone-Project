@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
         cur_cost = 0;
         cur_gold = 0;
+        //SoundManager.Instance.PlayBGM(SoundManager.BGM_CLIP.ingame);
     }
 
     private void Update()

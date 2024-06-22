@@ -49,7 +49,7 @@ public class AccordionUI: MonoBehaviour
     private void Collapse()
     {
         // ÄÜÅÙÃ÷¸¦ ¼û±è
-        DOTween.To(() => content.anchoredPosition, x => content.anchoredPosition = x, new Vector2(-200,  0), 0.2f)
+        DOTween.To(() => content.anchoredPosition, x => content.anchoredPosition = x, new Vector2(-160,  0), 0.2f)
             .SetEase(Ease.OutSine);
 
     }
