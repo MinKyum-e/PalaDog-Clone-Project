@@ -15,7 +15,7 @@ public class FadeEffect : MonoBehaviour
             instance = this;
         }
         gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 150f / 255f);
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
         
     }
     

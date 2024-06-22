@@ -23,6 +23,10 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
     public DraggableUI draggableUI;
     public Sprite unlocked_sprite;
     private Image image_renderer;
+    public Sprite unlocked_resource_sprite;
+    public Image resorce_img_renderer;
+    public GameObject cost_object;
+    private int cost;
 
     private void Awake()
     {
@@ -46,9 +50,12 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
             {
                 draggableUI.requisite_food = kvp.Value.goods_value;
             }
+
         }
 
-        if(unlock_gold == 0)
+        cost = Parser.minion_status_dict[draggableUI.minion_idx].cost;
+
+        if (unlock_gold == 0)
         {
             UnLock();
         }
@@ -69,7 +76,13 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
         GameManager.Instance.cur_gold -= unlock_gold;
         is_lock = false;
         image_renderer.sprite = unlocked_sprite;
+        resorce_img_renderer.sprite = unlocked_resource_sprite;
+        cost_object.SetActive(true);
+        cost_object.transform.GetChild(0).GetComponent<TMP_Text>().text = cost.ToString();
+
+       
         unlock_gold_text.text = draggableUI.requisite_food.ToString();
+
         ShopManager.Instance.AddToUnLockList(ShopEnums.UnLockType.InGameUnit, shop_index);
     }
 }

@@ -8,13 +8,15 @@ public class Enemy: Unit
 /*    Actor actor;
   *//*  Actions action;*//*
     PoolManager poolManager;*/
-    GameObject player;
+    protected GameObject player;
     public int grade;
     public int gold;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+
+        
     }
 
   public override void setStatus()

@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
+
+
+
 public class AccordionUI: MonoBehaviour
 {
     private RectTransform content;  // 能刨明 康开
@@ -11,10 +14,20 @@ public class AccordionUI: MonoBehaviour
     [SerializeField]
     private List<Transform> items;
 
+    public float x;
+    public float y;
+
+    public float diff_X;
+    public float diff_Y;
+
+
+
     private void Awake()
     {
         content = GetComponent<RectTransform>();
         int cnt = transform.childCount;
+        x = content.anchoredPosition.x;
+        y = content.anchoredPosition.y;
         for (int i = 0; i < cnt; i++)
         {
             var c = transform.GetChild(i);
@@ -28,7 +41,6 @@ public class AccordionUI: MonoBehaviour
     public void Toggle()
     {
         isExpanded = !isExpanded;
-
         if (isExpanded)
         {
             Expand();
@@ -39,18 +51,38 @@ public class AccordionUI: MonoBehaviour
         }
     }
 
+/*    public void ToggleVertical()
+    {
+        isExpanded = !isExpanded;
+        if (isExpanded)
+        {
+            Expand();
+        }
+        else
+        {
+            CollapseVertical();
+        }
+    }*/
+
     private void Expand()
     {
         // 能刨明甫 焊咯淋
-        DOTween.To(() => content.anchoredPosition, x => content.anchoredPosition = x, new Vector2(0,0), 0.2f)
+        DOTween.To(() => content.anchoredPosition, x => content.anchoredPosition = x, new Vector2(x+diff_X,y+ diff_Y), 0.2f)
             .SetEase(Ease.OutSine);
     }
 
     private void Collapse()
     {
-        // 能刨明甫 见辫
-        DOTween.To(() => content.anchoredPosition, x => content.anchoredPosition = x, new Vector2(-160,  0), 0.2f)
-            .SetEase(Ease.OutSine);
+        DOTween.To(() => content.anchoredPosition, x => content.anchoredPosition = x, new Vector2(x, y), 0.2f)
+        .SetEase(Ease.OutSine);
 
     }
+
+
+/*    private void CollapseVertical(int diff)
+    {
+        DOTween.To(() => content.anchoredPosition, y => content.anchoredPosition = y, new Vector2(0, diff), 0.2f)
+        .SetEase(Ease.OutSine);
+
+    }*/
 }

@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Boss: Enemy
 {
-
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        BossHPUI.Instance.SetTarget(gameObject);
+    }
     public override void Die()
     {
         

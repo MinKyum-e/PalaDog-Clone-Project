@@ -28,9 +28,9 @@ Shop_ListType이 '해제', '소환'일 경우,
 담당 유닛 인덱스 입력",//상점 항목 설명 주석
 Shop_Index,Shop_Name,Shop_DevName,Shop_Group,Shop_GameName,Shop_ListType,Shop_PreList,Shop_GoodsType,Shop_GoodsValue,Shop_etcValue,Shop_Description
 int,string,string,int,string,enum,int,enum,int,int,//string
-10011,Shop_Buff_Aura_1,상점_강화_오라_1레벨,1001,오라 LV.1,Enforce,0,Gold,0,30,오라 범위 1레벨. 3M 범위
-10012,Shop_Buff_Aura_2,상점_강화_오라_2레벨,1001,오라 LV.2,Enforce,10011,Gold,500,40,오라 범위 1레벨. 4M 범위
-10013,Shop_Buff_Aura_3,상점_강화_오라_3레벨,1001,오라 LV.3,Enforce,10012,Gold,1500,50,오라 범위 1레벨. 5M 범위
+10011,Shop_Buff_Aura_1,상점_강화_오라_1레벨,1001,오라 LV.1,Enforce,0,Gold,0,3,오라 범위 1레벨. 3M 범위
+10012,Shop_Buff_Aura_2,상점_강화_오라_2레벨,1001,오라 LV.2,Enforce,10011,Gold,500,4,오라 범위 1레벨. 4M 범위
+10013,Shop_Buff_Aura_3,상점_강화_오라_3레벨,1001,오라 LV.3,Enforce,10012,Gold,1500,5,오라 범위 1레벨. 5M 범위
 10021,Shop_Buff_MaxCost_1,상점_강화_최대 코스트_1레벨,1002,최대 코스트 LV.1,Enforce,0,Gold,0,5,최대 코스트 1레벨. 5코스트
 10022,Shop_Buff_MaxCost_2,상점_강화_최대 코스트_2레벨,1002,최대 코스트 LV.2,Enforce,10021,Gold,50,11,최대 코스트 2레벨. 11코스트
 10023,Shop_Buff_MaxCost_3,상점_강화_최대 코스트_3레벨,1002,최대 코스트 LV.3,Enforce,10022,Gold,100,17,최대 코스트 3레벨. 17코스트

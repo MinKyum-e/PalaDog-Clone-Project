@@ -57,7 +57,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         {
             UIManager.Instance.SetCurrentPage(UIPageInfo.Spawn);
             float player_y = Camera.main.WorldToScreenPoint(Player.Instance.transform.position).y;
-            rect.position = new Vector3(eventData.position.x, player_y + 70f, 0);
+            rect.position = new Vector3(eventData.position.x, player_y , 0);
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(eventData.position);
             float leftBound = auraCollider.bounds.min.x;
             float rightBount = auraCollider.bounds.max.x;
