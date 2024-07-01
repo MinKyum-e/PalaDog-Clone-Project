@@ -94,6 +94,7 @@ public class Parser : MonoBehaviour
 
                 s.common.moveSpeed = float.Parse(d["Chr_MoveSpeed"].ToString());
                s.common.moveDir = Vector2.right;
+                s.cool_time = float.Parse(d["Chr_CoolTime"].ToString());
                 minion_status_dict[idx] = s;
             }
             //웨이브 정보

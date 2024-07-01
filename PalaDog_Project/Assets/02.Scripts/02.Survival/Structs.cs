@@ -96,6 +96,7 @@ public struct MinionStatus
 {
     public CommonStatus common;
     public int cost;
+    public float cool_time;
 }
 
 public struct EnemyStatus
