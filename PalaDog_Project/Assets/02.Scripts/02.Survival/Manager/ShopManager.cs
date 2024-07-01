@@ -174,11 +174,11 @@ public class ShopManager : MonoBehaviour
             case EnforceType.Aura:
                 Player.Instance.SetAuraRange(ingame_enforce_list[type][lvl].value);
                 break;
-            case EnforceType.MAX_Food:
+/*            case EnforceType.MAX_Food:
             {
                 GameManager.Instance.MAX_FOOD = ingame_enforce_list[type][lvl].value;
                 break;
-            }
+            }*/
             case EnforceType.MAX_Cost:
             {
                 GameManager.Instance.MAX_COST = ingame_enforce_list[type][lvl].value;

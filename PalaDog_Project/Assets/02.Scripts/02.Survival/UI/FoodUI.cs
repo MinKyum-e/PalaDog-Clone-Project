@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class FoodUI : MonoBehaviour
 {
-    static public TMP_Text tmp;
+/*    static public TMP_Text tmp;
     // Start is called before the first frame update
     void Awake()
     {
@@ -15,12 +15,12 @@ public class FoodUI : MonoBehaviour
     private void Update()
     {
         SetFoodUI();
-    }
+    }*/
 
-    static void SetFoodUI()
+/*    static void SetFoodUI()
     {
 
         tmp.text = (int)GameManager.Instance.cur_food + " / " + GameManager.Instance.MAX_FOOD.ToString();
-    }
+    }*/
 
 }
