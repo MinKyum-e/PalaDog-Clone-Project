@@ -1,0 +1,686 @@
+fileFormatVersion: 2
+guid: 5bda2397f103ce049a0cda8883f020bc
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_0
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 1743
+        width: 665
+        height: 985
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8435d31e5ecb8f4d814ccc6244376eb
+      internalID: 1446919791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_1
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 2725
+        width: 15
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8daf2568f8c7e64db2ccbc75f9cf286
+      internalID: 437848623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_2
+      rect:
+        serializedVersion: 2
+        x: 2690
+        y: 1743
+        width: 669
+        height: 985
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abbad19690cc57e42b223b4b38d881dd
+      internalID: -1619123542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_3
+      rect:
+        serializedVersion: 2
+        x: 3113
+        y: 2726
+        width: 15
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dfa3681dcd92bb46bacc99292dc2120
+      internalID: 1150452689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_4
+      rect:
+        serializedVersion: 2
+        x: 5179
+        y: 2726
+        width: 15
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d95154f68c84254592be09cc4eb58be
+      internalID: -839384123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_5
+      rect:
+        serializedVersion: 2
+        x: 5196
+        y: 2724
+        width: 12
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d363d2322c661a4f8fd6118b6916774
+      internalID: 748480810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_6
+      rect:
+        serializedVersion: 2
+        x: 6831
+        y: 1743
+        width: 675
+        height: 985
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaaf3cb9acfb9e840ac6187d07f3ad47
+      internalID: 2128392632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_7
+      rect:
+        serializedVersion: 2
+        x: 7245
+        y: 2725
+        width: 14
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 856816b55207e7743bee6ad14d0e52d4
+      internalID: -391002410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_8
+      rect:
+        serializedVersion: 2
+        x: 8903
+        y: 1743
+        width: 677
+        height: 985
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e35d3264dcb297d4bb98a61e24219e4f
+      internalID: 925761926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_9
+      rect:
+        serializedVersion: 2
+        x: 9313
+        y: 2725
+        width: 15
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3fb01bd4d5d787438fa7fb6eeef63d3
+      internalID: -2116886447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_10
+      rect:
+        serializedVersion: 2
+        x: 9331
+        y: 2724
+        width: 11
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7d2954f65376cc44bcc0dba0584cc92
+      internalID: -1163222595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_11
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 2402
+        width: 6
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff6e623b55c5b4b41b4bac8738d4ab88
+      internalID: 1710750672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_12
+      rect:
+        serializedVersion: 2
+        x: 2681
+        y: 2393
+        width: 6
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5cde10596f4f9949bf58b1c50a4a259
+      internalID: 490870558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_13
+      rect:
+        serializedVersion: 2
+        x: 4759
+        y: 1743
+        width: 674
+        height: 983
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45fda0b619592d34b85c9cbe52d854ea
+      internalID: -636495817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_14
+      rect:
+        serializedVersion: 2
+        x: 4754
+        y: 2383
+        width: 6
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed4213789d9089641a13063c96c53b55
+      internalID: -738383901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_15
+      rect:
+        serializedVersion: 2
+        x: 6828
+        y: 2374
+        width: 5
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09a8329f2e3bbb04c8bac5b02c63a22d
+      internalID: -1864641012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_16
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 243
+        width: 678
+        height: 985
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70552399275a6fb469821c7ca5fe0347
+      internalID: 1718931581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_17
+      rect:
+        serializedVersion: 2
+        x: 1006
+        y: 1225
+        width: 15
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65a08522d6769bc4f860dcbad1ba0f4e
+      internalID: 1281567653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_18
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1224
+        width: 11
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07018bd1769eed04eb3357bca683fe79
+      internalID: -1467679685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_19
+      rect:
+        serializedVersion: 2
+        x: 3103
+        y: 1226
+        width: 15
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b192b8290d0edd4da31b857ee78bf55
+      internalID: 797763941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_20
+      rect:
+        serializedVersion: 2
+        x: 3121
+        y: 1224
+        width: 13
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0df2bea6d7d6a8468ba7fc7a9547597
+      internalID: 385480512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_21
+      rect:
+        serializedVersion: 2
+        x: 4781
+        y: 243
+        width: 757
+        height: 986
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e99dc3f4be77cf849963db38643a42ee
+      internalID: -2128327274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_22
+      rect:
+        serializedVersion: 2
+        x: 2685
+        y: 243
+        width: 672
+        height: 983
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 520f85d75b0a98341a11456c42bb41a4
+      internalID: 839066501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_23
+      rect:
+        serializedVersion: 2
+        x: 4767
+        y: 917
+        width: 6
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e35a299e95e8584448cd78ddb2f2a791
+      internalID: -1966360416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_24
+      rect:
+        serializedVersion: 2
+        x: 2679
+        y: 884
+        width: 6
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f3c16d726873cc47b6a369c28801bfc
+      internalID: -663468680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrioir_Attack_25
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 864
+        width: 6
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 411765eae1d7b374da42513214e394a0
+      internalID: -1257376206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Base_Warrioir_Attack_0: 1446919791
+      Base_Warrioir_Attack_1: 437848623
+      Base_Warrioir_Attack_10: -1163222595
+      Base_Warrioir_Attack_11: 1710750672
+      Base_Warrioir_Attack_12: 490870558
+      Base_Warrioir_Attack_13: -636495817
+      Base_Warrioir_Attack_14: -738383901
+      Base_Warrioir_Attack_15: -1864641012
+      Base_Warrioir_Attack_16: 1718931581
+      Base_Warrioir_Attack_17: 1281567653
+      Base_Warrioir_Attack_18: -1467679685
+      Base_Warrioir_Attack_19: 797763941
+      Base_Warrioir_Attack_2: -1619123542
+      Base_Warrioir_Attack_20: 385480512
+      Base_Warrioir_Attack_21: -2128327274
+      Base_Warrioir_Attack_22: 839066501
+      Base_Warrioir_Attack_23: -1966360416
+      Base_Warrioir_Attack_24: -663468680
+      Base_Warrioir_Attack_25: -1257376206
+      Base_Warrioir_Attack_3: 1150452689
+      Base_Warrioir_Attack_4: -839384123
+      Base_Warrioir_Attack_5: 748480810
+      Base_Warrioir_Attack_6: 2128392632
+      Base_Warrioir_Attack_7: -391002410
+      Base_Warrioir_Attack_8: 925761926
+      Base_Warrioir_Attack_9: -2116886447
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

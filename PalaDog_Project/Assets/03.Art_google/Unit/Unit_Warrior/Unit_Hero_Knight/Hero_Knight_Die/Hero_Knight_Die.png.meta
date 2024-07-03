@@ -1,0 +1,664 @@
+fileFormatVersion: 2
+guid: 1234d534cff4b77458e35fb9f12227dd
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Hero_Knight_Die_0
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 6284
+        width: 771
+        height: 1135
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a23b5f8ae8eeb2145b7061f98c747f52
+      internalID: 1453807421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Die_1
+      rect:
+        serializedVersion: 2
+        x: 1719
+        y: 6303
+        width: 774
+        height: 1120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a146b5673267b74382bf937afe160b6
+      internalID: 173025034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Die_2
+      rect:
+        serializedVersion: 2
+        x: 3074
+        y: 6307
+        width: 781
+        height: 1108
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dc888bb5af819046b4f2fe6e0c8fa11
+      internalID: 462838779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Die_3
+      rect:
+        serializedVersion: 2
+        x: 4421
+        y: 6318
+        width: 796
+        height: 1094
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9d5b84e5792f6a4fa38f906fb583290
+      internalID: -1957186777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Die_4
+      rect:
+        serializedVersion: 2
+        x: 5772
+        y: 6325
+        width: 811
+        height: 1083
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 376fe6c577470ad4686d7120350a496e
+      internalID: 1997550013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Die_5
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 4803
+        width: 823
+        height: 1079
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5eca5e2afb41a4d4f9bf8c7019870f89
+      internalID: -1094903596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Die_6
+      rect:
+        serializedVersion: 2
+        x: 1686
+        y: 4803
+        width: 826
+        height: 1079
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7c3ef9c9fc8de74787c31c357939bc5
+      internalID: -850094066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Die_7
+      rect:
+        serializedVersion: 2
+        x: 3055
+        y: 4803
+        width: 808
+        height: 1083
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d98f001aca870b84ca895f33b00275ba
+      internalID: 1508724050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Die_8
+      rect:
+        serializedVersion: 2
+        x: 4436
+        y: 4781
+        width: 777
+        height: 1109
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6592e3b90dd83345be87d84dd8eafdf
+      internalID: -196042388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Die_9
+      rect:
+        serializedVersion: 2
+        x: 5790
+        y: 4755
+        width: 771
+        height: 1142
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f251304e3947df541b717f927436f7af
+      internalID: -80835126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Die_10
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 3211
+        width: 770
+        height: 1172
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 773bc71ea1acb7145adaa586849496ce
+      internalID: -1775853744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Die_11
+      rect:
+        serializedVersion: 2
+        x: 1701
+        y: 3204
+        width: 770
+        height: 1183
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbf1b731d16a3894c9c6281f135474b9
+      internalID: 1987358835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Die_12
+      rect:
+        serializedVersion: 2
+        x: 3066
+        y: 3211
+        width: 767
+        height: 1172
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b02fcdf89833e0449153eefea46f2f8
+      internalID: 713087007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Die_13
+      rect:
+        serializedVersion: 2
+        x: 4432
+        y: 3237
+        width: 774
+        height: 1135
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52b625f2bf9be004eb81750ea9a1d0f2
+      internalID: -1426406170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Die_14
+      rect:
+        serializedVersion: 2
+        x: 5787
+        y: 3263
+        width: 785
+        height: 1101
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38c1e707a19b0294eab0765ffcb9bdcc
+      internalID: 1826124676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Die_15
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 1752
+        width: 803
+        height: 1087
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76401ea4ec1f7fa43847bdb391f8ce1d
+      internalID: -2133206701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Die_16
+      rect:
+        serializedVersion: 2
+        x: 1719
+        y: 1726
+        width: 774
+        height: 1117
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1cab89ea91246949b8222c142e41361
+      internalID: 816317304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Die_17
+      rect:
+        serializedVersion: 2
+        x: 3066
+        y: 1693
+        width: 771
+        height: 1164
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5de6daffe96ea794592a72414c73b315
+      internalID: -2026207654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Die_18
+      rect:
+        serializedVersion: 2
+        x: 4417
+        y: 1674
+        width: 767
+        height: 1191
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 870d12664660c9246835f4617e703c97
+      internalID: -300401755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Die_19
+      rect:
+        serializedVersion: 2
+        x: 5783
+        y: 1693
+        width: 770
+        height: 1164
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91254096487901644b9a2f21cf4ef708
+      internalID: -1576731303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Die_20
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 205
+        width: 774
+        height: 1116
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f53c68de228602a47aaad1c74ede2d37
+      internalID: -372086730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Die_21
+      rect:
+        serializedVersion: 2
+        x: 1697
+        y: 227
+        width: 804
+        height: 1086
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4284a88505adff4fb152b8bf185e277
+      internalID: -545105800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Die_22
+      rect:
+        serializedVersion: 2
+        x: 3059
+        y: 227
+        width: 804
+        height: 1086
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5ad3776b68bd8d4c83c98648e949f19
+      internalID: -1455892564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Die_23
+      rect:
+        serializedVersion: 2
+        x: 4417
+        y: 227
+        width: 804
+        height: 1086
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c13ac404990e9cd4390a70d431a77ec0
+      internalID: -873700631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Die_24
+      rect:
+        serializedVersion: 2
+        x: 5775
+        y: 227
+        width: 804
+        height: 1086
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a537b771b32af2844b141980e1d4d2b5
+      internalID: -853042765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Hero_Knight_Die_0: 1453807421
+      Hero_Knight_Die_1: 173025034
+      Hero_Knight_Die_10: -1775853744
+      Hero_Knight_Die_11: 1987358835
+      Hero_Knight_Die_12: 713087007
+      Hero_Knight_Die_13: -1426406170
+      Hero_Knight_Die_14: 1826124676
+      Hero_Knight_Die_15: -2133206701
+      Hero_Knight_Die_16: 816317304
+      Hero_Knight_Die_17: -2026207654
+      Hero_Knight_Die_18: -300401755
+      Hero_Knight_Die_19: -1576731303
+      Hero_Knight_Die_2: 462838779
+      Hero_Knight_Die_20: -372086730
+      Hero_Knight_Die_21: -545105800
+      Hero_Knight_Die_22: -1455892564
+      Hero_Knight_Die_23: -873700631
+      Hero_Knight_Die_24: -853042765
+      Hero_Knight_Die_3: -1957186777
+      Hero_Knight_Die_4: 1997550013
+      Hero_Knight_Die_5: -1094903596
+      Hero_Knight_Die_6: -850094066
+      Hero_Knight_Die_7: 1508724050
+      Hero_Knight_Die_8: -196042388
+      Hero_Knight_Die_9: -80835126
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

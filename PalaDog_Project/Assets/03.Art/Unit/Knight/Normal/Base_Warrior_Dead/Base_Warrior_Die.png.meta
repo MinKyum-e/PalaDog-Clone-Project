@@ -1,0 +1,906 @@
+fileFormatVersion: 2
+guid: 935501344b67e754eaacf604535e241b
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Base_Warrior_Die_0
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 1784
+        width: 702
+        height: 983
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 869bb6ae9e5bdbe48a7e912341d2468c
+      internalID: -318685227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_1
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 2761
+        width: 16
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0857da02e635a5e4290c7a7f17757733
+      internalID: -938829115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_2
+      rect:
+        serializedVersion: 2
+        x: 1603
+        y: 1778
+        width: 721
+        height: 985
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dd7c3111200d574ba493b291fc9774e
+      internalID: -1234210769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_3
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 2761
+        width: 15
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a93b6012f8f74084dbec11f9b645970b
+      internalID: 1681112287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_4
+      rect:
+        serializedVersion: 2
+        x: 2033
+        y: 2760
+        width: 13
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c879cbe8dc5391a47802393c511a1a1b
+      internalID: 585562823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_5
+      rect:
+        serializedVersion: 2
+        x: 2948
+        y: 1776
+        width: 718
+        height: 988
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7693897198498e9409d8802a28865b93
+      internalID: 939626704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_6
+      rect:
+        serializedVersion: 2
+        x: 3346
+        y: 2760
+        width: 15
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e25f2348dc2ba1e4aa240ef812618360
+      internalID: 1215593936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_7
+      rect:
+        serializedVersion: 2
+        x: 3364
+        y: 2759
+        width: 12
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 895d053b34649094c90ba26f98ee2d04
+      internalID: 1647786318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_8
+      rect:
+        serializedVersion: 2
+        x: 4301
+        y: 1775
+        width: 742
+        height: 989
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c3ac7323c548514cb12030fd4082a64
+      internalID: 1906242233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_9
+      rect:
+        serializedVersion: 2
+        x: 4692
+        y: 2758
+        width: 15
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1592554cd134fdd40a473fd75ac13b03
+      internalID: 55427077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_10
+      rect:
+        serializedVersion: 2
+        x: 4710
+        y: 2758
+        width: 11
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1da1f75f8b073824b8dc64482449b13b
+      internalID: 1226838048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_11
+      rect:
+        serializedVersion: 2
+        x: 5690
+        y: 1781
+        width: 690
+        height: 982
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 268b65cdc93f8e041b54bf181e0e7b2d
+      internalID: 1623497074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_12
+      rect:
+        serializedVersion: 2
+        x: 6113
+        y: 2761
+        width: 15
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 671a4450b26e3b84ab555c32ddbc427c
+      internalID: 384203186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_13
+      rect:
+        serializedVersion: 2
+        x: 6130
+        y: 2760
+        width: 13
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5de85842e4693f45a628d003e7c86f6
+      internalID: -1768789538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_14
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 2435
+        width: 8
+        height: 14
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 476313177cca2674aa53a82d8e80e7ba
+      internalID: -1057978015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_15
+      rect:
+        serializedVersion: 2
+        x: 5682
+        y: 2424
+        width: 6
+        height: 14
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d988a8ccac43f814a8cfbfcd4977cf18
+      internalID: -474753171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_16
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 2409
+        width: 6
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 940e31e0ac95cc64fb9a7b57a1c703ad
+      internalID: -1226034618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_17
+      rect:
+        serializedVersion: 2
+        x: 5003
+        y: 1840
+        width: 5
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af636f3a7acd9284cbb7b09305b90600
+      internalID: -732683111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_18
+      rect:
+        serializedVersion: 2
+        x: 3631
+        y: 1833
+        width: 5
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adea855d584e1a54da828867f2117196
+      internalID: -1956285215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_19
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 255
+        width: 657
+        height: 987
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb0464134c98d02448889d0314504fb2
+      internalID: 926839938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_20
+      rect:
+        serializedVersion: 2
+        x: 1611
+        y: 261
+        width: 712
+        height: 982
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1ae9b795e227b645b9bd34b0befa938
+      internalID: 344580410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_21
+      rect:
+        serializedVersion: 2
+        x: 2032
+        y: 1237
+        width: 15
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec0291729aed7104db6c7d03cb4a5258
+      internalID: -1245254102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_22
+      rect:
+        serializedVersion: 2
+        x: 2049
+        y: 1236
+        width: 13
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caae1ec064d070443992b3144dde609d
+      internalID: 1284167161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_23
+      rect:
+        serializedVersion: 2
+        x: 2939
+        y: 248
+        width: 745
+        height: 991
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d28d6101c57f43344ae04ea64de78f6c
+      internalID: 1982131557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_24
+      rect:
+        serializedVersion: 2
+        x: 3324
+        y: 1233
+        width: 15
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eeb0375ef7ba564a855442573a43de9
+      internalID: 2085812280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_25
+      rect:
+        serializedVersion: 2
+        x: 3342
+        y: 1233
+        width: 12
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caa76fabca7a4a84f84a8b5964d92a96
+      internalID: 1588942613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_26
+      rect:
+        serializedVersion: 2
+        x: 4358
+        y: 258
+        width: 658
+        height: 984
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 060c8489da2de4b4da4401ae09ab42ea
+      internalID: -1348860316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_27
+      rect:
+        serializedVersion: 2
+        x: 5717
+        y: 258
+        width: 658
+        height: 984
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 343ffad0b8181b241addc277ccb581b5
+      internalID: -400725387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_28
+      rect:
+        serializedVersion: 2
+        x: 942
+        y: 1015
+        width: 6
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f919ba708c990c6419426b4d5af775fb
+      internalID: -536824685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_29
+      rect:
+        serializedVersion: 2
+        x: 5010
+        y: 1024
+        width: 6
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbb59c5c6f7c18648b58c8c9616ab0c4
+      internalID: 144192276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_30
+      rect:
+        serializedVersion: 2
+        x: 6369
+        y: 1024
+        width: 6
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2eacf2f57b69fe4f86b7d2167dad389
+      internalID: 1248785668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_31
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 958
+        width: 6
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56e58781cfb312349be61e4672b2637c
+      internalID: -1205326169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_32
+      rect:
+        serializedVersion: 2
+        x: 4338
+        y: 941
+        width: 7
+        height: 13
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a0ff74496516c545a450b6737b4486d
+      internalID: 1713335078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_33
+      rect:
+        serializedVersion: 2
+        x: 5697
+        y: 941
+        width: 7
+        height: 13
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69f589f9dc030f249ac65855540bccc5
+      internalID: 659850691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_34
+      rect:
+        serializedVersion: 2
+        x: 1604
+        y: 896
+        width: 6
+        height: 14
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 229cc816db024814196ce744fff35843
+      internalID: 2037196861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base_Warrior_Die_35
+      rect:
+        serializedVersion: 2
+        x: 3652
+        y: 321
+        width: 5
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d600ed4857447042a7045cb3d133c9c
+      internalID: -2141037531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Base_Warrior_Die_0: -318685227
+      Base_Warrior_Die_1: -938829115
+      Base_Warrior_Die_10: 1226838048
+      Base_Warrior_Die_11: 1623497074
+      Base_Warrior_Die_12: 384203186
+      Base_Warrior_Die_13: -1768789538
+      Base_Warrior_Die_14: -1057978015
+      Base_Warrior_Die_15: -474753171
+      Base_Warrior_Die_16: -1226034618
+      Base_Warrior_Die_17: -732683111
+      Base_Warrior_Die_18: -1956285215
+      Base_Warrior_Die_19: 926839938
+      Base_Warrior_Die_2: -1234210769
+      Base_Warrior_Die_20: 344580410
+      Base_Warrior_Die_21: -1245254102
+      Base_Warrior_Die_22: 1284167161
+      Base_Warrior_Die_23: 1982131557
+      Base_Warrior_Die_24: 2085812280
+      Base_Warrior_Die_25: 1588942613
+      Base_Warrior_Die_26: -1348860316
+      Base_Warrior_Die_27: -400725387
+      Base_Warrior_Die_28: -536824685
+      Base_Warrior_Die_29: 144192276
+      Base_Warrior_Die_3: 1681112287
+      Base_Warrior_Die_30: 1248785668
+      Base_Warrior_Die_31: -1205326169
+      Base_Warrior_Die_32: 1713335078
+      Base_Warrior_Die_33: 659850691
+      Base_Warrior_Die_34: 2037196861
+      Base_Warrior_Die_35: -2141037531
+      Base_Warrior_Die_4: 585562823
+      Base_Warrior_Die_5: 939626704
+      Base_Warrior_Die_6: 1215593936
+      Base_Warrior_Die_7: 1647786318
+      Base_Warrior_Die_8: 1906242233
+      Base_Warrior_Die_9: 55427077
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -10,7 +10,6 @@ public class Parser : MonoBehaviour
     public static List<Dictionary<string, object>> data_MinionTable = null;
     public static List<Dictionary<string, object>> data_EnemyTable = null;
     public static List<Dictionary<string, object>> data_WaveTable = null;
-    public static List<Dictionary<string, object>> data_SkillInfo = null;
     public static List<Dictionary<string, object>> data_ShopTable = null;
     public static List<Dictionary<string, object>> data_SkillTable = null;
     public static List<Dictionary<string, object>> data_SkillEffectTable = null;
@@ -18,7 +17,6 @@ public class Parser : MonoBehaviour
     public static Dictionary<int, EnemyStatus> enemy_status_dict = null;
     public static Dictionary<int, WaveInfo> wave_info_dict = null;
     public static Dictionary<int, MinionStatus> minion_status_dict = null;
-    public static Dictionary<int, SkillInfo> skill_info_dict = null;
     public static Dictionary<int, ShopItemInfo> shop_item_info_dict = null;
     public static Dictionary<int, SkillEntry> skill_table_dict = null;
     public static Dictionary<int, SkillEffectEntry> skill_effect_table_dict = null;
@@ -31,7 +29,6 @@ public class Parser : MonoBehaviour
             data_MinionTable = CSVReader.Read("DT_ChrTable", 20);
             data_EnemyTable = CSVReader.Read("DT_MonsterTable", 19);
             data_WaveTable = CSVReader.Read("DT_WaveTable", 10);
-            data_SkillInfo = CSVReader.Read("DT_Skill", 7);
             data_ShopTable = CSVReader.Read("DT_ShopTable", 29);
             data_SkillTable = CSVReader.Read("DT_SkillTable", 43);
 
@@ -41,7 +38,6 @@ public class Parser : MonoBehaviour
             enemy_status_dict = new Dictionary<int, EnemyStatus>();
             wave_info_dict = new Dictionary<int, WaveInfo>();
             minion_status_dict = new Dictionary<int, MinionStatus>();
-            skill_info_dict = new Dictionary<int, SkillInfo>();
             shop_item_info_dict= new Dictionary<int, ShopItemInfo>();
             skill_table_dict = new Dictionary<int, SkillEntry>();
             skill_effect_table_dict = new Dictionary<int, SkillEffectEntry>();
@@ -119,19 +115,6 @@ public class Parser : MonoBehaviour
                 wave_info_dict[idx].Wave_MonsterNum = (int)wave["Wave_MonsterNum"];
             }
 
-            //스킬정보
-            foreach (var d in data_SkillInfo)
-            {
-                int idx = (int)d["Skill_Index"];
-                SkillInfo e = new SkillInfo();
-                e.damange = (int)d["Skill_Damage"];
-                e.cool_time = (int)d["Skill_Cooltime"];
-                e.range = (int)d["Skill_Range"];
-                e.casting_time = (int)d["Skill_Casting"];
-                e.cast_range = (int)d["Skill_Cast_Range"];
-                e.target_check = true;
-                skill_info_dict[idx] = e;
-            }
 
             //찐스킬정보
             foreach (var d in data_SkillTable)
