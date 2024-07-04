@@ -1,12 +1,15 @@
 
 using UnityEngine;
+using UnityEngine.U2D.Animation;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class Player: MonoBehaviour
 {
     public Actor actor;
     public Actions action;
-    private static Player instance;
+    public static Player instance;
     public Transform aura;
+    SpriteResolver aura_spriteResolver;
 
     private void Awake()
     {
@@ -18,6 +21,8 @@ public class Player: MonoBehaviour
             actor = GetComponent<Actor>();
             action = GetComponent<Actions>();
             aura = transform.Find("Aura");
+            aura_spriteResolver = aura.GetComponent<SpriteResolver>();
+            aura_spriteResolver.SetCategoryAndLabel("Aura", "lvl1");
         }
         else
         {
@@ -54,9 +59,10 @@ public class Player: MonoBehaviour
 
     }
 
-    public void SetAuraRange(int value)
+    public void SetAuraRange(int value, int lvl)
     {
         aura.localScale = new Vector3(value, value, value);
+        aura_spriteResolver.SetCategoryAndLabel("Aura", "lvl" + lvl);
     }
 
     

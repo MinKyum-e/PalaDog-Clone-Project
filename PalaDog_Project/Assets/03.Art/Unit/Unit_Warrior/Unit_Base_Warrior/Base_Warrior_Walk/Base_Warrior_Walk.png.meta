@@ -93,6 +93,32 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 4096
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 4096
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -125,8 +151,8 @@ TextureImporter:
         y: 4743
         width: 664
         height: 983
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.63, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -163,12 +189,12 @@ TextureImporter:
       name: Base_Warrior_Walk_3
       rect:
         serializedVersion: 2
-        x: 2696
-        y: 4733
+        x: 2703
+        y: 4738
         width: 664
         height: 993
       alignment: 9
-      pivot: {x: 0.5037342, y: 0.019975277}
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,7 +215,7 @@ TextureImporter:
         width: 669
         height: 998
       alignment: 9
-      pivot: {x: 0.5, y: 0.014906277}
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -231,7 +257,7 @@ TextureImporter:
         width: 664
         height: 988
       alignment: 9
-      pivot: {x: 0.506255, y: 0.018917933}
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -273,7 +299,7 @@ TextureImporter:
         width: 685
         height: 968
       alignment: 9
-      pivot: {x: 0.5, y: 0.023963109}
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -357,7 +383,7 @@ TextureImporter:
         width: 664
         height: 988
       alignment: 9
-      pivot: {x: 0.50248307, y: 0.016687062}
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -398,8 +424,8 @@ TextureImporter:
         y: 3233
         width: 664
         height: 993
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -415,12 +441,12 @@ TextureImporter:
       name: Base_Warrior_Walk_15
       rect:
         serializedVersion: 2
-        x: 4769
-        y: 3233
+        x: 4771
+        y: 3231
         width: 669
         height: 993
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -461,8 +487,8 @@ TextureImporter:
         y: 3243
         width: 664
         height: 983
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -503,8 +529,8 @@ TextureImporter:
         y: 3228
         width: 664
         height: 998
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -587,8 +613,8 @@ TextureImporter:
         y: 1728
         width: 664
         height: 998
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -625,12 +651,12 @@ TextureImporter:
       name: Base_Warrior_Walk_25
       rect:
         serializedVersion: 2
-        x: 2696
-        y: 1743
+        x: 2692
+        y: 1751
         width: 664
         height: 983
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -650,8 +676,8 @@ TextureImporter:
         y: 1769
         width: 669
         height: 957
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -689,11 +715,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 6847
-        y: 1733
+        y: 1738
         width: 664
         height: 993
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -734,8 +760,8 @@ TextureImporter:
         y: 1728
         width: 664
         height: 998
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -815,11 +841,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 618
-        y: 243
+        y: 238
         width: 664
         height: 983
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -856,12 +882,12 @@ TextureImporter:
       name: Base_Warrior_Walk_36
       rect:
         serializedVersion: 2
-        x: 2696
-        y: 243
+        x: 2691
+        y: 245
         width: 664
         height: 983
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -881,8 +907,8 @@ TextureImporter:
         y: 243
         width: 669
         height: 983
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -919,12 +945,12 @@ TextureImporter:
       name: Base_Warrior_Walk_39
       rect:
         serializedVersion: 2
-        x: 6847
-        y: 243
+        x: 6849
+        y: 245
         width: 664
         height: 983
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -961,12 +987,12 @@ TextureImporter:
       name: Base_Warrior_Walk_41
       rect:
         serializedVersion: 2
-        x: 8925
+        x: 8923
         y: 243
         width: 664
         height: 983
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

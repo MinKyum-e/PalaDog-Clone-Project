@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
 public class EnemyBase: MonoBehaviour
 {
     public Actor actor;
     public Actions action;
     public static EnemyBase instance = null;
+    public SpriteResolver spriteResolver;
     private void Awake()
     {
         if(instance == null)
@@ -15,6 +17,7 @@ public class EnemyBase: MonoBehaviour
         }
         actor = GetComponent<Actor>();
         action = GetComponent<Actions>();
+        spriteResolver = GetComponent<SpriteResolver>();
     }
     public static EnemyBase Instance()
     {
@@ -37,14 +40,14 @@ public class EnemyBase: MonoBehaviour
         else if (actor.cur_status.HP <= (actor.status.HP * 0.25f) && GameManager.Instance.wave == 2)
         {
             GameManager.Instance.WaveChange();
+            spriteResolver.SetCategoryAndLabel("base", "2");
         }
         else if(actor.cur_status.HP <= (actor.status.HP * 0.5f) && GameManager.Instance.wave == 1)
         {
             GameManager.Instance.WaveChange();
+            spriteResolver.SetCategoryAndLabel("base", "1");
         }
-        
 
-        
     }
 
     public void Die()
@@ -52,12 +55,15 @@ public class EnemyBase: MonoBehaviour
         if(WaveManager.Instance.CheckBossStage())
         {
             GameManager.Instance.WaveChange();
-
+            spriteResolver.SetCategoryAndLabel("base", "0");
+            GetComponent<SpriteRenderer>().color = Color.white;
         }
         else
         {
 
             GameManager.Instance.state = GameState.GAME_STAGE_CLEAR;
+            spriteResolver.SetCategoryAndLabel("base", "0");
+            GetComponent<SpriteRenderer>().color = Color.white;
 
         }
         gameObject.SetActive(false);
