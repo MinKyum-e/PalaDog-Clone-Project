@@ -3074,6 +3074,7 @@ MonoBehaviour:
   - {fileID: 411105347108442885, guid: 7c3f18fb8a5a5884aa7d48a9560c987b, type: 3}
   - {fileID: 4560634313287605006, guid: 027ccf4fdce56424baea4a7fe71a2eee, type: 3}
   - {fileID: 7699390044152189119, guid: 6f536b60966e3cb4ba246b3e4bd9572d, type: 3}
+  - {fileID: 3755914402280091559, guid: 72b5832b168fb384d811855b60e6411d, type: 3}
   player: {fileID: 1940315274}
 --- !u!4 &1363075207
 Transform:
@@ -9022,6 +9023,63 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 0.01
+--- !u!1001 &6341502365396287365
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2174679920422081802, guid: 72b5832b168fb384d811855b60e6411d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174679920422081802, guid: 72b5832b168fb384d811855b60e6411d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174679920422081802, guid: 72b5832b168fb384d811855b60e6411d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174679920422081802, guid: 72b5832b168fb384d811855b60e6411d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174679920422081802, guid: 72b5832b168fb384d811855b60e6411d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174679920422081802, guid: 72b5832b168fb384d811855b60e6411d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174679920422081802, guid: 72b5832b168fb384d811855b60e6411d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174679920422081802, guid: 72b5832b168fb384d811855b60e6411d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174679920422081802, guid: 72b5832b168fb384d811855b60e6411d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174679920422081802, guid: 72b5832b168fb384d811855b60e6411d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3755914402280091559, guid: 72b5832b168fb384d811855b60e6411d, type: 3}
+      propertyPath: m_Name
+      value: hammer_hero
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 72b5832b168fb384d811855b60e6411d, type: 3}
 --- !u!1 &6370080297032006661
 GameObject:
   m_ObjectHideFlags: 0
@@ -9510,6 +9568,10 @@ PrefabInstance:
     - target: {fileID: 2444811302758060674, guid: 0b9e35d3cf6ed9642b0ce821c00d320a, type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2472159951825046567, guid: 0b9e35d3cf6ed9642b0ce821c00d320a, type: 3}
+      propertyPath: m_Name
+      value: Hammer_hero
       objectReference: {fileID: 0}
     - target: {fileID: 2502885738795706709, guid: 0b9e35d3cf6ed9642b0ce821c00d320a, type: 3}
       propertyPath: m_SizeDelta.x
@@ -10642,6 +10704,10 @@ PrefabInstance:
     - target: {fileID: 8467415528583235217, guid: 0b9e35d3cf6ed9642b0ce821c00d320a, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8679667880129577997, guid: 0b9e35d3cf6ed9642b0ce821c00d320a, type: 3}
+      propertyPath: m_Name
+      value: Hammer_hero
       objectReference: {fileID: 0}
     - target: {fileID: 8800586410277206178, guid: 0b9e35d3cf6ed9642b0ce821c00d320a, type: 3}
       propertyPath: m_SizeDelta.x
@@ -12782,3 +12848,4 @@ SceneRoots:
   - {fileID: 1374572550}
   - {fileID: 2024051838}
   - {fileID: 1181255669}
+  - {fileID: 6341502365396287365}
