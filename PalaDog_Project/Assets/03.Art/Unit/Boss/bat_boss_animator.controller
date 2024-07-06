@@ -29,19 +29,16 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Walk
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2044727752500945437}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 0
+  m_ExitTime: 1.1125158e-10
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -308,7 +305,7 @@ AnimatorController:
   m_Name: bat_boss_animator
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Faint
+  - m_Name: Stun
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -469,7 +466,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Faint
+  m_Name: Stun
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -509,16 +506,16 @@ AnimatorStateMachine:
     m_Position: {x: 150, y: -340, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4313077835160467973}
-    m_Position: {x: 150, y: -230, z: 0}
+    m_Position: {x: 140, y: -230, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -433212555001082646}
-    m_Position: {x: 70, y: -110, z: 0}
+    m_Position: {x: 130, y: -120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5623949255481850193}
-    m_Position: {x: 20, y: 30, z: 0}
+    m_Position: {x: 0, y: 50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3488816148561008371}
-    m_Position: {x: 50, y: -50, z: 0}
+    m_Position: {x: 130, y: -70, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 8177087843486745896}
@@ -544,7 +541,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Faint
+    m_ConditionEvent: Stun
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4313077835160467973}
@@ -552,9 +549,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.30402765
   m_TransitionOffset: 0
-  m_ExitTime: 0.75
+  m_ExitTime: 9.145453e-11
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0

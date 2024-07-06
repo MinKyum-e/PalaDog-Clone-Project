@@ -1179,8 +1179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2818521b8d6a33c4c93e469120b82330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpCamera: 0
-  cameraMoveSpeed: 1
+  lerpCamera: 1
+  cameraMoveSpeed: 8
   center: {x: 20.35, y: -24.58}
   size: {x: 60, y: 10.8}
 --- !u!1 &531001440
@@ -1530,8 +1530,8 @@ MonoBehaviour:
   MAX_CHAPTER: 1
   MAX_COST: 5
   chapter: 1
-  wave: 4
-  stage: 2
+  wave: 1
+  stage: 1
   state: 1
 --- !u!224 &627534542 stripped
 RectTransform:
@@ -3103,9 +3103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 4252131678514782868, guid: 4d381f17be843ca4fbd0851305d4997a, type: 3}
   - {fileID: 7098081600307430445, guid: 7e298c2c4ba167647bd9bafd3c51c241, type: 3}
-  - {fileID: 4252131678514782868, guid: 0372e09e7c61e9043a9464a143e70d26, type: 3}
   - {fileID: 411105347108442885, guid: 7c3f18fb8a5a5884aa7d48a9560c987b, type: 3}
   - {fileID: 4560634313287605006, guid: 027ccf4fdce56424baea4a7fe71a2eee, type: 3}
   - {fileID: 7699390044152189119, guid: 6f536b60966e3cb4ba246b3e4bd9572d, type: 3}
@@ -10339,6 +10337,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -42.99998
       objectReference: {fileID: 0}
+    - target: {fileID: 7046037129653152860, guid: 0b9e35d3cf6ed9642b0ce821c00d320a, type: 3}
+      propertyPath: minion_idx
+      value: 10132
+      objectReference: {fileID: 0}
     - target: {fileID: 7233436293171577107, guid: 0b9e35d3cf6ed9642b0ce821c00d320a, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -10442,6 +10444,10 @@ PrefabInstance:
     - target: {fileID: 7464034531876156304, guid: 0b9e35d3cf6ed9642b0ce821c00d320a, type: 3}
       propertyPath: m_SizeDelta.y
       value: 145
+      objectReference: {fileID: 0}
+    - target: {fileID: 7596591694018339778, guid: 0b9e35d3cf6ed9642b0ce821c00d320a, type: 3}
+      propertyPath: minion_idx
+      value: 10131
       objectReference: {fileID: 0}
     - target: {fileID: 7691295108160623886, guid: 0b9e35d3cf6ed9642b0ce821c00d320a, type: 3}
       propertyPath: m_SizeDelta.x
@@ -10718,6 +10724,10 @@ PrefabInstance:
     - target: {fileID: 8467415528583235217, guid: 0b9e35d3cf6ed9642b0ce821c00d320a, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532471657836010261, guid: 0b9e35d3cf6ed9642b0ce821c00d320a, type: 3}
+      propertyPath: minion_idx
+      value: 10121
       objectReference: {fileID: 0}
     - target: {fileID: 8679667880129577997, guid: 0b9e35d3cf6ed9642b0ce821c00d320a, type: 3}
       propertyPath: m_Name
@@ -12065,7 +12075,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1374094802939973288, guid: 1a7996a922026ef4886192fe598ff64b, type: 3}
       propertyPath: minion_idx
-      value: 10123
+      value: 10122
       objectReference: {fileID: 0}
     - target: {fileID: 1512740037108060816, guid: 1a7996a922026ef4886192fe598ff64b, type: 3}
       propertyPath: m_Type

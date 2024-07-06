@@ -122,6 +122,7 @@ public class WaveManager : MonoBehaviour
         {
             GameObject clone = monsterPool.Get(idx, transform.position);
             Color c = clone.GetComponent<SpriteRenderer>().color;
+            
             //clone.GetComponent<SpriteRenderer>().color = new Color(c.r, c.g,  c.b, 1);
             clone.tag = "Enemy";
             yield return new WaitForSeconds(0.5f);

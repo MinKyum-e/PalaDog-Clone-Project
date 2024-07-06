@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 395902701412424853}
   - component: {fileID: 8127654628888175486}
   m_Layer: 0
-  m_Name: Immuse
+  m_Name: FullImmune
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

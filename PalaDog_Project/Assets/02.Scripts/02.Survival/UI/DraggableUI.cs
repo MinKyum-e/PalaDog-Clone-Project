@@ -93,7 +93,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
                 spawnPoint.y = playerTransform.position.y;
                 Minion minion = poolManager.Get(minion_idx, spawnPoint).GetComponent<Minion>();
                 minion.tag = "Minion";
-
+                
    /*             GameManager.Instance.cur_food -=requisite_food;*/
                 GameManager.Instance.cur_cost +=minion.cost;
                 cooltimeUI.StartCooldown();

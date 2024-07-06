@@ -46,6 +46,7 @@ public class Actions: MonoBehaviour
 
     public IEnumerator SkillTimer(int skill_slot_idx)
     {
+        actor.skills[skill_slot_idx].can_use_skill = false;
         yield return new WaitForSeconds(actor.skills[skill_slot_idx].entry.coolTime);
         actor.skills[skill_slot_idx].can_use_skill = true;
     }
@@ -116,6 +117,7 @@ public class Actions: MonoBehaviour
 
         }
     }
+
 
     public bool PlaySkill(int skill_slot_idx)
     {

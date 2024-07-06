@@ -17,7 +17,6 @@ public class Actor : MonoBehaviour
 
     public GameObject atkTarget;
     public bool isDie = false;
-    public bool is_faint = false;
     public bool can_walk = true;
     public bool can_action = true;
 

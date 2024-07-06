@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             wave = 1;
-            stage = 1;
+            stage =1;
             DontDestroyOnLoad(gameObject);
         }
         else

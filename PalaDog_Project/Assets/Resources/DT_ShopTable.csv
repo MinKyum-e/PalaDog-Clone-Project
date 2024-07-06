@@ -55,7 +55,7 @@ int,string,string,int,string,enum,int,enum,int,int,//string
 20023,Shop_Unlock_Unit1_Elite_Tree3,»óÁ¡_ÇØÁ¦_À¯´Ö 1_Á¤¿¹_Æ®¸®3,2003,(À¯´Ö1_Á¤¿¹_Æ®¸®3) ÇØÁ¦,Unlock,20011,Gold,150,10123,À¯´Ö1 Á¤¿¹ ´Ü°è 3Æ®¸® ÇØ±Ý
 20031,Shop_Unlock_Unit1_Hero_Tree1,»óÁ¡_ÇØÁ¦_À¯´Ö 1_¿µ¿õ_Æ®¸®1,2001,(À¯´Ö1_¿µ¿õ_Æ®¸®1) ÇØÁ¦,Unlock,20021,Gold,150,10131,À¯´Ö1 ¿µ¿õ ´Ü°è 1Æ®¸® ÇØ±Ý
 20032,Shop_Unlock_Unit1_Hero_Tree2,»óÁ¡_ÇØÁ¦_À¯´Ö 1_¿µ¿õ_Æ®¸®2,2002,(À¯´Ö1_¿µ¿õ_Æ®¸®2) ÇØÁ¦,Unlock,20022,Gold,180,10132,À¯´Ö1 ¿µ¿õ ´Ü°è 2Æ®¸® ÇØ±Ý
-20033,Shop_Unlock_Unit1_Hero_Tree3,»óÁ¡_ÇØÁ¦_À¯´Ö 1_¿µ¿õ_Æ®¸®3,2003,(À¯´Ö1_¿µ¿õ_Æ®¸®3) ÇØÁ¦,Unlock,20023,Gold,300,10132,À¯´Ö1 ¿µ¿õ ´Ü°è 3Æ®¸® ÇØ±Ý
+20033,Shop_Unlock_Unit1_Hero_Tree3,»óÁ¡_ÇØÁ¦_À¯´Ö 1_¿µ¿õ_Æ®¸®3,2003,(À¯´Ö1_¿µ¿õ_Æ®¸®3) ÇØÁ¦,Unlock,20023,Gold,300,10133,À¯´Ö1 ¿µ¿õ ´Ü°è 3Æ®¸® ÇØ±Ý
 30011,Shop_Summon_Unit1_Normal_Tree1,»óÁ¡_¼ÒÈ¯_À¯´Ö 1_ÀÏ¹Ý_Æ®¸®1,3000,(À¯´Ö1_ÀÏ¹Ý_Æ®¸®1),Spawn,0,Food,10,10111,À¯´Ö1 ÀÏ¹Ý ´Ü°è ¼ÒÈ¯
 30021,Shop_Summon_Unit1_Elite_Tree1,»óÁ¡_¼ÒÈ¯_À¯´Ö 1_Á¤¿¹_Æ®¸®1,3001,(À¯´Ö1_Á¤¿¹_Æ®¸®1),Spawn,30011,Food,12,10121,À¯´Ö1 Á¤¿¹ ´Ü°è 1Æ®¸® ¼ÒÈ¯
 30022,Shop_Summon_Unit1_Elite_Tree2,»óÁ¡_¼ÒÈ¯_À¯´Ö 1_Á¤¿¹_Æ®¸®2,3002,(À¯´Ö1_Á¤¿¹_Æ®¸®2),Spawn,30011,Food,15,10122,À¯´Ö1 Á¤¿¹ ´Ü°è 2Æ®¸® ¼ÒÈ¯

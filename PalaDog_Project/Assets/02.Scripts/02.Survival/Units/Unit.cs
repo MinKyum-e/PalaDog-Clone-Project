@@ -23,7 +23,6 @@ public abstract class Unit : MonoBehaviour
 
         actor.cur_status.HP = actor.status.HP;
         actor.atkTarget = null;
-        actor.is_faint = false;
         actor.isDie = false;
         actor.can_action = true;
         skill = GetComponent<Skill>();
@@ -57,7 +56,10 @@ public abstract class Unit : MonoBehaviour
             actor.isDie = true;
             actor.can_action = false;
             actor.atkTarget = null;
+
+            actor.animator.speed = 1.0f;
             actor.animator.Play("Die");
+            actor.transform.Find("Buff").GetComponent<BuffSystem>().SlotFree();
         }
 
         AnimatorStateInfo stateInfo = actor.animator.GetCurrentAnimatorStateInfo(0);
@@ -75,15 +77,24 @@ public abstract class Unit : MonoBehaviour
         }
 
 
-        //필요없을수도
-        if (actor.is_faint)
+        //스턴
+        if(actor.cur_buff.stun && actor.isDie == false)
         {
-            //기절
+            actor.can_action = false;
+            actor.can_walk = false;
+            {
+                actor.animator.SetTrigger("Stun");
+            }
         }
         else
         {
-
-
+            if (stateInfo.IsName("Stun"))
+            {
+                actor.animator.Play("Walk");
+                actor.can_action = true;
+                actor.can_walk = true;
+            }
+                
         }
 
 
@@ -111,9 +122,7 @@ public abstract class Unit : MonoBehaviour
                             if (actor.can_action && actor.skills[i].target != null && actor.skills[i].target.GetComponent<Actor>().isDie == false)
                             {
                                 actor.can_action = false;
-                                actor.skills[i].can_use_skill = false;
                                 actor.animator.SetTrigger("Skill" + i);
-
                                 print((SkillName)actor.skills[i].entry.index);
                             }
                         }

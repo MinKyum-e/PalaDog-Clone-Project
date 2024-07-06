@@ -57,13 +57,14 @@ public struct ActorSkillInfo
     public Actor target;
 }
 
-
+[Serializable]
 public struct BuffStruct
 {
     public bool full_immune;
     public bool _melee_attack_ignore;
     public bool _magic_attack_ignore;
     public bool _projectile_attack_ignore;
+    public bool stun;
 
 }
 

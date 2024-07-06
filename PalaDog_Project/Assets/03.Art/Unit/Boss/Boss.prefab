@@ -295,11 +295,16 @@ MonoBehaviour:
     skill: 
     job: 0
     moveDir: {x: 0, y: 0}
+  cur_buff:
+    full_immune: 0
+    _melee_attack_ignore: 0
+    _magic_attack_ignore: 0
+    _projectile_attack_ignore: 0
+    stun: 0
   enemy_poolManager: {fileID: 0}
   minion_poolManager: {fileID: 0}
   atkTarget: {fileID: 0}
   isDie: 0
-  is_faint: 0
   can_walk: 1
   can_action: 1
   skills: []
@@ -360,11 +365,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 165848429874051781, guid: 528aa30e5131afb4495bbd26d2d847ec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.26
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 165848429874051781, guid: 528aa30e5131afb4495bbd26d2d847ec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.87
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 165848429874051781, guid: 528aa30e5131afb4495bbd26d2d847ec, type: 3}
       propertyPath: m_LocalPosition.z

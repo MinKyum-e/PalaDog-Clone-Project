@@ -15,11 +15,13 @@ public class BuffSystem : MonoBehaviour
     {
         public SkillEffectType buff_type;
         public List<Coroutine> coroutines;
+        public bool coroutine_live;
     }
 
     [SerializeField]
     public GameObject[] buffs; // 할당할 버프들의 리스트
     public int slot_num = 0;
+    public bool coroutine_lock = false;
 
     public Slot[] slot_status;
 
@@ -29,10 +31,54 @@ public class BuffSystem : MonoBehaviour
         actor = transform.parent.GetComponent<Actor>();
         slot_status = new Slot[buffs.Length];
     }
+
+    private void Update()
+    {
+
+    }
     public void Apply(BuffName name, float value, float duration, float free)
     {
         int idx = (int)name;
         SkillEffectEntry entry = Parser.skill_effect_table_dict[(int)name];
+
+
+        for (int i = 0; i < slot_num; i++)
+        {
+            if (transform.GetChild(i).childCount > 0)
+            {
+                Transform buf = transform.GetChild(i).GetChild(0);
+                if (buf.name.Contains(name.ToString()))
+                {
+                    foreach(Coroutine c in slot_status[i].coroutines)
+                    {
+                        if(c != null)
+                        {
+                            StopCoroutine(c);
+                        }
+                    }
+                    Destroy(buf.gameObject);
+                    while(coroutine_lock)
+                    {
+                    }
+                    coroutine_lock = true;
+                    for (int j = i + 1; j < slot_num; j++)
+                    {
+                        Transform t_buff = transform.GetChild(j).GetChild(0);
+                        Transform c = transform.GetChild(j - 1);
+
+                        t_buff.transform.SetParent(c);
+                        t_buff.transform.localPosition = Vector3.zero;
+
+                        //slot 정보도 업데이트
+                        slot_status[i - 1] = slot_status[i];
+                    }
+                    slot_num--;
+                    coroutine_lock = false;
+
+                }
+            }
+
+        }
 
         Transform slot = transform.GetChild(slot_num++);
         GameObject buff = null;
@@ -53,6 +99,7 @@ public class BuffSystem : MonoBehaviour
             case BuffName.ATKBoost:
             case BuffName.ATKSpeedBoost:
             case BuffName.FullImmune:
+            case BuffName.Stun:
                 slot_status[my_slot_idx].coroutines.Add(StartCoroutine(WaitBuffEnd(buff, my_slot_idx,  duration)));
                 slot_status[my_slot_idx].coroutines.Add(StartCoroutine(OneTime(name, value, duration)));
                 break;
@@ -60,10 +107,6 @@ public class BuffSystem : MonoBehaviour
             case BuffName.Poison:
                 slot_status[my_slot_idx].coroutines.Add(StartCoroutine(WaitBuffEnd(buff, my_slot_idx, duration)));
                 slot_status[my_slot_idx].coroutines.Add(StartCoroutine(TickBuff(name, value, duration)));
-                break;
-           
-            case BuffName.Stun:
-                slot_status[my_slot_idx].coroutines.Add(StartCoroutine(WaitBuffEnd(buff, my_slot_idx, duration)));
                 break;
             case BuffName.KnockBack:
                 slot_status[my_slot_idx].coroutines.Add(StartCoroutine(WaitBuffEnd(buff, my_slot_idx, duration)));
@@ -102,9 +145,14 @@ public class BuffSystem : MonoBehaviour
             case BuffName.FullImmune:
                 actor.cur_buff.full_immune = true;
                 break;
+
+            case BuffName.Stun:
+                actor.cur_buff.stun = true;
+                break;
         }
-        
+
         yield return new WaitForSeconds(duration);
+
 
         switch (name)
         {
@@ -116,6 +164,9 @@ public class BuffSystem : MonoBehaviour
                 break;
             case BuffName.FullImmune:
                 actor.cur_buff.full_immune = false;
+                break;
+            case BuffName.Stun:
+                actor.cur_buff.stun = false;
                 break;
         }
     }
@@ -170,8 +221,13 @@ public class BuffSystem : MonoBehaviour
 
     private void OnDisable()
     {
+        SlotFree();
         
-        for(int i=0;i<slot_num;i++)
+    }
+
+    public void SlotFree()
+    {
+        for (int i = 0; i < slot_num; i++)
         {
             if (transform.GetChild(i).childCount > 0)
             {
@@ -181,9 +237,9 @@ public class BuffSystem : MonoBehaviour
                     Destroy(buf.gameObject);
                 }
             }
-            
+
         }
-        
+
         slot_num = 0;
     }
 
