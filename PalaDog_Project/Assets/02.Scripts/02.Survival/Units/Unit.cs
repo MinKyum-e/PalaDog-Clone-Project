@@ -113,11 +113,11 @@ public abstract class Unit : MonoBehaviour
                     if (actor.skills[i].entry.need_searching)
                     {
                         //스킬 고유 타겟 지정 방식 선택
-                        List<Actor> targets = skill.SearchingTargets((SkillName)actor.skills[i].entry.index);
+                        Actor target = skill.FirstSearchingTarget((SkillName)actor.skills[i].entry.index);
 
-                        if(targets.Count >0)
+                        if(target != null)
                         {
-                            actor.skills[i].target =targets[0];
+                            actor.skills[i].target =target;
                             print("!!!!!!!!!!!!!!!!!!!!!" + actor.skills[i].target.name);
                             if (actor.can_action && actor.skills[i].target != null && actor.skills[i].target.GetComponent<Actor>().isDie == false)
                             {

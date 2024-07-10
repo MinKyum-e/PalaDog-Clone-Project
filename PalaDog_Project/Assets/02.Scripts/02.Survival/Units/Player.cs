@@ -1,6 +1,7 @@
-
+﻿
 using UnityEngine;
 using UnityEngine.U2D.Animation;
+using UnityEngine.EventSystems;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class Player: MonoBehaviour
@@ -39,12 +40,35 @@ public class Player: MonoBehaviour
 
     private void Update()
     {
-        //Ű���� �Է�
-       /* float moveHorizontal = Input.GetAxisRaw("Horizontal");
-        actor.spriteRenderer.flipX = moveHorizontal < 0;
-       actor.cur_status.moveDir = new Vector2 (moveHorizontal, 0);*/
+        Touch tempTouchs;
+        Vector3 touchedPos;
+        bool touchOn;
+        if (Input.touchCount > 0)
+        {    //터치가 1개 이상이면.  
 
-        if (actor.cur_status.HP <= 0 && actor.can_action)
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                if (EventSystem.current.IsPointerOverGameObject(i) == false)
+                {
+                    tempTouchs = Input.GetTouch(i);
+                    if (tempTouchs.phase == TouchPhase.Began)
+                    {
+                        //해당 터치가 시작됐다면.            
+                        touchedPos = Camera.main.ScreenToWorldPoint(tempTouchs.position);//get world position.        
+                        touchOn = true;
+                        print("sert");
+                        break;   //한 프레임(update)에는 하나만.   
+                    }
+                }
+            }
+        }
+
+            //키보드 입력
+            /* float moveHorizontal = Input.GetAxisRaw("Horizontal");
+             actor.spriteRenderer.flipX = moveHorizontal < 0;
+            actor.cur_status.moveDir = new Vector2 (moveHorizontal, 0);*/
+
+            if (actor.cur_status.HP <= 0 && actor.can_action)
         {
             actor.can_action = false;
             actor.animator.Play("Die");
@@ -52,6 +76,16 @@ public class Player: MonoBehaviour
     }
     private void FixedUpdate()
     {
+        Touch tempPos;
+        if (Input.touchCount > 0)
+        {
+             for(int i=0;i<Input.touchCount;i++)
+            {
+                tempPos = Input.GetTouch(i);
+                print(tempPos);
+            }
+        }
+
         if(actor.can_action)
         {
             action.Move();
@@ -67,7 +101,7 @@ public class Player: MonoBehaviour
 
     
 
-    public static Player Instance //���ӸŴ��� �ν��Ͻ� ����
+    public static Player Instance //게임매니저 인스턴스 접근
     {
         get
         {
@@ -99,6 +133,7 @@ public class Player: MonoBehaviour
         
     }
 
-    
+
+
 
 }

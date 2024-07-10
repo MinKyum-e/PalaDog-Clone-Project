@@ -465,7 +465,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.6923077
+  - time: 0.53846157
+    functionName: StartSkillTimer
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.61538464
     functionName: PlaySkill
     data: 
     objectReferenceParameter: {fileID: 0}

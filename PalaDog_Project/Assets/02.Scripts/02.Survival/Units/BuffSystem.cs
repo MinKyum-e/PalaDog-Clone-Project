@@ -180,7 +180,7 @@ public class BuffSystem : MonoBehaviour
                     actor.cur_status.HP = (int)Mathf.Clamp(actor.cur_status.HP + value, 0f, actor.status.HP);
                     break;
                 case BuffName.Poison:
-                    int max_HP = actor.status.HP;
+                    float max_HP = actor.status.HP;
                     actor.cur_status.HP = (int)Mathf.Clamp(actor.cur_status.HP - (max_HP / value), 0f, actor.status.HP);
                     break;
             }

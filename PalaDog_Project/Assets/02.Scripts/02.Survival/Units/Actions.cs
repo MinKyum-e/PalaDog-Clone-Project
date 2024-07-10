@@ -22,7 +22,7 @@ public class Actions: MonoBehaviour
         actor.can_action = false;
     }
 
-    public int CalDagamge()//미사용
+    public float CalDagamge()//미사용
     {
         //버프
         //디버프
@@ -44,12 +44,6 @@ public class Actions: MonoBehaviour
         actor.can_action = true;
     }
 
-    public IEnumerator SkillTimer(int skill_slot_idx)
-    {
-        actor.skills[skill_slot_idx].can_use_skill = false;
-        yield return new WaitForSeconds(actor.skills[skill_slot_idx].entry.coolTime);
-        actor.skills[skill_slot_idx].can_use_skill = true;
-    }
 
 
 
@@ -83,7 +77,7 @@ public class Actions: MonoBehaviour
         return true;
     }
 
-    public void Hit(int Damage, Chr_job attaker_job)
+    public void Hit(float Damage, Chr_job attaker_job)
     {
         if(CheckAttackIgnore(actor.cur_buff, attaker_job))
         {
@@ -121,9 +115,19 @@ public class Actions: MonoBehaviour
 
     public bool PlaySkill(int skill_slot_idx)
     {
-        //TODO
+        return skill.UseSkill(skill_slot_idx, (SkillName)actor.cur_status.skill[skill_slot_idx]);
+    }
+
+
+    public void StartSkillTimer(int skill_slot_idx)
+    {
         StartCoroutine(SkillTimer(skill_slot_idx));
-        return skill.UseSkill((SkillName)actor.cur_status.skill[skill_slot_idx], actor.skills[skill_slot_idx].target);
+    }
+    public IEnumerator SkillTimer(int skill_slot_idx)
+    {
+        actor.skills[skill_slot_idx].can_use_skill = false;
+        yield return new WaitForSeconds(actor.skills[skill_slot_idx].entry.coolTime);
+        actor.skills[skill_slot_idx].can_use_skill = true;
     }
 
     public bool AddBuff(int buff_idx)

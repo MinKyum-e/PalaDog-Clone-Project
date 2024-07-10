@@ -10,12 +10,13 @@ public enum UnitType //안쓰는중
 
 public enum SkillName
 {
-    SelfHealing = 10011,
-    ShieldDeployment = 10021,
+    SelfHealing = 10001,
+    ShieldDeployment = 10002,
     WingFlap = 20011,
     LifeDrain = 20012,
     HealingAura = 30011,
-
+    HammerAttack = 10011,
+    LegendHammerAttack = 10012
 }
 
 public enum SkillAct

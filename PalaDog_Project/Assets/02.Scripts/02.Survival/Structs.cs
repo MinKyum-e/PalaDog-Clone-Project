@@ -26,7 +26,7 @@ public struct SkillEffectEntry
 public struct SkillEffect
 {
     public int index;
-    public int value;
+    public float value;
     public float duration;
 }
 
@@ -37,7 +37,7 @@ public struct SkillEntry
     public int index;
     public int group;
     public SkillAct act;
-    public int coolTime;
+    public float coolTime;
     public TargetSearchType target_search_type;
     public UnitType target_type;
     public int target_search_num;
@@ -74,9 +74,9 @@ public struct CommonStatus
 {
     public int index;
     public string name;
-    public int HP;
+    public float HP;
     public float moveSpeed;
-    public int atk;
+    public float atk;
     public float atkRange;
     public float atkSpeed;
     public int[] skill;
