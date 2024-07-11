@@ -23,10 +23,10 @@ public class Actions: MonoBehaviour
         actor.can_action = false;
     }
 
-    public float CalDagamge()//¹Ì»ç¿ë
+    public float CalDagamge()//ï¿½Ì»ï¿½ï¿½
     {
-        //¹öÇÁ
-        //µð¹öÇÁ
+        //ï¿½ï¿½ï¿½ï¿½
+        //ï¿½ï¿½ï¿½ï¿½ï¿½
         return actor.cur_status.atk;
     }
 
@@ -88,7 +88,7 @@ public class Actions: MonoBehaviour
         }
         else
         {
-            print(Enum.GetName(typeof(Chr_job), attaker_job) + "  °ø°Ý ¹«È¿!!1");
+            print(Enum.GetName(typeof(Chr_job), attaker_job) + "  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¿!!1");
         }
         
     }
@@ -119,11 +119,6 @@ public class Actions: MonoBehaviour
         return skill.UseSkill(skill_slot_idx, (SkillName)actor.cur_status.skill[skill_slot_idx]);
     }
 
-    public bool PlaySkill_Index(SkillName aura_idx)
-    {
-        print("auraskill + " + aura_idx);
-        return skill.UseSkill(-1, aura_idx);
-    }
 
 
     public void StartSkillTimer(int skill_slot_idx)

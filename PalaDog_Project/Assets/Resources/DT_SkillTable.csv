@@ -49,4 +49,4 @@ int,string,string,int,enum,float,enum,enum,int,enum,float,int,int,int,enum,float
 20011,Skill_Bat_Boss_001,날개치기,1008,P,15,Range,Unit,5,Atk,0.4,6,8,0,-1,0,0,TRUE,5
 20012,Skill_Bat_Boss_002,흡혈,1002,P,30,Range,Unit,15,Atk,0.4,-1,100,5,4,10,3,TRUE,5
 30011,Skill_Player_Player_001,치유의 오라,1002,A,0,Ora,Unit,99,None,0,2,10,1,-1,0,0,FALSE,0
-30012,Skill_Player_Player_001,속도의 오라,1002,A,0,Ora,Unit,99,None,0,1,1.5,1,7,1.5,1,FALSE,0
+30012,Skill_Player_Player_001,속도의 오라,1002,A,0,Ora,Unit,99,None,0,1,1.5,2,7,1.5,2,FALSE,0
