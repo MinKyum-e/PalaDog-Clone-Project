@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.U2D.Animation;
 using UnityEngine.EventSystems;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
+using System.Collections.Generic;
 
 public class Player: MonoBehaviour
 {
@@ -10,7 +11,10 @@ public class Player: MonoBehaviour
     public Actions action;
     public static Player instance;
     public Transform aura;
+    public AuraSkill aura_skill;
+    public CircleCollider2D auraCollider;
     SpriteResolver aura_spriteResolver;
+    
 
     private void Awake()
     {
@@ -24,6 +28,8 @@ public class Player: MonoBehaviour
             aura = transform.Find("Aura");
             aura_spriteResolver = aura.GetComponent<SpriteResolver>();
             aura_spriteResolver.SetCategoryAndLabel("Aura", "lvl1");
+            aura_skill = aura.GetComponent<AuraSkill>();
+            auraCollider = aura.GetComponent<CircleCollider2D>();   
         }
         else
         {
@@ -40,39 +46,12 @@ public class Player: MonoBehaviour
 
     private void Update()
     {
-        Touch tempTouchs;
-        Vector3 touchedPos;
-        bool touchOn;
-        if (Input.touchCount > 0)
-        {    //터치가 1개 이상이면.  
-
-            for (int i = 0; i < Input.touchCount; i++)
-            {
-                if (EventSystem.current.IsPointerOverGameObject(i) == false)
-                {
-                    tempTouchs = Input.GetTouch(i);
-                    if (tempTouchs.phase == TouchPhase.Began)
-                    {
-                        //해당 터치가 시작됐다면.            
-                        touchedPos = Camera.main.ScreenToWorldPoint(tempTouchs.position);//get world position.        
-                        touchOn = true;
-                        print("sert");
-                        break;   //한 프레임(update)에는 하나만.   
-                    }
-                }
-            }
-        }
-
-            //키보드 입력
-            /* float moveHorizontal = Input.GetAxisRaw("Horizontal");
-             actor.spriteRenderer.flipX = moveHorizontal < 0;
-            actor.cur_status.moveDir = new Vector2 (moveHorizontal, 0);*/
-
-            if (actor.cur_status.HP <= 0 && actor.can_action)
+        if (actor.cur_status.HP <= 0 && actor.can_action)
         {
             actor.can_action = false;
             actor.animator.Play("Die");
         }
+
     }
     private void FixedUpdate()
     {
@@ -90,7 +69,6 @@ public class Player: MonoBehaviour
         {
             action.Move();
         }
-
     }
 
     public void SetAuraRange(int value, int lvl)
@@ -98,8 +76,6 @@ public class Player: MonoBehaviour
         aura.localScale = new Vector3(value, value, value);
         aura_spriteResolver.SetCategoryAndLabel("Aura", "lvl" + lvl);
     }
-
-    
 
     public static Player Instance //게임매니저 인스턴스 접근
     {
@@ -132,7 +108,7 @@ public class Player: MonoBehaviour
         catch { Debug.Log("status Setting Error Player"); }
         
     }
-
+    
 
 
 

@@ -98,6 +98,7 @@ public abstract class Unit : MonoBehaviour
         }
 
 
+
         if (actor.can_action)
         {
 
@@ -118,7 +119,6 @@ public abstract class Unit : MonoBehaviour
                         if(target != null)
                         {
                             actor.skills[i].target =target;
-                            print("!!!!!!!!!!!!!!!!!!!!!" + actor.skills[i].target.name);
                             if (actor.can_action && actor.skills[i].target != null && actor.skills[i].target.GetComponent<Actor>().isDie == false)
                             {
                                 actor.can_action = false;

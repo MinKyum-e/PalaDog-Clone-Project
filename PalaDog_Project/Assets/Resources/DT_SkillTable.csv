@@ -8,38 +8,38 @@ x: 스킬 보유자의 종류
 (1: 유닛, 2: 몬스터,
  3: 플레이어)
 y: 보유 유닛 별 분류
-z: 스킬 별 분류,스킬 고유 이름,스킬 고유 개발명,""스킬 고유 그룹"
-100x
-"x: SkillEffect1_Index"",""스킬의 발동 방식"
-P: 패시브(쿨타임 종료 시 자동 발동
-A: 액티브(플레이어가
-" 스킬 발동 입력 시 발동)"",스킬의 쿨타임,""스킬의 대상 선정방식"
-Target: 발동자 주변 
-가까운 대상 선정
-Range: 스킬 범위 내
-대상 선정
-"Ora: 오라 내 대상 전체"",""스킬의 적용 대상"
-대미지 및 효과는 해당 대상들에게만 적용
-All: 전체
-Unit: 유닛
-"Enemy: 몬스터"",""스킬을 적용할 대상 수치"
-Type - Target: 대상 개레 수
-"Type - Range: 범위 값"",""스킬 대미지 계산 시"
- 기반능력치
-Enum - HP, Atk, None
-"None: 대미지 미존재"",""스킬 대미지 계산 시"
-" 기반계수"",""스킬 효과 테이블의 "
-효과 1 인덱스
-(DT_SkillEffectTable의
-"ID 참조)"",""스킬 효과 테이블의 "
-"효과 1 수치"",""스킬 효과 테이블의 "
-"효과 1 지속시간"",""스킬 효과 테이블의 "
-효과 2 인덱스
-(DT_SkillEffectTable의
-ID 참조)
-"-1: 효과 없음"",""스킬 효과 테이블의 "
-"효과 2 수치"",""스킬 효과 테이블의 "
-"효과 2 지속시간"",,"
+z: 스킬 별 분류,스킬 고유 이름,스킬 고유 개발명,""스킬 고유 그룹",,,,,,,,,,,,,,,,,,
+100x,,,,,,,,,,,,,,,,,,
+"x: SkillEffect1_Index"",""스킬의 발동 방식",,,,,,,,,,,,,,,,,,
+P: 패시브(쿨타임 종료 시 자동 발동,,,,,,,,,,,,,,,,,,
+A: 액티브(플레이어가,,,,,,,,,,,,,,,,,,
+" 스킬 발동 입력 시 발동)"",스킬의 쿨타임,""스킬의 대상 선정방식",,,,,,,,,,,,,,,,,,
+Target: 발동자 주변 ,,,,,,,,,,,,,,,,,,
+가까운 대상 선정,,,,,,,,,,,,,,,,,,
+Range: 스킬 범위 내,,,,,,,,,,,,,,,,,,
+대상 선정,,,,,,,,,,,,,,,,,,
+"Ora: 오라 내 대상 전체"",""스킬의 적용 대상",,,,,,,,,,,,,,,,,,
+대미지 및 효과는 해당 대상들에게만 적용,,,,,,,,,,,,,,,,,,
+All: 전체,,,,,,,,,,,,,,,,,,
+Unit: 유닛,,,,,,,,,,,,,,,,,,
+"Enemy: 몬스터"",""스킬을 적용할 대상 수치",,,,,,,,,,,,,,,,,,
+Type - Target: 대상 개레 수,,,,,,,,,,,,,,,,,,
+"Type - Range: 범위 값"",""스킬 대미지 계산 시",,,,,,,,,,,,,,,,,,
+ 기반능력치,,,,,,,,,,,,,,,,,,
+Enum - HP, Atk, None,,,,,,,,,,,,,,,,
+"None: 대미지 미존재"",""스킬 대미지 계산 시",,,,,,,,,,,,,,,,,,
+" 기반계수"",""스킬 효과 테이블의 ",,,,,,,,,,,,,,,,,,
+효과 1 인덱스,,,,,,,,,,,,,,,,,,
+(DT_SkillEffectTable의,,,,,,,,,,,,,,,,,,
+"ID 참조)"",""스킬 효과 테이블의 ",,,,,,,,,,,,,,,,,,
+"효과 1 수치"",""스킬 효과 테이블의 ",,,,,,,,,,,,,,,,,,
+"효과 1 지속시간"",""스킬 효과 테이블의 ",,,,,,,,,,,,,,,,,,
+효과 2 인덱스,,,,,,,,,,,,,,,,,,
+(DT_SkillEffectTable의,,,,,,,,,,,,,,,,,,
+ID 참조),,,,,,,,,,,,,,,,,,
+"-1: 효과 없음"",""스킬 효과 테이블의 ",,,,,,,,,,,,,,,,,,
+"효과 2 수치"",""스킬 효과 테이블의 ",,,,,,,,,,,,,,,,,,
+"효과 2 지속시간"",,",,,,,,,,,,,,,,,,,,
 Skill_Index,Skill_Name,Skill_DevName,Skill_Group,Skill_Act,Skill_CoolTime,Skill_Type,Skill_TargetType,Skill_TypeValue,Skill_BaseStat,Skill_DMGCoeff,Skill_Effect1Index,Skill_Effect1Value,Skill_Effect1Duration,Skill_Effect2Index,Skill_Effect2Value,Skill_Effect2Duration,Skill_TargetSearching,Skill_TargetSearchingRange
 int,string,string,int,enum,float,enum,enum,int,enum,float,int,int,int,enum,float,float,,
 10001,Skill_Knight_Advanced_001,자가 치유,1004,P,15,Target,Unit,1,None,0,-1,2,10,2,30,6,FALSE,5
@@ -48,4 +48,5 @@ int,string,string,int,enum,float,enum,enum,int,enum,float,int,int,int,enum,float
 10012,Skill_Hammer_rare_001,해머 치기 에픽,1004,P,30,Range,Enemy,50,Atk,0.1,5,0,3,-1,0,0,TRUE,7
 20011,Skill_Bat_Boss_001,날개치기,1008,P,15,Range,Unit,5,Atk,0.4,6,8,0,-1,0,0,TRUE,5
 20012,Skill_Bat_Boss_002,흡혈,1002,P,30,Range,Unit,15,Atk,0.4,-1,100,5,4,10,3,TRUE,5
-30011,Skill_Player_Player_001,치유의 오라,1002,A,60,Ora,Unit,99,None,0,4,100,15,-1,0,0,FALSE,5
+30011,Skill_Player_Player_001,치유의 오라,1002,A,0,Ora,Unit,99,None,0,2,10,1,-1,0,0,FALSE,0
+30012,Skill_Player_Player_001,속도의 오라,1002,A,0,Ora,Unit,99,None,0,1,1.5,1,7,1.5,1,FALSE,0

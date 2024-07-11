@@ -119,7 +119,9 @@ MonoBehaviour:
   - {fileID: 7577447710614807345, guid: 7fb3b4bbe80ccfb40ac8dfdeca50e07e, type: 3}
   - {fileID: 7577447710614807345, guid: bdee919fc96426348b3fee0fde95d244, type: 3}
   - {fileID: 7577447710614807345, guid: bae459e4f2a023840b14aa8c8e0b7c5d, type: 3}
+  - {fileID: 7577447710614807345, guid: 15f53e9c6fbc40e4bae4b4492785624b, type: 3}
   slot_num: 0
+  coroutine_lock: 0
   slot_status: []
 --- !u!1 &3978372210711068779
 GameObject:

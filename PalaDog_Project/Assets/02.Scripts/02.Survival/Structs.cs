@@ -65,6 +65,8 @@ public struct BuffStruct
     public bool _magic_attack_ignore;
     public bool _projectile_attack_ignore;
     public bool stun;
+    public float speedAura;
+    public bool healAura;
 
 }
 

@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -116,6 +117,12 @@ public class Actions: MonoBehaviour
     public bool PlaySkill(int skill_slot_idx)
     {
         return skill.UseSkill(skill_slot_idx, (SkillName)actor.cur_status.skill[skill_slot_idx]);
+    }
+
+    public bool PlaySkill_Index(SkillName aura_idx)
+    {
+        print("auraskill + " + aura_idx);
+        return skill.UseSkill(-1, aura_idx);
     }
 
 

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7995411699299041798}
   - component: {fileID: 9094620254427178647}
   - component: {fileID: -8989298957295721825}
+  - component: {fileID: 7446320453438983501}
   - component: {fileID: 8065908332598517497}
   - component: {fileID: 1119939098666278749}
   m_Layer: 0
@@ -150,11 +151,16 @@ MonoBehaviour:
     skill: 
     job: 0
     moveDir: {x: 0, y: 0}
+  cur_buff:
+    full_immune: 0
+    _melee_attack_ignore: 0
+    _magic_attack_ignore: 0
+    _projectile_attack_ignore: 0
+    stun: 0
   enemy_poolManager: {fileID: 0}
   minion_poolManager: {fileID: 0}
   atkTarget: {fileID: 0}
   isDie: 0
-  is_faint: 0
   can_walk: 1
   can_action: 1
   skills: []
@@ -190,6 +196,19 @@ MonoBehaviour:
   actor: {fileID: 0}
   action: {fileID: 0}
   aura: {fileID: 0}
+  aura_skill_Idx: -1
+--- !u!114 &7446320453438983501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2901959845032010533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5903e0c3476548940a2667f51dc367fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &8065908332598517497
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -273,6 +292,10 @@ GameObject:
   - component: {fileID: 8838706612542053695}
   - component: {fileID: 152005786328622653}
   - component: {fileID: 2329952108903258313}
+  - component: {fileID: 8482698644096275328}
+  - component: {fileID: 7541013024444328344}
+  - component: {fileID: 7891495310276352871}
+  - component: {fileID: 1934396351416737961}
   m_Layer: 0
   m_Name: Aura
   m_TagString: Aura
@@ -290,7 +313,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2201908351887090627}
@@ -336,12 +359,12 @@ SpriteRenderer:
   m_SortingLayerID: 1355018475
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 67c0efed0339b744f899a53b7792632f, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.627451}
+  m_Sprite: {fileID: 21300000, guid: f0f4bc325daac6c46b548accda37bce2, type: 3}
+  m_Color: {r: 0.58251077, g: 1, b: 0.5613208, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 20, y: 20}
+  m_Size: {x: 10.16, y: 10.21}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -381,7 +404,76 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 5.16
+--- !u!114 &8482698644096275328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5124528786153669121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Aura
+    m_Hash: 0
+    m_CategoryList:
+    - m_Name: lvl0
+      m_Hash: 0
+      m_Sprite: {fileID: -349744673, guid: d33d4fd50fed9144585f50930f53091d, type: 3}
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 5352f5c0cfd232743a4ff8e2a9cae852, type: 3}
+--- !u!114 &7541013024444328344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5124528786153669121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: 0.00001394755
+  m_labelHash: 0.000003111023
+  m_SpriteKey: 0
+  m_SpriteHash: 509132829
+--- !u!95 &7891495310276352871
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5124528786153669121}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a09260e0a79184347b19bfa32f7d3cff, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1934396351416737961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5124528786153669121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7b6a849e4d491848a34c9495df244e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7662449984109865500
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,7 +501,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 40, y: 40, z: 0.7310143}
+  m_LocalScale: {x: 5, y: 5, z: 0.7310143}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2201908351887090627}

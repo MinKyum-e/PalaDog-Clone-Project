@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -56,17 +57,21 @@ public class Skill:MonoBehaviour
                 return NearTargets(s);
             case TargetSearchType.Range:
                 return RangeTargets(s);
+            case TargetSearchType.Ora:
+                return OraTargets(s);
             default:
                 return null;
         }
     }
+
+
 
     public bool UseSkill(int skill_slot_idx, SkillName skill_name)//스킬이름, 타겟, 스킬 슬룻 인덱스
     {
         SkillEntry s = Parser.skill_table_dict[(int)skill_name];
         List<Actor> targets = SearchingTargets(skill_name);
 
-
+        print(targets.Count);
         //특수 제작 스킬 우선 사용해보고 없으면 일반적인 버프 스킬 수행하기
         if(! UniqueSkill(skill_slot_idx,skill_name))
         {
@@ -215,10 +220,30 @@ public class Skill:MonoBehaviour
     }
 
 
-    public void OraTargets()
-    {
 
+    public List<Actor> OraTargets(SkillEntry s)
+    {
+        List<Actor> result = new List<Actor>();
+        List<Candidate> candidates = new List<Candidate>();
+        PoolManager targetPool = ((s.target_type == UnitType.Enemy) ? actor.enemy_poolManager : actor.minion_poolManager);
+        print(targetPool.name);
+        //스킬 범위 내에 있는 애들 찾기
+        foreach (List<GameObject> units in targetPool.pools)
+        {
+            foreach (GameObject u in units)
+            {
+                if (u.GetComponent<Actor>().isDie) { continue; }
+                float tmp_dist = Utils.DistanceToTarget(u.transform.position, transform.position);
+                if (tmp_dist <= Player.Instance.auraCollider.bounds.extents.x)
+                {
+                    result.Add(u.GetComponent<Actor>());
+                }
+            }
+        }
+        return result;
     }
+
+
 
 
     public List<Actor> RangeTargets(SkillEntry s)

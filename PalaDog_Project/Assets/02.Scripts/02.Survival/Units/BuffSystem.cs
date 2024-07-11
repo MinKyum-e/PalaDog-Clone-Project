@@ -41,7 +41,7 @@ public class BuffSystem : MonoBehaviour
         int idx = (int)name;
         SkillEffectEntry entry = Parser.skill_effect_table_dict[(int)name];
 
-
+        
         for (int i = 0; i < slot_num; i++)
         {
             if (transform.GetChild(i).childCount > 0)
@@ -49,15 +49,15 @@ public class BuffSystem : MonoBehaviour
                 Transform buf = transform.GetChild(i).GetChild(0);
                 if (buf.name.Contains(name.ToString()))
                 {
-                    foreach(Coroutine c in slot_status[i].coroutines)
+                    foreach (Coroutine c in slot_status[i].coroutines)
                     {
-                        if(c != null)
+                        if (c != null)
                         {
                             StopCoroutine(c);
                         }
                     }
                     Destroy(buf.gameObject);
-                    while(coroutine_lock)
+                    while (coroutine_lock)
                     {
                     }
                     coroutine_lock = true;
@@ -100,6 +100,7 @@ public class BuffSystem : MonoBehaviour
             case BuffName.ATKSpeedBoost:
             case BuffName.FullImmune:
             case BuffName.Stun:
+            case BuffName.MoveSpeed:
                 slot_status[my_slot_idx].coroutines.Add(StartCoroutine(WaitBuffEnd(buff, my_slot_idx,  duration)));
                 slot_status[my_slot_idx].coroutines.Add(StartCoroutine(OneTime(name, value, duration)));
                 break;
@@ -137,13 +138,16 @@ public class BuffSystem : MonoBehaviour
         switch(name)
         {
             case BuffName.ATKBoost:
-                actor.cur_status.atk = (int)(actor.cur_status.atk * value);
+                actor.cur_status.atk = actor.cur_status.atk * value;
                 break;
             case BuffName.ATKSpeedBoost:
-                actor.cur_status.atkSpeed *= (int)(actor.cur_status.atkSpeed * value);
+                actor.cur_status.atkSpeed *= actor.cur_status.atkSpeed * value;
                 break;
             case BuffName.FullImmune:
                 actor.cur_buff.full_immune = true;
+                break;
+            case BuffName.MoveSpeed:
+                actor.cur_status.moveSpeed = actor.cur_status.moveSpeed *value;
                 break;
 
             case BuffName.Stun:
@@ -157,13 +161,16 @@ public class BuffSystem : MonoBehaviour
         switch (name)
         {
             case BuffName.ATKBoost:
-                actor.cur_status.atk /= (int)value;
+                actor.cur_status.atk /= value;
                 break;
             case BuffName.ATKSpeedBoost:
                 actor.cur_status.atkSpeed/= value;
                 break;
             case BuffName.FullImmune:
                 actor.cur_buff.full_immune = false;
+                break;
+            case BuffName.MoveSpeed:
+                actor.cur_status.moveSpeed = actor.cur_status.moveSpeed / value;
                 break;
             case BuffName.Stun:
                 actor.cur_buff.stun = false;
