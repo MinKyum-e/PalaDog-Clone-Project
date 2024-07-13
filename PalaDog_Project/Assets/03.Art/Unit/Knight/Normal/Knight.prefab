@@ -293,6 +293,7 @@ MonoBehaviour:
     atkSpeed: 0
     skill: 
     job: 0
+    grade: 0
     moveDir: {x: 0, y: 0}
   cur_status:
     index: 0
@@ -304,12 +305,18 @@ MonoBehaviour:
     atkSpeed: 0
     skill: 
     job: 0
+    grade: 0
     moveDir: {x: 0, y: 0}
+  cur_buff:
+    full_immune: 0
+    _melee_attack_ignore: 0
+    _magic_attack_ignore: 0
+    _projectile_attack_ignore: 0
+    stun: 0
   enemy_poolManager: {fileID: 0}
   minion_poolManager: {fileID: 0}
   atkTarget: {fileID: 0}
   isDie: 0
-  is_faint: 0
   can_walk: 1
   can_action: 1
   skills: []
@@ -418,12 +425,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 31465017346817393}
     m_Modifications:
     - target: {fileID: 4892743599748975172, guid: 635595f689a11af4db2760bc094d9640, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6248607
+      objectReference: {fileID: 0}
+    - target: {fileID: 4892743599748975172, guid: 635595f689a11af4db2760bc094d9640, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6248607
+      objectReference: {fileID: 0}
+    - target: {fileID: 4892743599748975172, guid: 635595f689a11af4db2760bc094d9640, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6248607
+      objectReference: {fileID: 0}
+    - target: {fileID: 4892743599748975172, guid: 635595f689a11af4db2760bc094d9640, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.86
+      value: -3.69
       objectReference: {fileID: 0}
     - target: {fileID: 4892743599748975172, guid: 635595f689a11af4db2760bc094d9640, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.2
+      value: 10.63
       objectReference: {fileID: 0}
     - target: {fileID: 4892743599748975172, guid: 635595f689a11af4db2760bc094d9640, type: 3}
       propertyPath: m_LocalPosition.z

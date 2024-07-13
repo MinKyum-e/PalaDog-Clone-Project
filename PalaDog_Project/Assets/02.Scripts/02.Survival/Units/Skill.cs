@@ -226,7 +226,7 @@ public class Skill:MonoBehaviour
         List<Actor> result = new List<Actor>();
         List<Candidate> candidates = new List<Candidate>();
         PoolManager targetPool = ((s.target_type == UnitType.Enemy) ? actor.enemy_poolManager : actor.minion_poolManager);
-        print(targetPool.name);
+        
         //스킬 범위 내에 있는 애들 찾기
         foreach (List<GameObject> units in targetPool.pools)
         {

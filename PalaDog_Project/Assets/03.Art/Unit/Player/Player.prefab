@@ -139,6 +139,7 @@ MonoBehaviour:
     atkSpeed: 0
     skill: 
     job: 0
+    grade: 0
     moveDir: {x: 0, y: 0}
   cur_status:
     index: 0
@@ -150,6 +151,7 @@ MonoBehaviour:
     atkSpeed: 0
     skill: 
     job: 0
+    grade: 0
     moveDir: {x: 0, y: 0}
   cur_buff:
     full_immune: 0
@@ -196,7 +198,8 @@ MonoBehaviour:
   actor: {fileID: 0}
   action: {fileID: 0}
   aura: {fileID: 0}
-  aura_skill_Idx: -1
+  aura_skill: {fileID: 0}
+  auraCollider: {fileID: 0}
 --- !u!114 &7446320453438983501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,6 +477,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7b6a849e4d491848a34c9495df244e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aura_skill_name: 0
+  tickTimer: 0
 --- !u!1 &7662449984109865500
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,12 +634,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 2201908351887090627}
     m_Modifications:
     - target: {fileID: 4892743599748975172, guid: 635595f689a11af4db2760bc094d9640, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4892743599748975172, guid: 635595f689a11af4db2760bc094d9640, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4892743599748975172, guid: 635595f689a11af4db2760bc094d9640, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4892743599748975172, guid: 635595f689a11af4db2760bc094d9640, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.9
+      value: -4.1
       objectReference: {fileID: 0}
     - target: {fileID: 4892743599748975172, guid: 635595f689a11af4db2760bc094d9640, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.9
+      value: 8.52
       objectReference: {fileID: 0}
     - target: {fileID: 4892743599748975172, guid: 635595f689a11af4db2760bc094d9640, type: 3}
       propertyPath: m_LocalPosition.z
@@ -667,6 +684,10 @@ PrefabInstance:
     - target: {fileID: 4892743599748975172, guid: 635595f689a11af4db2760bc094d9640, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4892743599748975172, guid: 635595f689a11af4db2760bc094d9640, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8561943805963000861, guid: 635595f689a11af4db2760bc094d9640, type: 3}
       propertyPath: m_Name

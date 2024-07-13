@@ -7,6 +7,7 @@ using UnityEngine;
 public class Minion: Unit
 {
     GameObject enemyBase;
+   
     public int cost;
 
     private void Awake()
@@ -31,6 +32,7 @@ public class Minion: Unit
         gameObject.SetActive(false);
         gameObject.transform.position = new Vector3(100, 0, gameObject.transform.position.z);
         GameManager.Instance.cur_cost -= cost;
+        GameManager.Instance.DeleteHeroUnit((MinionUnitIndex)actor.ID);
     }
 
 

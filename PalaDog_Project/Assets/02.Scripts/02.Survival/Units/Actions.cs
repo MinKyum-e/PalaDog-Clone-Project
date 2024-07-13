@@ -118,6 +118,19 @@ public class Actions: MonoBehaviour
     {
         return skill.UseSkill(skill_slot_idx, (SkillName)actor.cur_status.skill[skill_slot_idx]);
     }
+    public bool PlaySkill(SkillName skill_name)
+    {
+        int slot_idx = -1;
+        for(int i=0;i < actor.cur_status.skill.Length;i++)
+        {
+            if ((SkillName)actor.cur_status.skill[i] == skill_name)
+            {
+                slot_idx = i;
+                break;
+            }
+        }
+        return skill.UseSkill(slot_idx, skill_name);
+    }
 
 
 

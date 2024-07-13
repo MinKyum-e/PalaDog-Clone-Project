@@ -52,7 +52,7 @@ public class BossHPUI : MonoBehaviour
         float ratio = ((float)target.cur_status.HP / (float)target.status.HP);
         if (ratio >= 0)
         {
-            if (ratio >= 0.5f)
+/*            if (ratio >= 0.5f)
             {
                 sprite.color = colors[0];
             }
@@ -63,7 +63,7 @@ public class BossHPUI : MonoBehaviour
             else
             {
                 sprite.color = colors[2];
-            }
+            }*/
             transform.localScale = new Vector3(scale_X * ratio, transform.localScale.y, transform.localScale.z);
         }
         else

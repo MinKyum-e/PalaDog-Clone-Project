@@ -15,7 +15,6 @@ public abstract class Unit : MonoBehaviour
 
     private void OnEnable()
     {
-
         actor = GetComponent<Actor>();
         action = GetComponent<Actions>();
         atkType = (gameObject.tag == "Enemy") ? UnitType.Minion : UnitType.Enemy;
@@ -36,7 +35,7 @@ public abstract class Unit : MonoBehaviour
             if (Parser.skill_table_dict.TryGetValue(actor.cur_status.skill[i], out entry))
             {
                 actor.skills[i].entry = entry;
-                actor.skills[i].can_use_skill = (entry.act == SkillAct.P);
+                actor.skills[i].can_use_skill = true;
             }
             else
             {

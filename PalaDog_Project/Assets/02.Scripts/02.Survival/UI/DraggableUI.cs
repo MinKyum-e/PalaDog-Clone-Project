@@ -85,7 +85,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             float leftBound = auraCollider.bounds.min.x;
             float rightBount = auraCollider.bounds.max.x;
             //소환전 맥스 코스트 확인
-            if (spawnPoint.x >= leftBound && spawnPoint.x <= rightBount && GameManager.Instance.CheckCost(Parser.minion_status_dict[minion_idx].cost) == true)
+            if (spawnPoint.x >= leftBound && spawnPoint.x <= rightBount && GameManager.Instance.CheckCost(Parser.minion_status_dict[minion_idx].cost) == true && !GameManager.Instance.CheckHeroExists((MinionUnitIndex)minion_idx))
             {
                 Transform playerTransform = Player.Instance.transform;
 
@@ -93,7 +93,13 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
                 spawnPoint.y = playerTransform.position.y;
                 Minion minion = poolManager.Get(minion_idx, spawnPoint).GetComponent<Minion>();
                 minion.tag = "Minion";
-                
+                //히어로 유닛인경우 game manager에 추가하기
+                if(minion.actor.status.grade == UnitGrade.Hero)
+                {
+                    GameManager.Instance.AddHeroUnit(minion);
+                    //액티브 UI 잠금해제
+
+                }
    /*             GameManager.Instance.cur_food -=requisite_food;*/
                 GameManager.Instance.cur_cost +=minion.cost;
                 cooltimeUI.StartCooldown();

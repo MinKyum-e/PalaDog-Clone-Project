@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -80,6 +81,7 @@ public struct CommonStatus
     public float atkSpeed;
     public int[] skill;
     public Chr_job job;
+    public UnitGrade grade;
     public Vector2 moveDir;
 }
 
@@ -89,6 +91,7 @@ public struct PlayerStatus
 
     public CommonStatus common;
     public int auraLV;
+    
 }
 
 
@@ -97,6 +100,7 @@ public struct MinionStatus
     public CommonStatus common;
     public int cost;
     public float cool_time;
+   
 }
 
 public struct EnemyStatus
@@ -105,3 +109,4 @@ public struct EnemyStatus
     public int grade;
     public int gold;
 }
+

@@ -69,4 +69,26 @@ public enum Chr_job
     projectile,
 }
 
+public enum MinionUnitIndex
+{
+    Player = 10000,
+    Warrior = 10111,
+    Knight_Elite = 10121,
+    Hammer_Elite = 10122,
+
+    Knight_Hero = 10131,
+    Hammer_Heros = 10132,
+
+}
+
+
+public enum UnitGrade
+{
+    Player,
+    Normal,
+    Elite,
+    Hero,
+    Boss,
+}
+
 

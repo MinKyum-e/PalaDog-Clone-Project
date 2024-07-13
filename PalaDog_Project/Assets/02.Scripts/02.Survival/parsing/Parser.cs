@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using static DG.Tweening.DOTweenAnimation;
 
 public class Parser : MonoBehaviour
 {
@@ -60,7 +61,16 @@ public class Parser : MonoBehaviour
                 e.common.skill[1] = (int)d["Monster_Skill2"];
                 e.common.skill[2] = (int)d["Monster_Skill3"];
                 e.common.moveDir = Vector2.left;
-
+                string grade = d["Monster_Grade"].ToString();
+                string[] target_grade = Enum.GetNames(typeof(UnitGrade));
+                for (int i = 0; i < target_grade.Length; i++)
+                {
+                    if (target_grade[i].Equals(grade))
+                    {
+                       e.common.grade = (UnitGrade)i;
+                        break;
+                    }
+                }
                 enemy_status_dict[idx] = e;
             }
 
@@ -89,8 +99,21 @@ public class Parser : MonoBehaviour
                     s.common.job = Chr_job.magic;
 
                 s.common.moveSpeed = float.Parse(d["Chr_MoveSpeed"].ToString());
-               s.common.moveDir = Vector2.right;
+                s.common.moveDir = Vector2.right;
                 s.cool_time = float.Parse(d["Chr_CoolTime"].ToString());
+                
+
+                string grade = d["Chr_Grade"].ToString();
+                string[] target_grade = Enum.GetNames(typeof(UnitGrade));
+                for (int i = 0; i < target_grade.Length; i++)
+                {
+                    if (target_grade[i].Equals(grade))
+                    {
+                        s.common.grade = (UnitGrade)i;
+                        break;
+                    }
+                }
+
                 minion_status_dict[idx] = s;
             }
             //웨이브 정보

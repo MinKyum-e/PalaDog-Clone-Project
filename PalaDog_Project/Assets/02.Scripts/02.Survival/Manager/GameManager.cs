@@ -26,7 +26,10 @@ public class GameManager : MonoBehaviour
     public int STAGE_PER_CHAPTER;
     public int MAX_CHAPTER;
     public int MAX_COST;
-/*    public int MAX_FOOD;*/
+    /*    public int MAX_FOOD;*/
+
+    //히어로 오브젝트 관리 draggable 소환시 추가, die 시 제거,
+    public Dictionary<MinionUnitIndex, Minion> hero_objects;
 
     private static GameManager instance = null;
 
@@ -50,6 +53,7 @@ public class GameManager : MonoBehaviour
             instance = this;
             wave = 1;
             stage =1;
+            hero_objects = new Dictionary<MinionUnitIndex, Minion>();
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -104,6 +108,26 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public bool CheckHeroExists(MinionUnitIndex idx)
+    {
+        if(hero_objects.TryGetValue(idx, out var hero))
+        {
+            if (hero != null)
+                return true;
+        }
+        return false;
+
+    }
+    public void AddHeroUnit(Minion minion)
+    {
+        print("adddd");
+        hero_objects[(MinionUnitIndex)minion.actor.ID] = minion;
+    }
+    public void DeleteHeroUnit(MinionUnitIndex idx)
+    {
+        hero_objects[idx] = null;
+    }
+
     public static GameManager Instance //게임매니저 인스턴스 접근
     {
         get
@@ -131,6 +155,8 @@ public class GameManager : MonoBehaviour
     {
 
     }
+
+    
 
     public void GoTitle()
     {
