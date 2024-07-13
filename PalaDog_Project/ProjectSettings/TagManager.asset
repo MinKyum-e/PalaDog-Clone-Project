@@ -16,6 +16,7 @@ TagManager:
   - null
   - Boss
   - SkillPool
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -79,4 +80,7 @@ TagManager:
     locked: 0
   - name: EnemyBase
     uniqueID: 983927875
+    locked: 0
+  - name: Particle
+    uniqueID: 4206086885
     locked: 0
