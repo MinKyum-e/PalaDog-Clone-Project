@@ -7,34 +7,62 @@ public class UnitSpawnUI : MonoBehaviour
 {
 
     public GameObject[] unit_panels;
+    public GameObject player_skill;
+    public GameObject[] skill_panels;
 
-    public int current_page = -1;
+    public bool player_panel = false;
+    public bool current_page = false;
 
-    public void OpenUnitPanel(int _panel_info)
+
+    public void OpenPlayerPanel()
     {
-        //close panel
-        if((int)_panel_info == current_page)
-        {
-            unit_panels[current_page].SetActive(false);
-            current_page = -1;
-            return;
-        }
-
-        //all close
+        player_skill.SetActive(false);
         for (int i = 0; i < unit_panels.Length; i++)
         {
-                unit_panels[i].gameObject.SetActive(false);
+            skill_panels[i].SetActive(false);
+            unit_panels[i].SetActive(false);
         }
 
+        player_panel = !player_panel;
+        if (player_panel)
+        {
+            if (current_page)
+            {
+                skill_panels[0].gameObject.SetActive(true);
+                unit_panels[0].gameObject.SetActive(true);
+            }
+            else
+            {
+                skill_panels[1].gameObject.SetActive(true);
+                unit_panels[1].gameObject.SetActive(true);
+            }
+        }
+        else
+            player_skill.gameObject.SetActive(true);
+    }
 
-        current_page = _panel_info;
-
-        //open panel
+    public void OpenUnitPanel()
+    {
         for(int i=0;i<unit_panels.Length;i++)
         {
-            if (i == current_page)
-                unit_panels[i].gameObject.SetActive(true);
+            skill_panels[i].SetActive(false);
+            unit_panels[i].SetActive(false);
         }
+
+
+        current_page = !current_page;
+        if (current_page)
+        {
+            skill_panels[0].gameObject.SetActive(true);
+            unit_panels[0].gameObject.SetActive(true);
+        }
+            
+        else
+        {
+            unit_panels[1].gameObject.SetActive(true);
+            skill_panels[1].gameObject.SetActive(true);
+        }
+            
 
 
     }
