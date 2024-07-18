@@ -383,8 +383,9 @@ MonoBehaviour:
   prefabs:
   - {fileID: 564750637644340419, guid: 2638a840d8a36364dae3132a8ecdf2e1, type: 3}
   - {fileID: 7665680707901871439, guid: a5bccebe11360464bbe414a85f945b88, type: 3}
-  - {fileID: 2730792912833137444, guid: 10a9df8ebdd529a44a79c35831672854, type: 3}
   - {fileID: 2730792912833137444, guid: c6c57118b07788546bb7fb0e5e3b8b53, type: 3}
+  - {fileID: 564750637644340419, guid: 7ca7a300d9505424c984d149db38456c, type: 3}
+  - {fileID: 564750637644340419, guid: 4bd030f548049b14f9b1668b3a21799c, type: 3}
   player: {fileID: 0}
 --- !u!1 &120294388
 GameObject:
