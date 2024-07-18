@@ -61,6 +61,7 @@ public class Parser : MonoBehaviour
                 e.common.skill[1] = (int)d["Monster_Skill2"];
                 e.common.skill[2] = (int)d["Monster_Skill3"];
                 e.common.moveDir = Vector2.left;
+                e.common.job = Chr_job.melee;
                 string grade = d["Monster_Grade"].ToString();
                 string[] target_grade = Enum.GetNames(typeof(UnitGrade));
                 for (int i = 0; i < target_grade.Length; i++)

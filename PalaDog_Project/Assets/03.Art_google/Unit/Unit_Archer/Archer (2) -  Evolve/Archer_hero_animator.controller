@@ -45,7 +45,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ff30ab491f2544e418b6be4c033412a5, type: 2}
+  m_Motion: {fileID: 7400000, guid: 09facc08bb4fe4c07bc2754d459f2c78, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -96,7 +96,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 1cdd5ad817f9f4960a064e32e56376ce, type: 2}
+  m_Motion: {fileID: 7400000, guid: c902dc0439e5c43dcbbddaad57f14e02, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -148,7 +148,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: eadef21cc6bff0245a865486528f8888, type: 2}
+  m_Motion: {fileID: 7400000, guid: 78a3d8d4088da2148a8b32c9ce96c696, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -160,7 +160,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Archer_rare_animator
+  m_Name: Archer_hero_animator
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Stun
@@ -227,7 +227,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 640ac4443c18c423d9fd8fd4abe8dab2, type: 2}
+  m_Motion: {fileID: 7400000, guid: 9a2d4e89ca77e48688d2d0946d35e27a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

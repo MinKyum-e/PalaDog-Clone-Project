@@ -34,6 +34,7 @@ public class Actor : MonoBehaviour
         animator = GetComponent<Animator>();
         enemy_poolManager = GameObject.FindGameObjectWithTag("EnemyPool").GetComponent<PoolManager>();
         minion_poolManager = GameObject.FindGameObjectWithTag("MinionPool").GetComponent<PoolManager>();
+
         skills = new ActorSkillInfo[3];
         for(int i=0;i<3;i++)
         {

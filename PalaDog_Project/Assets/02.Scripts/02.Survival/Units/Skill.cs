@@ -96,6 +96,9 @@ public class Skill:MonoBehaviour
     {
         switch (skill_name)
         {
+            case SkillName.HeroArrow:
+                HeroArrow(skill_slot_idx);
+                break;
             case SkillName.LifeDrain:
                 StartCoroutine(Co_LifeDrain(skill_slot_idx));
                 break;
@@ -105,6 +108,17 @@ public class Skill:MonoBehaviour
                 
         }
         return true;
+    }
+
+    private void HeroArrow(int skill_slot_idx)
+    {
+        SkillEntry s = Parser.skill_table_dict[(int)SkillName.HeroArrow];
+        if (actor.atkTarget != null && actor.atkTarget.activeSelf)
+        {
+            List<Actor> targets = SearchingTargets(SkillName.HeroArrow);
+            var ret = ArrowPool.Instance.Shot(targets[0].gameObject, transform.position, actor.cur_status.atk * s.DMGCoeff, actor.cur_status.atkSpeed);
+
+        }
     }
 
     private IEnumerator Co_LifeDrain(int skill_slot_idx)

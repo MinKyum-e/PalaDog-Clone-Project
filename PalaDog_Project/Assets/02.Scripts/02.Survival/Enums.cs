@@ -19,7 +19,9 @@ public enum SkillName
     HealingAura = 30011,
     SpeedAura = 30012,
     HammerAttack = 10011,
-    LegendHammerAttack = 10012
+    LegendHammerAttack = 10012,
+    AttackSpeedUP = 10021,
+    HeroArrow  =10022,
 }
 
 public enum SkillAct

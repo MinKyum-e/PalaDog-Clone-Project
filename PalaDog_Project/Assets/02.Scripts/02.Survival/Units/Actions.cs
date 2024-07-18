@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -32,21 +33,31 @@ public class Actions: MonoBehaviour
 
     public void NormalAttack()
     {
-        if(actor.atkTarget != null && actor.atkTarget.activeSelf)/* && Utils.DistanceToTarget(actor.transform.position, actor.atkTarget.transform.position) <= actor.cur_status.atkRange)*/
+        switch(actor.cur_status.job)
         {
-            actor.atkTarget.GetComponent<Actions>().Hit(actor.cur_status.atk, actor.cur_status.job);
-            SoundManager.Instance.SetVolumeSFX(0.4f);
-            SoundManager.Instance.PlaySFX(SoundManager.SFX_CLIP.NormalAttack);
+            case Chr_job.melee:
+                if (actor.atkTarget != null && actor.atkTarget.activeSelf)/* && Utils.DistanceToTarget(actor.transform.position, actor.atkTarget.transform.position) <= actor.cur_status.atkRange)*/
+                {
+                    actor.atkTarget.GetComponent<Actions>().Hit(actor.cur_status.atk, actor.cur_status.job);
+                    SoundManager.Instance.SetVolumeSFX(0.4f);
+                    SoundManager.Instance.PlaySFX(SoundManager.SFX_CLIP.NormalAttack);
+                }
+                break;
+            case Chr_job.projectile:
+                if (actor.atkTarget != null && actor.atkTarget.activeSelf)
+                {
+                    var ret = ArrowPool.Instance.Shot(actor.atkTarget, transform.position,actor.cur_status.atk, actor.cur_status.atkSpeed);
+
+                }
+                break;
         }
+           
     }
 
     public void EndUnitAction()
     {
         actor.can_action = true;
     }
-
-
-
 
 
 
