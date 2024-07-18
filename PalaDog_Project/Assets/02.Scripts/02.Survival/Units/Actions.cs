@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class Actions: MonoBehaviour
 {
-    Actor actor;
+    public Actor actor;
     public Skill skill;
 
 

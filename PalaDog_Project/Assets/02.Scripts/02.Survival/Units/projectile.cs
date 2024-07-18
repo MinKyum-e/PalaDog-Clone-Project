@@ -47,20 +47,20 @@ public class projectile : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
-            var collision_unit = collision.gameObject.GetComponent<Unit>();
-            var target_unit = target.gameObject.GetComponent<Unit>();
+            var collision_unit = collision.gameObject.GetComponent<Actions>();
+            var target_unit = target.gameObject.GetComponent<Actions>();
             if (collision.gameObject == target )
             {
                 if(!target_unit.actor.isDie)
                 {
-                    target_unit.action.Hit(atk, Chr_job.projectile);
+                    target_unit.Hit(atk, Chr_job.projectile);
                     transform.position = new Vector3(-100, 0, 0);
                     gameObject.SetActive(false);
                 }
             }
             else if (target_unit.actor.isDie && !collision_unit.actor.isDie)
             {
-                collision_unit.action.Hit(atk, Chr_job.projectile);
+                collision_unit.Hit(atk, Chr_job.projectile);
                 transform.position = new Vector3(-100, 0, 0);
                 gameObject.SetActive(false);
 

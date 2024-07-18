@@ -79,7 +79,10 @@ public enum MinionUnitIndex
     Hammer_Elite = 10122,
 
     Knight_Hero = 10131,
-    Hammer_Heros = 10132,
+    Hammer_Hero = 10132,
+
+    Archer_Elite = 10221,
+    Archer_Hero = 10231,
 
 }
 
