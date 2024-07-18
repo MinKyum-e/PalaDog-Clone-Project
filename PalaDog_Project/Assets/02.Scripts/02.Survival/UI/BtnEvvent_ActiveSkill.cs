@@ -28,20 +28,27 @@ public class BtnEvent_ActiveSkill : MonoBehaviour
 
         Minion minion;
         //연결 안된경우 예외처리
-        if (GameManager.Instance.hero_objects.TryGetValue(minionUnitIndex, out minion ))
+        try
         {
-            Actor actor = minion.actor;
-            for (int i = 0; i < actor.skills.Length; i++)
+            if (GameManager.Instance.hero_objects.TryGetValue(minionUnitIndex, out minion))
             {
-                if (actor.skills[i].entry.index == (int)skillName && actor.skills[i].can_use_skill)
+                Actor actor = minion.actor;
+                for (int i = 0; i < actor.skills.Length; i++)
                 {
-                    actor.can_action = false;
-                    actor.animator.SetTrigger("Skill" + i);
-                    return;
+                    if (actor.skills[i].entry.index == (int)skillName && actor.skills[i].can_use_skill)
+                    {
+                        actor.can_action = false;
+                        actor.animator.SetTrigger("Skill" + i);
+                        return;
+                    }
                 }
             }
         }
-        print("에픽 유닛 존재하지 않음 , " + minionUnitIndex.ToString());
+        catch
+        {
+
+            print("에픽 유닛 존재하지 않음 , " + minionUnitIndex.ToString());
+        }
 
     }
 }

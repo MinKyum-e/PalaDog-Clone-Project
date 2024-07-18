@@ -126,10 +126,10 @@ public class PlayerMove : MonoBehaviour
     public void LeftBtnDown()
     {
         SoundManager.Instance.PlayPLAYERSFX(SoundManager.PLAYER_SFX_CLIP.WALK);
-        actor.animator.SetBool("isWalk", true);
-        actor.spriteRenderer.flipX = true;
-        actor.cur_status.moveDir = Vector2.left;
-        actor.can_walk = true;
+        Player.Instance.actor.animator.SetBool("isWalk", true);
+        Player.Instance.actor.spriteRenderer.flipX = true;
+        Player.Instance.actor.cur_status.moveDir = Vector2.left;
+        Player.Instance.actor.can_walk = true;
         right = false;
         walking = true;
     }
@@ -137,19 +137,19 @@ public class PlayerMove : MonoBehaviour
     public void LeftBtnUp()
     {
         SoundManager.Instance.StopPLAYERSFX();
-        actor.animator.SetBool("isWalk", false);
-        actor.cur_status.moveDir = Vector2.zero;
-        actor.can_walk = false;
+        Player.Instance.actor.animator.SetBool("isWalk", false);
+        Player.Instance.actor.cur_status.moveDir = Vector2.zero;
+        Player.Instance.actor.can_walk = false;
         walking = false;
     }
 
     public void RightBtnDown()
     {
         SoundManager.Instance.PlayPLAYERSFX(SoundManager.PLAYER_SFX_CLIP.WALK);
-        actor.animator.SetBool("isWalk", true);
-        actor.spriteRenderer.flipX = false;
-        actor.cur_status.moveDir = Vector2.right;
-        actor.can_walk = true;
+        Player.Instance.actor.animator.SetBool("isWalk", true);
+        Player.Instance.actor.spriteRenderer.flipX = false;
+        Player.Instance.actor.cur_status.moveDir = Vector2.right;
+        Player.Instance.actor.can_walk = true;
         right = true;
         walking = true;
     }
@@ -157,9 +157,9 @@ public class PlayerMove : MonoBehaviour
     public void RightBtnUp()
     {
         SoundManager.Instance.StopPLAYERSFX();
-        actor.animator.SetBool("isWalk", false);
-        actor.cur_status.moveDir = Vector2.zero;
-        actor.can_walk = false;
+        Player.Instance.actor.animator.SetBool("isWalk", false);
+        Player.Instance.actor.cur_status.moveDir = Vector2.zero;
+        Player.Instance.actor.can_walk = false;
         walking = false;
     }
 }

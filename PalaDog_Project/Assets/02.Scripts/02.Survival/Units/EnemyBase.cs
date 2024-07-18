@@ -18,6 +18,7 @@ public class EnemyBase: MonoBehaviour
         actor = GetComponent<Actor>();
         action = GetComponent<Actions>();
         spriteResolver = GetComponent<SpriteResolver>();
+        DontDestroyOnLoad(gameObject);
     }
     public static EnemyBase Instance()
     {

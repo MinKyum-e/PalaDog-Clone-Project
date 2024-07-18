@@ -15,6 +15,8 @@ public class Minion: Unit
         enemyBase = GameObject.Find("EnemyBase");
     }
 
+
+
     public override void setStatus()
     {
         try
@@ -58,6 +60,7 @@ public class Minion: Unit
         catch
         {
             print("SetAttackTarget: maintarget missing set diff 99999");
+            enemyBase = GameObject.Find("EnemyBase");
             dist = 9999999;
         }
 

@@ -15,6 +15,8 @@ public class PoolManager : MonoBehaviour
 
     int[] sort_order;
 
+
+
     //풀 담당을 하는 리스트들
     public List<GameObject>[] pools;
     private void Awake()
@@ -35,6 +37,7 @@ public class PoolManager : MonoBehaviour
         }
         index_dict = new Dictionary<int, int>();
         sort_order = new int[prefabs.Length];
+        DontDestroyOnLoad(gameObject);
     }
     public void Start()
     {

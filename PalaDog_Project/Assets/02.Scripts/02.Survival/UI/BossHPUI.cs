@@ -28,7 +28,7 @@ public class BossHPUI : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public static BossHPUI Instance //게임매니저 인스턴스 접근
+    public static BossHPUI Instance 
     {
         get
         {

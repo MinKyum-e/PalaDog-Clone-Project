@@ -13,7 +13,7 @@ public abstract class Unit : MonoBehaviour
     public Skill skill;
     public UnitType atkType;
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         actor = GetComponent<Actor>();
         action = GetComponent<Actions>();
