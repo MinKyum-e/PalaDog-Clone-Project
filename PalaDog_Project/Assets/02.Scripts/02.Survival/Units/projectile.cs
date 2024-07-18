@@ -11,6 +11,7 @@ public class projectile : MonoBehaviour
     float atk_speed;
     public float atk_speed_base= 10f;
     GameObject target;
+    bool can_attack = true;
 
 
     Rigidbody2D rigid;
@@ -24,57 +25,58 @@ public class projectile : MonoBehaviour
     {
         this.target = target;
         this.atk = atk;
-        this.atk_speed = atk_speed; 
+        this.atk_speed = atk_speed;
+        can_attack = true;
     }
 
-    void FixedUpdate()
+    private void Update()
     {
-        if(target != null)
-        {
-            rigid.velocity = Vector2.right * atk_speed * atk_speed_base;
-        }
-         
-
-
-        if(!target.activeSelf)
+        if(!can_attack || (target != null && !target.activeSelf))
         {
             transform.position = new Vector3(-100, 0, 0);
             gameObject.SetActive(false);
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    void FixedUpdate()
     {
-        if(collision.gameObject.tag == "Enemy")
-        {
-            var collision_unit = collision.gameObject.GetComponent<Actions>();
-            var target_unit = target.gameObject.GetComponent<Actions>();
-            if (collision.gameObject == target )
-            {
-                if(!target_unit.actor.isDie)
-                {
-                    target_unit.Hit(atk, Chr_job.projectile);
-                    transform.position = new Vector3(-100, 0, 0);
-                    gameObject.SetActive(false);
-                }
-            }
-            else if (target_unit.actor.isDie && !collision_unit.actor.isDie)
-            {
-                collision_unit.Hit(atk, Chr_job.projectile);
-                transform.position = new Vector3(-100, 0, 0);
-                gameObject.SetActive(false);
+        rigid.velocity = Vector2.right * atk_speed * atk_speed_base;
+        
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var collision_unit = collision.gameObject.GetComponent<Actions>();
+
+        if (can_attack)
+        {
+            if (collision.gameObject.tag == "Enemy")
+            {
+                if (target != null)
+                {
+                    var target_unit = target.gameObject.GetComponent<Actions>();
+                    if (collision.gameObject == target || (target_unit.actor.isDie && !collision_unit.actor.isDie))
+                    {
+                        if (!target_unit.actor.isDie)
+                        {
+                            can_attack = false;
+                            target_unit.Hit(atk, Chr_job.projectile);
+                            
+                        }
+                    }
+                }
+                else
+                {
+                    if (!collision_unit.actor.isDie)
+                    {
+                        can_attack = false;
+                        collision_unit.Hit(atk, Chr_job.projectile);
+                    }
+                }
             }
         }
         
-
+        
     }
 
-/*    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Wall")
-        {
-            actor.cur_status.moveDir = Vector2.zero;
-        }
-    }*/
 }

@@ -112,15 +112,10 @@ public class Skill:MonoBehaviour
 
     private void HeroArrow(int skill_slot_idx)
     {
-        print(1111111111);
         SkillEntry s = Parser.skill_table_dict[(int)SkillName.HeroArrow];
-        List<Actor> targets = SearchingTargets(SkillName.HeroArrow);
-        if (targets.Count == 1)
-        {
-            
-            var ret = ArrowPool.Instance.Shot(targets[0].gameObject, transform.position, actor.cur_status.atk * s.DMGCoeff, actor.cur_status.atkSpeed);
 
-        }
+            var ret = ArrowPool.Instance.Shot(null, transform.position, actor.cur_status.atk * s.DMGCoeff, actor.cur_status.atkSpeed);
+
     }
 
     private IEnumerator Co_LifeDrain(int skill_slot_idx)
