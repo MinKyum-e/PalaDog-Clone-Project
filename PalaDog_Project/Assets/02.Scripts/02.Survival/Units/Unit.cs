@@ -144,12 +144,13 @@ public abstract class Unit : MonoBehaviour
             if (actor.can_action)
             {
 
-                actor.atkTarget = setAttackTarget(actor.atkTarget, actor.cur_status.atkRange, atkType);
-                if (actor.atkTarget != null && actor.atkTarget.GetComponent<Actor>().isDie == false)
-                {
-                    actor.can_action = false;
-                    actor.animator.SetTrigger("Attack");
-                }
+                    actor.atkTarget = setAttackTarget(actor.atkTarget, actor.cur_status.atkRange, atkType);
+                    if (actor.atkTarget != null && actor.atkTarget.GetComponent<Actor>().isDie == false)
+                    {
+                        actor.can_action = false;
+                        actor.animator.SetTrigger("Attack");
+                    }
+
             }
         }
 

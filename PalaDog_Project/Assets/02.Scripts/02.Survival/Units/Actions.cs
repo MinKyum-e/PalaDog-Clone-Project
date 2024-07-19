@@ -33,25 +33,56 @@ public class Actions: MonoBehaviour
 
     public void NormalAttack()
     {
-        switch(actor.cur_status.job)
+        if (actor.atkTarget != null && actor.atkTarget.activeSelf)
         {
-            case Chr_job.melee:
-                if (actor.atkTarget != null && actor.atkTarget.activeSelf)/* && Utils.DistanceToTarget(actor.transform.position, actor.atkTarget.transform.position) <= actor.cur_status.atkRange)*/
-                {
+            
+            switch (actor.cur_status.job)
+            {
+                case Chr_job.melee:
                     actor.atkTarget.GetComponent<Actions>().Hit(actor.cur_status.atk, actor.cur_status.job);
                     SoundManager.Instance.SetVolumeSFX(0.4f);
                     SoundManager.Instance.PlaySFX(SoundManager.SFX_CLIP.NormalAttack);
-                }
-                break;
-            case Chr_job.projectile:
-                if (actor.atkTarget != null && actor.atkTarget.activeSelf)
-                {
-                    var ret = ArrowPool.Instance.Shot(actor.atkTarget, transform.position,actor.cur_status.atk, actor.cur_status.atkSpeed);
+                    break;
+                case Chr_job.projectile:
+                     var ret = ArrowPool.Instance.Shot(actor.atkTarget, transform.position, actor.cur_status.atk, actor.cur_status.atkSpeed);
 
-                }
-                break;
+                    break;
+                case Chr_job.magic:
+                    RangeAttack(actor.cur_status.atkRange);
+                    break;
+            }
         }
-           
+
+    }
+
+    public void RangeAttack(float range)
+    {
+        print("rangeattack");
+        PoolManager targetPool = ((gameObject.tag == "Minion") ? actor.enemy_poolManager : actor.minion_poolManager);
+
+        //스킬 범위 내에 있는 애들 찾기
+        foreach (List<GameObject> units in targetPool.pools)
+        {
+            foreach (GameObject u in units)
+            {
+                if (u.GetComponent<Actor>().isDie) { continue; }
+                float tmp_dist = Utils.DistanceToTarget(u.transform.position, transform.position);
+                if (tmp_dist <= range)
+                {
+                    if (actor.cur_status.moveDir.x > 0 && (u.transform.position.x - actor.transform.position.x) <= 0)
+                        continue;
+                    if (actor.cur_status.moveDir.x < 0 && (u.transform.position.x - actor.transform.position.x) >= 0)
+                        continue;
+                    u.GetComponent<Actions>().Hit(actor.cur_status.atk, actor.cur_status.job);
+                }
+            }
+        }
+
+        if(EnemyBase.Instance().gameObject.activeSelf && Utils.DistanceToTarget(EnemyBase.Instance().transform.position, transform.position) <= range)
+        {
+            EnemyBase.Instance().action.Hit(actor.cur_status.atk, actor.cur_status.job);
+        }
+        
     }
 
     public void EndUnitAction()

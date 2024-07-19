@@ -506,6 +506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 537fa3fe36a7371439c35a70cc5c2c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actor: {fileID: 0}
   skill: {fileID: 0}
 --- !u!114 &547815063918972114
 MonoBehaviour:

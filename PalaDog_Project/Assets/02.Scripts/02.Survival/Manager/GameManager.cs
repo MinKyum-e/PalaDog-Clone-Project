@@ -51,8 +51,6 @@ public class GameManager : MonoBehaviour
         if(null == instance) //게임 완전처음시작할때만
         {
             instance = this;
-            wave = 1;
-            stage =1;
             hero_objects = new Dictionary<MinionUnitIndex, Minion>();
             DontDestroyOnLoad(gameObject);
         }

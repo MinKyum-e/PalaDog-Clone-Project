@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3934301207090930116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1339837288120481154}
+  - component: {fileID: 5929793603490698705}
+  m_Layer: 0
+  m_Name: MinionPool
+  m_TagString: MinionPool
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1339837288120481154
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3934301207090930116}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5929793603490698705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3934301207090930116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55d28cabc9f6d4a479e16b33d0844344, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 7098081600307430445, guid: 7e298c2c4ba167647bd9bafd3c51c241, type: 3}
+  - {fileID: 411105347108442885, guid: 7c3f18fb8a5a5884aa7d48a9560c987b, type: 3}
+  - {fileID: 4560634313287605006, guid: 027ccf4fdce56424baea4a7fe71a2eee, type: 3}
+  - {fileID: 7699390044152189119, guid: 6f536b60966e3cb4ba246b3e4bd9572d, type: 3}
+  - {fileID: 3755914402280091559, guid: 72b5832b168fb384d811855b60e6411d, type: 3}
+  - {fileID: 368917088528123528, guid: 0f4552d530730dc428717ebaaebba0cd, type: 3}
+  - {fileID: 1658484333322015013, guid: 8c05f6ac852180d43baab6b7c06f8c71, type: 3}
+  - {fileID: 7098081600307430445, guid: df908b5e1b9ee7d4993a761af8598ffa, type: 3}
+  - {fileID: 7150687480302089547, guid: ecaba09970fe11245b2673c20d6494f5, type: 3}
+  player: {fileID: 0}

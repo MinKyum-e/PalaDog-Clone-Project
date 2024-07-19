@@ -46,6 +46,7 @@ public class PoolManager : MonoBehaviour
         {
             pools[pools.Length - 1].Add(GameObject.Find("Player"));
         }
+
         
         for (int i = 0; i < prefabs.Length; i++)
         {

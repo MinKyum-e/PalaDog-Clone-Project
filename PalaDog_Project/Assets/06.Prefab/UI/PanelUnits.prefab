@@ -670,7 +670,7 @@ MonoBehaviour:
   prerequisite: 0
   unlock_gold_text: {fileID: 1532119449566808118}
   draggableUI: {fileID: 0}
-  unlocked_sprite: {fileID: -274915325, guid: 894176192164f2745848aa032e38c848, type: 3}
+  unlocked_sprite: {fileID: -3521445632414939427, guid: e8ceab4662f9a46cb831f8805088987a, type: 3}
   resorce_img_renderer: {fileID: 70803419023775697}
   cost_object: {fileID: 9066395250412344432}
 --- !u!225 &2101949388071576715
@@ -2590,7 +2590,7 @@ MonoBehaviour:
   prerequisite: 0
   unlock_gold_text: {fileID: 993841332636972863}
   draggableUI: {fileID: 0}
-  unlocked_sprite: {fileID: -274915325, guid: 894176192164f2745848aa032e38c848, type: 3}
+  unlocked_sprite: {fileID: 1610529577339321216, guid: 7b6c3253c52c14faa80f1088556aafc5, type: 3}
   resorce_img_renderer: {fileID: 2665526320256592679}
   cost_object: {fileID: 6624207609311189050}
 --- !u!225 &7686356570055550997
@@ -3300,7 +3300,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -274915325, guid: 894176192164f2745848aa032e38c848, type: 3}
+  m_Sprite: {fileID: 1610529577339321216, guid: 7b6c3253c52c14faa80f1088556aafc5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4020,7 +4020,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -274915325, guid: 894176192164f2745848aa032e38c848, type: 3}
+  m_Sprite: {fileID: -3521445632414939427, guid: e8ceab4662f9a46cb831f8805088987a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
