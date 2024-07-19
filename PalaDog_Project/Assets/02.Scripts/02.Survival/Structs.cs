@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -26,7 +27,7 @@ public struct SkillEffectEntry
 public struct SkillEffect
 {
     public int index;
-    public int value;
+    public float value;
     public float duration;
 }
 
@@ -37,7 +38,7 @@ public struct SkillEntry
     public int index;
     public int group;
     public SkillAct act;
-    public int coolTime;
+    public float coolTime;
     public TargetSearchType target_search_type;
     public UnitType target_type;
     public int target_search_num;
@@ -57,14 +58,14 @@ public struct ActorSkillInfo
     public Actor target;
 }
 
-
+[Serializable]
 public struct BuffStruct
 {
     public bool full_immune;
     public bool _melee_attack_ignore;
     public bool _magic_attack_ignore;
     public bool _projectile_attack_ignore;
-
+    public bool stun;
 }
 
 
@@ -73,13 +74,14 @@ public struct CommonStatus
 {
     public int index;
     public string name;
-    public int HP;
+    public float HP;
     public float moveSpeed;
-    public int atk;
+    public float atk;
     public float atkRange;
     public float atkSpeed;
     public int[] skill;
     public Chr_job job;
+    public UnitGrade grade;
     public Vector2 moveDir;
 }
 
@@ -89,6 +91,7 @@ public struct PlayerStatus
 
     public CommonStatus common;
     public int auraLV;
+    
 }
 
 
@@ -96,6 +99,8 @@ public struct MinionStatus
 {
     public CommonStatus common;
     public int cost;
+    public float cool_time;
+   
 }
 
 public struct EnemyStatus
@@ -104,3 +109,4 @@ public struct EnemyStatus
     public int grade;
     public int gold;
 }
+

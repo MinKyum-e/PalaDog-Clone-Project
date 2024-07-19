@@ -12,8 +12,6 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private int unlock_gold;
     [SerializeField]
-    private int can_unlock; //진화트리 해금조건 확인용
-    [SerializeField]
     private int shop_index;
     [SerializeField]
     private int prerequisite;
@@ -21,10 +19,13 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
 
     public TMP_Text unlock_gold_text;
     public DraggableUI draggableUI;
-    public Sprite unlocked_sprite;
+    
+
     private Image image_renderer;
-    public Sprite unlocked_resource_sprite;
+    public Sprite unlocked_sprite;
+
     public Image resorce_img_renderer;
+
     public GameObject cost_object;
     private int cost;
 
@@ -46,10 +47,10 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
                 prerequisite = kvp.Value.prelist;
             }
 
-            if (kvp.Value.etc_value == draggableUI.minion_idx && kvp.Value.list_type == ShopEnums.ListType.Spawn)
+/*            if (kvp.Value.etc_value == draggableUI.minion_idx && kvp.Value.list_type == ShopEnums.ListType.Spawn)
             {
                 draggableUI.requisite_food = kvp.Value.goods_value;
-            }
+            }*/
 
         }
 
@@ -76,12 +77,11 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
         GameManager.Instance.cur_gold -= unlock_gold;
         is_lock = false;
         image_renderer.sprite = unlocked_sprite;
-        resorce_img_renderer.sprite = unlocked_resource_sprite;
+        resorce_img_renderer.enabled = false;
+        unlock_gold_text.enabled = false;
         cost_object.SetActive(true);
         cost_object.transform.GetChild(0).GetComponent<TMP_Text>().text = cost.ToString();
-
-       
-        unlock_gold_text.text = draggableUI.requisite_food.ToString();
+        
 
         ShopManager.Instance.AddToUnLockList(ShopEnums.UnLockType.InGameUnit, shop_index);
     }

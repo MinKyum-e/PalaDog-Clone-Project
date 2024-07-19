@@ -13,9 +13,8 @@ public abstract class Unit : MonoBehaviour
     public Skill skill;
     public UnitType atkType;
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
-
         actor = GetComponent<Actor>();
         action = GetComponent<Actions>();
         atkType = (gameObject.tag == "Enemy") ? UnitType.Minion : UnitType.Enemy;
@@ -23,7 +22,6 @@ public abstract class Unit : MonoBehaviour
 
         actor.cur_status.HP = actor.status.HP;
         actor.atkTarget = null;
-        actor.is_faint = false;
         actor.isDie = false;
         actor.can_action = true;
         skill = GetComponent<Skill>();
@@ -37,7 +35,7 @@ public abstract class Unit : MonoBehaviour
             if (Parser.skill_table_dict.TryGetValue(actor.cur_status.skill[i], out entry))
             {
                 actor.skills[i].entry = entry;
-                actor.skills[i].can_use_skill = (entry.act == SkillAct.P);
+                actor.skills[i].can_use_skill = true;
             }
             else
             {
@@ -57,7 +55,10 @@ public abstract class Unit : MonoBehaviour
             actor.isDie = true;
             actor.can_action = false;
             actor.atkTarget = null;
+
+            actor.animator.speed = 1.0f;
             actor.animator.Play("Die");
+            actor.transform.Find("Buff").GetComponent<BuffSystem>().SlotFree();
         }
 
         AnimatorStateInfo stateInfo = actor.animator.GetCurrentAnimatorStateInfo(0);
@@ -75,16 +76,26 @@ public abstract class Unit : MonoBehaviour
         }
 
 
-        //필요없을수도
-        if (actor.is_faint)
+        //스턴
+        if(actor.cur_buff.stun && actor.isDie == false)
         {
-            //기절
+            actor.can_action = false;
+            actor.can_walk = false;
+            {
+                actor.animator.SetTrigger("Stun");
+            }
         }
         else
         {
-
-
+            if (stateInfo.IsName("Stun"))
+            {
+                actor.animator.Play("Walk");
+                actor.can_action = true;
+                actor.can_walk = true;
+            }
+                
         }
+
 
 
         if (actor.can_action)
@@ -102,18 +113,15 @@ public abstract class Unit : MonoBehaviour
                     if (actor.skills[i].entry.need_searching)
                     {
                         //스킬 고유 타겟 지정 방식 선택
-                        List<Actor> targets = skill.SearchingTargets((SkillName)actor.skills[i].entry.index);
+                        Actor target = skill.FirstSearchingTarget((SkillName)actor.skills[i].entry.index);
 
-                        if(targets.Count >0)
+                        if(target != null)
                         {
-                            actor.skills[i].target =targets[0];
-                            print("!!!!!!!!!!!!!!!!!!!!!" + actor.skills[i].target.name);
+                            actor.skills[i].target =target;
                             if (actor.can_action && actor.skills[i].target != null && actor.skills[i].target.GetComponent<Actor>().isDie == false)
                             {
                                 actor.can_action = false;
-                                actor.skills[i].can_use_skill = false;
                                 actor.animator.SetTrigger("Skill" + i);
-
                                 print((SkillName)actor.skills[i].entry.index);
                             }
                         }
@@ -136,12 +144,13 @@ public abstract class Unit : MonoBehaviour
             if (actor.can_action)
             {
 
-                actor.atkTarget = setAttackTarget(actor.atkTarget, actor.cur_status.atkRange, atkType);
-                if (actor.atkTarget != null && actor.atkTarget.GetComponent<Actor>().isDie == false)
-                {
-                    actor.can_action = false;
-                    actor.animator.SetTrigger("Attack");
-                }
+                    actor.atkTarget = setAttackTarget(actor.atkTarget, actor.cur_status.atkRange, atkType);
+                    if (actor.atkTarget != null && actor.atkTarget.GetComponent<Actor>().isDie == false)
+                    {
+                        actor.can_action = false;
+                        actor.animator.SetTrigger("Attack");
+                    }
+
             }
         }
 

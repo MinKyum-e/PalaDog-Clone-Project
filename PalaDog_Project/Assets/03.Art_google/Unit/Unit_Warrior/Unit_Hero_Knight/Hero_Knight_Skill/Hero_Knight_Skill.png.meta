@@ -1,0 +1,554 @@
+fileFormatVersion: 2
+guid: 5623b8c1e12a12e4e9ec10b6a62d8777
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Hero_Knight_Skill_0
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 4715
+        width: 811
+        height: 1100
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d60db871810a2d0448a94cc925668365
+      internalID: 704624599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Skill_1
+      rect:
+        serializedVersion: 2
+        x: 2790
+        y: 4716
+        width: 836
+        height: 1094
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0214624d60755e14ca40eb6017a19021
+      internalID: -1987048277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Skill_2
+      rect:
+        serializedVersion: 2
+        x: 4868
+        y: 4716
+        width: 862
+        height: 1094
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39c7db4c84208f247b47cfb1da45aba3
+      internalID: 807491865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Skill_3
+      rect:
+        serializedVersion: 2
+        x: 6936
+        y: 4716
+        width: 897
+        height: 1089
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2227132ad0bceb49bf52ec7fdb2a3bb
+      internalID: 273656050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Skill_4
+      rect:
+        serializedVersion: 2
+        x: 9005
+        y: 4716
+        width: 926
+        height: 1089
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c68a3f91cdb22f5468935302ee6ed736
+      internalID: -334203776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Skill_5
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 3215
+        width: 940
+        height: 1095
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca325f1b0b7a68c479f4170493473dcc
+      internalID: 2059440182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Skill_6
+      rect:
+        serializedVersion: 2
+        x: 2780
+        y: 3175
+        width: 955
+        height: 1150
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bc85242ea3a07645bffb22b4961613f
+      internalID: -1718372769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Skill_7
+      rect:
+        serializedVersion: 2
+        x: 4853
+        y: 3175
+        width: 960
+        height: 1150
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4915dc9cafb1cbb4db6164a4e4699cbd
+      internalID: 859262929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Skill_8
+      rect:
+        serializedVersion: 2
+        x: 6931
+        y: 3175
+        width: 955
+        height: 1150
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a873567fb0e9c44385bc687aeff67f2
+      internalID: 510329648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Skill_9
+      rect:
+        serializedVersion: 2
+        x: 9009
+        y: 3175
+        width: 955
+        height: 1150
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41612b342f8017a4d8758da446a335e4
+      internalID: -795564109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Skill_10
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 1675
+        width: 960
+        height: 1150
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18c939580c674f04195d20a98728cb89
+      internalID: -1825434016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Skill_11
+      rect:
+        serializedVersion: 2
+        x: 2780
+        y: 1675
+        width: 955
+        height: 1150
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55196b1ff54897243917e3703e443353
+      internalID: 1055639554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Skill_12
+      rect:
+        serializedVersion: 2
+        x: 4853
+        y: 1675
+        width: 960
+        height: 1150
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 989b0668cd5228a479015bc46faeba26
+      internalID: -1049712276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Skill_13
+      rect:
+        serializedVersion: 2
+        x: 6931
+        y: 1675
+        width: 955
+        height: 1150
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abf9245dec206af428265f383f173bc0
+      internalID: -651649467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Skill_14
+      rect:
+        serializedVersion: 2
+        x: 9009
+        y: 1675
+        width: 955
+        height: 1150
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cf2bf8326f216f4a9223dcf9155d97d
+      internalID: 1514966329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Skill_15
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 175
+        width: 960
+        height: 1150
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e96a3a1dc19075d4a8066d37fc0bd563
+      internalID: -1897562057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Skill_16
+      rect:
+        serializedVersion: 2
+        x: 2780
+        y: 175
+        width: 955
+        height: 1150
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 066c1f1e4b70a1b45943aefb12406150
+      internalID: 1843800892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Skill_17
+      rect:
+        serializedVersion: 2
+        x: 4853
+        y: 175
+        width: 960
+        height: 1150
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 302ef9188612ea04897cf148e63c22f1
+      internalID: -1220844495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Skill_18
+      rect:
+        serializedVersion: 2
+        x: 6931
+        y: 175
+        width: 955
+        height: 1150
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 388c6b1a29066f249900235a55fb13ef
+      internalID: -1297007011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Knight_Skill_19
+      rect:
+        serializedVersion: 2
+        x: 9009
+        y: 175
+        width: 955
+        height: 1150
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cc74c08abbd30a47a4a574813811f2d
+      internalID: 1337299372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Hero_Knight_Skill_0: 704624599
+      Hero_Knight_Skill_1: -1987048277
+      Hero_Knight_Skill_10: -1825434016
+      Hero_Knight_Skill_11: 1055639554
+      Hero_Knight_Skill_12: -1049712276
+      Hero_Knight_Skill_13: -651649467
+      Hero_Knight_Skill_14: 1514966329
+      Hero_Knight_Skill_15: -1897562057
+      Hero_Knight_Skill_16: 1843800892
+      Hero_Knight_Skill_17: -1220844495
+      Hero_Knight_Skill_18: -1297007011
+      Hero_Knight_Skill_19: 1337299372
+      Hero_Knight_Skill_2: 807491865
+      Hero_Knight_Skill_3: 273656050
+      Hero_Knight_Skill_4: -334203776
+      Hero_Knight_Skill_5: 2059440182
+      Hero_Knight_Skill_6: -1718372769
+      Hero_Knight_Skill_7: 859262929
+      Hero_Knight_Skill_8: 510329648
+      Hero_Knight_Skill_9: -795564109
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

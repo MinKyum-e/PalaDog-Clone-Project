@@ -26,7 +26,10 @@ public class GameManager : MonoBehaviour
     public int STAGE_PER_CHAPTER;
     public int MAX_CHAPTER;
     public int MAX_COST;
-    public int MAX_FOOD;
+    /*    public int MAX_FOOD;*/
+
+    //히어로 오브젝트 관리 draggable 소환시 추가, die 시 제거,
+    public Dictionary<MinionUnitIndex, Minion> hero_objects;
 
     private static GameManager instance = null;
 
@@ -35,7 +38,7 @@ public class GameManager : MonoBehaviour
     public int stage = 1;
     private int _cur_cost= 0;
     private int _cur_gold = 0;
-    private float _cur_food = 0;
+/*    private float _cur_food = 0;*/
     private float _food_per_time = 1;
     
 
@@ -48,8 +51,7 @@ public class GameManager : MonoBehaviour
         if(null == instance) //게임 완전처음시작할때만
         {
             instance = this;
-            wave = 1;
-            stage = 1;
+            hero_objects = new Dictionary<MinionUnitIndex, Minion>();
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -71,8 +73,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (cur_food < MAX_FOOD)
-            cur_food +=Time.deltaTime * _food_per_time;
+/*        if (cur_food < MAX_FOOD)
+            cur_food +=Time.deltaTime * _food_per_time;*/
         //게임 로직
         switch (state)
         {
@@ -104,6 +106,26 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public bool CheckHeroExists(MinionUnitIndex idx)
+    {
+        if(hero_objects.TryGetValue(idx, out var hero))
+        {
+            if (hero != null)
+                return true;
+        }
+        return false;
+
+    }
+    public void AddHeroUnit(Minion minion)
+    {
+        print("adddd");
+        hero_objects[(MinionUnitIndex)minion.actor.ID] = minion;
+    }
+    public void DeleteHeroUnit(MinionUnitIndex idx)
+    {
+        hero_objects[idx] = null;
+    }
+
     public static GameManager Instance //게임매니저 인스턴스 접근
     {
         get
@@ -119,7 +141,7 @@ public class GameManager : MonoBehaviour
     void ResetBaseStat()
     {
         MAX_COST = ShopManager.Instance.GetEnforceValue(EnforceType.MAX_Cost, 0);
-        MAX_FOOD = ShopManager.Instance.GetEnforceValue(EnforceType.MAX_Food, 0);
+/*        MAX_FOOD = ShopManager.Instance.GetEnforceValue(EnforceType.MAX_Food, 0);*/
         food_per_time = ShopManager.Instance.GetEnforceValue(EnforceType.Gain_Food, 0);
         
     }
@@ -131,6 +153,8 @@ public class GameManager : MonoBehaviour
     {
 
     }
+
+    
 
     public void GoTitle()
     {
@@ -149,7 +173,7 @@ public class GameManager : MonoBehaviour
         chapter = 1;
         cur_cost = 0;
         cur_gold = 0;
-        cur_food = 0;
+/*        cur_food = 0;*/
         EnemyBase.Instance().actor.cur_status.HP = EnemyBase.Instance().actor.status.HP;
         UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
         Player.Instance.actor.cur_status.HP = Player.Instance.actor.status.HP;
@@ -180,7 +204,7 @@ public class GameManager : MonoBehaviour
 
         WaveManager.Instance.ClearMonsterObjectOnStage();
         cur_cost = 0;
-        cur_food = 0;
+/*        cur_food = 0;*/
         stage++;
         wave = 1;
         Player.Instance.transform.position = player_defualt_position;
@@ -197,7 +221,7 @@ public class GameManager : MonoBehaviour
         state = GameState.GAME_PLAY;
         wave = 1;
         cur_cost = 0;
-        cur_food = 0;
+/*        cur_food = 0;*/
         Player.Instance.transform.position = player_defualt_position;
         Player.Instance.actor.cur_status.HP = Player.Instance.actor.status.HP;
         state = GameState.GAME_PLAY;
@@ -237,11 +261,11 @@ public class GameManager : MonoBehaviour
         get { return _cur_cost; }
         set { _cur_cost = value; }
     }
-    public float cur_food
+/*    public float cur_food
     {
         get { return _cur_food;}
         set { _cur_food = value; }
-    }
+    }*/
     public int cur_gold
     {
         get { return _cur_gold; }
@@ -252,8 +276,8 @@ public class GameManager : MonoBehaviour
         return (cur_cost + cost <= MAX_COST);
     }
 
-    public bool CheckFood()
+/*    public bool CheckFood()
     {
         return (cur_food <= MAX_FOOD);
-    }
+    }*/
 }

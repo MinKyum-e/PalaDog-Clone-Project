@@ -1,12 +1,20 @@
-
+ï»¿
 using UnityEngine;
+using UnityEngine.U2D.Animation;
+using UnityEngine.EventSystems;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
+using System.Collections.Generic;
 
 public class Player: MonoBehaviour
 {
     public Actor actor;
     public Actions action;
-    private static Player instance;
+    public static Player instance;
     public Transform aura;
+    public AuraSkill aura_skill;
+    public CircleCollider2D auraCollider;
+    SpriteResolver aura_spriteResolver;
+    
 
     private void Awake()
     {
@@ -18,6 +26,10 @@ public class Player: MonoBehaviour
             actor = GetComponent<Actor>();
             action = GetComponent<Actions>();
             aura = transform.Find("Aura");
+            aura_spriteResolver = aura.GetComponent<SpriteResolver>();
+            aura_spriteResolver.SetCategoryAndLabel("Aura", "lvl1");
+            aura_skill = aura.GetComponent<AuraSkill>();
+            auraCollider = aura.GetComponent<CircleCollider2D>();   
         }
         else
         {
@@ -34,34 +46,38 @@ public class Player: MonoBehaviour
 
     private void Update()
     {
-        //Å°º¸µå ÀÔ·Â
-       /* float moveHorizontal = Input.GetAxisRaw("Horizontal");
-        actor.spriteRenderer.flipX = moveHorizontal < 0;
-       actor.cur_status.moveDir = new Vector2 (moveHorizontal, 0);*/
-
         if (actor.cur_status.HP <= 0 && actor.can_action)
         {
             actor.can_action = false;
             actor.animator.Play("Die");
         }
+
     }
     private void FixedUpdate()
     {
+        Touch tempPos;
+        if (Input.touchCount > 0)
+        {
+             for(int i=0;i<Input.touchCount;i++)
+            {
+                tempPos = Input.GetTouch(i);
+                print(tempPos);
+            }
+        }
+
         if(actor.can_action)
         {
             action.Move();
         }
-
     }
 
-    public void SetAuraRange(int value)
+    public void SetAuraRange(int value, int lvl)
     {
         aura.localScale = new Vector3(value, value, value);
+        aura_spriteResolver.SetCategoryAndLabel("Aura", "lvl" + lvl);
     }
 
-    
-
-    public static Player Instance //°ÔÀÓ¸Å´ÏÀú ÀÎ½ºÅÏ½º Á¢±Ù
+    public static Player Instance //ê²Œìž„ë§¤ë‹ˆì € ì¸ìŠ¤í„´ìŠ¤ ì ‘ê·¼
     {
         get
         {
@@ -92,7 +108,8 @@ public class Player: MonoBehaviour
         catch { Debug.Log("status Setting Error Player"); }
         
     }
-
     
+
+
 
 }

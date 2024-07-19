@@ -15,7 +15,6 @@ public class Enemy: Unit
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-
         
     }
 
@@ -80,6 +79,8 @@ public class Enemy: Unit
         }
         else { return null; }
     }
+
+
     public override void Die()
     {
         actor.spriteRenderer.color = Color.white;

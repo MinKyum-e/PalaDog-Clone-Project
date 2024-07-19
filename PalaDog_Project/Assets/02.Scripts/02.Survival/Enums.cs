@@ -8,14 +8,20 @@ public enum UnitType //안쓰는중
     Boss,
 }
 
+
 public enum SkillName
 {
-    SelfHealing = 10011,
-    ShieldDeployment = 10021,
+    None = 0,
+    SelfHealing = 10001,
+    ShieldDeployment = 10002,
     WingFlap = 20011,
     LifeDrain = 20012,
     HealingAura = 30011,
-
+    SpeedAura = 30012,
+    HammerAttack = 10011,
+    LegendHammerAttack = 10012,
+    AttackSpeedUP = 10021,
+    HeroArrow  =10022,
 }
 
 public enum SkillAct
@@ -56,12 +62,38 @@ public enum BuffName
     Poison,
     Stun,
     KnockBack,
+    MoveSpeed,
 }
 public enum Chr_job
 {
     magic,
     melee,
     projectile,
+}
+
+public enum MinionUnitIndex
+{
+    Player = 10000,
+    Warrior = 10111,
+    Knight_Elite = 10121,
+    Hammer_Elite = 10122,
+
+    Knight_Hero = 10131,
+    Hammer_Hero = 10132,
+
+    Archer_Elite = 10221,
+    Archer_Hero = 10231,
+
+}
+
+
+public enum UnitGrade
+{
+    Player,
+    Normal,
+    Elite,
+    Hero,
+    Boss,
 }
 
 

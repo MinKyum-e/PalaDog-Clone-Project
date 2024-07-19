@@ -1,12 +1,14 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
 public class Actions: MonoBehaviour
 {
-    Actor actor;
+    public Actor actor;
     public Skill skill;
 
 
@@ -22,35 +24,71 @@ public class Actions: MonoBehaviour
         actor.can_action = false;
     }
 
-    public int CalDagamge()//¹Ì»ç¿ë
+    public float CalDagamge()//ï¿½Ì»ï¿½ï¿½
     {
-        //¹öÇÁ
-        //µğ¹öÇÁ
+        //ï¿½ï¿½ï¿½ï¿½
+        //ï¿½ï¿½ï¿½ï¿½ï¿½
         return actor.cur_status.atk;
     }
 
     public void NormalAttack()
     {
-        if(actor.atkTarget != null && actor.atkTarget.activeSelf)/* && Utils.DistanceToTarget(actor.transform.position, actor.atkTarget.transform.position) <= actor.cur_status.atkRange)*/
+        if (actor.atkTarget != null && actor.atkTarget.activeSelf)
         {
-            actor.atkTarget.GetComponent<Actions>().Hit(actor.cur_status.atk, actor.cur_status.job);
-            SoundManager.Instance.SetVolumeSFX(0.4f);
-            SoundManager.Instance.PlaySFX(SoundManager.SFX_CLIP.NormalAttack);
+            
+            switch (actor.cur_status.job)
+            {
+                case Chr_job.melee:
+                    actor.atkTarget.GetComponent<Actions>().Hit(actor.cur_status.atk, actor.cur_status.job);
+                    SoundManager.Instance.SetVolumeSFX(0.4f);
+                    SoundManager.Instance.PlaySFX(SoundManager.SFX_CLIP.NormalAttack);
+                    break;
+                case Chr_job.projectile:
+                     var ret = ArrowPool.Instance.Shot(actor.atkTarget, transform.position, actor.cur_status.atk, actor.cur_status.atkSpeed);
+
+                    break;
+                case Chr_job.magic:
+                    RangeAttack(actor.cur_status.atkRange);
+                    break;
+            }
         }
+
+    }
+
+    public void RangeAttack(float range)
+    {
+        print("rangeattack");
+        PoolManager targetPool = ((gameObject.tag == "Minion") ? actor.enemy_poolManager : actor.minion_poolManager);
+
+        //ìŠ¤í‚¬ ë²”ìœ„ ë‚´ì— ìˆëŠ” ì• ë“¤ ì°¾ê¸°
+        foreach (List<GameObject> units in targetPool.pools)
+        {
+            foreach (GameObject u in units)
+            {
+                if (u.GetComponent<Actor>().isDie) { continue; }
+                float tmp_dist = Utils.DistanceToTarget(u.transform.position, transform.position);
+                if (tmp_dist <= range)
+                {
+                    if (actor.cur_status.moveDir.x > 0 && (u.transform.position.x - actor.transform.position.x) <= 0)
+                        continue;
+                    if (actor.cur_status.moveDir.x < 0 && (u.transform.position.x - actor.transform.position.x) >= 0)
+                        continue;
+                    u.GetComponent<Actions>().Hit(actor.cur_status.atk, actor.cur_status.job);
+                }
+            }
+        }
+
+        if(EnemyBase.Instance().gameObject.activeSelf && Utils.DistanceToTarget(EnemyBase.Instance().transform.position, transform.position) <= range)
+        {
+            EnemyBase.Instance().action.Hit(actor.cur_status.atk, actor.cur_status.job);
+        }
+        
     }
 
     public void EndUnitAction()
     {
         actor.can_action = true;
     }
-
-    public IEnumerator SkillTimer(int skill_slot_idx)
-    {
-        yield return new WaitForSeconds(actor.skills[skill_slot_idx].entry.coolTime);
-        actor.skills[skill_slot_idx].can_use_skill = true;
-    }
-
-
 
 
 
@@ -82,7 +120,7 @@ public class Actions: MonoBehaviour
         return true;
     }
 
-    public void Hit(int Damage, Chr_job attaker_job)
+    public void Hit(float Damage, Chr_job attaker_job)
     {
         if(CheckAttackIgnore(actor.cur_buff, attaker_job))
         {
@@ -92,7 +130,7 @@ public class Actions: MonoBehaviour
         }
         else
         {
-            print(Enum.GetName(typeof(Chr_job), attaker_job) + "  °ø°İ ¹«È¿!!1");
+            print(Enum.GetName(typeof(Chr_job), attaker_job) + "  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¿!!1");
         }
         
     }
@@ -117,11 +155,36 @@ public class Actions: MonoBehaviour
         }
     }
 
+
     public bool PlaySkill(int skill_slot_idx)
     {
-        //TODO
+        return skill.UseSkill(skill_slot_idx, (SkillName)actor.cur_status.skill[skill_slot_idx]);
+    }
+    public bool PlaySkill(SkillName skill_name)
+    {
+        int slot_idx = -1;
+        for(int i=0;i < actor.cur_status.skill.Length;i++)
+        {
+            if ((SkillName)actor.cur_status.skill[i] == skill_name)
+            {
+                slot_idx = i;
+                break;
+            }
+        }
+        return skill.UseSkill(slot_idx, skill_name);
+    }
+
+
+
+    public void StartSkillTimer(int skill_slot_idx)
+    {
         StartCoroutine(SkillTimer(skill_slot_idx));
-        return skill.UseSkill((SkillName)actor.cur_status.skill[skill_slot_idx], actor.skills[skill_slot_idx].target);
+    }
+    public IEnumerator SkillTimer(int skill_slot_idx)
+    {
+        actor.skills[skill_slot_idx].can_use_skill = false;
+        yield return new WaitForSeconds(actor.skills[skill_slot_idx].entry.coolTime);
+        actor.skills[skill_slot_idx].can_use_skill = true;
     }
 
     public bool AddBuff(int buff_idx)

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using static DG.Tweening.DOTweenAnimation;
 
 public class Parser : MonoBehaviour
 {
@@ -10,7 +11,6 @@ public class Parser : MonoBehaviour
     public static List<Dictionary<string, object>> data_MinionTable = null;
     public static List<Dictionary<string, object>> data_EnemyTable = null;
     public static List<Dictionary<string, object>> data_WaveTable = null;
-    public static List<Dictionary<string, object>> data_SkillInfo = null;
     public static List<Dictionary<string, object>> data_ShopTable = null;
     public static List<Dictionary<string, object>> data_SkillTable = null;
     public static List<Dictionary<string, object>> data_SkillEffectTable = null;
@@ -18,7 +18,6 @@ public class Parser : MonoBehaviour
     public static Dictionary<int, EnemyStatus> enemy_status_dict = null;
     public static Dictionary<int, WaveInfo> wave_info_dict = null;
     public static Dictionary<int, MinionStatus> minion_status_dict = null;
-    public static Dictionary<int, SkillInfo> skill_info_dict = null;
     public static Dictionary<int, ShopItemInfo> shop_item_info_dict = null;
     public static Dictionary<int, SkillEntry> skill_table_dict = null;
     public static Dictionary<int, SkillEffectEntry> skill_effect_table_dict = null;
@@ -31,7 +30,6 @@ public class Parser : MonoBehaviour
             data_MinionTable = CSVReader.Read("DT_ChrTable", 20);
             data_EnemyTable = CSVReader.Read("DT_MonsterTable", 19);
             data_WaveTable = CSVReader.Read("DT_WaveTable", 10);
-            data_SkillInfo = CSVReader.Read("DT_Skill", 7);
             data_ShopTable = CSVReader.Read("DT_ShopTable", 29);
             data_SkillTable = CSVReader.Read("DT_SkillTable", 43);
 
@@ -41,7 +39,6 @@ public class Parser : MonoBehaviour
             enemy_status_dict = new Dictionary<int, EnemyStatus>();
             wave_info_dict = new Dictionary<int, WaveInfo>();
             minion_status_dict = new Dictionary<int, MinionStatus>();
-            skill_info_dict = new Dictionary<int, SkillInfo>();
             shop_item_info_dict= new Dictionary<int, ShopItemInfo>();
             skill_table_dict = new Dictionary<int, SkillEntry>();
             skill_effect_table_dict = new Dictionary<int, SkillEffectEntry>();
@@ -56,7 +53,7 @@ public class Parser : MonoBehaviour
                 //enemy_info_dict[idx].grade = (int)d["Monster_Grade"];
                 e.gold = (int)d["Monster_Gold"];
                 e.common.HP = (int)d["Monster_HP"];
-                e.common.atk = (int)d["Monster_Atk"];
+                e.common.atk = float.Parse(d["Monster_Atk"].ToString());
                 e.common.atkSpeed = float.Parse(d["Monster_AtkSpeed"].ToString());
                 e.common.atkRange = float.Parse(d["Monster_AtkRange"].ToString());
                 e.common.moveSpeed = float.Parse(d["Monster_MoveSpeed"].ToString());
@@ -64,7 +61,17 @@ public class Parser : MonoBehaviour
                 e.common.skill[1] = (int)d["Monster_Skill2"];
                 e.common.skill[2] = (int)d["Monster_Skill3"];
                 e.common.moveDir = Vector2.left;
-
+                e.common.job = Chr_job.melee;
+                string grade = d["Monster_Grade"].ToString();
+                string[] target_grade = Enum.GetNames(typeof(UnitGrade));
+                for (int i = 0; i < target_grade.Length; i++)
+                {
+                    if (target_grade[i].Equals(grade))
+                    {
+                       e.common.grade = (UnitGrade)i;
+                        break;
+                    }
+                }
                 enemy_status_dict[idx] = e;
             }
 
@@ -80,8 +87,8 @@ public class Parser : MonoBehaviour
                 s.common.name = d["Chr_GameName"].ToString();
                 //enemy_info_dict[idx].grade = (int)d["Monster_Grade"];
                 s.cost = (int)d["Chr_Cost"];
-                s.common.HP = (int)d["Chr_HP"];
-                s.common.atk = (int)d["Chr_Atk"];
+                s.common.HP = float.Parse(d["Chr_HP"].ToString());
+                s.common.atk = float.Parse(d["Chr_Atk"].ToString());
                 s.common.atkSpeed = float.Parse(d["Chr_AtkSpeed"].ToString());
                 s.common.atkRange = float.Parse(d["Chr_AtkRange"].ToString());
                 //job확인
@@ -93,7 +100,21 @@ public class Parser : MonoBehaviour
                     s.common.job = Chr_job.magic;
 
                 s.common.moveSpeed = float.Parse(d["Chr_MoveSpeed"].ToString());
-               s.common.moveDir = Vector2.right;
+                s.common.moveDir = Vector2.right;
+                s.cool_time = float.Parse(d["Chr_CoolTime"].ToString());
+                
+
+                string grade = d["Chr_Grade"].ToString();
+                string[] target_grade = Enum.GetNames(typeof(UnitGrade));
+                for (int i = 0; i < target_grade.Length; i++)
+                {
+                    if (target_grade[i].Equals(grade))
+                    {
+                        s.common.grade = (UnitGrade)i;
+                        break;
+                    }
+                }
+
                 minion_status_dict[idx] = s;
             }
             //웨이브 정보
@@ -118,19 +139,6 @@ public class Parser : MonoBehaviour
                 wave_info_dict[idx].Wave_MonsterNum = (int)wave["Wave_MonsterNum"];
             }
 
-            //스킬정보
-            foreach (var d in data_SkillInfo)
-            {
-                int idx = (int)d["Skill_Index"];
-                SkillInfo e = new SkillInfo();
-                e.damange = (int)d["Skill_Damage"];
-                e.cool_time = (int)d["Skill_Cooltime"];
-                e.range = (int)d["Skill_Range"];
-                e.casting_time = (int)d["Skill_Casting"];
-                e.cast_range = (int)d["Skill_Cast_Range"];
-                e.target_check = true;
-                skill_info_dict[idx] = e;
-            }
 
             //찐스킬정보
             foreach (var d in data_SkillTable)
@@ -150,7 +158,7 @@ public class Parser : MonoBehaviour
                         break;
                     }
                 }
-                e.coolTime = (int)d["Skill_CoolTime"];
+                e.coolTime = float.Parse(d["Skill_CoolTime"].ToString());
                 string target_search_type = d["Skill_Type"].ToString();
                 string[] target_search_type_strings = Enum.GetNames(typeof(TargetSearchType));
                 for (int i = 0; i < target_search_type_strings.Length; i++)
@@ -193,8 +201,8 @@ public class Parser : MonoBehaviour
                 {
 
                     e.skill_effects[i-1].index = (int)d["Skill_Effect" + i+"Index"];
-                    e.skill_effects[i-1].value = (int)d["Skill_Effect" + i + "Value"];
-                    e.skill_effects[i-1].duration = (int)d["Skill_Effect" + i + "Duration"];
+                    e.skill_effects[i-1].value = float.Parse(d["Skill_Effect" + i + "Value"].ToString());
+                    e.skill_effects[i-1].duration = float.Parse(d["Skill_Effect" + i + "Duration"].ToString());
                 }
 
                 e.searching_range = float.Parse(d["Skill_TargetSearchingRange"].ToString());

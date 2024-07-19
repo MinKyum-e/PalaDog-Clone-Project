@@ -122,6 +122,7 @@ public class WaveManager : MonoBehaviour
         {
             GameObject clone = monsterPool.Get(idx, transform.position);
             Color c = clone.GetComponent<SpriteRenderer>().color;
+            
             //clone.GetComponent<SpriteRenderer>().color = new Color(c.r, c.g,  c.b, 1);
             clone.tag = "Enemy";
             yield return new WaitForSeconds(0.5f);
@@ -140,10 +141,15 @@ public class WaveManager : MonoBehaviour
     {
         GameObject[] alive_enemys = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject[] alive_minions = GameObject.FindGameObjectsWithTag("Minion");
-        foreach(GameObject e in alive_enemys)
+        foreach (GameObject e in alive_enemys)
         {
-            if(e.activeSelf && e.name != "EnemyBase")
-             e.GetComponent<Enemy>().Die();
+            if (e.activeSelf && e.name != "EnemyBase")
+            {
+                Enemy compo = e.GetComponent<Enemy>();
+                compo.actor.spriteRenderer.color = Color.white;
+                compo.gameObject.SetActive(false);
+                compo.gameObject.transform.position = new Vector3(100, 0, compo.gameObject.transform.position.z);
+            }
         }
         foreach (GameObject m in alive_minions)
         {

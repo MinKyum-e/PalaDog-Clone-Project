@@ -17,13 +17,36 @@ public class Skill:MonoBehaviour
     /*  private static SkillManager _instance;
       public static SkillManager Instance { get { return _instance; } }*/
     private Actor actor;
+    private Actions action;
 
     private void Awake()
     {
        /* _instance = this;*/
         actor = GetComponent<Actor>();
+        action = GetComponent<Actions>();
     }
 
+    public Actor FirstSearchingTarget(SkillName index)
+    {
+        SkillEntry s = Parser.skill_table_dict[(int)index];
+
+        PoolManager targetPool = ((s.target_type == UnitType.Enemy) ? actor.enemy_poolManager : actor.minion_poolManager);
+        //스킬 범위 내에 있는 애들 찾기
+        foreach (List<GameObject> units in targetPool.pools)
+        {
+            foreach (GameObject u in units)
+            {
+                if (u.GetComponent<Actor>().isDie) { continue; }
+                float tmp_dist = Utils.DistanceToTarget(u.transform.position, transform.position);
+                if (tmp_dist <= s.searching_range)
+                {
+                    return u.GetComponent<Actor>();
+                }
+            }
+        }
+
+        return null;
+    }
     public List<Actor> SearchingTargets(SkillName index)
     {
         SkillEntry s = Parser.skill_table_dict[(int)index];
@@ -33,47 +56,104 @@ public class Skill:MonoBehaviour
                 return NearTargets(s);
             case TargetSearchType.Range:
                 return RangeTargets(s);
+            case TargetSearchType.Ora:
+                return OraTargets(s);
             default:
                 return null;
         }
     }
 
-    public bool UseSkill(SkillName index, Actor target)//스킬 인덱스, 시전자, 타겟
-    {
-        SkillEntry s = Parser.skill_table_dict[(int)index];
-        List<Actor> targets = SearchingTargets(index);
-        switch (s.base_stat)
-        {
-            case BaseStat.None:
-                NoneTypeBuff(s, targets);
-                break;
-            case BaseStat.Atk:
-                AttackTypeBuff(s, targets);
-                break;
-            default:
 
+
+    public bool UseSkill(int skill_slot_idx, SkillName skill_name)//스킬이름, 타겟, 스킬 슬룻 인덱스
+    {
+        SkillEntry s = Parser.skill_table_dict[(int)skill_name];
+        List<Actor> targets = SearchingTargets(skill_name);
+
+        print(targets.Count);
+        //특수 제작 스킬 우선 사용해보고 없으면 일반적인 버프 스킬 수행하기
+        if(! UniqueSkill(skill_slot_idx,skill_name))
+        {
+            switch (s.base_stat)
+            {
+                case BaseStat.None:
+                    NoneTypeBuff(s, targets);
+                    break;
+                case BaseStat.Atk:
+                    AttackTypeBuff(s, targets);
+                    break;
+                default:
+
+                    return false;
+            }
+        }
+       
+        return true;
+    }
+
+    public bool UniqueSkill(int skill_slot_idx, SkillName skill_name)
+    {
+        switch (skill_name)
+        {
+            case SkillName.HeroArrow:
+                HeroArrow(skill_slot_idx);
+                break;
+            case SkillName.LifeDrain:
+                StartCoroutine(Co_LifeDrain(skill_slot_idx));
+                break;
+
+            default:
                 return false;
+                
         }
         return true;
     }
 
-/*    public void SelfHealing(SkillEntry s)
+    private void HeroArrow(int skill_slot_idx)
     {
-        List<Actor> target_list = NearTargets(s);
-        print("자가치유!!! : " + target_list[0].name);
-        //list 첫 유닛한태 버프 적용하기
-        if(target_list.Count > 0)
-        {
-            BuffSystem buffSystem = target_list[0].transform.Find("Buff").GetComponent<BuffSystem>();
+        SkillEntry s = Parser.skill_table_dict[(int)SkillName.HeroArrow];
 
-            for (int i = 0; i < s.skill_effects.Length; i++)
+            var ret = ArrowPool.Instance.Shot(null, transform.position, actor.cur_status.atk * s.DMGCoeff, actor.cur_status.atkSpeed);
+
+    }
+
+    private IEnumerator Co_LifeDrain(int skill_slot_idx)
+    {
+        SkillEntry s = Parser.skill_table_dict[(int)SkillName.LifeDrain];
+        while (! actor.cur_buff.stun)
+        {
+            List<Actor> targets = SearchingTargets(SkillName.LifeDrain);
+            if (targets.Count > 0)
             {
-                if (s.skill_effects[i].index == -1) continue;
-                buffSystem.Apply((BuffName)s.skill_effects[i].index, s.skill_effects[i].value, s.skill_effects[i].duration, 0);
+                for (int i = 0; i < targets.Count; i++)
+                {
+                    float damage = actor.cur_status.atk * s.DMGCoeff;
+                    targets[i].gameObject.GetComponent<Actions>().Hit(damage, Chr_job.magic);
+                    actor.cur_status.HP = Mathf.Clamp(actor.cur_status.HP + damage, 0, actor.status.HP);
+                }
             }
+            yield return new WaitForSeconds(1);
         }
-        
-    }*/
+        action.StartSkillTimer(skill_slot_idx);
+    }
+
+    /*    public void SelfHealing(SkillEntry s)
+        {
+            List<Actor> target_list = NearTargets(s);
+            print("자가치유!!! : " + target_list[0].name);
+            //list 첫 유닛한태 버프 적용하기
+            if(target_list.Count > 0)
+            {
+                BuffSystem buffSystem = target_list[0].transform.Find("Buff").GetComponent<BuffSystem>();
+
+                for (int i = 0; i < s.skill_effects.Length; i++)
+                {
+                    if (s.skill_effects[i].index == -1) continue;
+                    buffSystem.Apply((BuffName)s.skill_effects[i].index, s.skill_effects[i].value, s.skill_effects[i].duration, 0);
+                }
+            }
+
+        }*/
 
     public void NoneTypeBuff(SkillEntry s, List<Actor> target_list)
     {
@@ -81,19 +161,14 @@ public class Skill:MonoBehaviour
         {
             for (int i = 0; i < target_list.Count; i++)
             {
-
                 BuffSystem buffSystem = target_list[i].transform.Find("Buff").GetComponent<BuffSystem>();
                 for (int j = 0; j < s.skill_effects.Length; j++)
                 {
                     if (s.skill_effects[j].index == -1) continue;
                     buffSystem.Apply((BuffName)s.skill_effects[j].index, s.skill_effects[j].value, s.skill_effects[j].duration, 0);
                 }
-                
-                
             }
         }
-        
-
     }
 
     public void AttackTypeBuff(SkillEntry s, List<Actor> target_list)
@@ -155,10 +230,30 @@ public class Skill:MonoBehaviour
     }
 
 
-    public void OraTargets()
-    {
 
+    public List<Actor> OraTargets(SkillEntry s)
+    {
+        List<Actor> result = new List<Actor>();
+        List<Candidate> candidates = new List<Candidate>();
+        PoolManager targetPool = ((s.target_type == UnitType.Enemy) ? actor.enemy_poolManager : actor.minion_poolManager);
+        
+        //스킬 범위 내에 있는 애들 찾기
+        foreach (List<GameObject> units in targetPool.pools)
+        {
+            foreach (GameObject u in units)
+            {
+                if (u.GetComponent<Actor>().isDie) { continue; }
+                float tmp_dist = Utils.DistanceToTarget(u.transform.position, transform.position);
+                if (tmp_dist <= Player.Instance.auraCollider.bounds.extents.x)
+                {
+                    result.Add(u.GetComponent<Actor>());
+                }
+            }
+        }
+        return result;
     }
+
+
 
 
     public List<Actor> RangeTargets(SkillEntry s)
@@ -174,7 +269,7 @@ public class Skill:MonoBehaviour
             {
                 if (u.GetComponent<Actor>().isDie) { continue; }
                 float tmp_dist = Utils.DistanceToTarget(u.transform.position, transform.position);
-                if (tmp_dist <= s.searching_range)
+                if (tmp_dist <= s.target_search_num)
                 {
                     if(actor.cur_status.moveDir.x > 0  && (u.transform.position.x - actor.transform.position.x) <= 0)
                         continue;

@@ -17,7 +17,6 @@ public class Actor : MonoBehaviour
 
     public GameObject atkTarget;
     public bool isDie = false;
-    public bool is_faint = false;
     public bool can_walk = true;
     public bool can_action = true;
 
@@ -35,6 +34,7 @@ public class Actor : MonoBehaviour
         animator = GetComponent<Animator>();
         enemy_poolManager = GameObject.FindGameObjectWithTag("EnemyPool").GetComponent<PoolManager>();
         minion_poolManager = GameObject.FindGameObjectWithTag("MinionPool").GetComponent<PoolManager>();
+
         skills = new ActorSkillInfo[3];
         for(int i=0;i<3;i++)
         {
