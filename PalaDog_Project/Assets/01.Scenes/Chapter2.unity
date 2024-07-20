@@ -418,11 +418,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &607740984 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5961469335752258942, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
-  m_PrefabInstance: {fileID: 1604715949}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &613983337
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,11 +570,6 @@ MonoBehaviour:
   wave: 1
   stage: 3
   state: 1
---- !u!1 &729728896 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8821234550970831160, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
-  m_PrefabInstance: {fileID: 1604715949}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &824988337
 GameObject:
   m_ObjectHideFlags: 0
@@ -933,10 +923,6 @@ PrefabInstance:
     - target: {fileID: 3934301207090930116, guid: 3940c93c0344036459fe7306a094e512, type: 3}
       propertyPath: m_Name
       value: MinionPool
-      objectReference: {fileID: 0}
-    - target: {fileID: 5929793603490698705, guid: 3940c93c0344036459fe7306a094e512, type: 3}
-      propertyPath: player
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11060,14 +11046,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8343923837252389977, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
-      propertyPath: GameResourse
-      value: 
-      objectReference: {fileID: 607740984}
-    - target: {fileID: 8343923837252389977, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
-      propertyPath: GameStageClear
-      value: 
-      objectReference: {fileID: 729728896}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 6275667472389048291}
   - component: {fileID: 7171520234449864668}
   m_Layer: 0
-  m_Name: Archer_base
+  m_Name: Thrower
   m_TagString: Minion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
