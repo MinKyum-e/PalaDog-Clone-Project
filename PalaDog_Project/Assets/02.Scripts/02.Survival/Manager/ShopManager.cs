@@ -65,7 +65,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField]
     private Dictionary<EnforceType, List<ShopEnforceEntry>> ingame_enforce_list;
     [SerializeField]
-    private Dictionary<EnforceType, int> ingame_enforce_max_lvl;
+    public Dictionary<EnforceType, int> ingame_enforce_max_lvl, ingame_enforce_cur_lvl;
     public PoolManager minion_poolManager;
 
 
@@ -89,8 +89,9 @@ public class ShopManager : MonoBehaviour
             unlocked_ingame_unit_list = new List<int>();
             unlocked_evoluation_unit_list = new List<int>(); //게임종료시에 저장되게 구현했다면 이거 바꾸기
             ingame_enforce_list = new Dictionary<EnforceType, List<ShopEnforceEntry>>();
-            ingame_enforce_max_lvl = new Dictionary<EnforceType, int>();    
-            
+            ingame_enforce_max_lvl = new Dictionary<EnforceType, int>();
+            ingame_enforce_cur_lvl = new Dictionary<EnforceType, int>();
+
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -122,6 +123,7 @@ public class ShopManager : MonoBehaviour
             {
                 ingame_enforce_list[type] = new List<ShopEnforceEntry> { e };
                 ingame_enforce_max_lvl[type] = 1;
+                ingame_enforce_cur_lvl[type] = 0;
             }
         }
     }
@@ -172,6 +174,7 @@ public class ShopManager : MonoBehaviour
         {
             print("EnforceIngameBase : containskey error");
         }
+        
 
         switch(type)
         {

@@ -210,12 +210,13 @@ public class GameManager : MonoBehaviour
     public void StageClear()
     {
         state = GameState.GAME_PLAY;
+        Time.timeScale = 0;
         UIManager.Instance.SetCurrentPage(UIPageInfo.GameStageClear);
 
         WaveManager.Instance.ClearMonsterObjectOnStage();
       
         
-        Time.timeScale = 0;
+        
     }
 
 

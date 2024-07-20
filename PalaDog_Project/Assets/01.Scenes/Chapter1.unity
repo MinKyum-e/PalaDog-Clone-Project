@@ -5959,11 +5959,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!1 &1487744195 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8821234550970831160, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
-  m_PrefabInstance: {fileID: 4967834449778877718}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1549540649
 GameObject:
   m_ObjectHideFlags: 0
@@ -16253,11 +16248,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &2196655091639750927 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5961469335752258942, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
-  m_PrefabInstance: {fileID: 4967834449778877718}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3343768775250372367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16407,14 +16397,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 374002694425236997, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 944484231}
-    - target: {fileID: 374002694425236997, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
-      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 944484231}
     - target: {fileID: 411552893477327235, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -16519,29 +16501,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 619850038}
-    - target: {fileID: 6621456906869681091, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 944484231}
-    - target: {fileID: 6621456906869681091, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
-      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 944484231}
     - target: {fileID: 8265303145280302218, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 619850038}
-    - target: {fileID: 8343923837252389977, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
-      propertyPath: GameResourse
-      value: 
-      objectReference: {fileID: 2196655091639750927}
-    - target: {fileID: 8343923837252389977, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
-      propertyPath: GameStageClear
-      value: 
-      objectReference: {fileID: 1487744195}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 8140531843795368869, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
