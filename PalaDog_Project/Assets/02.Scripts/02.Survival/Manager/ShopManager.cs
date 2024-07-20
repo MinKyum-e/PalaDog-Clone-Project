@@ -271,8 +271,9 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    public void ClearInGameUnlockedList()
+    public void ClearInGameShop()
     {
         unlocked_ingame_unit_list.Clear();
+        ingame_enforce_cur_lvl.Clear();
     }
 }

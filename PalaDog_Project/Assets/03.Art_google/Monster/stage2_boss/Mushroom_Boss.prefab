@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: -2766077184619143042}
   - component: {fileID: 6575592941558107439}
   m_Layer: 0
-  m_Name: Boss
+  m_Name: Mushroom_Boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -166,7 +166,7 @@ SpriteRenderer:
   m_SortingLayerID: -1535456663
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8d848ad9c4eec9e489c85c12547aa3b9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 83de4bb7f6528e745987f7c89b9314c7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -236,7 +236,7 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.15, y: -0.79}
+  m_Offset: {x: 0.15, y: 2.48}
   m_Size: {x: 6.21, y: 0.68}
   m_Direction: 0
 --- !u!95 &-555550494583932046
@@ -249,7 +249,7 @@ Animator:
   m_GameObject: {fileID: 2730792912833137444}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5a3848ae81910334f85f24d9b75102db, type: 2}
+  m_Controller: {fileID: 9100000, guid: f60028795ee562f4b9f970ae7fdfcea8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac3f11d0498ae2743b6142f625ddec3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 10013
+  ID: 10023
   status:
     index: 0
     name: 

@@ -165,15 +165,7 @@ public class GameManager : MonoBehaviour
 
     
 
-    public void GoTitle()
-    {
-        Destroy(Player.Instance.gameObject);
-        Destroy(SoundManager.Instance.gameObject);
-        Destroy(Parser.Instance.gameObject);
-        Destroy(ShopManager.Instance.gameObject);
-        Destroy(GameManager.Instance.gameObject);
-        SceneManager.LoadScene("Title");
-    }
+    
     public void RestartGame()
     {
         Time.timeScale = 1;
@@ -185,7 +177,10 @@ public class GameManager : MonoBehaviour
 /*        cur_food = 0;*/
         EnemyBase.Instance().actor.cur_status.HP = EnemyBase.Instance().actor.status.HP;
         UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
-        Player.Instance.actor.cur_status.HP = Player.Instance.actor.status.HP;
+
+        ShopManager.Instance.ClearInGameShop();
+        Player.Instance.actor.status = Parser.minion_status_dict[(int)MinionUnitIndex.Player].common;
+        Player.Instance.actor.cur_status = Player.Instance.actor.status;
         Player.Instance.transform.position = player_defualt_position;
         Player.Instance.actor.can_action = true;
         state = GameState.GAME_PLAY;
