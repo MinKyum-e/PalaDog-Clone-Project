@@ -19,8 +19,8 @@ DT_SkillTable 인덱스 값 입력,,,,,,,,,,,,,,
 Monster_Index,Monster_Name,Monster_DevName,Monster_Group,Monster_GameName,Monster_Grade,Monster_Gold,Monster_HP,Monster_Atk,Monster_AtkRange,Monster_AtkSpeed,Monster_MoveSpeed,Monster_Skill1,Monster_Skill2,Monster_Skill3
 int,string,string,string,string,enum,int,int,int,int,float,float,int,int,int
 10011,Monster1_Normal_001,근거리박쥐,1001,몬스터1,Normal,50,192,54,1,0.9,1,0,0,0
-10012,Monster1_Normal_002,원거리박쥐,1001,몬스터1,Normal,80,148,77,1.5,1,1,0,0,0
-10013,Boss1_Boss_001,박쥐보스,2001,보스1,Boss,100,3000,120,4,1,1,20011,20012,0
+10012,Monster1_Normal_002,원거리박쥐,1001,몬스터1,Normal,80,148,77,3,1,1,0,0,0
+10013,Boss1_Boss_001,박쥐보스,2001,보스1,Boss,100,3000,120,1,1,1,20011,20012,0
 10021,Monster2_Normal_001,근거리버섯,1002,몬스터2,Normal,50,252,81,1,0.9,1,0,0,0
-10022,Monster2_Normal_001,원거리버섯,1002,몬스터2,Normal,80,188,99,1.5,1,1,0,0,0
-10023,Boss1_Boss_001,버섯보스,2001,보스1,Boss,100,3500,140,4,1,1,0,0,0
+10022,Monster2_Normal_001,원거리버섯,1002,몬스터2,Normal,80,188,99,3,1,1,0,0,0
+10023,Boss1_Boss_001,버섯보스,2001,보스1,Boss,100,3500,140,1,1,1,0,0,0
