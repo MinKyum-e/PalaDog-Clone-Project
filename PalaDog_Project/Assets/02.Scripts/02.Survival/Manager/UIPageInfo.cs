@@ -9,7 +9,8 @@ public enum UIPageInfo
     GameChapterClear,
     GameClear,
     Spawn,
-    GameResourse
+    GameResourse,
+    GameStageClear,
 }
 
 public enum UI_UnitPanelInfo

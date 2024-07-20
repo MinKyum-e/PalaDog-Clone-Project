@@ -4,6 +4,7 @@ using UnityEngine.U2D.Animation;
 using UnityEngine.EventSystems;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 using System.Collections.Generic;
+using DG.Tweening; //import
 
 public class Player: MonoBehaviour
 {
@@ -13,7 +14,12 @@ public class Player: MonoBehaviour
     public Transform aura;
     public AuraSkill aura_skill;
     public CircleCollider2D auraCollider;
+    public float aura_scale = 2;
+    public float aura_diff = 0.06f;
+    public float aura_time = 3f;
+
     SpriteResolver aura_spriteResolver;
+    
     
 
     private void Awake()
@@ -42,6 +48,7 @@ public class Player: MonoBehaviour
         setStatus();
         actor.cur_status.HP = actor.status.HP;
         actor.cur_status.moveDir = Vector2.zero;
+
     }
 
     private void Update()
@@ -51,6 +58,9 @@ public class Player: MonoBehaviour
             actor.can_action = false;
             actor.animator.Play("Die");
         }
+
+
+        
 
     }
     private void FixedUpdate()
@@ -74,6 +84,7 @@ public class Player: MonoBehaviour
     public void SetAuraRange(int value, int lvl)
     {
         aura.localScale = new Vector3(value, value, value);
+        aura_scale = value;
         aura_spriteResolver.SetCategoryAndLabel("Aura", "lvl" + lvl);
     }
 
@@ -103,7 +114,7 @@ public class Player: MonoBehaviour
         {
             actor.status = Parser.minion_status_dict[actor.ID].common;
             actor.cur_status = Parser.minion_status_dict[actor.ID].common;
-            aura.localScale = new Vector3(5, 5, 5);
+            aura.localScale = new Vector3(2, 2, 2);
         }
         catch { Debug.Log("status Setting Error Player"); }
         

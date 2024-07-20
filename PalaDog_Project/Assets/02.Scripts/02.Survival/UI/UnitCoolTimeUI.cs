@@ -29,22 +29,17 @@ public class UnitCoolTimeUI : MonoBehaviour
 
     void Update()
     {
-        if (isCooldown)
+
+        if (timer <= 0f)
         {
-            timer -= Time.deltaTime;
-            if (timer <= 0f)
-            {
-                timer = 0f;
-                isCooldown = false;
-                cooltimeImage.fillAmount = 0f;
-                cooltimeImage.enabled = false;
-                draggableImage.raycastTarget = true;
-            }
-            else
-            {
-                cooltimeImage.fillAmount = timer / cooltime;
-            }
+            CancelInvoke("TimerStart");
+            timer = 0f;
+            isCooldown = false;
+            cooltimeImage.fillAmount = 0f;
+            cooltimeImage.enabled = false;
+            draggableImage.raycastTarget = true;
         }
+
     }
     public void StartCooldown()
     {
@@ -56,5 +51,15 @@ public class UnitCoolTimeUI : MonoBehaviour
             timer = cooltime;
             cooltimeImage.fillAmount = 1f;
         }
+
+        InvokeRepeating("TimerStart", 0.01f, 0.01f);
+
+    }
+
+    public void TimerStart()
+    {
+        print("!@#@!#@!#");
+        timer -= 0.01f;
+        cooltimeImage.fillAmount = timer / cooltime;
     }
 }

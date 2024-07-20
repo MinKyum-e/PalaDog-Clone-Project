@@ -30,21 +30,6 @@ public class HPbar : MonoBehaviour
         float ratio = ((float)actor.cur_status.HP / (float)actor.status.HP);
         if (ratio >= 0) 
         {
-            if(unit_type == UnitType.Minion || unit_type == UnitType.Player)
-            {
-                if (ratio >= 0.5f)
-                {
-                    sprite.color = colors[0];
-                }
-                else if (ratio >= 0.25f)
-                {
-                    sprite.color = colors[1];
-                }
-                else
-                {
-                    sprite.color = colors[2];
-                }
-            }
             
             transform.localScale = new Vector3(scale_X *ratio , transform.localScale.y, transform.localScale.z);
         }

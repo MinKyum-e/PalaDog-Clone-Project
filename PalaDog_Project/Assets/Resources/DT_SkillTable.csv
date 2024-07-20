@@ -54,6 +54,6 @@ int,string,string,int,enum,float,enum,enum,int,enum,float,int,int,int,enum,float
 ,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,
 20011,Skill_Bat_Boss_001,³¯°³Ä¡±â,1008,P,15,Range,Unit,5,Atk,0.4,6,8,0,-1,0,0,TRUE,5
-20012,Skill_Bat_Boss_002,ÈíÇ÷,1002,P,30,Range,Unit,15,Atk,1,-1,100,5,4,10,3,TRUE,5
+20012,Skill_Bat_Boss_002,ÈíÇ÷,1002,P,30,Range,Unit,15,Atk,0.2,-1,100,5,4,10,3,TRUE,4
 30011,Skill_Player_Player_001,Ä¡À¯ÀÇ ¿À¶ó,1002,A,0,Ora,Unit,99,None,0,2,10,1,-1,0,0,FALSE,0
 30012,Skill_Player_Player_001,¼ÓµµÀÇ ¿À¶ó,1002,A,0,Ora,Unit,99,None,0,1,1.5,2,7,1.5,2,FALSE,0

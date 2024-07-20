@@ -2,6 +2,8 @@
 using ShopEnums;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using UnityEditor;
 using UnityEngine;
 
 namespace ShopEnums
@@ -29,7 +31,7 @@ namespace ShopEnums
     { 
         Aura = 1001,
         MAX_Cost = 1002,
-        MAX_Food = 1003,
+        Unit_LvL = 1003,
         Gain_Food = 1004,
     }
 
@@ -59,11 +61,12 @@ public class ShopManager : MonoBehaviour
     private static ShopManager instance = null;
 
     private List<int> unlocked_evoluation_unit_list;//진화 해금 unit_list
-    private List<int> unlocked_ingame_unit_list;//인게임에서 골드로 사는 unit 해금 list
+    public List<int> unlocked_ingame_unit_list;//인게임에서 골드로 사는 unit 해금 list
     [SerializeField]
     private Dictionary<EnforceType, List<ShopEnforceEntry>> ingame_enforce_list;
     [SerializeField]
-    private Dictionary<EnforceType, int> ingame_enforce_max_lvl;
+    public Dictionary<EnforceType, int> ingame_enforce_max_lvl, ingame_enforce_cur_lvl;
+    public PoolManager minion_poolManager;
 
 
     public static ShopManager Instance
@@ -81,12 +84,14 @@ public class ShopManager : MonoBehaviour
     {
         if (null == instance) //게임 완전처음시작할때만
         {
+            minion_poolManager = GameObject.FindGameObjectWithTag("MinionPool").GetComponent<PoolManager>();
             instance = this;
             unlocked_ingame_unit_list = new List<int>();
             unlocked_evoluation_unit_list = new List<int>(); //게임종료시에 저장되게 구현했다면 이거 바꾸기
             ingame_enforce_list = new Dictionary<EnforceType, List<ShopEnforceEntry>>();
-            ingame_enforce_max_lvl = new Dictionary<EnforceType, int>();    
-            
+            ingame_enforce_max_lvl = new Dictionary<EnforceType, int>();
+            ingame_enforce_cur_lvl = new Dictionary<EnforceType, int>();
+
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -118,6 +123,7 @@ public class ShopManager : MonoBehaviour
             {
                 ingame_enforce_list[type] = new List<ShopEnforceEntry> { e };
                 ingame_enforce_max_lvl[type] = 1;
+                ingame_enforce_cur_lvl[type] = 0;
             }
         }
     }
@@ -168,17 +174,45 @@ public class ShopManager : MonoBehaviour
         {
             print("EnforceIngameBase : containskey error");
         }
+        
 
         switch(type)
         {
             case EnforceType.Aura:
                 Player.Instance.SetAuraRange(ingame_enforce_list[type][lvl].value, lvl);
                 break;
-/*            case EnforceType.MAX_Food:
+            case EnforceType.Unit_LvL:
             {
-                GameManager.Instance.MAX_FOOD = ingame_enforce_list[type][lvl].value;
+                GameManager.Instance.Unit_LvL = ingame_enforce_list[type][lvl].value;
+                for (int i = 0; i < minion_poolManager.pools.Length; i++)
+                {
+                    foreach (GameObject item in minion_poolManager.pools[i])
+                    {
+                       if(item.tag != "Player")
+                            {
+                                Minion minion = item.GetComponent<Minion>();
+                                float HP_ratio = Parser.minion_status_dict[minion.actor.ID + GameManager.Instance.Unit_LvL].common.HP / minion.actor.status.HP;
+                                float moveSpeed_ratio = Parser.minion_status_dict[minion.actor.ID + GameManager.Instance.Unit_LvL].common.moveSpeed / minion.actor.status.moveSpeed;
+                                float atk_ratio = Parser.minion_status_dict[minion.actor.ID + GameManager.Instance.Unit_LvL].common.atk / minion.actor.status.atk;
+                                float atkRange_ratio = Parser.minion_status_dict[minion.actor.ID + GameManager.Instance.Unit_LvL].common.atkRange / minion.actor.status.atkRange;
+                                float atkSpeed_ratio = Parser.minion_status_dict[minion.actor.ID + GameManager.Instance.Unit_LvL].common.atkSpeed / minion.actor.status.atkSpeed;
+
+                                minion.actor.cur_status.HP = minion.actor.cur_status.HP * HP_ratio;
+                                minion.actor.cur_status.moveSpeed = minion.actor.cur_status.moveSpeed * moveSpeed_ratio;
+                                minion.actor.cur_status.atk = minion.actor.cur_status.atk * atk_ratio;
+                                minion.actor.cur_status.atkRange = minion.actor.cur_status.atkRange * atkRange_ratio;
+                                minion.actor.cur_status.atkSpeed = minion.actor.cur_status.atkSpeed * atkSpeed_ratio;
+
+                                minion.actor.status = Parser.minion_status_dict[minion.actor.ID + GameManager.Instance.Unit_LvL].common;
+                            }
+                      
+
+                        }
+                }
+                    
+
                 break;
-            }*/
+            }
             case EnforceType.MAX_Cost:
             {
                 GameManager.Instance.MAX_COST = ingame_enforce_list[type][lvl].value;
@@ -205,6 +239,7 @@ public class ShopManager : MonoBehaviour
         switch(unlock_type)
         {
             case ShopEnums.UnLockType.InGameUnit:
+                
                 unlocked_ingame_unit_list.Add(index);
                 break;
             case ShopEnums.UnLockType.Evolution:
@@ -224,6 +259,7 @@ public class ShopManager : MonoBehaviour
     /// <returns></returns>
     public bool CheckPrerequisite(ShopEnums.UnLockType unlock_type, int prerequisite)
     {
+        if(prerequisite == 0) return true;
         switch (unlock_type)
         {
             case ShopEnums.UnLockType.InGameUnit:
@@ -235,8 +271,9 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    public void ClearInGameUnlockedList()
+    public void ClearInGameShop()
     {
         unlocked_ingame_unit_list.Clear();
+        ingame_enforce_cur_lvl.Clear();
     }
 }

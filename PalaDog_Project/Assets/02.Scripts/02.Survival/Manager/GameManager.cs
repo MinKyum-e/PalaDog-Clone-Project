@@ -26,13 +26,16 @@ public class GameManager : MonoBehaviour
     public int STAGE_PER_CHAPTER;
     public int MAX_CHAPTER;
     public int MAX_COST;
-    /*    public int MAX_FOOD;*/
 
+
+    public int Unit_LvL = 0;
     //히어로 오브젝트 관리 draggable 소환시 추가, die 시 제거,
     public Dictionary<MinionUnitIndex, Minion> hero_objects;
 
     private static GameManager instance = null;
-
+    public float overdrive_time = 300f;
+    public bool can_get_gold = true;
+    public float overdrive_timer = 0f;
     public int chapter = 1;
     public int wave = 1;
     public int stage = 1;
@@ -40,6 +43,8 @@ public class GameManager : MonoBehaviour
     private int _cur_gold = 0;
 /*    private float _cur_food = 0;*/
     private float _food_per_time = 1;
+    private bool bgm_play = false;
+    
     
 
     public GameState state;
@@ -65,14 +70,30 @@ public class GameManager : MonoBehaviour
         state = GameState.GAME_PLAY;
         Time.timeScale = 1.0f;
         GameObject.Find("EnemyBase").SetActive(true);
-        UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
+        
         cur_cost = 0;
         cur_gold = 0;
-        SoundManager.Instance.PlayBGM(SoundManager.BGM_CLIP.ingame);
+        
     }
+    
 
     private void Update()
     {
+        if(!bgm_play)
+        {
+            SoundManager.Instance.PlayBGM(SoundManager.BGM_CLIP.ingame);
+            UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
+            bgm_play = true;
+        }
+        
+        if (overdrive_timer >= overdrive_time)
+        {
+            can_get_gold = false;
+        }
+        else
+        {
+            overdrive_timer += Time.deltaTime;
+        }
 /*        if (cur_food < MAX_FOOD)
             cur_food +=Time.deltaTime * _food_per_time;*/
         //게임 로직
@@ -83,16 +104,13 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.GAME_OVER:
                 GameOver();
-
                 break;
             case GameState.GAME_PAUSE:
                 PauseGame();
                 break;
             case GameState.GAME_STAGE_CLEAR:
-                StageClear();
-                break;
             case GameState.GAME_CHAPTER_CLEAR:
-                ChapterClear();
+                StageClear();
                 break;
             case GameState.GAME_CLEAR:
                 GameClear();
@@ -141,7 +159,6 @@ public class GameManager : MonoBehaviour
     void ResetBaseStat()
     {
         MAX_COST = ShopManager.Instance.GetEnforceValue(EnforceType.MAX_Cost, 0);
-/*        MAX_FOOD = ShopManager.Instance.GetEnforceValue(EnforceType.MAX_Food, 0);*/
         food_per_time = ShopManager.Instance.GetEnforceValue(EnforceType.Gain_Food, 0);
         
     }
@@ -156,15 +173,7 @@ public class GameManager : MonoBehaviour
 
     
 
-    public void GoTitle()
-    {
-        Destroy(Player.Instance.gameObject);
-        Destroy(SoundManager.Instance.gameObject);
-        Destroy(Parser.Instance.gameObject);
-        Destroy(ShopManager.Instance.gameObject);
-        Destroy(GameManager.Instance.gameObject);
-        SceneManager.LoadScene("Title");
-    }
+    
     public void RestartGame()
     {
         Time.timeScale = 1;
@@ -176,7 +185,10 @@ public class GameManager : MonoBehaviour
 /*        cur_food = 0;*/
         EnemyBase.Instance().actor.cur_status.HP = EnemyBase.Instance().actor.status.HP;
         UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
-        Player.Instance.actor.cur_status.HP = Player.Instance.actor.status.HP;
+
+        ShopManager.Instance.ClearInGameShop();
+        Player.Instance.actor.status = Parser.minion_status_dict[(int)MinionUnitIndex.Player].common;
+        Player.Instance.actor.cur_status = Player.Instance.actor.status;
         Player.Instance.transform.position = player_defualt_position;
         Player.Instance.actor.can_action = true;
         state = GameState.GAME_PLAY;
@@ -200,47 +212,42 @@ public class GameManager : MonoBehaviour
 
     public void StageClear()
     {
-        //clear 이벤트 만들기
-
-        WaveManager.Instance.ClearMonsterObjectOnStage();
-        cur_cost = 0;
-/*        cur_food = 0;*/
-        stage++;
-        wave = 1;
-        Player.Instance.transform.position = player_defualt_position;
-        Player.Instance.actor.cur_status.HP = Player.Instance.actor.status.HP;
         state = GameState.GAME_PLAY;
-        EnemyBase.Instance().gameObject.SetActive(true);
-        EnemyBase.Instance().GetComponent<Actor>().isDie = false;
-
-    }
-    public void ChangeChapter()
-    {
-        WaveManager.Instance.ClearMonsterObjectOnStage();
-        Time.timeScale = 1;
-        state = GameState.GAME_PLAY;
-        wave = 1;
-        cur_cost = 0;
-/*        cur_food = 0;*/
-        Player.Instance.transform.position = player_defualt_position;
-        Player.Instance.actor.cur_status.HP = Player.Instance.actor.status.HP;
-        state = GameState.GAME_PLAY;
-        SceneManager.LoadScene("Chapter" + chapter);
-
-    }
-    public void ChapterClear()
-    {
-        stage++;
-        wave = 1;
-        //씬 체인지 구현
-        chapter = stage / STAGE_PER_CHAPTER + 1;
-        UIManager.Instance.SetCurrentPage(UIPageInfo.GameChapterClear);
-        state = GameState.GAME_IDLE;
-        Player.Instance.transform.position = player_defualt_position;
         Time.timeScale = 0;
+        UIManager.Instance.SetCurrentPage(UIPageInfo.GameStageClear);
+
+        WaveManager.Instance.ClearMonsterObjectOnStage();
+      
+        
         
     }
-    
+
+
+    public void StageChange()
+    {
+        if (stage % STAGE_PER_CHAPTER != 0)
+        {
+            UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
+        }
+        else
+        {
+            chapter = stage / STAGE_PER_CHAPTER + 1;
+            SceneManager.LoadScene("Chapter" + chapter);
+        }
+        stage++;
+        wave = 1;
+        Time.timeScale = 1;
+        cur_cost = 0;
+        Player.Instance.transform.position = player_defualt_position;
+        Player.Instance.actor.cur_status.HP = Player.Instance.actor.status.HP;
+        EnemyBase.Instance().gameObject.SetActive(true);
+        EnemyBase.Instance().GetComponent<Actor>().isDie = false;
+        overdrive_timer = 0;
+        can_get_gold = true;
+        
+    }
+
+
 
     public void GameClear()
     {

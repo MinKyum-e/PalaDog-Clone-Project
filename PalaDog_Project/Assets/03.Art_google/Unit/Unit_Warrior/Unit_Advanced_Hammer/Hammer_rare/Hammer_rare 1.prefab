@@ -763,7 +763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac3f11d0498ae2743b6142f625ddec3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 10122
+  ID: 11220
   status:
     index: 0
     name: 
@@ -817,6 +817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 537fa3fe36a7371439c35a70cc5c2c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actor: {fileID: 0}
   skill: {fileID: 0}
 --- !u!114 &7757313353548096316
 MonoBehaviour:

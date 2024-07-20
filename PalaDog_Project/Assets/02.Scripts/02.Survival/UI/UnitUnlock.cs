@@ -10,28 +10,28 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
 {
     public bool is_lock;
     [SerializeField]
-    private int unlock_gold;
+    private bool already_unlock;
     [SerializeField]
     private int shop_index;
     [SerializeField]
     private int prerequisite;
 
 
-    public TMP_Text unlock_gold_text;
-    public DraggableUI draggableUI;
+    public bool can_unlock = false;
+
+
     
 
     private Image image_renderer;
     public Sprite unlocked_sprite;
 
-    public Image resorce_img_renderer;
-
     public GameObject cost_object;
     private int cost;
 
+    public int minion_idx;
+
     private void Awake()
     {
-        draggableUI = GetComponent<DraggableUI>();
         image_renderer = GetComponent<Image>();
 
     }
@@ -39,50 +39,68 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
     {
         foreach (KeyValuePair<int, ShopItemInfo> kvp in Parser.shop_item_info_dict )
         {
-            if(kvp.Value.etc_value == draggableUI.minion_idx && kvp.Value.list_type == ShopEnums.ListType.Unlock)
+            if (kvp.Value.etc_value == minion_idx && kvp.Value.list_type == ShopEnums.ListType.Unlock)
             {
-                unlock_gold = kvp.Value.goods_value;
-                unlock_gold_text.text = unlock_gold.ToString();
                 shop_index = kvp.Key;
                 prerequisite = kvp.Value.prelist;
             }
 
-/*            if (kvp.Value.etc_value == draggableUI.minion_idx && kvp.Value.list_type == ShopEnums.ListType.Spawn)
-            {
-                draggableUI.requisite_food = kvp.Value.goods_value;
-            }*/
-
         }
 
-        cost = Parser.minion_status_dict[draggableUI.minion_idx].cost;
+        cost = Parser.minion_status_dict[minion_idx].cost;
 
-        if (unlock_gold == 0)
+        if (already_unlock)
         {
-            UnLock();
+            UnLock(false);
         }
+
+        if (ShopManager.Instance != null && is_lock)
+        {
+            foreach (var un in ShopManager.Instance.unlocked_ingame_unit_list)
+            {
+                if (un == shop_index)
+                {
+                    UnLock(false);
+                    break;
+                }
+            }
+        }
+    }
+    private void OnEnable()
+    {
+        if(ShopManager.Instance != null && is_lock )
+        {
+            foreach (var un in ShopManager.Instance.unlocked_ingame_unit_list)
+            {
+                if (un == shop_index)
+                {
+                    UnLock(false);
+                    break;
+                }
+            }
+        }
+     
     }
 
 
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (is_lock && GameManager.Instance.cur_gold >= unlock_gold && ShopManager.Instance.CheckPrerequisite(ShopEnums.UnLockType.InGameUnit, prerequisite))
+        if (ShopManager.Instance.CheckPrerequisite(ShopEnums.UnLockType.InGameUnit, prerequisite) && can_unlock && is_lock)
         {
-            UnLock();
+            UnLock(true);
+           
         }
     }
 
-    public void UnLock()
+    public void UnLock(bool click)
     {
-        GameManager.Instance.cur_gold -= unlock_gold;
         is_lock = false;
         image_renderer.sprite = unlocked_sprite;
-        resorce_img_renderer.enabled = false;
-        unlock_gold_text.enabled = false;
         cost_object.SetActive(true);
         cost_object.transform.GetChild(0).GetComponent<TMP_Text>().text = cost.ToString();
-        
-
         ShopManager.Instance.AddToUnLockList(ShopEnums.UnLockType.InGameUnit, shop_index);
+        if(!already_unlock && can_unlock && click)
+            GameManager.Instance.StageChange();
     }
 }
