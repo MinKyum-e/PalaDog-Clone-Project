@@ -21,7 +21,6 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
 
 
     public TMP_Text unlock_gold_text;
-    public DraggableUI draggableUI;
     
 
     private Image image_renderer;
@@ -32,9 +31,10 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
     public GameObject cost_object;
     private int cost;
 
+    public int minion_idx;
+
     private void Awake()
     {
-        draggableUI = GetComponent<DraggableUI>();
         image_renderer = GetComponent<Image>();
 
     }
@@ -42,7 +42,7 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
     {
         foreach (KeyValuePair<int, ShopItemInfo> kvp in Parser.shop_item_info_dict )
         {
-            if(kvp.Value.etc_value == draggableUI.minion_idx && kvp.Value.list_type == ShopEnums.ListType.Unlock)
+            if (kvp.Value.etc_value == minion_idx && kvp.Value.list_type == ShopEnums.ListType.Unlock)
             {
                 unlock_gold = kvp.Value.goods_value;
                 unlock_gold_text.text = unlock_gold.ToString();
@@ -50,14 +50,9 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
                 prerequisite = kvp.Value.prelist;
             }
 
-/*            if (kvp.Value.etc_value == draggableUI.minion_idx && kvp.Value.list_type == ShopEnums.ListType.Spawn)
-            {
-                draggableUI.requisite_food = kvp.Value.goods_value;
-            }*/
-
         }
 
-        cost = Parser.minion_status_dict[draggableUI.minion_idx].cost;
+        cost = Parser.minion_status_dict[minion_idx].cost;
 
         if (unlock_gold == 0)
         {
@@ -66,22 +61,25 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
     }
     private void OnEnable()
     {
-        
-        foreach (var un in ShopManager.Instance.unlocked_ingame_unit_list)
+        if(ShopManager.Instance != null && is_lock )
         {
-            if(un == shop_index)
+            foreach (var un in ShopManager.Instance.unlocked_ingame_unit_list)
             {
-                UnLock();
-                break;
+                if (un == shop_index)
+                {
+                    UnLock();
+                    break;
+                }
             }
         }
+     
     }
 
 
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (ShopManager.Instance.CheckPrerequisite(ShopEnums.UnLockType.InGameUnit, prerequisite) && can_unlock)
+        if (ShopManager.Instance.CheckPrerequisite(ShopEnums.UnLockType.InGameUnit, prerequisite) && can_unlock && is_lock)
         {
             UnLock();
            

@@ -236,6 +236,7 @@ public class ShopManager : MonoBehaviour
         switch(unlock_type)
         {
             case ShopEnums.UnLockType.InGameUnit:
+                
                 unlocked_ingame_unit_list.Add(index);
                 break;
             case ShopEnums.UnLockType.Evolution:

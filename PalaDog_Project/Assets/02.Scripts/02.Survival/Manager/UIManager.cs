@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public GameObject GameChapterClear;
     public GameObject GameClear;
     public GameObject GameResourse;
+    public GameObject GameStageClear;
 
 
     private UIPageInfo CurrentPageInfo;
