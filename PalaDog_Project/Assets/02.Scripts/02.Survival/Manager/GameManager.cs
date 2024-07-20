@@ -26,13 +26,16 @@ public class GameManager : MonoBehaviour
     public int STAGE_PER_CHAPTER;
     public int MAX_CHAPTER;
     public int MAX_COST;
-    /*    public int MAX_FOOD;*/
 
+
+    public int Unit_LvL = 0;
     //히어로 오브젝트 관리 draggable 소환시 추가, die 시 제거,
     public Dictionary<MinionUnitIndex, Minion> hero_objects;
 
     private static GameManager instance = null;
-
+    public float overdrive_time = 300f;
+    public bool can_get_gold = true;
+    public float overdrive_timer = 0f;
     public int chapter = 1;
     public int wave = 1;
     public int stage = 1;
@@ -40,6 +43,7 @@ public class GameManager : MonoBehaviour
     private int _cur_gold = 0;
 /*    private float _cur_food = 0;*/
     private float _food_per_time = 1;
+    
     
 
     public GameState state;
@@ -73,6 +77,15 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        
+        if(overdrive_timer >= overdrive_time)
+        {
+            can_get_gold = false;
+        }
+        else
+        {
+            overdrive_timer += Time.deltaTime;
+        }
 /*        if (cur_food < MAX_FOOD)
             cur_food +=Time.deltaTime * _food_per_time;*/
         //게임 로직
@@ -83,7 +96,6 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.GAME_OVER:
                 GameOver();
-
                 break;
             case GameState.GAME_PAUSE:
                 PauseGame();
@@ -141,7 +153,6 @@ public class GameManager : MonoBehaviour
     void ResetBaseStat()
     {
         MAX_COST = ShopManager.Instance.GetEnforceValue(EnforceType.MAX_Cost, 0);
-/*        MAX_FOOD = ShopManager.Instance.GetEnforceValue(EnforceType.MAX_Food, 0);*/
         food_per_time = ShopManager.Instance.GetEnforceValue(EnforceType.Gain_Food, 0);
         
     }
@@ -213,6 +224,17 @@ public class GameManager : MonoBehaviour
         EnemyBase.Instance().gameObject.SetActive(true);
         EnemyBase.Instance().GetComponent<Actor>().isDie = false;
 
+        overdrive_timer = 0;
+        can_get_gold = true;
+        UIManager.Instance.SetCurrentPage(UIPageInfo.GameStageClear);
+        Time.timeScale = 0;
+
+    }
+
+    public void StageChange()
+    {
+        Time.timeScale = 1;
+        UIManager.Instance.SetCurrentPage(UIPageInfo.GameStageClear);
     }
     public void ChangeChapter()
     {
@@ -227,7 +249,10 @@ public class GameManager : MonoBehaviour
         state = GameState.GAME_PLAY;
         SceneManager.LoadScene("Chapter" + chapter);
 
+        overdrive_timer = 0;
+        can_get_gold = true;
     }
+
     public void ChapterClear()
     {
         stage++;

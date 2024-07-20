@@ -437,7 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f1755b1c1a635f46b87990a102d6146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minion_idx: 10232
+  minion_idx: 12320
 --- !u!114 &5001695908054888778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1442,7 +1442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f1755b1c1a635f46b87990a102d6146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minion_idx: 10231
+  minion_idx: 12310
 --- !u!114 &5689422204925047367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1581,7 +1581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f1755b1c1a635f46b87990a102d6146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minion_idx: 10222
+  minion_idx: 12220
 --- !u!114 &3935770427911591467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2004,7 +2004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f1755b1c1a635f46b87990a102d6146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minion_idx: 10221
+  minion_idx: 12210
 --- !u!114 &4171745972689689278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2592,7 +2592,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2637877025709413030
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4194,7 +4194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f1755b1c1a635f46b87990a102d6146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minion_idx: 10211
+  minion_idx: 12110
 --- !u!114 &3582441032974461122
 MonoBehaviour:
   m_ObjectHideFlags: 0

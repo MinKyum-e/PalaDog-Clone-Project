@@ -21,9 +21,9 @@ public class Minion: Unit
     {
         try
         {
-            actor.status = Parser.minion_status_dict[actor.ID].common;
-            actor.cur_status = Parser.minion_status_dict[actor.ID].common;
-            cost = Parser.minion_status_dict[actor.ID].cost;
+            actor.status = Parser.minion_status_dict[actor.ID + GameManager.Instance.Unit_LvL].common;
+            actor.cur_status = Parser.minion_status_dict[actor.ID + GameManager.Instance.Unit_LvL].common;
+            cost = Parser.minion_status_dict[actor.ID + GameManager.Instance.Unit_LvL].cost;
         }
         catch { Debug.Log("status Setting Error Minion"); }
     }

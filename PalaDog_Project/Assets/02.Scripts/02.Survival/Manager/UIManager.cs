@@ -39,7 +39,7 @@ public class UIManager : MonoBehaviour
         GameOver.SetActive(false);
         GameChapterClear.SetActive(false);
         GameClear.SetActive(false);
-        GameResourse.SetActive(false);  
+        GameResourse.SetActive(false);
 
         if (CurrentPageInfo == UIPageInfo.GamePlay)
         {
@@ -62,5 +62,6 @@ public class UIManager : MonoBehaviour
         {
             GameResourse.SetActive(true);
         }
+
     }
 }

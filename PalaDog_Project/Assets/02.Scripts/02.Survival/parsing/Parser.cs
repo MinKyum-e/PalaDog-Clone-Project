@@ -27,7 +27,7 @@ public class Parser : MonoBehaviour
         if(instance == null)
         {
             instance = this;
-            data_MinionTable = CSVReader.Read("DT_ChrTable", 20);
+            data_MinionTable = CSVReader.Read("DT_ChrTable", 26);
             data_EnemyTable = CSVReader.Read("DT_MonsterTable", 19);
             data_WaveTable = CSVReader.Read("DT_WaveTable", 10);
             data_ShopTable = CSVReader.Read("DT_ShopTable", 29);

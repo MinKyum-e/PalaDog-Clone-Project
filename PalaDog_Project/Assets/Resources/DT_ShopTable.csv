@@ -39,23 +39,23 @@ int,string,string,int,string,enum,int,enum,int,int,//string
 10026,Shop_Buff_MaxCost_6,상점_강화_최대 코스트_6레벨,1002,최대 코스트 LV.6,Enforce,10025,Gold,800,43,최대 코스트 6레벨. 43코스트
 10027,Shop_Buff_MaxCost_7,상점_강화_최대 코스트_7레벨,1002,최대 코스트 LV.7,Enforce,10026,Gold,1600,53,최대 코스트 7레벨. 53코스트
 10028,Shop_Buff_MaxCost_8,상점_강화_최대 코스트_8레벨,1002,최대 코스트 LV.8,Enforce,10027,Gold,3200,65,최대 코스트 8레벨. 65코스트
-10031,Shop_Buff_MaxFood_1,상점_강화_최대 식량_1레벨,1003,최대 식량 LV.1,Enforce,0,Gold,0,40,최대 식량 1레벨. 40
-10032,Shop_Buff_MaxFood_2,상점_강화_최대 식량_2레벨,1003,최대 식량 LV.2,Enforce,10031,Gold,300,60,최대 식량 2레벨. 80
-10033,Shop_Buff_MaxFood_3,상점_강화_최대 식량_3레벨,1003,최대 식량 LV.3,Enforce,10032,Gold,450,100,최대 식량 3레벨. 120
-10034,Shop_Buff_MaxFood_4,상점_강화_최대 식량_4레벨,1003,최대 식량 LV.4,Enforce,10033,Gold,800,160,최대 식량 4레벨. 160
-10035,Shop_Buff_MaxFood_5,상점_강화_최대 식량_5레벨,1003,최대 식량 LV.5,Enforce,10034,Gold,1200,240,최대 식량 5레벨. 200
-10041,Shop_Buff_GenFood_1,상점_강화_식량 획득_1레벨,1004,식량 획득 LV.1,Enforce,0,Gold,0,1,식량 획득 속도 1레벨. 1식량/s
-10042,Shop_Buff_GenFood_2,상점_강화_식량 획득_2레벨,1004,식량 획득 LV.2,Enforce,10041,Gold,100,2,식량 획득 속도 2레벨. 2식량/s
-10043,Shop_Buff_GenFood_3,상점_강화_식량 획득_3레벨,1004,식량 획득 LV.3,Enforce,10042,Gold,500,4,식량 획득 속도 4레벨. 4식량/s
-10044,Shop_Buff_GenFood_4,상점_강화_식량 획득_4레벨,1004,식량 획득 LV.4,Enforce,10043,Gold,1100,8,식량 획득 속도 8레벨. 8식량/s
-10045,Shop_Buff_GenFood_5,상점_강화_식량 획득_5레벨,1004,식량 획득 LV.5,Enforce,10044,Gold,1800,16,식량 획득 속도 16레벨. 16식량/s
-20011,Shop_Unlock_Unit1_Normal_Tree1,상점_해제_유닛 1_일반_트리1,2000,(유닛1_일반_트리1) 해제,Unlock,0,Gold,0,10111,유닛1 일반 단계 해금
-20021,Shop_Unlock_Unit1_Elite_Tree1,상점_해제_유닛 1_정예_트리1,2001,(유닛1_정예_트리1) 해제,Unlock,20011,Gold,100,10121,유닛1 정예 단계 1트리 해금
-20022,Shop_Unlock_Unit1_Elite_Tree2,상점_해제_유닛 1_정예_트리2,2002,(유닛1_정예_트리2) 해제,Unlock,20011,Gold,150,10122,유닛1 정예 단계 2트리 해금
-20031,Shop_Unlock_Unit1_Hero_Tree1,상점_해제_유닛 1_영웅_트리1,2001,(유닛1_영웅_트리1) 해제,Unlock,20021,Gold,150,10131,유닛1 영웅 단계 1트리 해금
-20032,Shop_Unlock_Unit1_Hero_Tree2,상점_해제_유닛 1_영웅_트리2,2002,(유닛1_영웅_트리2) 해제,Unlock,20022,Gold,180,10132,유닛1 영웅 단계 2트리 해금
-20211,Shop_Unlock_Unit1_Normal_Tree1,상점_해제_유닛 2_일반_트리1,2000,(유닛1_일반_트리1) 해제,Unlock,0,Gold,0,10211,유닛1 일반 단계 해금
-20221,Shop_Unlock_Unit1_Elite_Tree1,상점_해제_유닛 2_정예_트리1,2001,(유닛1_정예_트리1) 해제,Unlock,20211,Gold,100,10221,유닛1 정예 단계 1트리 해금
-20222,Shop_Unlock_Unit1_Elite_Tree2,상점_해제_유닛 2_정예_트리2,2002,(유닛1_정예_트리2) 해제,Unlock,20211,Gold,150,10222,유닛1 정예 단계 2트리 해금
-20231,Shop_Unlock_Unit1_Hero_Tree1,상점_해제_유닛 2_영웅_트리1,2001,(유닛1_영웅_트리1) 해제,Unlock,20221,Gold,150,10231,유닛1 영웅 단계 1트리 해금
-20232,Shop_Unlock_Unit1_Hero_Tree2,상점_해제_유닛 2_영웅_트리2,2002,(유닛1_영웅_트리2) 해제,Unlock,20222,Gold,180,10232,유닛1 영웅 단계 2트리 해금
+10031,Shop_Buff_MaxFood_1,상점_강화_최대 식량_1레벨,1003,유닛 레벨,Enforce,0,Gold,0,0,lvl0
+10032,Shop_Buff_MaxFood_2,상점_강화_최대 식량_2레벨,1003,유닛 레벨,Enforce,10031,Gold,300,1,lvl1
+10033,Shop_Buff_MaxFood_3,상점_강화_최대 식량_3레벨,1003,유닛 레벨,Enforce,10032,Gold,450,2,lvl2
+10034,Shop_Buff_MaxFood_4,상점_강화_최대 식량_4레벨,1003,유닛 레벨,Enforce,10033,Gold,800,3,lvl3
+10035,Shop_Buff_MaxFood_5,상점_강화_최대 식량_5레벨,1003,유닛 레벨,Enforce,10034,Gold,1200,4,lvl4
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+20011,Shop_Unlock_Unit1_Normal_Tree1,상점_해제_유닛 1_일반_트리1,2000,(유닛1_일반_트리1) 해제,Unlock,0,Gold,0,11110,유닛1 일반 단계 해금
+20021,Shop_Unlock_Unit1_Elite_Tree1,상점_해제_유닛 1_정예_트리1,2001,(유닛1_정예_트리1) 해제,Unlock,20011,Gold,100,11210,유닛1 정예 단계 1트리 해금
+20022,Shop_Unlock_Unit1_Elite_Tree2,상점_해제_유닛 1_정예_트리2,2002,(유닛1_정예_트리2) 해제,Unlock,20011,Gold,150,11220,유닛1 정예 단계 2트리 해금
+20031,Shop_Unlock_Unit1_Hero_Tree1,상점_해제_유닛 1_영웅_트리1,2001,(유닛1_영웅_트리1) 해제,Unlock,20021,Gold,150,11310,유닛1 영웅 단계 1트리 해금
+20032,Shop_Unlock_Unit1_Hero_Tree2,상점_해제_유닛 1_영웅_트리2,2002,(유닛1_영웅_트리2) 해제,Unlock,20022,Gold,180,11320,유닛1 영웅 단계 2트리 해금
+20211,Shop_Unlock_Unit1_Normal_Tree1,상점_해제_유닛 2_일반_트리1,2000,(유닛1_일반_트리1) 해제,Unlock,0,Gold,0,12110,유닛1 일반 단계 해금
+20221,Shop_Unlock_Unit1_Elite_Tree1,상점_해제_유닛 2_정예_트리1,2001,(유닛1_정예_트리1) 해제,Unlock,20211,Gold,100,12210,유닛1 정예 단계 1트리 해금
+20222,Shop_Unlock_Unit1_Elite_Tree2,상점_해제_유닛 2_정예_트리2,2002,(유닛1_정예_트리2) 해제,Unlock,20211,Gold,150,12220,유닛1 정예 단계 2트리 해금
+20231,Shop_Unlock_Unit1_Hero_Tree1,상점_해제_유닛 2_영웅_트리1,2001,(유닛1_영웅_트리1) 해제,Unlock,20221,Gold,150,12310,유닛1 영웅 단계 1트리 해금
+20232,Shop_Unlock_Unit1_Hero_Tree2,상점_해제_유닛 2_영웅_트리2,2002,(유닛1_영웅_트리2) 해제,Unlock,20222,Gold,180,12320,유닛1 영웅 단계 2트리 해금

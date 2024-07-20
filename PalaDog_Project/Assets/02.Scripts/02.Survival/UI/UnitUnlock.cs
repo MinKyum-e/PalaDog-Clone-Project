@@ -17,6 +17,9 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
     private int prerequisite;
 
 
+    public bool can_unlock = false;
+
+
     public TMP_Text unlock_gold_text;
     public DraggableUI draggableUI;
     
@@ -61,28 +64,38 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
             UnLock();
         }
     }
+    private void OnEnable()
+    {
+        
+        foreach (var un in ShopManager.Instance.unlocked_ingame_unit_list)
+        {
+            if(un == shop_index)
+            {
+                UnLock();
+                break;
+            }
+        }
+    }
 
 
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (is_lock && GameManager.Instance.cur_gold >= unlock_gold && ShopManager.Instance.CheckPrerequisite(ShopEnums.UnLockType.InGameUnit, prerequisite))
+        if (ShopManager.Instance.CheckPrerequisite(ShopEnums.UnLockType.InGameUnit, prerequisite) && can_unlock)
         {
             UnLock();
+           
         }
     }
 
     public void UnLock()
     {
-        GameManager.Instance.cur_gold -= unlock_gold;
         is_lock = false;
         image_renderer.sprite = unlocked_sprite;
         resorce_img_renderer.enabled = false;
         unlock_gold_text.enabled = false;
         cost_object.SetActive(true);
         cost_object.transform.GetChild(0).GetComponent<TMP_Text>().text = cost.ToString();
-        
-
         ShopManager.Instance.AddToUnLockList(ShopEnums.UnLockType.InGameUnit, shop_index);
     }
 }

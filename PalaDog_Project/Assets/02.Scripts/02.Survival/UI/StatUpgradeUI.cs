@@ -10,8 +10,11 @@ public class StatUpgradeUI : MonoBehaviour
 {
     public EnforceType type;
     TMP_Text t;
+    [SerializeField]
     int cur_lvl;
+    [SerializeField]
     int max_lvl;
+    [SerializeField]
     int next_price;
     // Start is called before the first frame update
     void Start()

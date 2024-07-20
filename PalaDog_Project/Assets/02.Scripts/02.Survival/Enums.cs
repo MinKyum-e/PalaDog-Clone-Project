@@ -74,15 +74,15 @@ public enum Chr_job
 public enum MinionUnitIndex
 {
     Player = 10000,
-    Warrior = 10111,
-    Knight_Elite = 10121,
-    Hammer_Elite = 10122,
+    Warrior = 11110,
+    Knight_Elite = 11210,
+    Hammer_Elite = 11220,
 
-    Knight_Hero = 10131,
-    Hammer_Hero = 10132,
+    Knight_Hero = 11310,
+    Hammer_Hero = 11320,
 
-    Archer_Elite = 10221,
-    Archer_Hero = 10231,
+    Archer_Elite = 12210,
+    Archer_Hero = 12310,
 
 }
 
@@ -95,5 +95,3 @@ public enum UnitGrade
     Hero,
     Boss,
 }
-
-
