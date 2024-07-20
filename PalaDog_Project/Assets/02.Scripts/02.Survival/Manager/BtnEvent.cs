@@ -51,10 +51,6 @@ public class BtnEvent : MonoBehaviour
     {
         GameManager.Instance.RestartGame();
     }
-    public void ChapterChange()
-    {
-        GameManager.Instance.ChangeChapter();
-    }
 
     public void ShowMeTheGold()
     {

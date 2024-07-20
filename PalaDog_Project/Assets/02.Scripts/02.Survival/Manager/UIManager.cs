@@ -10,7 +10,6 @@ public class UIManager : MonoBehaviour
 
     public GameObject GamePlay;
     public GameObject GameOver;
-    public GameObject GameChapterClear;
     public GameObject GameClear;
     public GameObject GameResourse;
     public GameObject GameStageClear;
@@ -30,6 +29,17 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void OnEnable()
+    {
+        GamePlay.SetActive(false);
+        GameOver.SetActive(false);
+        GameClear.SetActive(false);
+        GameResourse.SetActive(false);
+        GameStageClear.SetActive(false);
+
+        GamePlay.SetActive(true);
+        GameResourse.SetActive(true);
+    }
 
     public void SetCurrentPage(UIPageInfo pageInfo)
     {
@@ -38,9 +48,9 @@ public class UIManager : MonoBehaviour
 
         GamePlay.SetActive(false);
         GameOver.SetActive(false);
-        GameChapterClear.SetActive(false);
         GameClear.SetActive(false);
         GameResourse.SetActive(false);
+        GameStageClear.SetActive(false);
 
         if (CurrentPageInfo == UIPageInfo.GamePlay)
         {
@@ -51,10 +61,6 @@ public class UIManager : MonoBehaviour
         {
             GameOver.SetActive(true);
         }
-        else if (CurrentPageInfo == UIPageInfo.GameChapterClear)
-        {
-            GameChapterClear.SetActive(true);
-        }
         else if(CurrentPageInfo == UIPageInfo.GameClear)
         {
             GameClear.SetActive(true);
@@ -62,6 +68,10 @@ public class UIManager : MonoBehaviour
         else if(CurrentPageInfo == UIPageInfo.Spawn)
         {
             GameResourse.SetActive(true);
+        }
+        else if(CurrentPageInfo == UIPageInfo.GameStageClear)
+        {
+            GameStageClear.SetActive(true);
         }
 
     }

@@ -256,6 +256,7 @@ public class ShopManager : MonoBehaviour
     /// <returns></returns>
     public bool CheckPrerequisite(ShopEnums.UnLockType unlock_type, int prerequisite)
     {
+        if(prerequisite == 0) return true;
         switch (unlock_type)
         {
             case ShopEnums.UnLockType.InGameUnit:

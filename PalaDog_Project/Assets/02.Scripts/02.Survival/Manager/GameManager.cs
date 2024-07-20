@@ -101,10 +101,8 @@ public class GameManager : MonoBehaviour
                 PauseGame();
                 break;
             case GameState.GAME_STAGE_CLEAR:
-                StageClear();
-                break;
             case GameState.GAME_CHAPTER_CLEAR:
-                ChapterClear();
+                StageClear();
                 break;
             case GameState.GAME_CLEAR:
                 GameClear();
@@ -211,61 +209,41 @@ public class GameManager : MonoBehaviour
 
     public void StageClear()
     {
-        //clear 이벤트 만들기
+        state = GameState.GAME_PLAY;
+        UIManager.Instance.SetCurrentPage(UIPageInfo.GameStageClear);
 
         WaveManager.Instance.ClearMonsterObjectOnStage();
-        cur_cost = 0;
-/*        cur_food = 0;*/
-        stage++;
-        wave = 1;
-        Player.Instance.transform.position = player_defualt_position;
-        Player.Instance.actor.cur_status.HP = Player.Instance.actor.status.HP;
-        state = GameState.GAME_PLAY;
-        EnemyBase.Instance().gameObject.SetActive(true);
-        EnemyBase.Instance().GetComponent<Actor>().isDie = false;
-
-        overdrive_timer = 0;
-        can_get_gold = true;
-        UIManager.Instance.SetCurrentPage(UIPageInfo.GameStageClear);
+      
+        
         Time.timeScale = 0;
-
     }
+
 
     public void StageChange()
     {
-        Time.timeScale = 1;
-        UIManager.Instance.SetCurrentPage(UIPageInfo.GameStageClear);
-    }
-    public void ChangeChapter()
-    {
-        WaveManager.Instance.ClearMonsterObjectOnStage();
-        Time.timeScale = 1;
-        state = GameState.GAME_PLAY;
-        wave = 1;
-        cur_cost = 0;
-/*        cur_food = 0;*/
-        Player.Instance.transform.position = player_defualt_position;
-        Player.Instance.actor.cur_status.HP = Player.Instance.actor.status.HP;
-        state = GameState.GAME_PLAY;
-        SceneManager.LoadScene("Chapter" + chapter);
-
-        overdrive_timer = 0;
-        can_get_gold = true;
-    }
-
-    public void ChapterClear()
-    {
+        if (stage % STAGE_PER_CHAPTER != 0)
+        {
+            UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
+        }
+        else
+        {
+            chapter = stage / STAGE_PER_CHAPTER + 1;
+            SceneManager.LoadScene("Chapter" + chapter);
+        }
         stage++;
         wave = 1;
-        //씬 체인지 구현
-        chapter = stage / STAGE_PER_CHAPTER + 1;
-        UIManager.Instance.SetCurrentPage(UIPageInfo.GameChapterClear);
-        state = GameState.GAME_IDLE;
+        Time.timeScale = 1;
+        cur_cost = 0;
         Player.Instance.transform.position = player_defualt_position;
-        Time.timeScale = 0;
+        Player.Instance.actor.cur_status.HP = Player.Instance.actor.status.HP;
+        EnemyBase.Instance().gameObject.SetActive(true);
+        EnemyBase.Instance().GetComponent<Actor>().isDie = false;
+        overdrive_timer = 0;
+        can_get_gold = true;
         
     }
-    
+
+
 
     public void GameClear()
     {
