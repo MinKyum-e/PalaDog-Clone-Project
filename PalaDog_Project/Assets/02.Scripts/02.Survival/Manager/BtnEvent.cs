@@ -29,11 +29,14 @@ public class BtnEvent : MonoBehaviour
 
     public void GoTitle()
     {
+        Destroy(Player.Instance.actor.minion_poolManager.gameObject);
+        Destroy(Player.Instance.actor.enemy_poolManager.gameObject);
         Destroy(Player.Instance.gameObject);
+
         Destroy(SoundManager.Instance.gameObject);
-        Destroy(Parser.Instance.gameObject);
         Destroy(ShopManager.Instance.gameObject);
         Destroy(GameManager.Instance.gameObject);
+        Destroy(ArrowPool.Instance.gameObject);
         SceneManager.LoadScene("Title");
     }
 

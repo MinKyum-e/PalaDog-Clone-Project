@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     private int _cur_gold = 0;
 /*    private float _cur_food = 0;*/
     private float _food_per_time = 1;
+    private bool bgm_play = false;
     
     
 
@@ -69,16 +70,23 @@ public class GameManager : MonoBehaviour
         state = GameState.GAME_PLAY;
         Time.timeScale = 1.0f;
         GameObject.Find("EnemyBase").SetActive(true);
-        UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
+        
         cur_cost = 0;
         cur_gold = 0;
-        SoundManager.Instance.PlayBGM(SoundManager.BGM_CLIP.ingame);
+        
     }
+    
 
     private void Update()
     {
+        if(!bgm_play)
+        {
+            SoundManager.Instance.PlayBGM(SoundManager.BGM_CLIP.ingame);
+            UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
+            bgm_play = true;
+        }
         
-        if(overdrive_timer >= overdrive_time)
+        if (overdrive_timer >= overdrive_time)
         {
             can_get_gold = false;
         }

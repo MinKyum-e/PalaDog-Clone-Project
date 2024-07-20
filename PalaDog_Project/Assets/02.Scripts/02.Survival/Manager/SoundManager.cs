@@ -15,7 +15,6 @@ public class SoundManager : DontDestroy<SoundManager> {
 
     public enum BGM_CLIP
     {
-        intro,
         ingame
     }
 
@@ -42,6 +41,7 @@ public class SoundManager : DontDestroy<SoundManager> {
     public void PlayBGM(BGM_CLIP bgm)
     {
         m_audio[(int)AUDIO_TYPE.BGM].clip = m_bgmClip[(int)bgm];
+        m_audio[(int)AUDIO_TYPE.BGM].volume = 1;
         m_audio[(int)AUDIO_TYPE.BGM].Play();
     }
 

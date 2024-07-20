@@ -14,10 +14,14 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+#if UNITY_STANDALONE_WIN
+        HandleMouseInput();
+#else
 #if UNITY_EDITOR
         HandleMouseInput();
 #else
         HandleTouchInput();
+#endif
 #endif
     }
 

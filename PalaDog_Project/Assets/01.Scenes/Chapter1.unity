@@ -828,7 +828,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_bgmClip:
-  - {fileID: 8300000, guid: c5e2a73ad4706440f93bf05df0b465fe, type: 3}
   - {fileID: 8300000, guid: 63bc0faa3ccffda419f746c5232cb51d, type: 3}
   m_sfxClip:
   - {fileID: 8300000, guid: 8226ee1db3a68d245a301a2ce76f6577, type: 3}
@@ -16670,15 +16669,14 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 8961663206966489859}
-  - {fileID: 2024051838}
+  - {fileID: 4967834449778877718}
+  - {fileID: 619850037}
   - {fileID: 1181255669}
-  - {fileID: 538316588}
+  - {fileID: 2024051838}
   - {fileID: 1257223221}
   - {fileID: 12458049}
-  - {fileID: 619850037}
   - {fileID: 482129671}
   - {fileID: 1828643253}
-  - {fileID: 4967834449778877718}
   - {fileID: 1906098145}
   - {fileID: 1829501525}
   - {fileID: 1374572550}
@@ -16686,3 +16684,4 @@ SceneRoots:
   - {fileID: 7262806210515241406}
   - {fileID: 7183851004671896281}
   - {fileID: 425560529}
+  - {fileID: 538316588}
