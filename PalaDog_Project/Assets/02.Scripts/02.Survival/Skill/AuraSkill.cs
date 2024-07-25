@@ -39,6 +39,7 @@ public class AuraSkill : MonoBehaviour
                                     {
                                         case BuffName.Heal:
                                             targets[i].cur_status.HP = (int)Mathf.Clamp(targets[i].cur_status.HP + ef.value, 0f, targets[i].status.HP);
+                                            targets[i].effect_player.PlayEffect(BuffName.Heal);
                                             break;
                                     }
                                 }

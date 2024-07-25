@@ -24,6 +24,7 @@ public class Actor : MonoBehaviour
     public Rigidbody2D rigid;
     public SpriteRenderer spriteRenderer; 
     public Animator animator;
+    public EffectPlayer effect_player;
 
     public int final_damage;
 
@@ -34,6 +35,7 @@ public class Actor : MonoBehaviour
         animator = GetComponent<Animator>();
         enemy_poolManager = GameObject.FindGameObjectWithTag("EnemyPool").GetComponent<PoolManager>();
         minion_poolManager = GameObject.FindGameObjectWithTag("MinionPool").GetComponent<PoolManager>();
+        effect_player = GetComponentInChildren<EffectPlayer>(); 
 
         skills = new ActorSkillInfo[3];
         for(int i=0;i<3;i++)
