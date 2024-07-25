@@ -34,6 +34,11 @@ public class UIPanelChanger : MonoBehaviour
     public void OnOffPanel(int idx)
     {
         panels[idx].SetActive(!panels[idx].activeSelf);
-        
+
+        //패널 열었을때 타임 멈추기
+        if (panels[idx].activeSelf)
+            Time.timeScale = 0.0f;
+        else
+            Time.timeScale = 1.0f;
     }
 }
