@@ -185,6 +185,7 @@ public class BuffSystem : MonoBehaviour
             {
                 case BuffName.Heal:
                     actor.cur_status.HP = (int)Mathf.Clamp(actor.cur_status.HP + value, 0f, actor.status.HP);
+                    actor.effect_player.PlayEffect(BuffName.Heal);
                     break;
                 case BuffName.Poison:
                     float max_HP = actor.status.HP;
