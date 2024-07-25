@@ -11,6 +11,7 @@ public enum UIPageInfo
     Spawn,
     GameResourse,
     GameStageClear,
+    HelpPanel,
 }
 
 public enum UI_UnitPanelInfo

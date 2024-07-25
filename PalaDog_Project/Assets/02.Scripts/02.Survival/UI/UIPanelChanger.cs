@@ -30,4 +30,10 @@ public class UIPanelChanger : MonoBehaviour
         }
         panels[seq].SetActive(true);
     }
+
+    public void OnOffPanel(int idx)
+    {
+        panels[idx].SetActive(!panels[idx].activeSelf);
+        
+    }
 }
