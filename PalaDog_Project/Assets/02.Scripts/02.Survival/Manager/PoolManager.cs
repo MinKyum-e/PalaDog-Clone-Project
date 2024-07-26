@@ -84,8 +84,10 @@ public class PoolManager : MonoBehaviour
 
             int prev = sr.sortingOrder;
             sr.sortingOrder = sr.sortingOrder + sort_order[index_dict[ID]];
-            select.transform.position = new Vector3(spawnPoint.x, spawnPoint.y + 0.4f, 1f - (prev/1000) - (sort_order[index_dict[ID]]++ / 5f));
-            
+            select.transform.position = new Vector3(spawnPoint.x, spawnPoint.y + 0.4f, 1f - (prev/1000) - (sort_order[index_dict[ID]] / 20f));
+            sort_order[index_dict[ID]] += 10;
+
+
 
             pools[index_dict[ID]].Add(select);
         }

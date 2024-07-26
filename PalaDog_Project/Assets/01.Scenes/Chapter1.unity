@@ -1961,7 +1961,7 @@ PrefabInstance:
       objectReference: {fileID: 1922757301}
     - target: {fileID: 2542397226198173165, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3297359074944577625, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
       propertyPath: m_fontColor.b
@@ -2278,6 +2278,22 @@ PrefabInstance:
     - target: {fileID: 2901959845032010533, guid: dc30fb566df24a84c83e978d692cf7a3, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5113253144177372711, guid: dc30fb566df24a84c83e978d692cf7a3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6451228526479248331, guid: dc30fb566df24a84c83e978d692cf7a3, type: 3}
+      propertyPath: m_SortingLayer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6451228526479248331, guid: dc30fb566df24a84c83e978d692cf7a3, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6451228526479248331, guid: dc30fb566df24a84c83e978d692cf7a3, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1311177475
       objectReference: {fileID: 0}
     - target: {fileID: 6451228526479248331, guid: dc30fb566df24a84c83e978d692cf7a3, type: 3}
       propertyPath: m_WasSpriteAssigned

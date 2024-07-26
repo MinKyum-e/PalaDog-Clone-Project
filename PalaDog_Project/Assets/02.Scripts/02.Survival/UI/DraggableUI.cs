@@ -1,4 +1,3 @@
-
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +15,8 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     private PoolManager poolManager;
     private CircleCollider2D auraCollider;
     private UnitCoolTimeUI cooltimeUI;
-   /* private Transform food_text_transform;*/
+    /* private Transform food_text_transform;*/
+    private Vector2 base_size;
     
 
 
@@ -34,6 +34,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         locker = GetComponent<UnitUnlock>();
 /*        food_text_transform = transform.GetChild(0);*/
         cooltimeUI = GetComponent<UnitCoolTimeUI>();
+        base_size = rect.sizeDelta;
     }
 
 
@@ -60,17 +61,21 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         {
             UIManager.Instance.SetCurrentPage(UIPageInfo.Spawn);
             float player_y = Camera.main.WorldToScreenPoint(Player.Instance.transform.position).y;
-            rect.position = new Vector3(eventData.position.x, player_y , 0);
+            
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(eventData.position);
             float leftBound = auraCollider.bounds.min.x;
             float rightBount = auraCollider.bounds.max.x;
             if (worldPosition.x >= leftBound && worldPosition.x <= rightBount)
             {
-                canvasGroup.alpha = 0.6f;
+                rect.position = new Vector3(eventData.position.x, player_y, 0);
+                rect.sizeDelta = new Vector2( base_size.x * 2, base_size.x * 2);
+                canvasGroup.alpha = 1.0f;
             }
             else
             {
-                canvasGroup.alpha = 0f;
+                rect.position = new Vector3(eventData.position.x, eventData.position.y, 0);
+                rect.sizeDelta = base_size;
+                canvasGroup.alpha = 0.6f;
             }
         }
        
@@ -79,6 +84,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         if(locker.is_lock == false )
         {
+            rect.sizeDelta = base_size;
             UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
             Vector3 spawnPoint;
             spawnPoint = Camera.main.ScreenToWorldPoint(eventData.position);
