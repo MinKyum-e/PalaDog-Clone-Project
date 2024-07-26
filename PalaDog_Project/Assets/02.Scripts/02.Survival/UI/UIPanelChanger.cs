@@ -7,6 +7,8 @@ public class UIPanelChanger : MonoBehaviour
     public GameObject[] panels;
 
     public int seq = 0;
+
+
     public void ChangePanel(int idx)
     {
         for(int i=0;i<panels.Length; i++)

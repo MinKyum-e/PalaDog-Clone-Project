@@ -26,6 +26,10 @@ DT_SkillTable 인덱스 값 입력
 Chr_Index,Chr_Name,Chr_DevName,Chr_Group,Chr_GameName,Chr_Grade,Chr_Cost,Chr_Job,Chr_HP,Chr_Atk,Chr_AtkRange,Chr_AtkSpeed,Chr_MoveSpeed,Chr_Skill,Chr_CoolTime
 int,string,string,string,string,enum,int,enum,int,int,int,float,float,int,
 10000,Player_Player_001,플레이어_플레이어_001,100,봉울이,Player,0,melee,200,0,0,0,4,0,0
+10001,Player_Player_001,플레이어_플레이어_001,100,봉울이,Player,0,melee,300,0,0,0,4,0,0
+10002,Player_Player_001,플레이어_플레이어_001,100,봉울이,Player,0,melee,400,0,0,0,4,0,0
+10003,Player_Player_001,플레이어_플레이어_001,100,봉울이,Player,0,melee,500,0,0,0,4,0,0
+10004,Player_Player_001,플레이어_플레이어_001,100,봉울이,Player,0,melee,600,0,0,0,4,0,0
 11110,Unit1_Normal_001,유닛1_일반_001,101,유닛1_검사,Normal,1,melee,180,80,1,1,1,0,6
 11111,Unit1_Normal_001,유닛1_일반_001,101,유닛1_검사,Normal,1,melee,216,96,1,1,1,0,6
 11112,Unit1_Normal_001,유닛1_일반_001,101,유닛1_검사,Normal,1,melee,252,112,1,1,1,0,6

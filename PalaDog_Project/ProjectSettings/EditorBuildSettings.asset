@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/01.Scenes/GameClear.unity
     guid: ea28fba0fea3ea04f82310f3d6451f3b
   - enabled: 1
-    path: Assets/01.Scenes/Chapter2.unity
+    path: Assets/01.Scenes/Chapter2_1.unity
     guid: 38c5336e9fba64b44b41e83155db45c5
+  - enabled: 1
+    path: Assets/01.Scenes/Chapter2.unity
+    guid: fed76639bb420fd45956e50b1e0bb1ae
   m_configObjects: {}

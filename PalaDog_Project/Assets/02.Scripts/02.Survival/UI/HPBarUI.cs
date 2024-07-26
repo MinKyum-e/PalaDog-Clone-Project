@@ -2,15 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.U2D;
 
-public class BossHPUI : MonoBehaviour
+public class HPBarUI : MonoBehaviour
 {
-
-    private static BossHPUI instance;
-    [SerializeField]
-    private Actor target;
-
+    Actor actor;
     public Slider hpBar;
     public Slider hpBarBack;
     float last_hp;
@@ -19,60 +14,30 @@ public class BossHPUI : MonoBehaviour
 
     public GameObject HpLineFolder;
     public GameObject HpLineFolderBack;
-
-    private void Awake()
+    void OnEnable()
     {
-        if (instance == null)
-        {
-            instance = this;
-            target = GameObject.Find("EnemyBase").GetComponent<Actor>();
-
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+       actor = transform.parent.GetComponent<Actor>();
+        setinit();
     }
-    public static BossHPUI Instance 
-    {
-        get
-        {
-            if (null == instance)
-            {
-                return null;
-            }
-            return instance;
-        }
-    }
-
     public void setinit()
     {
         last_hp = -1;
-        cur_hp = target.cur_status.HP;
+        cur_hp = actor.cur_status.HP;
         hpBar.value = 1.0f;
         hpBarBack.value = 1.0f;
-    }
-
-
-
-    public float scale_X;
-    void Start()
-    {
-        scale_X = transform.localScale.x;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (last_hp != target.status.HP)
+        if(last_hp != actor.status.HP)
         {
-            last_hp = target.status.HP;
+            last_hp = actor.status.HP;
             GetHpBoost();
         }
 
 
-        float ratio = ((float)target.cur_status.HP / (float)target.status.HP);
+        float ratio = ((float)actor.cur_status.HP / (float)actor.status.HP);
         if (ratio >= 0)
         {
             hpBar.value = Mathf.Lerp(hpBar.value, ratio, Time.deltaTime * 5f);
@@ -81,18 +46,27 @@ public class BossHPUI : MonoBehaviour
         {
             hpBar.value = Mathf.Lerp(hpBar.value, 0, Time.deltaTime * 5f);
         }
-    }
+
+        if(back_hp_hit)
+        {
+
+             hpBarBack.value = Mathf.Lerp(hpBarBack.value, hpBar.value, Time.deltaTime * 10f);
 
 
-    public void SetTarget(GameObject target)
-    {
-        this.target = target.GetComponent<Actor>();
-        setinit();
+            if(hpBar.value >= hpBarBack.value - 0.01f)
+            {
+                back_hp_hit = false;
+                hpBarBack.value = hpBar.value;
+            }
+        }
+
+       
+
     }
 
     public void GetHpBoost()
     {
-        float scaleX = (2000f / target.cur_status.HP) / (target.status.HP / target.cur_status.HP);
+        float scaleX = (200f/ actor.cur_status.HP) /(actor.status.HP/actor.cur_status.HP);
         HpLineFolder.GetComponent<HorizontalLayoutGroup>().gameObject.SetActive(false);
         HpLineFolderBack.GetComponent<HorizontalLayoutGroup>().gameObject.SetActive(false);
         foreach (Transform child in HpLineFolder.transform)
@@ -107,4 +81,15 @@ public class BossHPUI : MonoBehaviour
         HpLineFolderBack.GetComponent<HorizontalLayoutGroup>().gameObject.SetActive(true);
 
     }
+    public void InvokeHPbar()
+    {
+        Invoke("BackHitHp", 0.2f);
+    }
+
+
+    public void BackHitHp()
+    {
+        back_hp_hit=true;
+    }
+
 }

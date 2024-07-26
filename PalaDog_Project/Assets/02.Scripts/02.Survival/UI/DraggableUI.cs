@@ -35,6 +35,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 /*        food_text_transform = transform.GetChild(0);*/
         cooltimeUI = GetComponent<UnitCoolTimeUI>();
         base_size = rect.sizeDelta;
+
     }
 
 
@@ -42,6 +43,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         if(locker.is_lock == false )
         {
+            base_size = rect.sizeDelta;
             previousParent = transform.parent;
             transform.SetParent(canvas);
             transform.SetAsLastSibling();//가장 앞에 보이도록 마지막 자식으로 설정

@@ -182,6 +182,7 @@ public class GameManager : MonoBehaviour
         chapter = 1;
         cur_cost = 0;
         cur_gold = 0;
+        Unit_LvL = 0;
 /*        cur_food = 0;*/
         EnemyBase.Instance().actor.cur_status.HP = EnemyBase.Instance().actor.status.HP;
         UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);

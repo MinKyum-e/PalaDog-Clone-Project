@@ -58,7 +58,6 @@ public class UnitCoolTimeUI : MonoBehaviour
 
     public void TimerStart()
     {
-        print("!@#@!#@!#");
         timer -= 0.01f;
         cooltimeImage.fillAmount = timer / cooltime;
     }

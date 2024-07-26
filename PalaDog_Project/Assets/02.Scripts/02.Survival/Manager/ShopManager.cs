@@ -188,26 +188,22 @@ public class ShopManager : MonoBehaviour
                 {
                     foreach (GameObject item in minion_poolManager.pools[i])
                     {
-                       if(item.tag != "Player")
-                            {
-                                Minion minion = item.GetComponent<Minion>();
-                                float HP_ratio = Parser.minion_status_dict[minion.actor.ID + GameManager.Instance.Unit_LvL].common.HP / minion.actor.status.HP;
-                                float moveSpeed_ratio = Parser.minion_status_dict[minion.actor.ID + GameManager.Instance.Unit_LvL].common.moveSpeed / minion.actor.status.moveSpeed;
-                                float atk_ratio = Parser.minion_status_dict[minion.actor.ID + GameManager.Instance.Unit_LvL].common.atk / minion.actor.status.atk;
-                                float atkRange_ratio = Parser.minion_status_dict[minion.actor.ID + GameManager.Instance.Unit_LvL].common.atkRange / minion.actor.status.atkRange;
-                                float atkSpeed_ratio = Parser.minion_status_dict[minion.actor.ID + GameManager.Instance.Unit_LvL].common.atkSpeed / minion.actor.status.atkSpeed;
 
-                                minion.actor.cur_status.HP = minion.actor.cur_status.HP * HP_ratio;
-                                minion.actor.cur_status.moveSpeed = minion.actor.cur_status.moveSpeed * moveSpeed_ratio;
-                                minion.actor.cur_status.atk = minion.actor.cur_status.atk * atk_ratio;
-                                minion.actor.cur_status.atkRange = minion.actor.cur_status.atkRange * atkRange_ratio;
-                                minion.actor.cur_status.atkSpeed = minion.actor.cur_status.atkSpeed * atkSpeed_ratio;
+                        Actor actor = item.GetComponent<Actor>();
+                        float HP_ratio = Parser.minion_status_dict[actor.ID + GameManager.Instance.Unit_LvL].common.HP /    actor.status.HP;
+                        float moveSpeed_ratio = Parser.minion_status_dict[actor.ID + GameManager.Instance.Unit_LvL].common.moveSpeed /  actor.status.moveSpeed;
+                        float atk_ratio = Parser.minion_status_dict[actor.ID + GameManager.Instance.Unit_LvL].common.atk / actor.status.atk;
+                        float atkRange_ratio = Parser.minion_status_dict[actor.ID + GameManager.Instance.Unit_LvL].common.atkRange / actor.status.atkRange;
+                        float atkSpeed_ratio = Parser.minion_status_dict[actor.ID + GameManager.Instance.Unit_LvL].common.atkSpeed / actor.status.atkSpeed;
 
-                                minion.actor.status = Parser.minion_status_dict[minion.actor.ID + GameManager.Instance.Unit_LvL].common;
-                            }
-                      
+                        actor.cur_status.HP = actor.cur_status.HP * HP_ratio;
+                        actor.cur_status.moveSpeed = actor.cur_status.moveSpeed * moveSpeed_ratio;
+                        actor.cur_status.atk = actor.cur_status.atk * atk_ratio;
+                        actor.cur_status.atkRange = actor.cur_status.atkRange * atkRange_ratio;
+                        actor.cur_status.atkSpeed = actor.cur_status.atkSpeed * atkSpeed_ratio;
+                        actor.status = Parser.minion_status_dict[actor.ID + GameManager.Instance.Unit_LvL].common;
+                    }
 
-                        }
                 }
                     
 

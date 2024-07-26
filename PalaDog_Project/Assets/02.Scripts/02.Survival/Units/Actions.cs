@@ -126,6 +126,7 @@ public class Actions: MonoBehaviour
         {
             actor.spriteRenderer.color = Color.red;
             actor.cur_status.HP -= Damage;
+            //actor.hpbar.InvokeHPbar();
             StartCoroutine(WaitHit());
         }
         else

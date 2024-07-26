@@ -25,6 +25,7 @@ public class Actor : MonoBehaviour
     public SpriteRenderer spriteRenderer; 
     public Animator animator;
     public EffectPlayer effect_player;
+    public HPBarUI hpbar;
 
     public int final_damage;
 
@@ -36,6 +37,7 @@ public class Actor : MonoBehaviour
         enemy_poolManager = GameObject.FindGameObjectWithTag("EnemyPool").GetComponent<PoolManager>();
         minion_poolManager = GameObject.FindGameObjectWithTag("MinionPool").GetComponent<PoolManager>();
         effect_player = GetComponentInChildren<EffectPlayer>(); 
+        hpbar = GetComponentInChildren<HPBarUI>();
 
         skills = new ActorSkillInfo[3];
         for(int i=0;i<3;i++)
@@ -48,6 +50,7 @@ public class Actor : MonoBehaviour
         cur_status.HP = status.HP;
         cur_buff = new BuffStruct();
         /*cur_status.moveDir = Vector2.right;*/
+        
     }
     //Ãß»ó
     /* public abstract void Die();
