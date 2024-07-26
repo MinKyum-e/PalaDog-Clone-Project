@@ -30817,6 +30817,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1276575388911854941}
     m_Modifications:
+    - target: {fileID: 981744246560589299, guid: 4bb5529c2cfee9c4ebf93d4577ff6fac, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 5154747030031197934}
     - target: {fileID: 1656663214992211708, guid: 4bb5529c2cfee9c4ebf93d4577ff6fac, type: 3}
       propertyPath: m_Type
       value: 0
@@ -30905,6 +30909,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2729412558000385003, guid: 4bb5529c2cfee9c4ebf93d4577ff6fac, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 5154747030031197934}
     - target: {fileID: 3582441032974461122, guid: 4bb5529c2cfee9c4ebf93d4577ff6fac, type: 3}
       propertyPath: minion_idx
       value: 12110
@@ -30933,6 +30941,18 @@ PrefabInstance:
       propertyPath: already_unlock
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4277604970045053339, guid: 4bb5529c2cfee9c4ebf93d4577ff6fac, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 5154747030031197934}
+    - target: {fileID: 4721984107295179896, guid: 4bb5529c2cfee9c4ebf93d4577ff6fac, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 5154747030031197934}
+    - target: {fileID: 4810010134771871562, guid: 4bb5529c2cfee9c4ebf93d4577ff6fac, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 5154747030031197934}
     - target: {fileID: 5001695908054888778, guid: 4bb5529c2cfee9c4ebf93d4577ff6fac, type: 3}
       propertyPath: minion_idx
       value: 12320
@@ -30967,7 +30987,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6998746336600155527, guid: 4bb5529c2cfee9c4ebf93d4577ff6fac, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7652898887308282883, guid: 4bb5529c2cfee9c4ebf93d4577ff6fac, type: 3}
       propertyPath: m_Sprite
@@ -31017,6 +31037,14 @@ PrefabInstance:
       propertyPath: already_unlock
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1993362880693290588, guid: 0219fea21e898e6429eeedfe785277e7, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 5154747030031197934}
+    - target: {fileID: 2651347893444566522, guid: 0219fea21e898e6429eeedfe785277e7, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 5154747030031197934}
     - target: {fileID: 2862053007836916250, guid: 0219fea21e898e6429eeedfe785277e7, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -31097,6 +31125,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3148850245214347746, guid: 0219fea21e898e6429eeedfe785277e7, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 5154747030031197934}
     - target: {fileID: 3385895409651004121, guid: 0219fea21e898e6429eeedfe785277e7, type: 3}
       propertyPath: m_Name
       value: PanelUnits
@@ -31117,6 +31149,10 @@ PrefabInstance:
       propertyPath: already_unlock
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6008975007583430781, guid: 0219fea21e898e6429eeedfe785277e7, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 5154747030031197934}
     - target: {fileID: 6846900261264255559, guid: 0219fea21e898e6429eeedfe785277e7, type: 3}
       propertyPath: minion_idx
       value: 11110
@@ -31125,6 +31161,10 @@ PrefabInstance:
       propertyPath: already_unlock
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7962029850986042133, guid: 0219fea21e898e6429eeedfe785277e7, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 5154747030031197934}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6411623010077360707, guid: 0219fea21e898e6429eeedfe785277e7, type: 3}

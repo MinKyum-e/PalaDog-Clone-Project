@@ -8,7 +8,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 {
 
     private UnitUnlock locker;
-    private Transform canvas;// UI가 소속되어 있는 최상단 canvas transform
+    public Transform canvas;// UI가 소속되어 있는 최상단 canvas transform
     private Transform previousParent; // 해당 오브젝트가 직전에 소속되어 잇었던 부모 transform
     private RectTransform rect;// UI 위치 제어를 위한 RectTransform
     private CanvasGroup canvasGroup; //UI의 알파값과 상호작용 제어를 위한 Canvasgroup
@@ -26,7 +26,6 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     private void Awake()
     {
-        canvas = FindObjectOfType<Canvas>().transform;
         rect = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         poolManager = GameObject.FindGameObjectWithTag("MinionPool").GetComponent<PoolManager>();

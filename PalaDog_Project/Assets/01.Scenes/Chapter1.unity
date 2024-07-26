@@ -2508,6 +2508,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5583460930973816582, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5602280261180432346, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4213,6 +4217,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 8961663206966489859}
+  - {fileID: 4967834449778877718}
   - {fileID: 619850037}
   - {fileID: 1181255669}
   - {fileID: 2024051838}
@@ -4221,7 +4226,6 @@ SceneRoots:
   - {fileID: 482129671}
   - {fileID: 1828643253}
   - {fileID: 1906098145}
-  - {fileID: 4967834449778877718}
   - {fileID: 1829501525}
   - {fileID: 1374572550}
   - {fileID: 1093575764}
