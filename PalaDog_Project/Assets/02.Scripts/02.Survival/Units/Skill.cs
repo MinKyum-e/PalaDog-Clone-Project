@@ -58,6 +58,8 @@ public class Skill:MonoBehaviour
                 return RangeTargets(s);
             case TargetSearchType.Ora:
                 return OraTargets(s);
+            case TargetSearchType.TargetFar:
+                return farTargets(s);
             default:
                 return null;
         }
@@ -101,13 +103,13 @@ public class Skill:MonoBehaviour
             case SkillName.LifeDrain:
                 StartCoroutine(Co_LifeDrain(skill_slot_idx));
                 break;
-
             default:
                 return false;
                 
         }
         return true;
     }
+
 
     private void HeroArrow(int skill_slot_idx)
     {
@@ -224,6 +226,41 @@ public class Skill:MonoBehaviour
         {
             if (s.target_search_num <= i) break;
             result.Add(sorted_candidates[i].target.GetComponent<Actor>());  
+        }
+        return result;
+
+    }
+
+    public List<Actor> farTargets(SkillEntry s)
+    {
+        List<Actor> result = new List<Actor>();
+        List<Candidate> candidates = new List<Candidate>();
+        PoolManager targetPool = ((s.target_type == UnitType.Enemy) ? actor.enemy_poolManager : actor.minion_poolManager);
+        print(targetPool.name);
+        //스킬 범위 내에 있는 애들 찾기
+        foreach (List<GameObject> units in targetPool.pools)
+        {
+            foreach (GameObject u in units)
+            {
+                if (u.GetComponent<Actor>().isDie) { continue; }
+                float tmp_dist = Utils.DistanceToTarget(u.transform.position, transform.position);
+                if (tmp_dist <= s.searching_range)
+                {
+                    Candidate t = new Candidate();
+                    t.dist = tmp_dist;
+                    t.target = u;
+                    candidates.Add(t);
+                }
+            }
+        }
+
+        //sort
+        List<Candidate> sorted_candidates = candidates.OrderByDescending(x => x.dist).ToList();
+        
+        for (int i = 0; i < sorted_candidates.Count; i++)
+        {
+            if (s.target_search_num <= i) break;
+            result.Add(sorted_candidates[i].target.GetComponent<Actor>());
         }
         return result;
 

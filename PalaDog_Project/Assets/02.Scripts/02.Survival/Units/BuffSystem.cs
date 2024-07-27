@@ -79,19 +79,22 @@ public class BuffSystem : MonoBehaviour
             }
 
         }
-
         Transform slot = transform.GetChild(slot_num++);
         GameObject buff = null;
         int my_slot_idx = slot_num - 1;
 
-        if (slot != null)
+        if (name != BuffName.Spawn)
         {
-            buff = Instantiate(buffs[idx], slot);
-            buff.transform.SetParent(slot);
-            //슬롯 정보 추가
-            slot_status[my_slot_idx].buff_type = entry.type;
-            slot_status[my_slot_idx].coroutines = new List<Coroutine>();
+            if (slot != null)
+            {
+                buff = Instantiate(buffs[idx], slot);
+                buff.transform.SetParent(slot);
+                //슬롯 정보 추가
+                slot_status[my_slot_idx].buff_type = entry.type;
+                slot_status[my_slot_idx].coroutines = new List<Coroutine>();
+            }
         }
+     
 
 
         switch (name)
@@ -113,7 +116,33 @@ public class BuffSystem : MonoBehaviour
                 slot_status[my_slot_idx].coroutines.Add(StartCoroutine(WaitBuffEnd(buff, my_slot_idx, duration)));
                 KnockBack(value, free);
                 break;
+
+            case BuffName.Spawn:
+                SpawnMonster((int) value,(int) duration);
+                break;
+
         }
+    }
+
+    public void SpawnMonster(int monster_idx, int monster_num)
+    {
+        Vector3 unit_pos = transform.position;
+        float x_diff = 0.0f;
+        float diff = 4 / monster_num;
+        for(int i=0;i<monster_num; i++)
+        {
+            if (i % 2 == 0)
+            {
+                x_diff -= diff;
+            }
+            else
+            {
+                x_diff += diff;
+            }
+            actor.enemy_poolManager.Get(monster_idx, new Vector3(unit_pos.x + x_diff, unit_pos.y, unit_pos.z ));
+            
+        }
+        
     }
     private void KnockBack(float value, float dir)
     {
@@ -189,7 +218,7 @@ public class BuffSystem : MonoBehaviour
                     break;
                 case BuffName.Poison:
                     float max_HP = actor.status.HP;
-                    actor.cur_status.HP = (int)Mathf.Clamp(actor.cur_status.HP - (max_HP / value), 0f, actor.status.HP);
+                    actor.cur_status.HP = (int)Mathf.Clamp(actor.cur_status.HP - (max_HP * value), 0f, actor.status.HP);
                     break;
             }
             yield return new WaitForSeconds(1.0f);

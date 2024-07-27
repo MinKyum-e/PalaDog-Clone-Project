@@ -14,6 +14,7 @@ public class HPBarUI : MonoBehaviour
 
     public GameObject HpLineFolder;
     public GameObject HpLineFolderBack;
+    public GameObject HpLineFolderBackGround;
     void OnEnable()
     {
        actor = transform.parent.GetComponent<Actor>();
@@ -69,6 +70,7 @@ public class HPBarUI : MonoBehaviour
         float scaleX = (200f/ actor.cur_status.HP) /(actor.status.HP/actor.cur_status.HP);
         HpLineFolder.GetComponent<HorizontalLayoutGroup>().gameObject.SetActive(false);
         HpLineFolderBack.GetComponent<HorizontalLayoutGroup>().gameObject.SetActive(false);
+        HpLineFolderBackGround.GetComponent<HorizontalLayoutGroup>().gameObject.SetActive(false);
         foreach (Transform child in HpLineFolder.transform)
         {
             child.gameObject.transform.localScale = new Vector3(scaleX, 1, 1);
@@ -77,7 +79,13 @@ public class HPBarUI : MonoBehaviour
         {
             child.gameObject.transform.localScale = new Vector3(scaleX, 1, 1);
         }
+
+        foreach (Transform child in HpLineFolderBackGround.transform)
+        {
+            child.gameObject.transform.localScale = new Vector3(scaleX, 1, 1);
+        }
         HpLineFolder.GetComponent<HorizontalLayoutGroup>().gameObject.SetActive(true);
+        HpLineFolderBackGround.GetComponent<HorizontalLayoutGroup>().gameObject.SetActive(true);
         HpLineFolderBack.GetComponent<HorizontalLayoutGroup>().gameObject.SetActive(true);
 
     }

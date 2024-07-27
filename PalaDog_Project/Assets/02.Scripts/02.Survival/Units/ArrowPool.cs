@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class ArrowPool : Singleton<ArrowPool>
 {
@@ -13,6 +14,7 @@ public class ArrowPool : Singleton<ArrowPool>
     {
         return pools.Count;
     }
+
 
     public GameObject Shot(GameObject target, Vector3 start_position, float atk, float speed)
     {

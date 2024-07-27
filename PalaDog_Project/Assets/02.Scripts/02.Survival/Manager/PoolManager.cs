@@ -54,10 +54,38 @@ public class PoolManager : MonoBehaviour
             index_dict[id] = i;
         }
 
+        SetPool();
+
     } 
     public int GetUnitCount(int id)
     {
         return pools[index_dict[id]].Count;
+    }
+
+    public void SetPool()
+    {
+        for(int i=0;i<prefabs.Length;i++)
+        {
+
+            for(int j=0;j<5;j++)
+            {
+                if (prefabs[i].name.Contains("Boss"))
+                    break;
+                var new_object = Instantiate(prefabs[i], transform);
+                var sr = new_object.GetComponent<SpriteRenderer>();
+
+
+                new_object.SetActive(false);
+
+                int prev = sr.sortingOrder;
+                sr.sortingOrder = sr.sortingOrder + sort_order[i];
+                new_object.transform.position = new Vector3(-100, -100 + 0.4f, 1f - (prev / 1000) - (sort_order[i] / 20f));
+                sort_order[i] += 10;
+                pools[i].Add(new_object);
+            }
+         
+        }
+      
     }
 
     public GameObject Get(int ID, Vector3 spawnPoint)

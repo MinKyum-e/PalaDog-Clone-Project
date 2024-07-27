@@ -22,6 +22,8 @@ public enum SkillName
     LegendHammerAttack = 10012,
     AttackSpeedUP = 10021,
     HeroArrow  =10022,
+    SpawnMushroom = 20021,
+    PoisonFog = 20022,
 }
 
 public enum SkillAct
@@ -33,6 +35,7 @@ public enum SkillAct
 public enum TargetSearchType
 {
     Target,
+    TargetFar,
     Range,
     Ora,
 
@@ -63,6 +66,7 @@ public enum BuffName
     Stun,
     KnockBack,
     MoveSpeed,
+    Spawn,
 }
 public enum Chr_job
 {
