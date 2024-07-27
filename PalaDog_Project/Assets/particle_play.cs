@@ -9,6 +9,7 @@ public class particle_play : MonoBehaviour
     private void Awake()
     {
         ps = GetComponent<ParticleSystem>();
+        
     }
     private void OnEnable()
     {

@@ -44,8 +44,9 @@ public class GameManager : MonoBehaviour
 /*    private float _cur_food = 0;*/
     private float _food_per_time = 1;
     private bool bgm_play = false;
-    
-    
+    public ParticleSystem spawnCloud;
+
+
 
     public GameState state;
 
@@ -74,6 +75,19 @@ public class GameManager : MonoBehaviour
         cur_cost = 0;
         cur_gold = 0;
         
+    }
+
+    public void PlayParticleEffect(Vector3 pos)
+    {
+        GameManager.Instance.spawnCloud.gameObject.SetActive(true);
+        GameManager.Instance.spawnCloud.transform.position = pos;
+        GameManager.Instance.spawnCloud.Play();
+        Invoke("EndEffect", 1.0f);
+    }
+
+    public void EndEffect()
+    {
+        GameManager.Instance.spawnCloud.Stop();
     }
     
 

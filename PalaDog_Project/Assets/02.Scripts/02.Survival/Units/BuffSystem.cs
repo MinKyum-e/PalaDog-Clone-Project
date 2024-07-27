@@ -126,9 +126,11 @@ public class BuffSystem : MonoBehaviour
 
     public void SpawnMonster(int monster_idx, int monster_num)
     {
+
+        GameManager.Instance.PlayParticleEffect(transform.position);
         Vector3 unit_pos = transform.position;
         float x_diff = 0.0f;
-        float diff = 4 / monster_num;
+        float diff = 8 / monster_num;
         for(int i=0;i<monster_num; i++)
         {
             if (i % 2 == 0)
@@ -142,7 +144,6 @@ public class BuffSystem : MonoBehaviour
             actor.enemy_poolManager.Get(monster_idx, new Vector3(unit_pos.x + x_diff, unit_pos.y, unit_pos.z ));
             
         }
-        
     }
     private void KnockBack(float value, float dir)
     {
