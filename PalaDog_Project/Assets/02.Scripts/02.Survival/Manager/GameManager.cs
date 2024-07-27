@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     private float _food_per_time = 1;
     private bool bgm_play = false;
     public ParticleSystem spawnCloud;
+    public ParticleSystem poisonFog;
 
 
 

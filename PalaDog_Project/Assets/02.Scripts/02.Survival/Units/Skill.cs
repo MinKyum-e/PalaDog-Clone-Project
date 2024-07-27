@@ -71,10 +71,14 @@ public class Skill:MonoBehaviour
     {
         SkillEntry s = Parser.skill_table_dict[(int)skill_name];
         List<Actor> targets = SearchingTargets(skill_name);
+        if(targets.Count == 0 && actor.skills[skill_slot_idx].target != null)
+        {
+            targets.Add(actor.skills[skill_slot_idx].target);
+        }
 
         print(targets.Count);
         //특수 제작 스킬 우선 사용해보고 없으면 일반적인 버프 스킬 수행하기
-        if(! UniqueSkill(skill_slot_idx,skill_name))
+        if(! UniqueSkill(skill_slot_idx,skill_name, targets))
         {
             switch (s.base_stat)
             {
@@ -93,7 +97,7 @@ public class Skill:MonoBehaviour
         return true;
     }
 
-    public bool UniqueSkill(int skill_slot_idx, SkillName skill_name)
+    public bool UniqueSkill(int skill_slot_idx, SkillName skill_name, List<Actor> targets)
     {
         switch (skill_name)
         {
@@ -103,11 +107,28 @@ public class Skill:MonoBehaviour
             case SkillName.LifeDrain:
                 StartCoroutine(Co_LifeDrain(skill_slot_idx));
                 break;
+            case SkillName.PoisonFog:
+                if (targets.Count != 0 )
+                    PoisonFog(skill_slot_idx, targets[0]);
+                break;
             default:
                 return false;
                 
         }
         return true;
+    }
+
+    private void PoisonFog(int skill_slot_idx, Actor target)
+    {
+        if(target!=null)
+        {
+            PoisonFog fog = gameObject.GetComponent<PoisonFog>();
+            fog.enabled = true;
+            fog.obj.SetActive(true);
+            fog.SetInfo(actor.skills[skill_slot_idx].entry);
+            fog.obj.transform.position = target.transform.position;
+        }
+       
     }
 
 

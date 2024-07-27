@@ -32,10 +32,7 @@ public class BuffSystem : MonoBehaviour
         slot_status = new Slot[buffs.Length];
     }
 
-    private void Update()
-    {
 
-    }
     public void Apply(BuffName name, float value, float duration, float free)
     {
         int idx = (int)name;
@@ -209,9 +206,10 @@ public class BuffSystem : MonoBehaviour
     }
     private IEnumerator TickBuff(BuffName name, float value, float duration)
     {
-        while(duration > 0)
+        while(--duration >= 0)
         {
-            switch(name)
+            
+            switch (name)
             {
                 case BuffName.Heal:
                     actor.cur_status.HP = (int)Mathf.Clamp(actor.cur_status.HP + value, 0f, actor.status.HP);
@@ -223,7 +221,6 @@ public class BuffSystem : MonoBehaviour
                     break;
             }
             yield return new WaitForSeconds(1.0f);
-            duration -= 1;
         }
         
     }
