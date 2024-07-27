@@ -17,7 +17,7 @@ public enum SkillName
     WingFlap = 20011,
     LifeDrain = 20012,
     HealingAura = 30011,
-    SpeedAura = 30012,
+    ATKAura = 30012,
     HammerAttack = 10011,
     LegendHammerAttack = 10012,
     AttackSpeedUP = 10021,

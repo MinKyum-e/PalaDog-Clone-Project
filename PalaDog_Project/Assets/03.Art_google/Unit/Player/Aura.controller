@@ -14,7 +14,7 @@ AnimatorStateMachine:
     m_Position: {x: 270, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7356310609100067285}
-    m_Position: {x: 345, y: 135, z: 0}
+    m_Position: {x: 340, y: 130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5247765845041785489}
     m_Position: {x: 130, y: 240, z: 0}
@@ -155,7 +155,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SpeedAura
+  m_Name: ATKAura
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

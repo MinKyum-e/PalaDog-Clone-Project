@@ -49,7 +49,7 @@ public class AuraSkill : MonoBehaviour
                     }
                     break;
                 //½ºÇÇµå
-                case SkillName.SpeedAura:
+                case SkillName.ATKAura:
                     PoolManager targetPool = ((s.target_type == UnitType.Enemy) ? player.actor.enemy_poolManager : player.actor.minion_poolManager);
 
                     foreach (List<GameObject> units in targetPool.pools)
@@ -59,8 +59,7 @@ public class AuraSkill : MonoBehaviour
                             if (u.activeSelf)
                             {
                                 var actor = u.GetComponent<Actor>();
-                                actor.cur_status.moveSpeed = actor.status.moveSpeed;
-                                actor.cur_status.atkSpeed = actor.status.atkSpeed;
+                                actor.cur_status.atk = actor.status.atk;
                             }
                         }
                     }
@@ -75,13 +74,21 @@ public class AuraSkill : MonoBehaviour
                                     case BuffName.MoveSpeed:
                                         targets[i].cur_status.moveSpeed = targets[i].status.moveSpeed * ef.value;
                                         break;
-                                    case BuffName.ATKSpeedBoost:
-                                        targets[i].cur_status.atkSpeed = targets[i].status.atkSpeed * ef.value;
+                                    case BuffName.ATKBoost:
+                                        if(tickTimer >=1)
+                                        {
+                                            targets[i].effect_player.PlayEffect(BuffName.ATKBoost);
+                                        }
+                                        targets[i].cur_status.atk = targets[i].status.atk * ef.value;
                                         break;
                                 }
                             }
-
                         }
+                    }
+
+                    if(tickTimer >= 1)
+                    {
+                        tickTimer = 0;
                     }
                     break;
                 default: break;
@@ -103,15 +110,14 @@ public class AuraSkill : MonoBehaviour
         {
             SkillEntry s = Parser.skill_table_dict[(int)aura_skill_name];
             PoolManager targetPool = ((s.target_type == UnitType.Enemy) ? player.actor.enemy_poolManager : player.actor.minion_poolManager);
-            if (aura_skill_name == SkillName.SpeedAura)
+            if (aura_skill_name == SkillName.ATKAura)
             {
                 foreach (List<GameObject> units in targetPool.pools)
                 {
                     foreach (GameObject u in units)
                     {
                         var u_actor = u.GetComponent<Actor>();
-                        u_actor.cur_status.moveSpeed = u_actor.status.moveSpeed;
-                        u_actor.cur_status.atkSpeed = u_actor.status.atkSpeed;
+                        u_actor.cur_status.atk = u_actor.status.atk;
                     }
                 }
             }
