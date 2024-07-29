@@ -15,7 +15,7 @@ public class Boss: Enemy
         
         if(GameManager.Instance.chapter == GameManager.Instance.MAX_CHAPTER)
         {
-            GameManager.Instance.StageClear();
+            GameManager.Instance.state = GameState.GAME_CLEAR;
         }
         else
         {
