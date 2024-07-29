@@ -25465,7 +25465,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1209736213675700260, guid: 0219fea21e898e6429eeedfe785277e7, type: 3}
       propertyPath: already_unlock
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1920748254259150546, guid: 0219fea21e898e6429eeedfe785277e7, type: 3}
       propertyPath: minion_idx
@@ -25473,7 +25473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1920748254259150546, guid: 0219fea21e898e6429eeedfe785277e7, type: 3}
       propertyPath: already_unlock
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1993362880693290588, guid: 0219fea21e898e6429eeedfe785277e7, type: 3}
       propertyPath: canvas
@@ -25577,7 +25577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4615003624616062242, guid: 0219fea21e898e6429eeedfe785277e7, type: 3}
       propertyPath: already_unlock
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5480416905533330555, guid: 0219fea21e898e6429eeedfe785277e7, type: 3}
       propertyPath: minion_idx
@@ -25585,7 +25585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5480416905533330555, guid: 0219fea21e898e6429eeedfe785277e7, type: 3}
       propertyPath: already_unlock
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6008975007583430781, guid: 0219fea21e898e6429eeedfe785277e7, type: 3}
       propertyPath: canvas

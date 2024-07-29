@@ -53,9 +53,10 @@ MonoBehaviour:
   can_get_gold: 1
   overdrive_timer: 0
   chapter: 1
-  wave: 4
-  stage: 4
+  wave: 1
+  stage: 1
   spawnCloud: {fileID: 4611604239915378571}
+  poisonFog: {fileID: 7236105869164912769}
   state: 2
 --- !u!1 &8635922691767794960
 GameObject:
@@ -237,11 +238,28 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8104051310041690220, guid: bbeeb0ddc21369746aaaae5c5c1c09cf, type: 3}
+      propertyPath: m_Size.x
+      value: 3.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104051310041690220, guid: bbeeb0ddc21369746aaaae5c5c1c09cf, type: 3}
+      propertyPath: m_Size.y
+      value: 5.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104051310041690220, guid: bbeeb0ddc21369746aaaae5c5c1c09cf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbeeb0ddc21369746aaaae5c5c1c09cf, type: 3}
+--- !u!198 &7236105869164912769 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4425129568604114668, guid: bbeeb0ddc21369746aaaae5c5c1c09cf, type: 3}
+  m_PrefabInstance: {fileID: 6413961595470769773}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7236105869180118465 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4425129568584715180, guid: bbeeb0ddc21369746aaaae5c5c1c09cf, type: 3}

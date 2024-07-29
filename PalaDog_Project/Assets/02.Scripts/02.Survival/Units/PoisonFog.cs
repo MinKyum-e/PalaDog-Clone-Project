@@ -57,7 +57,7 @@ public class PoisonFog : MonoBehaviour
             this.enabled = false;
         }
 
-        if (tick >= 1f)
+        if (tick >= 1.2f)
         {
             foreach (List<GameObject> units in minion_pool.pools)
             {
