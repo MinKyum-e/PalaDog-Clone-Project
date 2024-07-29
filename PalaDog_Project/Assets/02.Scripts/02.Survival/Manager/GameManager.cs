@@ -75,7 +75,8 @@ public class GameManager : MonoBehaviour
         
         cur_cost = 0;
         cur_gold = 0;
-        
+        overdrive_timer = overdrive_time; 
+
     }
 
     public void PlayParticleEffect(Vector3 pos)
@@ -101,13 +102,13 @@ public class GameManager : MonoBehaviour
             bgm_play = true;
         }
         
-        if (overdrive_timer >= overdrive_time)
+        if (overdrive_timer <= 0)
         {
             can_get_gold = false;
         }
         else
         {
-            overdrive_timer += Time.deltaTime;
+            overdrive_timer -= Time.deltaTime;
         }
 /*        if (cur_food < MAX_FOOD)
             cur_food +=Time.deltaTime * _food_per_time;*/
@@ -197,7 +198,8 @@ public class GameManager : MonoBehaviour
         chapter = 1;
         cur_cost = 0;
         cur_gold = 0;
-        Unit_LvL = 0;
+        Unit_LvL = 0; overdrive_timer = overdrive_time;
+        can_get_gold = true;
 /*        cur_food = 0;*/
         EnemyBase.Instance().actor.cur_status.HP = EnemyBase.Instance().actor.status.HP;
         UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
@@ -230,6 +232,7 @@ public class GameManager : MonoBehaviour
     {
         state = GameState.GAME_STAGE_CLEAR;
         Time.timeScale = 0;
+        
         UIManager.Instance.SetCurrentPage(UIPageInfo.GameStageClear);
         WaveManager.Instance.ClearMonsterObjectOnStage();
     }
@@ -255,7 +258,7 @@ public class GameManager : MonoBehaviour
         Player.Instance.actor.cur_status.HP = Player.Instance.actor.status.HP;
         EnemyBase.Instance().gameObject.SetActive(true);
         EnemyBase.Instance().GetComponent<Actor>().isDie = false;
-        overdrive_timer = 0;
+        overdrive_timer = overdrive_time;
         can_get_gold = true;
         
     }

@@ -51,7 +51,7 @@ public abstract class Unit : MonoBehaviour
     private void Update()
     {
 
-        if (actor.cur_status.HP <= 0)
+        if (actor.cur_status.HP <= 1.0f)
         {
             actor.isDie = true;
             actor.can_action = false;

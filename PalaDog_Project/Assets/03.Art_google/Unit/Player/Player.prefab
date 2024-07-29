@@ -9856,6 +9856,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   effect_player: {fileID: 0}
   hpbar: {fileID: 0}
+  skill_effect: {fileID: 0}
   final_damage: 0
 --- !u!114 &9094620254427178647
 MonoBehaviour:
@@ -16095,6 +16096,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4355406159853479572, guid: ac2b428256caf02449afb8f417c13f70, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 4435079565536880391, guid: ac2b428256caf02449afb8f417c13f70, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -16190,6 +16195,10 @@ PrefabInstance:
     - target: {fileID: 4987639198899743057, guid: ac2b428256caf02449afb8f417c13f70, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5042964968653991605, guid: ac2b428256caf02449afb8f417c13f70, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 5341092921845763418, guid: ac2b428256caf02449afb8f417c13f70, type: 3}
       propertyPath: m_AnchorMax.y
@@ -16466,6 +16475,10 @@ PrefabInstance:
     - target: {fileID: 6538333206653448648, guid: ac2b428256caf02449afb8f417c13f70, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6688020413407560151, guid: ac2b428256caf02449afb8f417c13f70, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6738503245941809387, guid: ac2b428256caf02449afb8f417c13f70, type: 3}
       propertyPath: m_AnchorMax.y
