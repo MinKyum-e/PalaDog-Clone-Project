@@ -61,9 +61,10 @@ public class Skill_Effect : MonoBehaviour
 
         for (int i = 0; i < normal_attack_parts.Count; i++)
         {
-            yield return new WaitForSeconds(tick/2);
-            
+
+
             normal_attack_animation[i].Play("normalAttack");
+                yield return new WaitForSeconds(tick / 5);
             foreach (var p in targetPool.pools)
             {
                 foreach (var e in p)
@@ -83,7 +84,7 @@ public class Skill_Effect : MonoBehaviour
                 targets.Add(EnemyBase.instance.gameObject);
                 EnemyBase.instance.GetComponent<Actions>().Hit(actor.cur_status.atk, Chr_job.magic);
             }
-            yield return new WaitForSeconds(tick/2);
+            yield return new WaitForSeconds(tick/5*4);
         }
         gameObject.SetActive(false);
     }
@@ -91,14 +92,13 @@ public class Skill_Effect : MonoBehaviour
     public void setInfo(SkillEntry s)
     {
         skillEntry = s;
-        
+        transform.GetChild(0).localScale = new Vector3(skillEntry.target_search_num, skillEntry.target_search_num, skillEntry.target_search_num);
     }
 
 
 
     private IEnumerator magic(int loop, string animation_name)
     {
-        transform.GetChild(0).localScale = new Vector3(skillEntry.target_search_num, skillEntry.target_search_num, skillEntry.target_search_num);
         float tick = play_time/ actor.cur_status.atkSpeed / ((float)parts.Count*loop);
         PoolManager pool = ((transform.parent.tag == "Minion") ? actor.enemy_poolManager : actor.minion_poolManager);
 
@@ -112,7 +112,7 @@ public class Skill_Effect : MonoBehaviour
         {
             for (int i = 0; i < parts.Count; i++)
             {
-                
+                yield return new WaitForSeconds(tick / 10);
                 animations[i].Play(animation_name);
                 foreach (var p in pool.pools)
                 {
@@ -133,7 +133,7 @@ public class Skill_Effect : MonoBehaviour
                     targets.Add(EnemyBase.instance.gameObject);
                     EnemyBase.instance.GetComponent<Actions>().Hit(actor.cur_status.atk * skillEntry.DMGCoeff, Chr_job.magic);
                 }
-                yield return new WaitForSeconds(tick);
+                yield return new WaitForSeconds(tick/10 *9 );
             }
 
             targets.Clear();

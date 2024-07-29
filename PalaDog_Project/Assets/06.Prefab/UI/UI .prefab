@@ -3408,7 +3408,7 @@ MonoBehaviour:
   shop_index: 0
   prerequisite: 0
   can_unlock: 1
-  unlocked_sprite: {fileID: -274915325, guid: 894176192164f2745848aa032e38c848, type: 3}
+  unlocked_sprite: {fileID: 5523677545214120609, guid: c1b39e6d6201645a69ecff18b02ce92d, type: 3}
   cost_object: {fileID: 7046267619666444467}
   minion_idx: 12320
 --- !u!225 &5749123937040547177
@@ -9511,8 +9511,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278205840
-  m_fontColor: {r: 0.5660378, g: 0.23964514, b: 0, a: 1}
+    rgba: 4292345853
+  m_fontColor: {r: 0.9917947, g: 1, b: 0.8443396, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -11070,8 +11070,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0711ec57dcec2434fbd7e826eacd968e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: 10012
-  minionUnitIndex: 10132
+  skillName: 10032
+  minionUnitIndex: 12320
 --- !u!1 &4293126278337102458
 GameObject:
   m_ObjectHideFlags: 0
@@ -15253,7 +15253,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5644499735958013553
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17685,7 +17685,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278255103
-  m_fontColor: {r: 1, g: 0.99197686, b: 0, a: 1}
+  m_fontColor: {r: 1, g: 0.99215686, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -21814,7 +21814,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f1f078808cb5a0344b58a90497dbf305, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b66129eca5c62eb49bc8acb8f3166225, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -25369,7 +25369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3935770427911591467, guid: 4bb5529c2cfee9c4ebf93d4577ff6fac, type: 3}
       propertyPath: already_unlock
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4171745972689689278, guid: 4bb5529c2cfee9c4ebf93d4577ff6fac, type: 3}
       propertyPath: minion_idx
@@ -25377,7 +25377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171745972689689278, guid: 4bb5529c2cfee9c4ebf93d4577ff6fac, type: 3}
       propertyPath: already_unlock
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4277604970045053339, guid: 4bb5529c2cfee9c4ebf93d4577ff6fac, type: 3}
       propertyPath: canvas
@@ -25397,7 +25397,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5001695908054888778, guid: 4bb5529c2cfee9c4ebf93d4577ff6fac, type: 3}
       propertyPath: already_unlock
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5001695908054888778, guid: 4bb5529c2cfee9c4ebf93d4577ff6fac, type: 3}
       propertyPath: unlocked_sprite

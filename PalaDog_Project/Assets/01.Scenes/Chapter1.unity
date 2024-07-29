@@ -30838,10 +30838,18 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4292345853
       objectReference: {fileID: 0}
+    - target: {fileID: 1565561964883404863, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+      propertyPath: already_unlock
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1574970249780821892, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1922757301}
+    - target: {fileID: 1928192436375479466, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+      propertyPath: already_unlock
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3531066884255246671, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
       propertyPath: skillName
       value: 10032

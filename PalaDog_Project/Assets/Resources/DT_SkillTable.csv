@@ -48,7 +48,7 @@ int,string,string,int,enum,float,enum,enum,int,enum,float,int,int,int,enum,float
 10012,Skill_Hammer_rare_001,해머 치기 에픽,1004,A,30,Range,Enemy,50,Atk,0.1,5,0,3,-1,0,0,TRUE,7
 10021,Skill_Archer_Advanced_001,공속증가,1004,P,15,Target,Unit,1,None,0,-1,2,10,1,1.2,6,FALSE,5
 10022,Skill_Archer_hero_001,히어로화살,1004,A,30,Target,Enemy,1,Atk,3,-1,0,0,-1,0,0,TRUE,8
-10031,Skill_Wizard_rare_001,마법스킬,1004,P,5,Range,Enemy,6,Magic,2,-1,0,0,-1,0,0,TRUE,6
+10031,Skill_Wizard_rare_001,마법스킬,1004,P,5,Range,Enemy,7,Magic,2,-1,0,0,-1,0,0,TRUE,6
 10032,Skill_Wizard_rare_001,마법에픽스킬,1004,A,5,Range,Enemy,10,Magic,2,-1,0,0,-1,0,0,TRUE,6
 ,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,
