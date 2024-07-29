@@ -31,6 +31,10 @@ public class projectile : MonoBehaviour
 
     private void Update()
     {
+        if(GameManager.Instance.state == GameState.GAME_STAGE_CLEAR)
+        {
+            gameObject.SetActive(false);
+        }
         if(!can_attack || (target != null && !target.activeSelf))
         {
             transform.position = new Vector3(-100, 0, 0);
@@ -48,35 +52,44 @@ public class projectile : MonoBehaviour
     {
         var collision_unit = collision.gameObject.GetComponent<Actions>();
 
-        if (can_attack)
-        {
-            if (collision.gameObject.tag == "Enemy")
-            {
-                if (target != null)
+        /*        if (can_attack)
                 {
-                    var target_unit = target.gameObject.GetComponent<Actions>();
-                    if (collision.gameObject == target || (target_unit.actor.isDie && !collision_unit.actor.isDie))
+                    if (collision.gameObject.tag == "Enemy")
                     {
-                        if (!target_unit.actor.isDie)
+                        if (target != null)
                         {
-                            can_attack = false;
-                            target_unit.Hit(atk, Chr_job.projectile);
-                            
+                            var target_unit = target.gameObject.GetComponent<Actions>();
+                            if (collision.gameObject == target || (target_unit.actor.isDie && !collision_unit.actor.isDie))
+                            {
+                                if (!target_unit.actor.isDie)
+                                {
+                                    can_attack = false;
+                                    target_unit.Hit(atk, Chr_job.projectile);
+
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (!collision_unit.actor.isDie)
+                            {
+                                can_attack = false;
+                                collision_unit.Hit(atk, Chr_job.projectile);
+                            }
                         }
                     }
-                }
-                else
-                {
-                    if (!collision_unit.actor.isDie)
-                    {
-                        can_attack = false;
-                        collision_unit.Hit(atk, Chr_job.projectile);
-                    }
-                }
+                }*/
+
+
+        if (can_attack)
+        {
+            if (collision.gameObject.tag == "Enemy" && !collision_unit.actor.isDie)
+            {
+                can_attack = false;
+                collision_unit.Hit(atk, Chr_job.projectile);
+
             }
         }
-        
-        
     }
 
 }

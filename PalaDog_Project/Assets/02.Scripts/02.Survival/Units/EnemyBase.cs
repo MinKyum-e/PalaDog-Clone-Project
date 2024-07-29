@@ -40,12 +40,12 @@ public class EnemyBase: MonoBehaviour
         }
         else if (actor.cur_status.HP <= (actor.status.HP * 0.25f) && GameManager.Instance.wave == 2)
         {
-            GameManager.Instance.WaveChange();
+            GameManager.Instance.WaveChange(3);
             spriteResolver.SetCategoryAndLabel("base", "2");
         }
         else if(actor.cur_status.HP <= (actor.status.HP * 0.5f) && GameManager.Instance.wave == 1)
         {
-            GameManager.Instance.WaveChange();
+            GameManager.Instance.WaveChange(2);
             spriteResolver.SetCategoryAndLabel("base", "1");
         }
 
@@ -55,14 +55,14 @@ public class EnemyBase: MonoBehaviour
     {
         if(WaveManager.Instance.CheckBossStage())
         {
-            GameManager.Instance.WaveChange();
+            GameManager.Instance.WaveChange(4);
             spriteResolver.SetCategoryAndLabel("base", "0");
             GetComponent<SpriteRenderer>().color = Color.white;
         }
         else
         {
 
-            GameManager.Instance.state = GameState.GAME_STAGE_CLEAR;
+            GameManager.Instance.StageClear();
             spriteResolver.SetCategoryAndLabel("base", "0");
             GetComponent<SpriteRenderer>().color = Color.white;
 

@@ -30842,6 +30842,14 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1922757301}
+    - target: {fileID: 3531066884255246671, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+      propertyPath: skillName
+      value: 10032
+      objectReference: {fileID: 0}
+    - target: {fileID: 3531066884255246671, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+      propertyPath: minionUnitIndex
+      value: 12320
+      objectReference: {fileID: 0}
     - target: {fileID: 5154747030031197934, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -30932,6 +30940,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5890098942652762392, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
       propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5997492883135053604, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581085917155935179, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+      propertyPath: already_unlock
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7714450750494439662, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}

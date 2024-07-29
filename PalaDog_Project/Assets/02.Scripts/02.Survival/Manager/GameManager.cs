@@ -123,10 +123,10 @@ public class GameManager : MonoBehaviour
             case GameState.GAME_PAUSE:
                 PauseGame();
                 break;
-            case GameState.GAME_STAGE_CLEAR:
+/*            case GameState.GAME_STAGE_CLEAR:
             case GameState.GAME_CHAPTER_CLEAR:
                 StageClear();
-                break;
+                break;*/
             case GameState.GAME_CLEAR:
                 GameClear();
                 break;
@@ -221,26 +221,23 @@ public class GameManager : MonoBehaviour
         state = GameState.GAME_IDLE;
     }
 
-    public void WaveChange()
+    public void WaveChange(int wave)
     {
-        wave++;
+        this.wave = wave;
     }
 
     public void StageClear()
     {
-        state = GameState.GAME_PLAY;
+        state = GameState.GAME_STAGE_CLEAR;
         Time.timeScale = 0;
         UIManager.Instance.SetCurrentPage(UIPageInfo.GameStageClear);
-
         WaveManager.Instance.ClearMonsterObjectOnStage();
-      
-        
-        
     }
 
 
     public void StageChange()
     {
+        state = GameState.GAME_PLAY;
         if (stage % STAGE_PER_CHAPTER != 0)
         {
             UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);

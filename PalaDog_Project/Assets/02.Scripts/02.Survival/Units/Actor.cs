@@ -26,8 +26,10 @@ public class Actor : MonoBehaviour
     public Animator animator;
     public EffectPlayer effect_player;
     public HPBarUI hpbar;
-
+    public Skill_Effect skill_effect;
     public int final_damage;
+
+    
 
     private void Awake()
     {

@@ -77,6 +77,7 @@ public class Skill:MonoBehaviour
         }
 
         print(targets.Count);
+        print(skill_name);
         //특수 제작 스킬 우선 사용해보고 없으면 일반적인 버프 스킬 수행하기
         if(! UniqueSkill(skill_slot_idx,skill_name, targets))
         {
@@ -88,6 +89,10 @@ public class Skill:MonoBehaviour
                 case BaseStat.Atk:
                     AttackTypeBuff(s, targets);
                     break;
+                case BaseStat.Magic:
+                    StartSkillEffect(s);
+                    
+                    break;
                 default:
 
                     return false;
@@ -95,6 +100,14 @@ public class Skill:MonoBehaviour
         }
        
         return true;
+    }
+
+    public void StartSkillEffect(SkillEntry s)
+    {
+        
+        actor.skill_effect.gameObject.SetActive(true);
+        actor.skill_effect.setInfo(s);
+        actor.skill_effect.StartSkill();
     }
 
     public bool UniqueSkill(int skill_slot_idx, SkillName skill_name, List<Actor> targets)
@@ -201,10 +214,10 @@ public class Skill:MonoBehaviour
             for (int i = 0; i < target_list.Count; i++)
             {
                 BuffSystem buffSystem = target_list[i].transform.Find("Buff").GetComponent<BuffSystem>();
+                target_list[i].gameObject.GetComponent<Actions>().Hit((int)((float)actor.cur_status.atk * s.DMGCoeff), actor.cur_status.job);
                 for (int j = 0; j < s.skill_effects.Length; j++)
                 {
                     if (s.skill_effects[j].index == -1) continue;
-                    target_list[i].gameObject.GetComponent<Actions>().Hit((int)((float)actor.cur_status.atk * s.DMGCoeff), actor.cur_status.job);
                     buffSystem.Apply((BuffName)s.skill_effects[j].index, s.skill_effects[j].value, s.skill_effects[j].duration, 0);
                 }
 

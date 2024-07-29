@@ -15,11 +15,11 @@ public class Boss: Enemy
         
         if(GameManager.Instance.chapter == GameManager.Instance.MAX_CHAPTER)
         {
-            GameManager.Instance.state = GameState.GAME_CLEAR;
+            GameManager.Instance.StageClear();
         }
         else
         {
-            GameManager.Instance.state = GameState.GAME_CHAPTER_CLEAR;
+            GameManager.Instance.StageClear();
         }
         actor.spriteRenderer.color = Color.white;
 

@@ -24,6 +24,9 @@ public enum SkillName
     HeroArrow  =10022,
     SpawnMushroom = 20021,
     PoisonFog = 20022,
+
+    Magic = 10031,
+    EpicMagic = 10032,
 }
 
 public enum SkillAct
@@ -45,6 +48,7 @@ public enum BaseStat
 {
     None,
     Atk,
+    Magic,
     HP
 }
 
@@ -87,6 +91,9 @@ public enum MinionUnitIndex
 
     Archer_Elite = 12210,
     Archer_Hero = 12310,
+
+    Wizard_Elite = 12220,
+    Wizard_Hero = 12320,
 
 }
 
