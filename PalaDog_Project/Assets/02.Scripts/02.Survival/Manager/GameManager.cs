@@ -276,7 +276,10 @@ public class GameManager : MonoBehaviour
 
     public void GameClear()
     {
+
+
         UIManager.Instance.SetCurrentPage(UIPageInfo.GameClear);
+        Time.timeScale =0;
     }
 
 
