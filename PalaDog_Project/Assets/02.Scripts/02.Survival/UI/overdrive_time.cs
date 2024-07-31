@@ -6,18 +6,14 @@ using TMPro;
 
 public class overdrive : MonoBehaviour
 {
-    public TMP_Text tmp;
-    private void Awake()
-    {
-        tmp = GetComponent<TMP_Text>();
-    }
+    public Image cool;
     void Update()
     {
-        if((int)GameManager.Instance.overdrive_timer<=0)
+
+        if (GameManager.Instance != null)
         {
-            tmp.text = "overdrive!!!!!!!";
+            cool.fillAmount = GameManager.Instance.overdrive_timer / GameManager.Instance.overdrive_time;
         }
-        else
-        tmp.text = "overdrive timer : " + ((int)GameManager.Instance.overdrive_timer).ToString();
+
     }
 }

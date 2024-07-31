@@ -18,6 +18,8 @@ public class UnitCoolTimeUI : MonoBehaviour
     public bool is_hero = false;
     public bool unit_alive = false;
 
+    public bool resets = false;
+
     float cooltime;
     float timer;
     bool isCooldown;
@@ -35,9 +37,19 @@ public class UnitCoolTimeUI : MonoBehaviour
             skillUI = GetComponent<BtnEvent_ActiveSkill>();
         }
 
-
         cooltimeImage = transform.Find("CoolTime").GetComponent<Image>();
 
+        Invoke("resetInvoke", -1);
+    }
+
+
+    void resetInvoke()
+    {
+        if(is_hero && GameManager.Instance.overdrive_time + 0.01f >= GameManager.Instance.overdrive_timer)
+        {
+            ResetTimer();
+            unit_alive = false;
+        }
     }
     void Start()
     {
@@ -60,10 +72,11 @@ public class UnitCoolTimeUI : MonoBehaviour
 
     void Update()
     {
+        
         if (is_hero)
         {
 
-            if(unit_alive)
+            if (unit_alive)
             {
                 if (!GameManager.Instance.CheckHeroExists((MinionUnitIndex)draggableUI.minion_idx))
                 {
@@ -81,6 +94,8 @@ public class UnitCoolTimeUI : MonoBehaviour
                 }
             }
         }
+
+
         if (timer < 0f)
         {
             ResetTimer();
@@ -94,7 +109,9 @@ public class UnitCoolTimeUI : MonoBehaviour
         if (GameManager.Instance.state == GameState.GAME_STAGE_CLEAR || GameManager.Instance.state == GameState.GAME_CLEAR || GameManager.Instance.state == GameState.GAME_OVER)
         {
             ResetTimer();
+            
         }
+       
     }
 
     public void ResetTimer()
@@ -102,7 +119,7 @@ public class UnitCoolTimeUI : MonoBehaviour
         CancelInvoke("TimerStart");
         CancelInvoke("ResetCheker");
         timer = 0f;
-        isCooldown = false;
+        isCooldown = false; unit_alive = false;
         cooltimeImage.fillAmount = 0f;
         mainImage.raycastTarget = true;
     }

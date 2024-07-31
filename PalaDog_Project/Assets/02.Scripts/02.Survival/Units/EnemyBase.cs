@@ -9,6 +9,15 @@ public class EnemyBase: MonoBehaviour
     public Actions action;
     public static EnemyBase instance = null;
     public SpriteResolver spriteResolver;
+
+
+    public float bass_HP;
+    public float diff_HP;
+
+    public bool first;
+
+
+
     private void Awake()
     {
         if(instance == null)
@@ -28,7 +37,18 @@ public class EnemyBase: MonoBehaviour
     private void OnEnable()
     {
         setStatus();
-        actor.cur_status.HP = actor.status.HP;
+        if (!first)
+        {
+            actor.status.HP = bass_HP + bass_HP * (((float)GameManager.Instance.stage - 1) * diff_HP);
+            actor.cur_status.HP = bass_HP + bass_HP * (((float)GameManager.Instance.stage - 1) * diff_HP);
+        }
+        else
+        {
+            actor.status.HP = bass_HP;
+            actor.cur_status.HP = bass_HP;
+            first = false;
+        }
+
     }
 
     private void Update()
@@ -76,7 +96,8 @@ public class EnemyBase: MonoBehaviour
         actor.cur_status = new CommonStatus();
         actor.ID = 98;
         actor.status.name= "enemyBase";
-        actor.status.HP = 2000;
+        actor.status.HP = bass_HP;
+
         actor.status.moveSpeed = 0;
     }
 }

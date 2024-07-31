@@ -220,6 +220,7 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.SetCurrentPage(UIPageInfo.GameOver);
         //SceneManager.LoadScene("GameOver");
         state = GameState.GAME_IDLE;
+        Time.timeScale = 0;
     }
 
     public void WaveChange(int wave)
@@ -233,11 +234,13 @@ public class GameManager : MonoBehaviour
         
         UIManager.Instance.SetCurrentPage(UIPageInfo.GameStageClear);
         WaveManager.Instance.ClearMonsterObjectOnStage();
+        Time.timeScale = 0;
     }
 
 
     public void StageChange()
     {
+        Time.timeScale = 1;
         state = GameState.GAME_PLAY;
         if (stage % STAGE_PER_CHAPTER != 0)
         {
@@ -250,7 +253,7 @@ public class GameManager : MonoBehaviour
         }
         stage++;
         wave = 1;
-        Time.timeScale = 1;
+        
         cur_cost = 0;
         Player.Instance.transform.position = player_defualt_position;
         Player.Instance.actor.cur_status.HP = Player.Instance.actor.status.HP;

@@ -37,6 +37,10 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     }
 
+    private void Update()
+    {
+        
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
