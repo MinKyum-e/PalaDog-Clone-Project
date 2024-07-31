@@ -25,22 +25,39 @@ public class UnitCoolTimeUI : MonoBehaviour
     void Start()
     {
         cooltime = Parser.minion_status_dict[draggableUI.minion_idx].cool_time;
+
     }
 
     void Update()
     {
 
-        if (timer <= 0f)
+        if (timer < 0f)
         {
-            CancelInvoke("TimerStart");
-            timer = 0f;
-            isCooldown = false;
-            cooltimeImage.fillAmount = 0f;
-            cooltimeImage.enabled = false;
-            draggableImage.raycastTarget = true;
+            ResetTimer();
         }
 
     }
+
+    void ResetCheker()
+    {
+        print("!@#@!#!@#!32");
+        if (GameManager.Instance.state == GameState.GAME_STAGE_CLEAR || GameManager.Instance.state == GameState.GAME_CLEAR || GameManager.Instance.state == GameState.GAME_OVER)
+        {
+            ResetTimer();
+        }
+    }
+
+    void ResetTimer()
+    {
+        CancelInvoke("TimerStart");
+        CancelInvoke("ResetCheker");
+        timer = 0f;
+        isCooldown = false;
+        cooltimeImage.fillAmount = 0f;
+        cooltimeImage.enabled = false;
+        draggableImage.raycastTarget = true;
+    }
+
     public void StartCooldown()
     {
         if (!isCooldown)
@@ -53,6 +70,7 @@ public class UnitCoolTimeUI : MonoBehaviour
         }
 
         InvokeRepeating("TimerStart", 0.01f, 0.01f);
+        InvokeRepeating("ResetCheker", 0.01f, 0.01f);
 
     }
 

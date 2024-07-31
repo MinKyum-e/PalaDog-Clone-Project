@@ -219,7 +219,6 @@ public class GameManager : MonoBehaviour
         WaveManager.Instance.ClearMonsterObjectOnStage();
         UIManager.Instance.SetCurrentPage(UIPageInfo.GameOver);
         //SceneManager.LoadScene("GameOver");
-        Time.timeScale = 0;
         state = GameState.GAME_IDLE;
     }
 
@@ -231,7 +230,6 @@ public class GameManager : MonoBehaviour
     public void StageClear()
     {
         state = GameState.GAME_STAGE_CLEAR;
-        Time.timeScale = 0;
         
         UIManager.Instance.SetCurrentPage(UIPageInfo.GameStageClear);
         WaveManager.Instance.ClearMonsterObjectOnStage();
@@ -260,14 +258,12 @@ public class GameManager : MonoBehaviour
         EnemyBase.Instance().GetComponent<Actor>().isDie = false;
         overdrive_timer = overdrive_time;
         can_get_gold = true;
-        
     }
 
 
 
     public void GameClear()
     {
-        Time.timeScale = 0;
         UIManager.Instance.SetCurrentPage(UIPageInfo.GameClear);
     }
 
