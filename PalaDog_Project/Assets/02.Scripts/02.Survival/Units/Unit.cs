@@ -148,8 +148,14 @@ public abstract class Unit : MonoBehaviour
                     actor.atkTarget = setAttackTarget(actor.atkTarget, actor.cur_status.atkRange, atkType);
                     if (actor.atkTarget != null && actor.atkTarget.GetComponent<Actor>().isDie == false)
                     {
+                        
+
+                        if(actor.animator.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
+                    {
                         actor.can_action = false;
                         actor.animator.SetTrigger("Attack");
+                    }
+                            
                     }
 
             }
