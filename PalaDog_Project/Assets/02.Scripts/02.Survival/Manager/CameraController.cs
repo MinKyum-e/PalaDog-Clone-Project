@@ -24,8 +24,9 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        target = Player.Instance.transform;
-        cameraPosition = new Vector3(2,3.5f,-10);
+        Camera.main.orthographicSize = GameManager.Instance.main_camera_size;
+       target = Player.Instance.transform;
+        cameraPosition = new Vector3(1,3f,-10);
         height = Camera.main.orthographicSize;
         width = height * Screen.width / Screen.height;
     }
@@ -33,6 +34,11 @@ public class CameraController : MonoBehaviour
     {
         moveCamera();
         
+    }
+
+    private void Update()
+    {
+        cameraPosition = new Vector3(1, 3f, -10);
     }
     private void OnDrawGizmos()
     {
@@ -49,7 +55,7 @@ public class CameraController : MonoBehaviour
         else
         {
             transform.position = Vector3.Lerp(transform.position, target.position + cameraPosition, Time.deltaTime * cameraMoveSpeed);
-        
+            Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, GameManager.Instance.main_camera_size, Time.deltaTime);
         }
         float lx = size.x * 0.5f - width;
         float clampX = Mathf.Clamp(transform.position.x, -lx + center.x, lx + center.x);

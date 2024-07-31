@@ -45,18 +45,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482e3dafd0344e34c8bcff5cb444b0c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  STAGE_PER_CHAPTER: 2
+  STAGE_PER_CHAPTER: 5
   MAX_CHAPTER: 2
   MAX_COST: 5
   Unit_LvL: 0
   overdrive_time: 300
   can_get_gold: 1
-  overdrive_timer: 0
+  overdrive_timer: 300
   chapter: 1
   wave: 1
   stage: 1
   spawnCloud: {fileID: 4611604239915378571}
   poisonFog: {fileID: 7236105869164912769}
+  main_camera_size: 7
   state: 2
 --- !u!1 &8635922691767794960
 GameObject:

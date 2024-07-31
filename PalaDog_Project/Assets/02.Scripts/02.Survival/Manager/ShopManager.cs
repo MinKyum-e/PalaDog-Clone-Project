@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace ShopEnums
 {
@@ -180,6 +181,7 @@ public class ShopManager : MonoBehaviour
         {
             case EnforceType.Aura:
                 Player.Instance.SetAuraRange(ingame_enforce_list[type][lvl].value, lvl);
+                GameManager.Instance.main_camera_size = 7 + (lvl) * 0.2f;
                 break;
             case EnforceType.Unit_LvL:
             {

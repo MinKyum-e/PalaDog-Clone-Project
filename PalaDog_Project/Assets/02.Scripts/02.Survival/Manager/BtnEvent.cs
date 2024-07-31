@@ -20,7 +20,15 @@ public class BtnEvent : MonoBehaviour
         GameManager.Instance.RestartGame();
     }
 
+    public void Pause()
+    {
+        GameManager.Instance.PauseGame();
+    }
 
+    public void ContinueGame()
+    {
+        GameManager.Instance.ContinueGame();
+    }
 
     public void ShowMeTheGold()
     {

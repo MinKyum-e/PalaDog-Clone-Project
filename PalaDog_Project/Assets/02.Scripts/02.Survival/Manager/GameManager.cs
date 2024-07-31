@@ -47,6 +47,8 @@ public class GameManager : MonoBehaviour
     public ParticleSystem spawnCloud;
     public ParticleSystem poisonFog;
 
+    public float main_camera_size = 7;
+
 
 
     public GameState state;
@@ -181,10 +183,15 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0;
+        state = GameState.GAME_IDLE;
+        UIManager.Instance.SetCurrentPage(UIPageInfo.GamePause);
+
     }
     public void ContinueGame()
     {
-
+        Time.timeScale = 1;
+        state = GameState.GAME_PLAY;
+        UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
     }
 
     
@@ -192,7 +199,9 @@ public class GameManager : MonoBehaviour
     
     public void RestartGame()
     {
+
         Time.timeScale = 1;
+        WaveManager.Instance.ClearMonsterObjectOnStage();
         wave = 1;
         stage = 1;
         chapter = 1;

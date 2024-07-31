@@ -21,7 +21,16 @@ public class PoolManager : MonoBehaviour
     public List<GameObject>[] pools;
     private void Awake()
     {
-        if(gameObject.name == "MinionPool")
+        if (gameObject.name == "EnemyPool" && GameObject.Find("EnemyPool") != gameObject)
+        {
+            Destroy(gameObject);
+        }
+        if(gameObject.name == "MinionPool"  && GameObject.Find("MinionPool") != gameObject)
+        {
+            Destroy(gameObject);
+        }
+        
+        if (gameObject.name == "MinionPool")
         {
             pools = new List<GameObject>[prefabs.Length + 1];
         }
@@ -38,6 +47,8 @@ public class PoolManager : MonoBehaviour
         index_dict = new Dictionary<int, int>();
         sort_order = new int[prefabs.Length];
         DontDestroyOnLoad(gameObject);
+
+        
     }
     public void Start()
     {

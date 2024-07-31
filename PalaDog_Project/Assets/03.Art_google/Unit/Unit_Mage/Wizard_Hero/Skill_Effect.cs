@@ -10,8 +10,10 @@ public class Skill_Effect : MonoBehaviour
     public Actor actor;
     SkillEntry skillEntry;
     public List<Animator> animations;
+    public List<Animator> sub_animations;
     public List<BoxCollider2D> parts;
     public float play_time;
+    public bool exists_sub_animation;
 
     public List<Animator> normal_attack_animation;
     public List<BoxCollider2D> normal_attack_parts;
@@ -31,6 +33,15 @@ public class Skill_Effect : MonoBehaviour
         {
             normal_attack_parts.Add(transform.GetChild(1).GetChild(i).GetComponent<BoxCollider2D>());
             normal_attack_animation.Add(transform.GetChild(1).GetChild(i).GetComponent<Animator>());
+        }
+
+        if(exists_sub_animation)
+        {
+            for(int i=0;i< transform.GetChild(0).childCount;i++)
+            {
+                sub_animations.Add(transform.GetChild(0).GetChild(i).GetChild(0).GetComponent<Animator>());
+            }
+            
         }
 
     }
@@ -115,6 +126,8 @@ public class Skill_Effect : MonoBehaviour
                 targets.Clear();
                 yield return new WaitForSeconds(tick / 10);
                 animations[i].Play(animation_name);
+                if(exists_sub_animation)
+                    sub_animations[i].Play("SubAni");
                 foreach (var p in pool.pools)
                 {
                     foreach (var e in p)

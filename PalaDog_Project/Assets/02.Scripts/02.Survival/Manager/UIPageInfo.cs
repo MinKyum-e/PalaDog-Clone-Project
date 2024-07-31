@@ -12,6 +12,7 @@ public enum UIPageInfo
     GameResourse,
     GameStageClear,
     HelpPanel,
+    GamePause,
 }
 
 public enum UI_UnitPanelInfo

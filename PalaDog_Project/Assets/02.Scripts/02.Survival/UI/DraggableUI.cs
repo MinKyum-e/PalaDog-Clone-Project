@@ -66,21 +66,22 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         {
             UIManager.Instance.SetCurrentPage(UIPageInfo.Spawn);
             float player_y = Camera.main.WorldToScreenPoint(Player.Instance.transform.position).y;
-            
+            float player_z = Camera.main.WorldToScreenPoint(Player.Instance.transform.position).z;
+
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(eventData.position);
             float leftBound = auraCollider.bounds.min.x;
             float rightBount = auraCollider.bounds.max.x;
             if (worldPosition.x >= leftBound && worldPosition.x <= rightBount)
             {
-                rect.position = new Vector3(eventData.position.x, player_y, 0);
-                rect.sizeDelta = new Vector2( base_size.x * 2, base_size.x * 2);
-                canvasGroup.alpha = 1.0f;
+                rect.position = new Vector3(eventData.position.x, player_y + 50f, player_z);
+                rect.sizeDelta = new Vector2( base_size.x * 1.2f, base_size.x * 1.2f);
+                canvasGroup.alpha = 0.5f;
             }
             else
             {
                 rect.position = new Vector3(eventData.position.x, eventData.position.y, 0);
                 rect.sizeDelta = base_size;
-                canvasGroup.alpha = 0.6f;
+                canvasGroup.alpha = 0.3f;
             }
         }
        

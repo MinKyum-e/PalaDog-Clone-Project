@@ -28,22 +28,22 @@ Shop_ListType이 '해제', '소환'일 경우, ,,,,,,,,
 "담당 유닛 인덱스 입력"",//상점 항목 설명 주석",,,,,,,,,,
 Shop_Index,Shop_Name,Shop_DevName,Shop_Group,Shop_GameName,Shop_ListType,Shop_PreList,Shop_GoodsType,Shop_GoodsValue,Shop_etcValue,Shop_Description
 int,string,string,int,string,enum,int,enum,int,int,//string
-10011,Shop_Buff_Aura_1,상점_강화_오라_1레벨,1001,오라 LV.1,Enforce,0,Gold,0,2,오라 범위 1레벨. 3M 범위
-10012,Shop_Buff_Aura_2,상점_강화_오라_2레벨,1001,오라 LV.2,Enforce,10011,Gold,500,3,오라 범위 1레벨. 4M 범위
-10013,Shop_Buff_Aura_3,상점_강화_오라_3레벨,1001,오라 LV.3,Enforce,10012,Gold,1500,4,오라 범위 1레벨. 5M 범위
+10011,Shop_Buff_Aura_1,상점_강화_오라_1레벨,1001,오라 LV.1,Enforce,0,Gold,0,3,오라 범위 1레벨. 3M 범위
+10012,Shop_Buff_Aura_2,상점_강화_오라_2레벨,1001,오라 LV.2,Enforce,10011,Gold,800,4,오라 범위 1레벨. 4M 범위
+10013,Shop_Buff_Aura_3,상점_강화_오라_3레벨,1001,오라 LV.3,Enforce,10012,Gold,1200,5,오라 범위 1레벨. 5M 범위
+10014,Shop_Buff_Aura_4,상점_강화_오라_4레벨,1001,오라 LV.4,Enforce,10013,Gold,1500,6,오라 범위 4레벨. 5.5M 범위
+10015,Shop_Buff_Aura_5,상점_강화_오라_5레벨,1001,오라 LV.5,Enforce,10014,Gold,2000,7,오라 범위 5레벨. 6M 범위
 10021,Shop_Buff_MaxCost_1,상점_강화_최대 코스트_1레벨,1002,최대 코스트 LV.1,Enforce,0,Gold,0,5,최대 코스트 1레벨. 5코스트
-10022,Shop_Buff_MaxCost_2,상점_강화_최대 코스트_2레벨,1002,최대 코스트 LV.2,Enforce,10021,Gold,50,11,최대 코스트 2레벨. 11코스트
-10023,Shop_Buff_MaxCost_3,상점_강화_최대 코스트_3레벨,1002,최대 코스트 LV.3,Enforce,10022,Gold,100,17,최대 코스트 3레벨. 17코스트
-10024,Shop_Buff_MaxCost_4,상점_강화_최대 코스트_4레벨,1002,최대 코스트 LV.4,Enforce,10023,Gold,200,25,최대 코스트 4레벨. 25코스트
-10025,Shop_Buff_MaxCost_5,상점_강화_최대 코스트_5레벨,1002,최대 코스트 LV.5,Enforce,10024,Gold,400,33,최대 코스트 5레벨. 33코스트
-10026,Shop_Buff_MaxCost_6,상점_강화_최대 코스트_6레벨,1002,최대 코스트 LV.6,Enforce,10025,Gold,800,43,최대 코스트 6레벨. 43코스트
-10027,Shop_Buff_MaxCost_7,상점_강화_최대 코스트_7레벨,1002,최대 코스트 LV.7,Enforce,10026,Gold,1600,53,최대 코스트 7레벨. 53코스트
-10028,Shop_Buff_MaxCost_8,상점_강화_최대 코스트_8레벨,1002,최대 코스트 LV.8,Enforce,10027,Gold,3200,65,최대 코스트 8레벨. 65코스트
+10022,Shop_Buff_MaxCost_2,상점_강화_최대 코스트_2레벨,1002,최대 코스트 LV.2,Enforce,10021,Gold,800,11,최대 코스트 2레벨. 11코스트
+10023,Shop_Buff_MaxCost_3,상점_강화_최대 코스트_3레벨,1002,최대 코스트 LV.3,Enforce,10022,Gold,1200,17,최대 코스트 3레벨. 17코스트
+10024,Shop_Buff_MaxCost_4,상점_강화_최대 코스트_4레벨,1002,최대 코스트 LV.4,Enforce,10023,Gold,1500,25,최대 코스트 4레벨. 25코스트
+10025,Shop_Buff_MaxCost_5,상점_강화_최대 코스트_5레벨,1002,최대 코스트 LV.5,Enforce,10024,Gold,2000,33,최대 코스트 5레벨. 33코스트
 10031,Shop_Buff_MaxFood_1,상점_강화_최대 식량_1레벨,1003,유닛 레벨,Enforce,0,Gold,0,0,lvl0
-10032,Shop_Buff_MaxFood_2,상점_강화_최대 식량_2레벨,1003,유닛 레벨,Enforce,10031,Gold,300,1,lvl1
-10033,Shop_Buff_MaxFood_3,상점_강화_최대 식량_3레벨,1003,유닛 레벨,Enforce,10032,Gold,450,2,lvl2
-10034,Shop_Buff_MaxFood_4,상점_강화_최대 식량_4레벨,1003,유닛 레벨,Enforce,10033,Gold,800,3,lvl3
-10035,Shop_Buff_MaxFood_5,상점_강화_최대 식량_5레벨,1003,유닛 레벨,Enforce,10034,Gold,1200,4,lvl4
+10032,Shop_Buff_MaxFood_2,상점_강화_최대 식량_2레벨,1003,유닛 레벨,Enforce,10031,Gold,800,1,lvl1
+10033,Shop_Buff_MaxFood_3,상점_강화_최대 식량_3레벨,1003,유닛 레벨,Enforce,10032,Gold,1200,2,lvl2
+10034,Shop_Buff_MaxFood_4,상점_강화_최대 식량_4레벨,1003,유닛 레벨,Enforce,10033,Gold,1500,3,lvl3
+10035,Shop_Buff_MaxFood_5,상점_강화_최대 식량_5레벨,1003,유닛 레벨,Enforce,10034,Gold,2000,4,lvl4
+,,,,,,,,,,
 ,,,,,,,,,,
 ,,,,,,,,,,
 ,,,,,,,,,,
