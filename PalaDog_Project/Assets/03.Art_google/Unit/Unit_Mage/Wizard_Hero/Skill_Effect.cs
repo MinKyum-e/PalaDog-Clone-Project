@@ -62,7 +62,7 @@ public class Skill_Effect : MonoBehaviour
         for (int i = 0; i < normal_attack_parts.Count; i++)
         {
 
-
+            targets.Clear();
             normal_attack_animation[i].Play("normalAttack");
                 yield return new WaitForSeconds(tick / 5);
             foreach (var p in targetPool.pools)
@@ -112,6 +112,7 @@ public class Skill_Effect : MonoBehaviour
         {
             for (int i = 0; i < parts.Count; i++)
             {
+                targets.Clear();
                 yield return new WaitForSeconds(tick / 10);
                 animations[i].Play(animation_name);
                 foreach (var p in pool.pools)
@@ -136,7 +137,6 @@ public class Skill_Effect : MonoBehaviour
                 yield return new WaitForSeconds(tick/10 *9 );
             }
 
-            targets.Clear();
 
         }
 
