@@ -16,7 +16,8 @@ TagManager:
   - null
   - Boss
   - SkillPool
-  - FxTemporaire
+  - SKillUI
+  - SpawnUI
   layers:
   - Default
   - TransparentFX
@@ -24,8 +25,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - spawnUI
+  - skillUI
   - 
   - 
   - 

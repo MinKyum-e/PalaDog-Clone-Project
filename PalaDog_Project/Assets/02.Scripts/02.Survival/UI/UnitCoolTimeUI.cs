@@ -7,10 +7,16 @@ using Unity.VisualScripting;
 public class UnitCoolTimeUI : MonoBehaviour
 {
     DraggableUI draggableUI;
+    BtnEvent_ActiveSkill skillUI;
 
 
-    private Image cooltimeImage;
-    private Image draggableImage;
+
+    public Image cooltimeImage;
+    private Image mainImage;
+
+
+    public bool is_hero = false;
+    public bool unit_alive = false;
 
     float cooltime;
     float timer;
@@ -18,19 +24,63 @@ public class UnitCoolTimeUI : MonoBehaviour
 
     private void Awake()
     {
-        draggableImage = GetComponent<Image>();
-        draggableUI = GetComponent<DraggableUI>();
+
+        mainImage = GetComponent<Image>();
+        if (gameObject.layer ==6)//spawnUI
+        {
+            draggableUI = GetComponent<DraggableUI>();
+        }
+        else if (gameObject.layer == 7)//skillSUI
+        {
+            skillUI = GetComponent<BtnEvent_ActiveSkill>();
+        }
+
+
         cooltimeImage = transform.Find("CoolTime").GetComponent<Image>();
+
     }
     void Start()
     {
-        cooltime = Parser.minion_status_dict[draggableUI.minion_idx].cool_time;
+        if(gameObject.layer == 6)
+        {
+            cooltime = Parser.minion_status_dict[draggableUI.minion_idx].cool_time;
+            if(Parser.minion_status_dict[draggableUI.minion_idx].common.grade == UnitGrade.Hero)
+            {
+                is_hero = true;
+            }
+
+        }
+        else if(gameObject.layer == 7)
+        {
+            cooltime = Parser.skill_table_dict[(int)skillUI.skillName].coolTime;
+        }
+        
 
     }
 
     void Update()
     {
+        if (is_hero)
+        {
 
+            if(unit_alive)
+            {
+                if (!GameManager.Instance.CheckHeroExists((MinionUnitIndex)draggableUI.minion_idx))
+                {
+                    unit_alive = false;
+                    StartCooldown();
+                }
+            }
+            else
+            {
+                if(GameManager.Instance.CheckHeroExists((MinionUnitIndex)draggableUI.minion_idx))
+                {
+                    cooltimeImage.fillAmount = 1f;
+                    unit_alive = true;
+                    mainImage.raycastTarget = false;
+                }
+            }
+        }
         if (timer < 0f)
         {
             ResetTimer();
@@ -38,7 +88,7 @@ public class UnitCoolTimeUI : MonoBehaviour
 
     }
 
-    void ResetCheker()
+   public void ResetCheker()
     {
         print("!@#@!#!@#!32");
         if (GameManager.Instance.state == GameState.GAME_STAGE_CLEAR || GameManager.Instance.state == GameState.GAME_CLEAR || GameManager.Instance.state == GameState.GAME_OVER)
@@ -47,23 +97,21 @@ public class UnitCoolTimeUI : MonoBehaviour
         }
     }
 
-    void ResetTimer()
+    public void ResetTimer()
     {
         CancelInvoke("TimerStart");
         CancelInvoke("ResetCheker");
         timer = 0f;
         isCooldown = false;
         cooltimeImage.fillAmount = 0f;
-        cooltimeImage.enabled = false;
-        draggableImage.raycastTarget = true;
+        mainImage.raycastTarget = true;
     }
 
     public void StartCooldown()
     {
         if (!isCooldown)
         {
-            draggableImage.raycastTarget = false;
-            cooltimeImage.enabled = true;
+            mainImage.raycastTarget = false;
             isCooldown = true;
             timer = cooltime;
             cooltimeImage.fillAmount = 1f;

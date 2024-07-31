@@ -104,12 +104,17 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
                 if(minion.actor.status.grade == UnitGrade.Hero)
                 {
                     GameManager.Instance.AddHeroUnit(minion);
+
                     //액티브 UI 잠금해제
 
                 }
+                else
+                {
+                    cooltimeUI.StartCooldown();
+                }
    /*             GameManager.Instance.cur_food -=requisite_food;*/
                 GameManager.Instance.cur_cost +=minion.cost;
-                cooltimeUI.StartCooldown();
+
             }
 
 
