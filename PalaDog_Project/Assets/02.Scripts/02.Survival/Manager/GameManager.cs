@@ -253,7 +253,7 @@ public class GameManager : MonoBehaviour
         state = GameState.GAME_PLAY;
         if (stage % STAGE_PER_CHAPTER != 0)
         {
-            UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
+            UIManager.Instance.SetCurrentPage(UIPageInfo.GameFade);
         }
         else
         {

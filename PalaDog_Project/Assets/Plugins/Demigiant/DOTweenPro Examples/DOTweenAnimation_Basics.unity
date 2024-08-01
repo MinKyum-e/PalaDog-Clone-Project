@@ -771,7 +771,7 @@ MonoBehaviour:
   isValid: 1
   target: {fileID: 990238544}
   animationType: 8
-  targetType: 0
+  targetType: 10
   forcedTargetType: 0
   autoPlay: 0
   useTargetAsV3: 0
@@ -1729,7 +1729,7 @@ MonoBehaviour:
   isValid: 1
   target: {fileID: 1636198020}
   animationType: 7
-  targetType: 0
+  targetType: 3
   forcedTargetType: 0
   autoPlay: 0
   useTargetAsV3: 0

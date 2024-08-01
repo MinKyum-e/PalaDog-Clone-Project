@@ -14,6 +14,8 @@ public class UIManager : MonoBehaviour
     public GameObject GameResourse;
     public GameObject GameStageClear;
     public GameObject GamePause;
+    public GameObject FadeIn;
+    public GameObject FadeOut;  
 
 
     private UIPageInfo CurrentPageInfo;
@@ -40,6 +42,8 @@ public class UIManager : MonoBehaviour
         GamePause.SetActive(false);
         GamePlay.SetActive(true);
         GameResourse.SetActive(true);
+        FadeIn.SetActive(true);
+
     }
 
     public void SetCurrentPage(UIPageInfo pageInfo)
@@ -53,6 +57,7 @@ public class UIManager : MonoBehaviour
         GameResourse.SetActive(false);
         GameStageClear.SetActive(false);
         GamePause.SetActive(false);
+
 
         if (CurrentPageInfo == UIPageInfo.GamePlay)
         {
@@ -76,11 +81,24 @@ public class UIManager : MonoBehaviour
             GameStageClear.SetActive(true);
         }
         else if (CurrentPageInfo == UIPageInfo.GamePause)
-        { 
+        {
             GamePlay.SetActive(true);
-        GameResourse.SetActive(true);
-        GamePause.SetActive(true);
+            GameResourse.SetActive(true);
+            GamePause.SetActive(true);
         }
+        else if (CurrentPageInfo == UIPageInfo.GameFade)
+        {
+            GamePlay.SetActive(true);
+            GameResourse.SetActive(true);
+            FadeIn.SetActive(true);
+        }
+        else if(CurrentPageInfo == UIPageInfo.GameFadeOut)
+        {
+            GamePlay.SetActive(true);
+            GameResourse.SetActive(true);
+            FadeOut.SetActive(true);
+        }
+
 
     }
 }
