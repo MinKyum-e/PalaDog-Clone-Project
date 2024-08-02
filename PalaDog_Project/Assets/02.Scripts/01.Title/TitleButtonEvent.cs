@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class TitleButtonEvent : MonoBehaviour
 {
-    public void OnClickStart(string secne_name)
+    public GameObject Fadeout;
+    public void FadeOut()
     {
-        SceneManager.LoadScene(secne_name);
+        Fadeout.SetActive(true);
+        
     }
 
 }

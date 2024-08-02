@@ -5,15 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class BtnEvent : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private Player player;
-    private SpriteRenderer spriteRenderer;
 
-    private void Start()
-    {
-        player = Player.Instance;
-        spriteRenderer = player.GetComponent<SpriteRenderer>();
-    }
+
     public void GamePlay()
     {
         GameManager.Instance.state = GameState.GAME_PLAY;
@@ -55,6 +48,16 @@ public class BtnEvent : MonoBehaviour
         Destroy(GameManager.Instance.gameObject);
         Destroy(ArrowPool.Instance.gameObject);
         SceneManager.LoadScene("Title");
+    }
+
+    public void IntroGoTitle()
+    {
+        SceneManager.LoadScene("Title");
+    }
+
+    public void LoadScnene_name(string name)
+    {
+        SceneManager.LoadScene(name);
     }
 
     /*    public void ShowMeTheFood()

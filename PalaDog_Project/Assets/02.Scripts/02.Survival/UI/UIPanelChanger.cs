@@ -21,11 +21,13 @@ public class UIPanelChanger : MonoBehaviour
 
     public void ChangePanel(int idx)
     {
+        if(idx >= panels.Length) { return; }
         for(int i=0;i<panels.Length; i++)
         {
             panels[i].SetActive(false);
         }
         panels[idx].SetActive(true);
+        seq = idx;
     }
 
 
