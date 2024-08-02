@@ -50,6 +50,20 @@ public class BtnEvent : MonoBehaviour
         SceneManager.LoadScene("Title");
     }
 
+    public void ClearManagers()
+    {
+        Destroy(Player.Instance.actor.minion_poolManager.gameObject);
+        Destroy(Player.Instance.actor.enemy_poolManager.gameObject);
+        Destroy(Player.Instance.gameObject);
+
+        Destroy(SoundManager.Instance.gameObject);
+        Destroy(ShopManager.Instance.gameObject);
+
+        Destroy(ArrowPool.Instance.gameObject);
+        Destroy(GameManager.Instance.gameObject);
+    }
+
+
     public void IntroGoTitle()
     {
         SceneManager.LoadScene("Title");

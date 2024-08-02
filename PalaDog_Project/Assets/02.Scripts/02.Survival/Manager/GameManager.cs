@@ -280,9 +280,11 @@ public class GameManager : MonoBehaviour
 
     public void GameClear()
     {
-
-        SceneManager.LoadScene("outro");
+        WaveManager.Instance.ClearMonsterObjectOnStage();
+        UIManager.Instance.FadeOut.SetActive(true);
+        
     }
+
 
 
     public float food_per_time

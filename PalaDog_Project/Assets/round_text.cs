@@ -8,6 +8,7 @@ public class round_text : MonoBehaviour
 {
     public Text txt;
     public float action_time,  end_time;
+    public GameObject wait_img;
 
     public void change_end_string()
     {
@@ -19,7 +20,8 @@ public class round_text : MonoBehaviour
             {
                 txt.color = c;
                 txt.text = "";
-                gameObject.SetActive(false); 
+                gameObject.SetActive(false);
+                
             });
         });
 
