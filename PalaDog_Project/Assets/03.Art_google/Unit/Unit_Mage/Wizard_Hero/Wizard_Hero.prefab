@@ -1676,6 +1676,10 @@ PrefabInstance:
       value: 0.21207519
       objectReference: {fileID: 0}
     - target: {fileID: 6171689989008883619, guid: 4fa023f9797bad14b95eb49c5a790459, type: 3}
+      propertyPath: m_Size.x
+      value: 9.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 6171689989008883619, guid: 4fa023f9797bad14b95eb49c5a790459, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
       value: 11.47
       objectReference: {fileID: 0}
@@ -1683,17 +1687,29 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.newSize.y
       value: 3.04
       objectReference: {fileID: 0}
+    - target: {fileID: 7754767050874440241, guid: 4fa023f9797bad14b95eb49c5a790459, type: 3}
+      propertyPath: m_Size.x
+      value: 9.86
+      objectReference: {fileID: 0}
     - target: {fileID: 8067396839932809208, guid: 4fa023f9797bad14b95eb49c5a790459, type: 3}
       propertyPath: m_Name
       value: EpicMagic
       objectReference: {fileID: 0}
+    - target: {fileID: 8654438436123136944, guid: 4fa023f9797bad14b95eb49c5a790459, type: 3}
+      propertyPath: m_Size.x
+      value: 9.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841659138718949439, guid: 4fa023f9797bad14b95eb49c5a790459, type: 3}
+      propertyPath: m_Size.x
+      value: 8.53
+      objectReference: {fileID: 0}
     - target: {fileID: 9153360908720327512, guid: 4fa023f9797bad14b95eb49c5a790459, type: 3}
       propertyPath: m_Size.x
-      value: 18.49
+      value: 20.66
       objectReference: {fileID: 0}
     - target: {fileID: 9153360908720327512, guid: 4fa023f9797bad14b95eb49c5a790459, type: 3}
       propertyPath: m_Offset.x
-      value: 8.74
+      value: 9.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

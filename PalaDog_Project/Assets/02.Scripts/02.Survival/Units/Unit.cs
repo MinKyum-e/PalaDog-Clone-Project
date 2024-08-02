@@ -150,12 +150,9 @@ public abstract class Unit : MonoBehaviour
                     {
                         
 
-                        if(actor.animator.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
-                    {
                         actor.can_action = false;
                         actor.animator.SetTrigger("Attack");
-                    }
-                            
+ 
                     }
 
             }
