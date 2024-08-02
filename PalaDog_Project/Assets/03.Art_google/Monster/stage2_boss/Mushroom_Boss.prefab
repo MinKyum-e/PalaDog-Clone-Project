@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac3f11d0498ae2743b6142f625ddec3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 10023
+  ID: 10235
   status:
     index: 0
     name: 
@@ -231,6 +231,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   effect_player: {fileID: 0}
   hpbar: {fileID: 0}
+  skill_effect: {fileID: 0}
   final_damage: 0
 --- !u!114 &5399317476540893942
 MonoBehaviour:
@@ -291,6 +292,9 @@ MonoBehaviour:
   obj: {fileID: 0}
   _particleSystem: {fileID: 0}
   _boxCollider: {fileID: 0}
+  minion_pool: {fileID: 0}
+  duration: 0
+  tick: 0
 --- !u!1001 &6561408163524975924
 PrefabInstance:
   m_ObjectHideFlags: 0

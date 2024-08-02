@@ -51,7 +51,7 @@ public class Parser : MonoBehaviour
                 e.common.skill = new int[3];
                 e.common.name = d["Monster_GameName"].ToString();
                 //enemy_info_dict[idx].grade = (int)d["Monster_Grade"];
-                e.gold = (int)d["Monster_Gold"];
+                e.gold = (int)float.Parse(d["Monster_Gold"].ToString());
                 e.common.HP = (int)d["Monster_HP"];
                 e.common.atk = float.Parse(d["Monster_Atk"].ToString());
                 e.common.atkSpeed = float.Parse(d["Monster_AtkSpeed"].ToString());
