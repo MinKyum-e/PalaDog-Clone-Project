@@ -251,18 +251,22 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         state = GameState.GAME_PLAY;
+        
         if (stage % STAGE_PER_CHAPTER != 0)
         {
+            stage++;
+            wave = 1;
             UIManager.Instance.SetCurrentPage(UIPageInfo.GameFade);
         }
         else
         {
             chapter = stage / STAGE_PER_CHAPTER + 1;
+            stage++;
+            wave = 1;
             SceneManager.LoadScene("Chapter" + chapter);
         }
-        stage++;
-        wave = 1;
-        
+
+
         cur_cost = 0;
         Player.Instance.transform.position = player_defualt_position;
         Player.Instance.actor.cur_status.HP = Player.Instance.actor.status.HP;

@@ -10062,7 +10062,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.16, y: 10.21}
+  m_Size: {x: 21.052631, y: 21.052631}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -10115,13 +10115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Library:
-  - m_Name: Aura
-    m_Hash: 0
-    m_CategoryList:
-    - m_Name: lvl0
-      m_Hash: 0
-      m_Sprite: {fileID: -349744673, guid: d33d4fd50fed9144585f50930f53091d, type: 3}
+  m_Library: []
   m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 5352f5c0cfd232743a4ff8e2a9cae852, type: 3}
 --- !u!114 &7541013024444328344
 MonoBehaviour:
