@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using DG.Tweening.Core;
+using UnityEditor.Build.Content;
 using UnityEngine;
 #if true // UI_MARKER
 using UnityEngine.UI;
@@ -114,6 +115,9 @@ namespace DG.Tweening
 
         #region Unity Methods
 
+        
+
+
         void Awake()
         {
             if (!isActive || !autoGenerate) return;
@@ -161,6 +165,8 @@ namespace DG.Tweening
             if (tween != null && tween.active) tween.Rewind();
             CreateTween(true, true);
         }
+
+
         /// <summary>
         /// Creates/recreates the tween from its target's current value without playing it, but first killing the existing one if present.
         /// </summary>

@@ -70,37 +70,41 @@ public class WaveManager : MonoBehaviour
 
     private void Update()
     {
-        if(GameManager.Instance.stage != cur_stageNum || GameManager.Instance.wave != cur_waveNum) //monsterlist 세팅
+        if(GameManager.Instance.state == GameState.GAME_PLAY)
         {
-            //리스트 초기화
-            monster_list.Clear();
-            cur_stageNum = GameManager.Instance.stage;
-            cur_waveNum = GameManager.Instance.wave;
-            foreach(Coroutine c in coroutine_list) { StopCoroutine(c); }
-
-            //monsterlist 세팅
-            foreach(KeyValuePair<int, WaveInfo>  waveTable in Parser.wave_info_dict)
+            if (GameManager.Instance.stage != cur_stageNum || GameManager.Instance.wave != cur_waveNum) //monsterlist 세팅
             {
-                if(waveTable.Value.Wave_StageNum == cur_stageNum && waveTable.Value.Wave_WaveNum == cur_waveNum)
-                {
-                    monster_list.Add(new WaveMonster(waveTable.Value.Wave_MonsterIndex, waveTable.Value.Wave_MonsterNum, waveTable.Value.Wave_SpawnTime));
-                    wave_type = waveTable.Value.Wave_WaveType;
+                //리스트 초기화
+                monster_list.Clear();
+                cur_stageNum = GameManager.Instance.stage;
+                cur_waveNum = GameManager.Instance.wave;
+                foreach (Coroutine c in coroutine_list) { StopCoroutine(c); }
 
+                //monsterlist 세팅
+                foreach (KeyValuePair<int, WaveInfo> waveTable in Parser.wave_info_dict)
+                {
+                    if (waveTable.Value.Wave_StageNum == cur_stageNum && waveTable.Value.Wave_WaveNum == cur_waveNum)
+                    {
+                        monster_list.Add(new WaveMonster(waveTable.Value.Wave_MonsterIndex, waveTable.Value.Wave_MonsterNum, waveTable.Value.Wave_SpawnTime));
+                        wave_type = waveTable.Value.Wave_WaveType;
+
+                    }
+                }
+            }
+            else
+            {
+                //spawn time, last spawn time 비교 후 소환
+                foreach (WaveMonster monster in monster_list)
+                {
+                    if ((Time.time - monster.last_spawnTime) > monster.monster_spawnTime)
+                    {
+                        coroutine_list.Add(StartCoroutine(SpawnMonster(monster.monster_index, monster.monster_num)));
+                        monster.last_spawnTime = Time.time;
+                    }
                 }
             }
         }
-        else 
-        {
-            //spawn time, last spawn time 비교 후 소환
-            foreach(WaveMonster monster in monster_list)
-            {
-                if((Time.time - monster.last_spawnTime) > monster.monster_spawnTime )
-                {
-                    coroutine_list.Add(StartCoroutine(SpawnMonster(monster.monster_index, monster.monster_num)));
-                    monster.last_spawnTime = Time.time;
-                }
-            }
-        }
+      
     }
 
     public bool CheckBossStage()

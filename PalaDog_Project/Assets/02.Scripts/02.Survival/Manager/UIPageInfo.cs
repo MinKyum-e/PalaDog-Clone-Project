@@ -13,6 +13,8 @@ public enum UIPageInfo
     GameStageClear,
     HelpPanel,
     GamePause,
+    GameFade,
+    GameFadeOut,
 }
 
 public enum UI_UnitPanelInfo

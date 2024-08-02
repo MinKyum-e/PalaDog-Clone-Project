@@ -14,6 +14,15 @@ public class BtnEvent : MonoBehaviour
         player = Player.Instance;
         spriteRenderer = player.GetComponent<SpriteRenderer>();
     }
+    public void GamePlay()
+    {
+        GameManager.Instance.state = GameState.GAME_PLAY;
+        UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
+    }
+    public void ChooseUnit()
+    {
+        UIManager.Instance.SetCurrentPage(UIPageInfo.GameStageClear);
+    }
 
     public void Restart()
     {
