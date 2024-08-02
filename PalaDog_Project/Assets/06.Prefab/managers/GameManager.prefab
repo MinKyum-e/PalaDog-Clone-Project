@@ -58,7 +58,7 @@ MonoBehaviour:
   spawnCloud: {fileID: 4611604239915378571}
   poisonFog: {fileID: 7236105869164912769}
   main_camera_size: 7
-  state: 2
+  state: 7
 --- !u!1 &8635922691767794960
 GameObject:
   m_ObjectHideFlags: 0

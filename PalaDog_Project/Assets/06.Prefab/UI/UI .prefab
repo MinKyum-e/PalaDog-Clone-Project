@@ -1227,7 +1227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2409946179688899385
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4786,7 +4786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0711ec57dcec2434fbd7e826eacd968e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: 30012
+  skillName: 30021
   minionUnitIndex: 10000
   cooltimeUI: {fileID: 0}
   hero_alive: 0

@@ -15,6 +15,7 @@ public class Player: MonoBehaviour
     public AuraSkill aura_skill;
     public CircleCollider2D auraCollider;
     public float aura_scale = 2;
+    public int aura_lvl = 1;
     public float aura_diff = 0.06f;
     public float aura_time = 3f;
 
@@ -86,6 +87,7 @@ public class Player: MonoBehaviour
         aura.localScale = new Vector3(value, value, value);
         aura_scale = value;
         aura_spriteResolver.SetCategoryAndLabel("Aura", "lvl" + lvl);
+        aura_lvl = lvl ;
     }
 
     public static Player Instance //게임매니저 인스턴스 접근

@@ -20,7 +20,7 @@ public class AuraSkill : MonoBehaviour
 
         if(aura_skill_name != SkillName.None)
         {
-            SkillEntry s = Parser.skill_table_dict[(int)aura_skill_name];
+            SkillEntry s = Parser.skill_table_dict[(int)aura_skill_name + player.aura_lvl];
             var targets = player.action.skill.SearchingTargets(aura_skill_name);
             switch (aura_skill_name)
             {
