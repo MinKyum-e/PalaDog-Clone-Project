@@ -71,13 +71,14 @@ public class SoundManager : DontDestroy<SoundManager> {
         }
     }
 
-    public void SetVolumeBGM(int level)
+    public void SetVolumeBGM(float level)
     {
         m_audio[(int)AUDIO_TYPE.BGM].volume = level;
     }
     public void SetVolumeSFX(float level)
     {
         m_audio[(int)AUDIO_TYPE.SFX].volume = level;
+        m_audio[(int)AUDIO_TYPE.PLAYERSFX].volume = level;
     }
     public void SetMute(bool isOn)
     {
