@@ -22,9 +22,19 @@ public class Enemy: Unit
     {
         try
         {
-            actor.status = Parser.enemy_status_dict[actor.ID].common;
-            actor.cur_status = Parser.enemy_status_dict[actor.ID].common;
-            gold = Parser.enemy_status_dict[actor.ID].gold;
+            if(!gameObject.name.Contains("Boss"))
+            {
+                actor.status = Parser.enemy_status_dict[actor.ID + (GameManager.Instance.stage - 1) % (GameManager.Instance.STAGE_PER_CHAPTER)].common;
+                actor.cur_status = Parser.enemy_status_dict[actor.ID + (GameManager.Instance.stage - 1) % (GameManager.Instance.STAGE_PER_CHAPTER)].common;
+                gold = Parser.enemy_status_dict[actor.ID + (GameManager.Instance.stage - 1) % (GameManager.Instance.STAGE_PER_CHAPTER)].gold;
+            }
+            else
+            {
+                actor.status = Parser.enemy_status_dict[actor.ID].common;
+                actor.cur_status = Parser.enemy_status_dict[actor.ID].common;
+                gold = Parser.enemy_status_dict[actor.ID].gold;
+            }
+            
         }
         catch { Debug.Log("status Setting Error"); }
     }
