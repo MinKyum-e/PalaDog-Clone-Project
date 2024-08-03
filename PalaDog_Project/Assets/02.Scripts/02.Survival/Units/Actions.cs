@@ -44,7 +44,11 @@ public class Actions: MonoBehaviour
                     SoundManager.Instance.PlaySFX(SoundManager.SFX_CLIP.NormalAttack);
                     break;
                 case Chr_job.projectile:
-                     var ret = ArrowPool.Instance.Shot(actor.atkTarget, transform.position, actor.cur_status.atk, actor.cur_status.atkSpeed);
+                    GameObject arrow;
+                    if ((MinionUnitIndex)actor.ID == MinionUnitIndex.Archer_Elite || (MinionUnitIndex)actor.ID == MinionUnitIndex.Archer_Hero)
+                        arrow = ArrowPool.Instance.Shot(actor.atkTarget, transform.position, actor.cur_status.atk, actor.cur_status.atkSpeed, projectiles.Arrow);
+                    else
+                        arrow = ArrowPool.Instance.Shot(actor.atkTarget, transform.position, actor.cur_status.atk, actor.cur_status.atkSpeed, projectiles.Rock);
 
                     break;
                 case Chr_job.magic:

@@ -3,24 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
+public enum projectiles{
+    Arrow,
+    Rock,
+}
 public class ArrowPool : Singleton<ArrowPool>
 {
     public GameObject prefabs;
-    public List<GameObject> pools;
+    public List<GameObject> arrow_pools;
+    public List<GameObject> thrower_pools;
     public Vector3 spawn_position;
 
 
-    public int GetUnitCount()
-    {
-        return pools.Count;
-    }
 
-
-    public GameObject Shot(GameObject target, Vector3 start_position, float atk, float speed)
+    public GameObject Shot(GameObject target, Vector3 start_position, float atk, float speed, projectiles projectile_name )
     {
         GameObject select = null;
+        List<GameObject> pools;
 
-    
+
+        if (projectile_name == projectiles.Arrow)
+        {
+            pools = arrow_pools;
+        }
+        else
+            pools = thrower_pools;
+
 
         for (int i = 0; i < pools.Count; i++)
         {
@@ -54,7 +62,12 @@ public class ArrowPool : Singleton<ArrowPool>
 
     public void ResetPool()
     {
-        foreach (GameObject item in pools)
+        foreach (GameObject item in arrow_pools)
+        {
+            Destroy(item.gameObject);
+        }
+
+        foreach (GameObject item in thrower_pools)
         {
             Destroy(item.gameObject);
         }
