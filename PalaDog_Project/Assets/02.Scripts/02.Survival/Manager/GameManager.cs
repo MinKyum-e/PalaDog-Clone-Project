@@ -256,7 +256,7 @@ public class GameManager : MonoBehaviour
         {
             stage++;
             wave = 1;
-            UIManager.Instance.SetCurrentPage(UIPageInfo.GameFade);
+            SceneManager.LoadScene("Chapter" + chapter);
         }
         else
         {

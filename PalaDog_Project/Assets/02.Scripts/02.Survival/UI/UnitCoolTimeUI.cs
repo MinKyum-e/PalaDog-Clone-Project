@@ -39,18 +39,9 @@ public class UnitCoolTimeUI : MonoBehaviour
 
         cooltimeImage = transform.Find("CoolTime").GetComponent<Image>();
 
-        Invoke("resetInvoke", -1);
     }
 
 
-    void resetInvoke()
-    {
-        if(is_hero && GameManager.Instance.overdrive_time + 0.01f >= GameManager.Instance.overdrive_timer)
-        {
-            ResetTimer();
-            unit_alive = false;
-        }
-    }
     void Start()
     {
         if(gameObject.layer == 6)
@@ -103,21 +94,11 @@ public class UnitCoolTimeUI : MonoBehaviour
 
     }
 
-   public void ResetCheker()
-    {
-        print("!@#@!#!@#!32");
-        if (GameManager.Instance.state == GameState.GAME_STAGE_CLEAR || GameManager.Instance.state == GameState.GAME_CLEAR || GameManager.Instance.state == GameState.GAME_OVER)
-        {
-            ResetTimer();
-            
-        }
-       
-    }
+
 
     public void ResetTimer()
     {
         CancelInvoke("TimerStart");
-        CancelInvoke("ResetCheker");
         timer = 0f;
         isCooldown = false; unit_alive = false;
         cooltimeImage.fillAmount = 0f;
@@ -135,7 +116,6 @@ public class UnitCoolTimeUI : MonoBehaviour
         }
 
         InvokeRepeating("TimerStart", 0.01f, 0.01f);
-        InvokeRepeating("ResetCheker", 0.01f, 0.01f);
 
     }
 
