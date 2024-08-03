@@ -191,6 +191,20 @@ public class Skill:MonoBehaviour
 
         }*/
 
+    public void NoneTypeBuff(BuffName name, float value, float duration, List<GameObject> target_list)
+    {
+        if (target_list.Count > 0)
+        {
+            for (int i = 0; i < target_list.Count; i++)
+            {
+                BuffSystem buffSystem = target_list[i].transform.Find("Buff").GetComponent<BuffSystem>();
+
+                buffSystem.Apply(name, value, duration, 0);
+            }
+        }
+    }
+
+
     public void NoneTypeBuff(SkillEntry s, List<Actor> target_list)
     {
         if(target_list.Count > 0)

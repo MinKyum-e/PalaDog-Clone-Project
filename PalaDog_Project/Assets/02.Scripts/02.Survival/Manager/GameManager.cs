@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public int MAX_CHAPTER;
     public int MAX_COST;
 
+    private Skill skill;
 
     public int Unit_LvL = 0;
     //히어로 오브젝트 관리 draggable 소환시 추가, die 시 제거,
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             hero_objects = new Dictionary<MinionUnitIndex, Minion>();
+            skill = GetComponent<Skill>();
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -234,7 +236,22 @@ public class GameManager : MonoBehaviour
 
     public void WaveChange(int wave)
     {
+
         this.wave = wave;
+        List<GameObject> target_list = new List<GameObject>();
+        foreach(var pool in Player.Instance.actor.minion_poolManager.pools)
+        {
+            foreach(var obj in pool)
+            {
+                if (obj.activeSelf)
+                    target_list.Add(obj);
+            }
+            
+        }
+
+        skill.NoneTypeBuff(BuffName.KnockBack, 20f, 1, target_list);
+
+
     }
 
     public void StageClear()
