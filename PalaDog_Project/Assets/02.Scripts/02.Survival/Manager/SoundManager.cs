@@ -141,7 +141,7 @@ public class SoundManager : DontDestroy<SoundManager> {
         m_audio[(int)AUDIO_TYPE.SFX] = gameObject.AddComponent<AudioSource>();
         m_audio[(int)AUDIO_TYPE.SFX].playOnAwake = false;
         m_audio[(int)AUDIO_TYPE.SFX].loop = false;
-        m_audio[(int)AUDIO_TYPE.SFX].volume = 0.3f;
+        m_audio[(int)AUDIO_TYPE.SFX].volume = 0.5f;
 
         m_audio[(int)AUDIO_TYPE.PLAYERSFX] = gameObject.AddComponent<AudioSource>();
         m_audio[(int)AUDIO_TYPE.PLAYERSFX].playOnAwake = false;
