@@ -6,7 +6,7 @@ using UnityEngine;
 public class BtnEvent_ActiveSkill : MonoBehaviour
 {
     Animator auraSkillAnimator;
-
+    public AuraBtnDisable aura_disable;
     public SkillName skillName;
     public MinionUnitIndex minionUnitIndex;
     public UnitCoolTimeUI cooltimeUI;
@@ -23,6 +23,7 @@ public class BtnEvent_ActiveSkill : MonoBehaviour
     {
         auraSkillAnimator.Play(skillName.ToString());
         Player.Instance.aura_skill.ChangeAuraSkill(skillName);
+        aura_disable.UpdateBtnInteractable(skillName);
     }
     private void Update()
     {
