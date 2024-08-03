@@ -196,9 +196,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0918e86ee6168c449bf2af033fea99cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs: {fileID: 4697095133496879935, guid: 46caafe75784ae944b746c27b64769bf, type: 3}
-  pools: []
+  prefabs_arrow: {fileID: 4697095133496879935, guid: 46caafe75784ae944b746c27b64769bf, type: 3}
+  prefabs_rock: {fileID: 4697095133496879935, guid: 8f77bd985bcfa38419325a30cb7dd2f8, type: 3}
+  arrow_pools: []
+  thrower_pools: []
   spawn_position: {x: 0, y: 0, z: 0}
+  hero_arrow: 0
 --- !u!4 &425560529
 Transform:
   m_ObjectHideFlags: 0

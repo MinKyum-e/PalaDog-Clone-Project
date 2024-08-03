@@ -149,7 +149,7 @@ public class Skill:MonoBehaviour
     {
         SkillEntry s = Parser.skill_table_dict[(int)SkillName.HeroArrow];
 
-            var ret = ArrowPool.Instance.Shot(null, transform.position, actor.cur_status.atk * s.DMGCoeff, actor.cur_status.atkSpeed, projectiles.Arrow);
+            var ret = ArrowPool.Instance.Shot(null, transform.position, actor.cur_status.atk * s.DMGCoeff, actor.cur_status.atkSpeed, 100, projectiles.Arrow, true);
 
     }
 

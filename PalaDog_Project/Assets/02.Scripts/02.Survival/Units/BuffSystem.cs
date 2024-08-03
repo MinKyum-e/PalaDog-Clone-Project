@@ -35,6 +35,7 @@ public class BuffSystem : MonoBehaviour
 
     public void Apply(BuffName name, float value, float duration, float free)
     {
+        
         int idx = (int)name;
         SkillEffectEntry entry = Parser.skill_effect_table_dict[(int)name];
 
@@ -91,9 +92,9 @@ public class BuffSystem : MonoBehaviour
                 slot_status[my_slot_idx].coroutines = new List<Coroutine>();
             }
         }
-     
 
 
+        if (!gameObject.activeSelf) return;
         switch (name)
         {
             case BuffName.ATKBoost:
@@ -168,7 +169,7 @@ public class BuffSystem : MonoBehaviour
                 actor.cur_status.atk = actor.cur_status.atk * value;
                 break;
             case BuffName.ATKSpeedBoost:
-                actor.cur_status.atkSpeed *= actor.cur_status.atkSpeed * value;
+                actor.cur_status.atkSpeed = actor.cur_status.atkSpeed * value;
                 break;
             case BuffName.FullImmune:
                 actor.cur_buff.full_immune = true;

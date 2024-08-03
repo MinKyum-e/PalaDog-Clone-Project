@@ -65,7 +65,7 @@ public abstract class Unit : MonoBehaviour
         AnimatorStateInfo stateInfo = actor.animator.GetCurrentAnimatorStateInfo(0);
 
         // 현재 애니메이터 상태가 타겟 애니메이션 상태와 일치하는지 확인합니다.
-        if (stateInfo.IsName("Attack"))
+        if (stateInfo.IsName("Attack") || stateInfo.IsName("Skill0") || stateInfo.IsName("Skill1") || stateInfo.IsName("Skill2"))
         {
             // 타겟 애니메이션 상태의 속도를 설정합니다.
             actor.animator.speed = actor.cur_status.atkSpeed;

@@ -14,10 +14,34 @@ public class ArrowPool : Singleton<ArrowPool>
     public List<GameObject> arrow_pools;
     public List<GameObject> thrower_pools;
     public Vector3 spawn_position;
+    public bool hero_arrow;
 
 
+    private void Awake()
+    {
+        SetPool();
+    }
+    public void SetPool()
+    {
 
-    public GameObject Shot(GameObject target, Vector3 start_position, float atk, float speed, projectiles projectile_name )
+        for (int j = 0; j < 50; j++)
+        {
+            var new_object = Instantiate(prefabs_arrow, transform);
+
+            new_object.SetActive(false);
+            arrow_pools.Add(new_object);
+        }
+
+        for (int j = 0; j < 50; j++)
+        {
+            var new_object = Instantiate(prefabs_rock, transform);
+
+            new_object.SetActive(false);
+            thrower_pools.Add(new_object);
+        }
+    }
+
+    public GameObject Shot(GameObject target, Vector3 start_position, float atk, float speed, float range, projectiles projectile_name , bool hero_skill)
     {
         GameObject select = null;
         GameObject prefab = null;
@@ -47,7 +71,7 @@ public class ArrowPool : Singleton<ArrowPool>
                 select.transform.position = start_position + new Vector3(0, 1, 0);
                 
 
-                select.GetComponent<projectile>().SetInfo(target, atk, speed);
+                select.GetComponent<projectile>().SetInfo(target, atk, speed, range, hero_skill);
                 select.SetActive(true);
                 break;
             }
@@ -56,7 +80,7 @@ public class ArrowPool : Singleton<ArrowPool>
         {
             select = Instantiate(prefab, transform);
             var sr = select.GetComponent<SpriteRenderer>();
-            select.GetComponent<projectile>().SetInfo(target, atk, speed);
+            select.GetComponent<projectile>().SetInfo(target, atk, speed, range, hero_skill);
             select.transform.position = start_position + new Vector3(0, 1, 0);
 
 

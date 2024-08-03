@@ -46,9 +46,9 @@ public class Actions: MonoBehaviour
                 case Chr_job.projectile:
                     GameObject arrow;
                     if ((MinionUnitIndex)actor.ID == MinionUnitIndex.Archer_Elite || (MinionUnitIndex)actor.ID == MinionUnitIndex.Archer_Hero)
-                        arrow = ArrowPool.Instance.Shot(actor.atkTarget, transform.position, actor.cur_status.atk, actor.cur_status.atkSpeed, projectiles.Arrow);
+                        arrow = ArrowPool.Instance.Shot(actor.atkTarget, transform.position, actor.cur_status.atk, actor.cur_status.atkSpeed, actor.cur_status.atkRange, projectiles.Arrow, false);
                     else
-                        arrow = ArrowPool.Instance.Shot(actor.atkTarget, transform.position, actor.cur_status.atk, actor.cur_status.atkSpeed, projectiles.Rock);
+                        arrow = ArrowPool.Instance.Shot(actor.atkTarget, transform.position, actor.cur_status.atk, actor.cur_status.atkSpeed,actor.cur_status.atkRange, projectiles.Rock, false);
 
                     break;
                 case Chr_job.magic:
@@ -100,7 +100,8 @@ public class Actions: MonoBehaviour
 
     public void Hit(float Damage, Chr_job attaker_job)
     {
-        if(CheckAttackIgnore(actor.cur_buff, attaker_job))
+        if (!gameObject.activeSelf) return;
+        if (CheckAttackIgnore(actor.cur_buff, attaker_job))
         {
             actor.spriteRenderer.color = Color.red;
             actor.cur_status.HP -= Damage;
@@ -137,10 +138,12 @@ public class Actions: MonoBehaviour
 
     public bool PlaySkill(int skill_slot_idx)
     {
+        if (!gameObject.activeSelf) return false;
         return skill.UseSkill(skill_slot_idx, (SkillName)actor.cur_status.skill[skill_slot_idx]);
     }
     public bool PlaySkill(SkillName skill_name)
     {
+        if (!gameObject.activeSelf) return false;
         int slot_idx = -1;
         for(int i=0;i < actor.cur_status.skill.Length;i++)
         {

@@ -301,7 +301,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 3601959795449351229}
   m_HandleRect: {fileID: 0}
@@ -914,7 +914,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 8675820744679466868}
   m_HandleRect: {fileID: 0}
@@ -5141,7 +5141,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &2961799285383670885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5172,7 +5172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBar: {fileID: 1223884568215168270}
-  hpBarBack: {fileID: 0}
   HpLineFolder: {fileID: 2233085480479793112}
   HpLineFolderBackGround: {fileID: 5337689155588128368}
 --- !u!1 &6492202677697417446

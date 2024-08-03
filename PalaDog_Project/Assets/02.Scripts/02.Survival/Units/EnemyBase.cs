@@ -14,7 +14,7 @@ public class EnemyBase: MonoBehaviour
     public float bass_HP;
     public float diff_HP;
 
-    public bool first;
+
 
 
 
@@ -37,7 +37,7 @@ public class EnemyBase: MonoBehaviour
     private void OnEnable()
     {
         setStatus();
-        if (!first)
+        if (GameManager.Instance !=null)
         {
             actor.status.HP = bass_HP + bass_HP * (((float)GameManager.Instance.stage - 1) * diff_HP);
             actor.cur_status.HP = bass_HP + bass_HP * (((float)GameManager.Instance.stage - 1) * diff_HP);
@@ -46,7 +46,6 @@ public class EnemyBase: MonoBehaviour
         {
             actor.status.HP = bass_HP;
             actor.cur_status.HP = bass_HP;
-            first = false;
         }
 
     }
