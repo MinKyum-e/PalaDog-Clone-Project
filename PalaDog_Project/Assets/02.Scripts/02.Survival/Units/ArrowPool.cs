@@ -24,7 +24,7 @@ public class ArrowPool : Singleton<ArrowPool>
     public void SetPool()
     {
 
-        for (int j = 0; j < 50; j++)
+        for (int j = 0; j < 25; j++)
         {
             var new_object = Instantiate(prefabs_arrow, transform);
 
@@ -52,11 +52,13 @@ public class ArrowPool : Singleton<ArrowPool>
         {
             pools = arrow_pools;
             prefab = prefabs_arrow;
+            SoundManager.Instance.PlaySFX(SoundManager.SFX_CLIP.Archer_NormalAttack);
         }
         else
         {
             pools = thrower_pools;
             prefab = prefabs_rock;
+            SoundManager.Instance.PlaySFX(SoundManager.SFX_CLIP.Thrower_Attack);
         }
             
 
@@ -87,6 +89,7 @@ public class ArrowPool : Singleton<ArrowPool>
 
             pools.Add(select);
         }
+        
 
         return select;
     }

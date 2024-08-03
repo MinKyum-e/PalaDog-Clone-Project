@@ -22,7 +22,10 @@ public class GoldUI : MonoBehaviour
 
     public void SetGoldUI()
     {
-
+        if (GameManager.Instance.overdrive_timer <= 0)
+        {
+            tmp.color = Color.red;
+        }
         tmp.text = GameManager.Instance.cur_gold.ToString();
     }
 

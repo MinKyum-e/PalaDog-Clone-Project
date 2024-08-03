@@ -40,10 +40,44 @@ public class Actions: MonoBehaviour
             {
                 case Chr_job.melee:
                     actor.atkTarget.GetComponent<Actions>().Hit(actor.cur_status.atk, actor.cur_status.job);
-                    SoundManager.Instance.SetVolumeSFX(0.4f);
-                    SoundManager.Instance.PlaySFX(SoundManager.SFX_CLIP.NormalAttack);
+                    if(actor.tag == "Minion")
+                    {
+                        switch ((MinionUnitIndex)actor.ID)
+                        {
+                            case MinionUnitIndex.Warrior:
+                                SoundManager.Instance.PlaySFX(SoundManager.SFX_CLIP.NormalAttack);
+                                break;
+                            case MinionUnitIndex.Hammer_Hero:
+                            case MinionUnitIndex.Hammer_Elite:
+                                SoundManager.Instance.PlaySFX(SoundManager.SFX_CLIP.Hammer_NormalAttack);
+                                break;
+                            case MinionUnitIndex.Knight_Elite:
+                            case MinionUnitIndex.Knight_Hero:
+                                SoundManager.Instance.PlaySFX(SoundManager.SFX_CLIP.Sword_Attack);
+                                break;
+
+                        }
+                    }
+                    else
+                    {
+                        switch((EnemyUnitindex)actor.ID)
+                        {
+                            case EnemyUnitindex.Bat_long:
+                                SoundManager.Instance.PlaySFX(SoundManager.SFX_CLIP.Bat_Long_Attack);
+                                break;
+                            case EnemyUnitindex.Bat:
+                                SoundManager.Instance.PlaySFX(SoundManager.SFX_CLIP.Bat_Ground_attack);
+                                break;
+                            case EnemyUnitindex.Mushroom_boss:
+                                SoundManager.Instance.PlaySFX(SoundManager.SFX_CLIP.mushRoom_Boss_Attack);
+                                break;
+                        }
+                    }
+                    
+                    
                     break;
                 case Chr_job.projectile:
+                    
                     GameObject arrow;
                     if ((MinionUnitIndex)actor.ID == MinionUnitIndex.Archer_Elite || (MinionUnitIndex)actor.ID == MinionUnitIndex.Archer_Hero)
                         arrow = ArrowPool.Instance.Shot(actor.atkTarget, transform.position, actor.cur_status.atk, actor.cur_status.atkSpeed, actor.cur_status.atkRange, projectiles.Arrow, false);

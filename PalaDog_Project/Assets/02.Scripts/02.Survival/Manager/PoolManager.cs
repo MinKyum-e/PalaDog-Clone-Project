@@ -78,7 +78,7 @@ public class PoolManager : MonoBehaviour
         for(int i=0;i<prefabs.Length;i++)
         {
 
-            for(int j=0;j<50;j++)
+            for(int j=0;j<25;j++)
             {
                 if (prefabs[i].name.Contains("Boss"))
                     break;

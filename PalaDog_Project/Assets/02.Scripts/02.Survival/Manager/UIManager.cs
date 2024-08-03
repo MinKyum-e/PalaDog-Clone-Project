@@ -17,6 +17,8 @@ public class UIManager : MonoBehaviour
     public GameObject FadeIn;
     public GameObject FadeOut;
     public GameObject helppanel;
+    public GameObject FadeOut_next_stage1;
+    public GameObject FadeOut_next_stage2;
 
 
     private UIPageInfo CurrentPageInfo;

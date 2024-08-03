@@ -5,6 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class BtnEvent : MonoBehaviour
 {
+    public void GameClear()
+    {
+        GameManager.Instance.GameClear();
+    }
+    public void StageClear()
+    {
+        GameManager.Instance.StageChange();
+    }
+
+    public void SpawnStageBoss(int chapter)
+    {
+        GameManager.Instance.chapter = chapter;
+        GameManager.Instance.stage = 5 * chapter;
+        GameManager.Instance.wave = 4;
+    }
+
+    public void ChapterChange(int chapter)
+    {
+        WaveManager.Instance.ClearMonsterObjectOnStage();
+        GameManager.Instance.chapter = chapter;
+        GameManager.Instance.stage = ((chapter-1)*5) + 1;
+        GameManager.Instance.wave = 1;
+        SceneManager.LoadScene("Chapter" + chapter); 
+    }
 
 
     public void GamePlay()

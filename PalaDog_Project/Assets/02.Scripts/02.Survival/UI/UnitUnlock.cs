@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -23,7 +24,9 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
     
 
     private Image image_renderer;
+    public Sprite locked_sprite;
     public Sprite unlocked_sprite;
+    public Sprite unshow;
 
     public GameObject cost_object;
     private int cost;
@@ -82,6 +85,27 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
      
     }
 
+    private void Update()
+    {
+        if( can_unlock)
+        {
+            if (!is_lock)
+            {
+                image_renderer.sprite = unlocked_sprite;
+            }
+            else if (ShopManager.Instance.CheckPrerequisite(ShopEnums.UnLockType.InGameUnit, prerequisite))
+            {
+                image_renderer.sprite = locked_sprite;
+            }
+            else
+            {
+                image_renderer.sprite = unshow;
+            }
+
+
+        }
+    }
+
 
 
     public void OnPointerClick(PointerEventData eventData)
@@ -97,10 +121,17 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
     {
         is_lock = false;
         image_renderer.sprite = unlocked_sprite;
-        cost_object.SetActive(true);
-        cost_object.transform.GetChild(0).GetComponent<TMP_Text>().text = cost.ToString();
+        if(cost_object != null)
+        {
+            cost_object.SetActive(true);
+            cost_object.transform.GetChild(0).GetComponent<TMP_Text>().text = cost.ToString();
+        }
+        
         ShopManager.Instance.AddToUnLockList(ShopEnums.UnLockType.InGameUnit, shop_index);
-        if(!already_unlock && can_unlock && click)
-            GameManager.Instance.StageChange();
+        if (!already_unlock && can_unlock && click)
+        {
+            UIManager.Instance.FadeOut_next_stage1.SetActive(true);
+        }
+            
     }
 }

@@ -1844,8 +1844,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1de464a1928c34d93ff89fc45bd9c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Fadeout: {fileID: 0}
-  skipbtn: {fileID: 0}
   wait_time: 2
 --- !u!1 &1975351944
 GameObject:

@@ -74,6 +74,11 @@ public class UIPanelChanger : MonoBehaviour
         else
             Time.timeScale = 1.0f;
     }
+ public void OnOffPanelNoTimeStop(int idx)
+    {
+        panels[idx].SetActive(!panels[idx].activeSelf);
+
+    }
 
     public void AllPanelHide()
     {

@@ -18,6 +18,7 @@ public enum GameState
     GAME_STAGE_CLEAR,
     GAME_CHAPTER_CLEAR,
     GAME_CLEAR,
+    DRAGING,
     
 }
 
@@ -221,6 +222,8 @@ public class GameManager : MonoBehaviour
         Player.Instance.transform.position = player_defualt_position;
         Player.Instance.actor.can_action = true;
         state = GameState.GAME_PLAY;
+        spawnCloud.gameObject.SetActive(false);
+        poisonFog.gameObject.SetActive(false);
         SceneManager.LoadScene("Chapter1");
 
        
@@ -254,13 +257,19 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void StageClear()
+    public bool StageClear()
     {
-        state = GameState.GAME_STAGE_CLEAR;
+        if(state != GameState.DRAGING)
+        {
+            state = GameState.GAME_STAGE_CLEAR;
+
+            UIManager.Instance.SetCurrentPage(UIPageInfo.GameStageClear);
+            WaveManager.Instance.ClearMonsterObjectOnStage();
+            Time.timeScale = 0;
+            return true;
+        }
+        return false;
         
-        UIManager.Instance.SetCurrentPage(UIPageInfo.GameStageClear);
-        WaveManager.Instance.ClearMonsterObjectOnStage();
-        Time.timeScale = 0;
     }
 
 

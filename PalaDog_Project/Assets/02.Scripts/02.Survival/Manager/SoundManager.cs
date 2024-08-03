@@ -13,6 +13,7 @@ public class SoundManager : DontDestroy<SoundManager> {
         MAX,
     }
 
+
     public enum BGM_CLIP
     {
         ingame
@@ -20,7 +21,18 @@ public class SoundManager : DontDestroy<SoundManager> {
 
     public enum SFX_CLIP
     {
-       NormalAttack,
+       NormalAttack,//
+       Archer_NormalAttack,//
+       Hammer_NormalAttack,//
+       Hammer_Hero_Skill,//
+       Sword_Attack,//
+       Thrower_Attack,//
+       Wizard_Elite_Skill,//
+       Wizard_HeroSkill,//
+       Bat_Boss_Skill2,//
+       mushRoom_Boss_Attack,//
+       Bat_Ground_attack,//
+       Bat_Long_Attack,//
     }
 
     public enum PLAYER_SFX_CLIP
@@ -41,7 +53,6 @@ public class SoundManager : DontDestroy<SoundManager> {
     public void PlayBGM(BGM_CLIP bgm)
     {
         m_audio[(int)AUDIO_TYPE.BGM].clip = m_bgmClip[(int)bgm];
-        m_audio[(int)AUDIO_TYPE.BGM].volume = 1;
         m_audio[(int)AUDIO_TYPE.BGM].Play();
     }
 
@@ -53,6 +64,7 @@ public class SoundManager : DontDestroy<SoundManager> {
             case SFX_CLIP.NormalAttack:
                 m_audio[(int)AUDIO_TYPE.SFX].time = start_time[0]; break;
         }
+       
         m_audio[(int)AUDIO_TYPE.SFX].PlayOneShot(m_sfxClip[(int)sfx]); //오디오 소스는 1개인데 거기서 사운드가 바뀌면 소리가 끊겨서 PlayOneShot을 통해 소리가안끊기게함
         m_audio[(int)AUDIO_TYPE.SFX].time = 0;
     }
@@ -119,13 +131,17 @@ public class SoundManager : DontDestroy<SoundManager> {
     protected override void OnAwake()
     {
         base.OnStart();
+
+        
         m_audio[(int)AUDIO_TYPE.BGM] = gameObject.AddComponent<AudioSource>();
         m_audio[(int)AUDIO_TYPE.BGM].playOnAwake = false;
         m_audio[(int)AUDIO_TYPE.BGM].loop = true;
-
+        m_audio[(int)AUDIO_TYPE.BGM].volume = 0.5f;
+        
         m_audio[(int)AUDIO_TYPE.SFX] = gameObject.AddComponent<AudioSource>();
         m_audio[(int)AUDIO_TYPE.SFX].playOnAwake = false;
         m_audio[(int)AUDIO_TYPE.SFX].loop = false;
+        m_audio[(int)AUDIO_TYPE.SFX].volume = 0.3f;
 
         m_audio[(int)AUDIO_TYPE.PLAYERSFX] = gameObject.AddComponent<AudioSource>();
         m_audio[(int)AUDIO_TYPE.PLAYERSFX].playOnAwake = false;

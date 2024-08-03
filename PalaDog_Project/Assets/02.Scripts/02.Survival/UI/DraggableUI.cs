@@ -17,6 +17,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     private UnitCoolTimeUI cooltimeUI;
     /* private Transform food_text_transform;*/
     private Vector2 base_size;
+    private GameState last_gameState;
     
 
 
@@ -44,8 +45,11 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+
         if(locker.is_lock == false )
         {
+            last_gameState = GameManager.Instance.state;
+            GameManager.Instance.state = GameState.DRAGING;
             base_size = rect.sizeDelta;
             previousParent = transform.parent;
             transform.SetParent(canvas);
@@ -90,6 +94,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         if(locker.is_lock == false )
         {
+            
             rect.sizeDelta = base_size;
             UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
             Vector3 spawnPoint;
@@ -136,7 +141,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             canvasGroup.blocksRaycasts = true;
             FadeEffect.Instance.gameObject.SetActive(false);
             Time.timeScale = 1f;
-            
+            GameManager.Instance.state = last_gameState;
         }
         
     }

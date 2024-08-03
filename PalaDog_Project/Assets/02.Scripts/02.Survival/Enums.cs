@@ -97,6 +97,16 @@ public enum MinionUnitIndex
 
 }
 
+public enum EnemyUnitindex
+{
+    Bat = 10111,
+    Bat_long = 10121,
+    Bat_boss = 10135,
+    Mushroom = 10211,
+    Mushroom_long = 10221,
+    Mushroom_boss = 10235,
+}
+
 
 public enum UnitGrade
 {

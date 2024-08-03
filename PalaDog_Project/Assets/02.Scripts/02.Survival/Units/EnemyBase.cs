@@ -27,7 +27,6 @@ public class EnemyBase: MonoBehaviour
         actor = GetComponent<Actor>();
         action = GetComponent<Actions>();
         spriteResolver = GetComponent<SpriteResolver>();
-        DontDestroyOnLoad(gameObject);
     }
     public static EnemyBase Instance()
     {
@@ -55,7 +54,7 @@ public class EnemyBase: MonoBehaviour
         if (actor.cur_status.HP <= 0)
         {
             actor.isDie = true;
-            Die();
+            StartCoroutine(Die());
         }
         else if (actor.cur_status.HP <= (actor.status.HP * 0.25f) && GameManager.Instance.wave == 2)
         {
@@ -70,23 +69,41 @@ public class EnemyBase: MonoBehaviour
 
     }
 
-    public void Die()
+    public void DieBtn()
     {
-        if(WaveManager.Instance.CheckBossStage())
-        {
-            GameManager.Instance.WaveChange(4);
-            spriteResolver.SetCategoryAndLabel("base", "0");
-            GetComponent<SpriteRenderer>().color = Color.white;
-        }
-        else
+        StartCoroutine(Die());
+    }
+
+   IEnumerator Die()
+    {
+        while(true)
         {
 
-            GameManager.Instance.StageClear();
-            spriteResolver.SetCategoryAndLabel("base", "0");
-            GetComponent<SpriteRenderer>().color = Color.white;
+            if (WaveManager.Instance.CheckBossStage())
+            {
+                GameManager.Instance.WaveChange(4);
+                spriteResolver.SetCategoryAndLabel("base", "0");
+                GetComponent<SpriteRenderer>().color = Color.white;
+                gameObject.SetActive(false);
+                break;
+            }
+            else
+            {
 
+                if(GameManager.Instance.StageClear())
+                {
+                    spriteResolver.SetCategoryAndLabel("base", "0");
+                    GetComponent<SpriteRenderer>().color = Color.white;
+                    gameObject.SetActive(false);
+                    break;
+                }
+                
+
+            }
+            yield return new WaitForSeconds(0.1f);
+            
         }
-        gameObject.SetActive(false);
+        
     }
 
     public void setStatus()

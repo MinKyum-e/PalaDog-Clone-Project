@@ -69,6 +69,7 @@ public class Skill:MonoBehaviour
 
     public bool UseSkill(int skill_slot_idx, SkillName skill_name)//Ω∫≈≥¿Ã∏ß, ≈∏∞Ÿ, Ω∫≈≥ ΩΩ∑Ì ¿Œµ¶Ω∫
     {
+        
         SkillEntry s = Parser.skill_table_dict[(int)skill_name];
         List<Actor> targets = SearchingTargets(skill_name);
         if(targets.Count == 0 && actor.skills[skill_slot_idx].target != null)
@@ -98,7 +99,27 @@ public class Skill:MonoBehaviour
                     return false;
             }
         }
-       
+
+        switch (skill_name)
+        {
+            case SkillName.HammerAttack:
+                SoundManager.Instance.PlaySFX(SoundManager.SFX_CLIP.Hammer_NormalAttack);
+                break;
+            case SkillName.LegendHammerAttack:
+                SoundManager.Instance.PlaySFX(SoundManager.SFX_CLIP.Hammer_Hero_Skill);
+                break;
+            case SkillName.Magic:
+                SoundManager.Instance.PlaySFX(SoundManager.SFX_CLIP.Wizard_Elite_Skill);
+                break;
+            case SkillName.EpicMagic:
+                SoundManager.Instance.PlaySFX(SoundManager.SFX_CLIP.Wizard_HeroSkill);
+                break;
+
+            case SkillName.LifeDrain:
+                SoundManager.Instance.PlaySFX(SoundManager.SFX_CLIP.Bat_Boss_Skill2);
+                break;
+        }
+
         return true;
     }
 
