@@ -9,7 +9,8 @@ public enum projectiles{
 }
 public class ArrowPool : Singleton<ArrowPool>
 {
-    public GameObject prefabs;
+    public GameObject prefabs_arrow;
+    public GameObject prefabs_rock;
     public List<GameObject> arrow_pools;
     public List<GameObject> thrower_pools;
     public Vector3 spawn_position;
@@ -19,15 +20,21 @@ public class ArrowPool : Singleton<ArrowPool>
     public GameObject Shot(GameObject target, Vector3 start_position, float atk, float speed, projectiles projectile_name )
     {
         GameObject select = null;
+        GameObject prefab = null;
         List<GameObject> pools;
 
 
         if (projectile_name == projectiles.Arrow)
         {
             pools = arrow_pools;
+            prefab = prefabs_arrow;
         }
         else
+        {
             pools = thrower_pools;
+            prefab = prefabs_rock;
+        }
+            
 
 
         for (int i = 0; i < pools.Count; i++)
@@ -47,7 +54,7 @@ public class ArrowPool : Singleton<ArrowPool>
         }
         if (select == null)
         {
-            select = Instantiate(prefabs, transform);
+            select = Instantiate(prefab, transform);
             var sr = select.GetComponent<SpriteRenderer>();
             select.GetComponent<projectile>().SetInfo(target, atk, speed);
             select.transform.position = start_position + new Vector3(0, 1, 0);

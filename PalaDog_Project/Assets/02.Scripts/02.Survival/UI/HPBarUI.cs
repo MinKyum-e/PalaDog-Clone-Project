@@ -7,7 +7,6 @@ public class HPBarUI : MonoBehaviour
 {
     Actor actor;
     public Slider hpBar;
-    public Slider hpBarBack;
     float last_hp;
     float cur_hp;
     bool back_hp_hit = false;
