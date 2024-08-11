@@ -34516,9 +34516,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 849782540432027831, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 985240791069639830, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
       propertyPath: m_Name
       value: 'UI '
+      objectReference: {fileID: 0}
+    - target: {fileID: 1003512642568146107, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1030432397017942741, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
       propertyPath: m_IsActive
@@ -34537,6 +34545,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1587136773649433122, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2126023395099970491, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -34551,12 +34563,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2542397226198173165, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2792534630718808845, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2904850384390452624, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 51c878d43f6656f4fa01bcdd58028046, type: 3}
+    - target: {fileID: 3332474622905176658, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3504841282660264058, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3511427933174675412, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3579658077158810347, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -34582,6 +34610,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4598727134973232545, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648105886634137396, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 0.76415086
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648105886634137396, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 0.76415086
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648105886634137396, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4751502038685401738, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -34677,6 +34721,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 3-7
       objectReference: {fileID: 0}
+    - target: {fileID: 6025120831996494944, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6488946752720881237, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
       propertyPath: m_Name
       value: 3-8
@@ -34701,6 +34749,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -80
       objectReference: {fileID: 0}
+    - target: {fileID: 7941443841533520069, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 0.7449269
+      objectReference: {fileID: 0}
+    - target: {fileID: 7941443841533520069, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 0.9748427
+      objectReference: {fileID: 0}
+    - target: {fileID: 7941443841533520069, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 0.80543107
+      objectReference: {fileID: 0}
     - target: {fileID: 7960261536612621902, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -320
@@ -34708,6 +34768,10 @@ PrefabInstance:
     - target: {fileID: 8152158295588302447, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8352769046442507777, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8605284024905553366, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
       propertyPath: m_AnchorMax.x
@@ -34720,6 +34784,10 @@ PrefabInstance:
     - target: {fileID: 8706562178047091288, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -160
+      objectReference: {fileID: 0}
+    - target: {fileID: 8817032246409205650, guid: 01900e3d68cc5c74fbbc425cb631aa36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
