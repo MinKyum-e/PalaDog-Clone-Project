@@ -106,9 +106,8 @@ MonoBehaviour:
   actor: {fileID: 0}
   action: {fileID: 0}
   spriteResolver: {fileID: 0}
-  bass_HP: 3500
-  diff_HP: 0.15
-  first: 1
+  bass_HP: 4000
+  diff_HP: 0.25
 --- !u!114 &1439707381466935915
 MonoBehaviour:
   m_ObjectHideFlags: 0
