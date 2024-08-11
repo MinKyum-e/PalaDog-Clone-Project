@@ -42,20 +42,20 @@ ID 참조),,,,,,,,,,,,,,,,,,
 "효과 2 지속시간"",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",,,,,,,,,,,,,,,,,,
 Skill_Index,Skill_Name,Skill_DevName,Skill_Group,Skill_Act,Skill_CoolTime,Skill_Type,Skill_TargetType,Skill_TypeValue,Skill_BaseStat,Skill_DMGCoeff,Skill_Effect1Index,Skill_Effect1Value,Skill_Effect1Duration,Skill_Effect2Index,Skill_Effect2Value,Skill_Effect2Duration,Skill_TargetSearching,Skill_TargetSearchingRange
 int,string,string,int,enum,float,enum,enum,int,enum,float,int,int,int,enum,float,float,,
-10001,Skill_Knight_Advanced_001,자가 치유,1004,P,15,Target,Unit,1,None,0,-1,2,10,2,30,6,FALSE,5
-10002,Skill_Knight_Hero_001,방패 펼치기,1004,A,45,Target,Unit,8,None,0,3,0,10,-1,0,0,TRUE,99
-10011,Skill_Hammer_rare_001,해머 치기,1004,P,15,Target,Enemy,5,Atk,0.8,5,0,3,-1,0,0,TRUE,3
-10012,Skill_Hammer_rare_001,해머 치기 에픽,1004,A,30,Range,Enemy,10,Atk,0.8,5,0,5,-1,0,0,TRUE,7
+10001,Skill_Knight_Advanced_001,자가 치유,1004,P,12,Target,Unit,1,None,0,-1,2,10,2,40,6,FALSE,5
+10002,Skill_Knight_Hero_001,방패 펼치기,1004,A,40,Target,Unit,8,None,0,3,0,10,-1,0,0,TRUE,99
+10011,Skill_Hammer_rare_001,해머 치기,1004,P,15,Target,Enemy,5,Atk,0.7,5,0,3,-1,0,0,TRUE,3
+10012,Skill_Hammer_rare_001,해머 치기 에픽,1004,A,30,Range,Enemy,10,Atk,0.7,5,0,5,-1,0,0,TRUE,7
 10021,Skill_Archer_Advanced_001,공속증가,1004,P,15,Target,Unit,1,None,0,-1,2,10,1,1.2,6,FALSE,5
-10022,Skill_Archer_hero_001,히어로화살,1004,A,40,Target,Enemy,1,Atk,3,-1,0,0,-1,0,0,TRUE,8
-10031,Skill_Wizard_rare_001,마법스킬,1004,P,10,Range,Enemy,7,Magic,1.5,-1,0,0,-1,0,0,TRUE,7
-10032,Skill_Wizard_rare_001,마법에픽스킬,1004,A,60,Range,Enemy,10,Magic,5,-1,0,0,-1,0,0,TRUE,7
+10022,Skill_Archer_hero_001,히어로화살,1004,A,20,Target,Enemy,1,Atk,3,-1,0,0,-1,0,0,TRUE,8
+10031,Skill_Wizard_rare_001,마법스킬,1004,P,20,Range,Enemy,7,Magic,1.5,-1,0,0,-1,0,0,TRUE,7
+10032,Skill_Wizard_rare_001,마법에픽스킬,1004,A,45,Range,Enemy,10,Magic,3,-1,0,0,-1,0,0,TRUE,7
 ,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,
 20011,Skill_Bat_Boss_001,날개치기,1008,P,15,Range,Unit,5,Atk,0.4,6,8,0,-1,0,0,TRUE,5
 20012,Skill_Bat_Boss_002,흡혈,1002,P,30,Range,Unit,15,Atk,0.2,-1,100,5,4,10,3,TRUE,4
-20021,Skill_Mushroom_Boss_001,버섯소환,1008,P,30,TargetFar,Unit,1,None,0,8,10211,2,8,10221,2,TRUE,8
+20021,Skill_Mushroom_Boss_001,버섯소환,1008,P,20,TargetFar,Unit,1,None,0,8,10211,2,8,10221,2,TRUE,8
 20022,Skill_Mushroom_Boss_002,독구름,1002,P,15,Target,Unit,5,None,0,4,0.2,10,-1,0,0,TRUE,5
 ,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,

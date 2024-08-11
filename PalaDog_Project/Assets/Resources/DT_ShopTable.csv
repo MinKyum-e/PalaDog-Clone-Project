@@ -39,10 +39,10 @@ int,string,string,int,string,enum,int,enum,int,int,//string
 10024,Shop_Buff_MaxCost_4,상점_강화_최대 코스트_4레벨,1002,최대 코스트 LV.4,Enforce,10023,Gold,1500,25,최대 코스트 4레벨. 25코스트
 10025,Shop_Buff_MaxCost_5,상점_강화_최대 코스트_5레벨,1002,최대 코스트 LV.5,Enforce,10024,Gold,2000,33,최대 코스트 5레벨. 33코스트
 10031,Shop_Buff_MaxFood_1,상점_강화_최대 식량_1레벨,1003,유닛 레벨,Enforce,0,Gold,0,0,lvl0
-10032,Shop_Buff_MaxFood_2,상점_강화_최대 식량_2레벨,1003,유닛 레벨,Enforce,10031,Gold,800,1,lvl1
-10033,Shop_Buff_MaxFood_3,상점_강화_최대 식량_3레벨,1003,유닛 레벨,Enforce,10032,Gold,1200,2,lvl2
-10034,Shop_Buff_MaxFood_4,상점_강화_최대 식량_4레벨,1003,유닛 레벨,Enforce,10033,Gold,1500,3,lvl3
-10035,Shop_Buff_MaxFood_5,상점_강화_최대 식량_5레벨,1003,유닛 레벨,Enforce,10034,Gold,2000,4,lvl4
+10032,Shop_Buff_MaxFood_2,상점_강화_최대 식량_2레벨,1003,유닛 레벨,Enforce,10031,Gold,1200,1,lvl1
+10033,Shop_Buff_MaxFood_3,상점_강화_최대 식량_3레벨,1003,유닛 레벨,Enforce,10032,Gold,1800,2,lvl2
+10034,Shop_Buff_MaxFood_4,상점_강화_최대 식량_4레벨,1003,유닛 레벨,Enforce,10033,Gold,2400,3,lvl3
+10035,Shop_Buff_MaxFood_5,상점_강화_최대 식량_5레벨,1003,유닛 레벨,Enforce,10034,Gold,3000,4,lvl4
 ,,,,,,,,,,
 ,,,,,,,,,,
 ,,,,,,,,,,
