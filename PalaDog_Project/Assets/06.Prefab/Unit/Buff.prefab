@@ -121,8 +121,9 @@ MonoBehaviour:
   - {fileID: 7577447710614807345, guid: bae459e4f2a023840b14aa8c8e0b7c5d, type: 3}
   - {fileID: 7577447710614807345, guid: 15f53e9c6fbc40e4bae4b4492785624b, type: 3}
   slot_num: 0
-  coroutine_lock: 0
   slot_status: []
+  sort_req: 0
+  stun_cnt: 0
 --- !u!1 &3978372210711068779
 GameObject:
   m_ObjectHideFlags: 0

@@ -219,6 +219,7 @@ public class GameManager : MonoBehaviour
         ShopManager.Instance.ClearInGameShop();
         Player.Instance.actor.status = Parser.minion_status_dict[(int)MinionUnitIndex.Player].common;
         Player.Instance.actor.cur_status = Player.Instance.actor.status;
+        Player.Instance.transform.Find("Buff").GetComponent<BuffSystem>().buff_init();
         Player.Instance.transform.position = player_defualt_position;
         Player.Instance.actor.can_action = true;
         state = GameState.GAME_PLAY;
@@ -296,6 +297,7 @@ public class GameManager : MonoBehaviour
         cur_cost = 0;
         Player.Instance.transform.position = player_defualt_position;
         Player.Instance.actor.cur_status.HP = Player.Instance.actor.status.HP;
+        Player.Instance.transform.Find("Buff").GetComponent<BuffSystem>().buff_init();
         EnemyBase.Instance().gameObject.SetActive(true);
         EnemyBase.Instance().GetComponent<Actor>().isDie = false;
         overdrive_timer = overdrive_time;
