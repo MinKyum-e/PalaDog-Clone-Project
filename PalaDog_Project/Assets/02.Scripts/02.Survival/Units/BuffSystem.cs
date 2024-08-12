@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 using UnityEngine.UIElements;
-using DG.Tweening; //import
+using DG.Tweening;
+using UnityEditor.SearchService; //import
 
 
 public class BuffSystem : MonoBehaviour
@@ -21,15 +22,69 @@ public class BuffSystem : MonoBehaviour
     [SerializeField]
     public GameObject[] buffs; // 할당할 버프들의 리스트
     public int slot_num = 0;
-    public bool coroutine_lock = false;
 
     public Slot[] slot_status;
 
     Actor actor;
+
+    public bool sort_req = false;
+
+    public int stun_cnt = 0;
     private void Awake()
     {
         actor = transform.parent.GetComponent<Actor>();
         slot_status = new Slot[buffs.Length];
+    }
+
+   public void buff_init()
+    {
+        SlotFree();
+        stun_cnt = 0;
+        sort_req = false;
+    }
+
+    private void Update()
+    {
+        if(sort_req)
+        {
+            sort_buffs();
+        }
+        
+    }
+
+    public void sort_buffs()
+    {
+        List<Transform> active_list = new List<Transform>();
+        List<int> cur_pos = new List<int>();
+        for(int i=0;i<transform.childCount;i++)
+        {
+            if(transform.GetChild(i).childCount > 0)
+            {
+                Transform obj = transform.GetChild(i).GetChild(0);
+                if (obj.gameObject.activeSelf)
+                {
+                    active_list.Add(obj);
+                    cur_pos.Add(i);
+                }
+
+                else
+                    Destroy(obj.gameObject);
+            }
+            
+        }
+
+        int cnt  =0 ;
+        for(int i=0;i<active_list.Count;i++)
+        {
+            active_list[i].transform.SetParent(transform.GetChild(i));
+            active_list[i].localPosition = Vector3.zero;
+
+            slot_status[i] = slot_status[cur_pos[i]];
+            cnt++;
+        }
+
+        slot_num = cnt;
+        sort_req = false;
     }
 
 
@@ -39,53 +94,60 @@ public class BuffSystem : MonoBehaviour
         int idx = (int)name;
         SkillEffectEntry entry = Parser.skill_effect_table_dict[(int)name];
 
-        
-        for (int i = 0; i < slot_num; i++)
-        {
-            if (transform.GetChild(i).childCount > 0)
-            {
-                Transform buf = transform.GetChild(i).GetChild(0);
-                if (buf.name.Contains(name.ToString()))
+        //버프 중첩가능
+        /*        for (int i = 0; i < slot_num; i++)
                 {
-                    foreach (Coroutine c in slot_status[i].coroutines)
+                    if (transform.GetChild(i).childCount > 0)
                     {
-                        if (c != null)
+                        Transform buf = transform.GetChild(i).GetChild(0);
+                        if (buf.name.Contains(name.ToString()))
                         {
-                            StopCoroutine(c);
+                            foreach (Coroutine c in slot_status[i].coroutines)
+                            {
+                                if (c != null)
+                                {
+                                    StopCoroutine(c);
+                                }
+                            }
+                            Destroy(buf.gameObject);
+                            while (coroutine_lock)
+                            {
+                            }
+                            coroutine_lock = true;
+                            for (int j = i + 1; j < slot_num; j++)
+                            {
+                                Transform t_buff = transform.GetChild(j).GetChild(0);
+                                Transform c = transform.GetChild(j - 1);
+
+                                t_buff.transform.SetParent(c);
+                                t_buff.transform.localPosition = Vector3.zero;
+
+                                //slot 정보도 업데이트
+                                slot_status[i - 1] = slot_status[i];
+                            }
+                            slot_num--;
+                            coroutine_lock = false;
+
                         }
                     }
-                    Destroy(buf.gameObject);
-                    while (coroutine_lock)
-                    {
-                    }
-                    coroutine_lock = true;
-                    for (int j = i + 1; j < slot_num; j++)
-                    {
-                        Transform t_buff = transform.GetChild(j).GetChild(0);
-                        Transform c = transform.GetChild(j - 1);
 
-                        t_buff.transform.SetParent(c);
-                        t_buff.transform.localPosition = Vector3.zero;
-
-                        //slot 정보도 업데이트
-                        slot_status[i - 1] = slot_status[i];
-                    }
-                    slot_num--;
-                    coroutine_lock = false;
-
-                }
-            }
-
-        }
-        Transform slot = transform.GetChild(slot_num++);
-        GameObject buff = null;
-        int my_slot_idx = slot_num - 1;
-
-        if (name != BuffName.Spawn)
+                }*/
+        if(sort_req)
         {
+            sort_buffs();
+        }
+
+        int my_slot_idx = slot_num;
+
+        GameObject buff = null;
+        if (name != BuffName.Spawn && name != BuffName.KnockBack)
+        {
+            Transform slot = transform.GetChild(slot_num++);
+            my_slot_idx = slot_num - 1; 
             if (slot != null)
             {
                 buff = Instantiate(buffs[idx], slot);
+                buff.GetComponent<SpriteRenderer>().sortingOrder = transform.parent.GetComponent<SpriteRenderer>().sortingOrder + 1;
                 buff.transform.SetParent(slot);
                 //슬롯 정보 추가
                 slot_status[my_slot_idx].buff_type = entry.type;
@@ -94,7 +156,9 @@ public class BuffSystem : MonoBehaviour
         }
 
 
-        if (!gameObject.activeSelf) return;
+
+
+        if (!transform.parent.gameObject.activeSelf) return;
         switch (name)
         {
             case BuffName.ATKBoost:
@@ -102,16 +166,15 @@ public class BuffSystem : MonoBehaviour
             case BuffName.FullImmune:
             case BuffName.Stun:
             case BuffName.MoveSpeed:
-                slot_status[my_slot_idx].coroutines.Add(StartCoroutine(WaitBuffEnd(buff, my_slot_idx,  duration)));
+                slot_status[my_slot_idx].coroutines.Add(StartCoroutine(WaitBuffEnd(buff,  duration)));
                 slot_status[my_slot_idx].coroutines.Add(StartCoroutine(OneTime(name, value, duration)));
                 break;
             case BuffName.Heal:
             case BuffName.Poison:
-                slot_status[my_slot_idx].coroutines.Add(StartCoroutine(WaitBuffEnd(buff, my_slot_idx, duration)));
+                slot_status[my_slot_idx].coroutines.Add(StartCoroutine(WaitBuffEnd(buff,  duration)));
                 slot_status[my_slot_idx].coroutines.Add(StartCoroutine(TickBuff(name, value, duration)));
                 break;
             case BuffName.KnockBack:
-                slot_status[my_slot_idx].coroutines.Add(StartCoroutine(WaitBuffEnd(buff, my_slot_idx, duration)));
                 KnockBack(value, free);
                 break;
 
@@ -179,6 +242,7 @@ public class BuffSystem : MonoBehaviour
                 break;
 
             case BuffName.Stun:
+                stun_cnt++;
                 actor.cur_buff.stun = true;
                 break;
         }
@@ -201,7 +265,9 @@ public class BuffSystem : MonoBehaviour
                 actor.cur_status.moveSpeed = actor.cur_status.moveSpeed / value;
                 break;
             case BuffName.Stun:
-                actor.cur_buff.stun = false;
+                stun_cnt--;
+                if(stun_cnt == 0)
+                    actor.cur_buff.stun = false;
                 break;
         }
     }
@@ -226,38 +292,23 @@ public class BuffSystem : MonoBehaviour
         
     }
 
-    private IEnumerator WaitBuffEnd(GameObject buff, int slot_idx,  float duration)
+    private IEnumerator WaitBuffEnd(GameObject buff,  float duration)
     {
         // 버프 지속 시간 대기
         yield return new WaitForSeconds(duration);
         //버프 슬룻 정렬
-        if(slot_num -1 == slot_idx)
-        {
-            Destroy(buff);
-            slot_num--;
-        }
-        else
-        {
-            Destroy(buff);
-            for (int i = slot_idx + 1;i<= slot_num - 1; i++)
-            {
-                Transform t_buff = transform.GetChild(i).GetChild(0);
-                Transform c = transform.GetChild(i-1);
-               
-                t_buff.transform.SetParent(c);
-                t_buff.transform.localPosition = Vector3.zero;
 
-                //slot 정보도 업데이트
-                slot_status[i - 1] = slot_status[i]; 
-            }
-            slot_num--;
-        }
+            buff.SetActive(false);
+        sort_req = true ;
+
+
     }
 
 
     private void OnDisable()
     {
         SlotFree();
+
         
     }
 
@@ -267,14 +318,17 @@ public class BuffSystem : MonoBehaviour
         {
             if (transform.GetChild(i).childCount > 0)
             {
+                
                 Transform buf = transform.GetChild(i).GetChild(0);
                 if (buf != null)
                 {
+                    
                     Destroy(buf.gameObject);
                 }
             }
 
         }
+        StopAllCoroutines();
 
         slot_num = 0;
     }

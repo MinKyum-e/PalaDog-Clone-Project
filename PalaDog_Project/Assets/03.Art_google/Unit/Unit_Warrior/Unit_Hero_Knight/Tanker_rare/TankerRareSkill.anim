@@ -107,7 +107,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.7
+  - time: 0
     functionName: StartSkillTimer
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -121,7 +121,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1
+  - time: 0.9
     functionName: EndUnitAction
     data: 
     objectReferenceParameter: {fileID: 0}

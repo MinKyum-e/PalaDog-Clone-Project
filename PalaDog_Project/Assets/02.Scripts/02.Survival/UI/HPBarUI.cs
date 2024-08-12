@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class HPBarUI : MonoBehaviour
 {
+    Canvas canvas;
     Actor actor;
     public Slider hpBar;
     float last_hp;
@@ -15,7 +16,9 @@ public class HPBarUI : MonoBehaviour
     public GameObject HpLineFolderBackGround;
     void OnEnable()
     {
+        canvas = GetComponent<Canvas>();
        actor = transform.parent.GetComponent<Actor>();
+        canvas.sortingOrder = actor.GetComponent<SpriteRenderer>().sortingOrder;
         setinit();
     }
     public void setinit()

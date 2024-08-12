@@ -85,12 +85,18 @@ public class Actions: MonoBehaviour
                         arrow = ArrowPool.Instance.Shot(actor.atkTarget, transform.position, actor.cur_status.atk, actor.cur_status.atkSpeed,actor.cur_status.atkRange, projectiles.Rock, false);
 
                     break;
-                case Chr_job.magic:
-                    /*RangeAttack(actor.cur_status.atkRange);*/
-                    actor.skill_effect.gameObject.SetActive(true);
-                    StartCoroutine(actor.skill_effect.RangeAttack());
-                    break;
+                
             }
+        }
+
+
+        switch(actor.cur_status.job)
+        {
+            case Chr_job.magic:
+                /*RangeAttack(actor.cur_status.atkRange);*/
+                actor.skill_effect.gameObject.SetActive(true);
+                StartCoroutine(actor.skill_effect.RangeAttack());
+                break;
         }
 
     }

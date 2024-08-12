@@ -52,7 +52,13 @@ public class Actor : MonoBehaviour
         cur_status.HP = status.HP;
         cur_buff = new BuffStruct();
         /*cur_status.moveDir = Vector2.right;*/
-        
+
+
+        Transform buf = transform.Find("Buff");
+        if(buf != null )
+        {
+            buf.GetComponent<BuffSystem>().buff_init();
+        }        
     }
     //Ãß»ó
     /* public abstract void Die();
