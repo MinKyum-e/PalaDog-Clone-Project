@@ -30,6 +30,27 @@ public class UIPanelChanger : MonoBehaviour
         seq = idx;
     }
 
+    public void ChangPlanel_Spawn()
+    {
+        RectTransform a = panels[0].GetComponent<RectTransform>();
+        RectTransform b = panels[1].GetComponent<RectTransform>();
+        
+
+        if(b.gameObject.activeSelf  )
+        {
+            Vector3 pos = panels[0].GetComponent<RectTransform>().position;
+            a.position = b.position;
+            b.position = pos;
+        }
+        else
+        {
+            Vector3 pos = panels[1].GetComponent<RectTransform>().position;
+            b.position = a.position;
+            a.position = pos;
+        }
+        
+    }
+
 
     public void ChangePanelSeq()
     {

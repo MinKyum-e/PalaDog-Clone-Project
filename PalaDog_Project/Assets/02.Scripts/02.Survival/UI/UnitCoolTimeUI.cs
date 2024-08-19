@@ -8,6 +8,7 @@ public class UnitCoolTimeUI : MonoBehaviour
 {
     DraggableUI draggableUI;
     BtnEvent_ActiveSkill skillUI;
+    UnitUnlock unitunlock;
 
 
 
@@ -20,13 +21,14 @@ public class UnitCoolTimeUI : MonoBehaviour
 
     public bool resets = false;
 
+    bool starting;
     float cooltime;
     float timer;
     bool isCooldown;
 
     private void Awake()
     {
-
+        starting = true;
         mainImage = GetComponent<Image>();
         if (gameObject.layer ==6)//spawnUI
         {
@@ -38,6 +40,7 @@ public class UnitCoolTimeUI : MonoBehaviour
         }
 
         cooltimeImage = transform.Find("CoolTime").GetComponent<Image>();
+        unitunlock = GetComponent<UnitUnlock>();
 
     }
 
@@ -50,6 +53,7 @@ public class UnitCoolTimeUI : MonoBehaviour
             if(Parser.minion_status_dict[draggableUI.minion_idx].common.grade == UnitGrade.Hero)
             {
                 is_hero = true;
+                
             }
 
         }
@@ -63,6 +67,15 @@ public class UnitCoolTimeUI : MonoBehaviour
 
     void Update()
     {
+        if(starting)
+        {
+            if (is_hero && !unitunlock.is_lock)
+            {
+                unit_alive = false;
+                StartCooldown();
+            }
+            starting = false;
+        }
         
         if (is_hero)
         {

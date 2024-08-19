@@ -50,6 +50,9 @@ public class SoundManager : DontDestroy<SoundManager> {
 
     AudioSource[] m_audio = new AudioSource[(int)AUDIO_TYPE.MAX];
 
+    public float[] sound_sfx_ratio;
+    public float sfx_master_volumn = 0.5f;
+
     public void PlayBGM(BGM_CLIP bgm)
     {
         m_audio[(int)AUDIO_TYPE.BGM].clip = m_bgmClip[(int)bgm];
@@ -59,7 +62,8 @@ public class SoundManager : DontDestroy<SoundManager> {
     public void PlaySFX(SFX_CLIP sfx)
     {
         m_audio[(int)AUDIO_TYPE.SFX].clip = m_sfxClip[(int)sfx];
-        switch(sfx)
+       
+        switch (sfx)
         {
             case SFX_CLIP.NormalAttack:
                 m_audio[(int)AUDIO_TYPE.SFX].time = start_time[0]; break;
@@ -136,15 +140,16 @@ public class SoundManager : DontDestroy<SoundManager> {
         m_audio[(int)AUDIO_TYPE.BGM] = gameObject.AddComponent<AudioSource>();
         m_audio[(int)AUDIO_TYPE.BGM].playOnAwake = false;
         m_audio[(int)AUDIO_TYPE.BGM].loop = true;
-        m_audio[(int)AUDIO_TYPE.BGM].volume = 0.5f;
+        m_audio[(int)AUDIO_TYPE.BGM].volume = 0.2f;
         
         m_audio[(int)AUDIO_TYPE.SFX] = gameObject.AddComponent<AudioSource>();
         m_audio[(int)AUDIO_TYPE.SFX].playOnAwake = false;
         m_audio[(int)AUDIO_TYPE.SFX].loop = false;
-        m_audio[(int)AUDIO_TYPE.SFX].volume = 0.5f;
+        m_audio[(int)AUDIO_TYPE.SFX].volume = 0.2f;
 
         m_audio[(int)AUDIO_TYPE.PLAYERSFX] = gameObject.AddComponent<AudioSource>();
         m_audio[(int)AUDIO_TYPE.PLAYERSFX].playOnAwake = false;
+        m_audio[(int)AUDIO_TYPE.SFX].volume = 0.2f;
         m_audio[(int)AUDIO_TYPE.PLAYERSFX].loop = true;
     }
 

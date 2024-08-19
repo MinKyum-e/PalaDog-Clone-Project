@@ -43,7 +43,15 @@ public class BtnEvent : MonoBehaviour
 
     public void Restart()
     {
-        GameManager.Instance.RestartGame();
+        Destroy(Player.Instance.actor.minion_poolManager.gameObject);
+        Destroy(Player.Instance.actor.enemy_poolManager.gameObject);
+        Destroy(Player.Instance.gameObject);
+
+        Destroy(SoundManager.Instance.gameObject);
+        Destroy(ShopManager.Instance.gameObject);
+        Destroy(GameManager.Instance.gameObject);
+        Destroy(ArrowPool.Instance.gameObject);
+        SceneManager.LoadScene("Chapter" + PlayerPrefs.GetInt("Chapter"));
     }
 
     public void Pause()
@@ -61,6 +69,19 @@ public class BtnEvent : MonoBehaviour
         GameManager.Instance.cur_gold += 10000;
     }
 
+    public void GameOverGoTitle()
+    {
+        GameManager.Instance.GameOverTitle();
+        Destroy(Player.Instance.actor.minion_poolManager.gameObject);
+        Destroy(Player.Instance.actor.enemy_poolManager.gameObject);
+        Destroy(Player.Instance.gameObject);
+
+        Destroy(SoundManager.Instance.gameObject);
+        Destroy(ShopManager.Instance.gameObject);
+        Destroy(GameManager.Instance.gameObject);
+        Destroy(ArrowPool.Instance.gameObject);
+        SceneManager.LoadScene("Title");
+    }
     public void GoTitle()
     {
         Destroy(Player.Instance.actor.minion_poolManager.gameObject);
@@ -96,6 +117,19 @@ public class BtnEvent : MonoBehaviour
     public void LoadScnene_name(string name)
     {
         SceneManager.LoadScene(name);
+    }
+
+    public void LoadSceneData()
+    {
+        if(PlayerPrefs.HasKey("savedata"))
+        {
+            SceneManager.LoadScene("Chapter" + PlayerPrefs.GetInt("Chapter"));
+        }
+        else
+        {
+            SceneManager.LoadScene("Chapter1");
+        }
+        
     }
 
     /*    public void ShowMeTheFood()

@@ -52,10 +52,15 @@ public class GameManager : MonoBehaviour
     public float main_camera_size = 7;
 
 
+    public bool spawn_ui_update ;
+
+
 
     public GameState state;
 
     private Vector3 player_defualt_position;
+
+    bool save_data_exists ;
 
     private void Awake()
     {
@@ -65,11 +70,32 @@ public class GameManager : MonoBehaviour
             hero_objects = new Dictionary<MinionUnitIndex, Minion>();
             skill = GetComponent<Skill>();
             DontDestroyOnLoad(gameObject);
+            save_data_exists = PlayerPrefs.HasKey("savedata");
+            if(!save_data_exists)
+            {
+                PlayerPrefs.SetInt("savedata", 1);
+                PlayerPrefs.SetInt("Chapter", 1);
+                PlayerPrefs.SetInt("Stage", 1);
+                PlayerPrefs.SetInt("Gold", 0);
+                PlayerPrefs.SetInt(EnforceType.MAX_Cost.ToString(),1);
+                PlayerPrefs.SetInt(EnforceType.Unit_LvL.ToString(), 1);
+                PlayerPrefs.SetInt(EnforceType.Aura.ToString(), 1);
+                PlayerPrefs.Save();
+            }
+            else
+            {
+                chapter = PlayerPrefs.GetInt("Chapter");
+                stage = PlayerPrefs.GetInt("Stage");
+                cur_gold = PlayerPrefs.GetInt("Gold");
+
+            }
+                
         }
         else
         {//씬 이동됐는데 게임 매니저가 존재할 경우 자신을 삭제
             Destroy(this.gameObject );
         }
+
     }
     private void Start()
     {
@@ -79,7 +105,6 @@ public class GameManager : MonoBehaviour
         GameObject.Find("EnemyBase").SetActive(true);
         
         cur_cost = 0;
-        cur_gold = 0;
         overdrive_timer = overdrive_time; 
 
     }
@@ -100,6 +125,15 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+/*        if(save_data_exists)
+        {
+            //데이터 불러오기
+            save_data_exists = false;
+            
+            *//*ShopManager.Instance.GetEnforceValue(EnforceType.MAX_Cost, PlayerPrefs.GetInt("MAXCOST"));
+            ShopManager.Instance.GetEnforceValue(EnforceType.Unit_LvL, PlayerPrefs.GetInt("UNITLVL"));
+            ShopManager.Instance.GetEnforceValue(EnforceType.Aura, PlayerPrefs.GetInt("AURA"));*//*
+        }*/
         if(!bgm_play)
         {
             SoundManager.Instance.PlayBGM(SoundManager.BGM_CLIP.ingame);
@@ -162,6 +196,7 @@ public class GameManager : MonoBehaviour
     }
     public void DeleteHeroUnit(MinionUnitIndex idx)
     {
+        spawn_ui_update = true;
         hero_objects[idx] = null;
     }
 
@@ -200,39 +235,49 @@ public class GameManager : MonoBehaviour
     
 
     
-    public void RestartGame()
+/*    public void RestartGame()
     {
 
-        Time.timeScale = 1;
+        *//*Time.timeScale = 1;
         WaveManager.Instance.ClearMonsterObjectOnStage();
         wave = 1;
-        stage = 1;
-        chapter = 1;
+*//*        stage = 1;
+        chapter = 1;*//*
         cur_cost = 0;
-        cur_gold = 0;
-        Unit_LvL = 0; overdrive_timer = overdrive_time;
+*//*        cur_gold = 0;
+        Unit_LvL = 0;*//*
+        overdrive_timer = overdrive_time;
         can_get_gold = true;
-/*        cur_food = 0;*/
+        //데이터 초기화
+
+*//*        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();*/
+        /*        cur_food = 0;*//*
         EnemyBase.Instance().actor.cur_status.HP = EnemyBase.Instance().actor.status.HP;
         UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
 
-        ShopManager.Instance.ClearInGameShop();
-        Player.Instance.actor.status = Parser.minion_status_dict[(int)MinionUnitIndex.Player].common;
+        //ShopManager.Instance.ClearInGameShop();
+       // Player.Instance.actor.status = Parser.minion_status_dict[(int)MinionUnitIndex.Player].common;
         Player.Instance.actor.cur_status = Player.Instance.actor.status;
         Player.Instance.transform.Find("Buff").GetComponent<BuffSystem>().buff_init();
         Player.Instance.transform.position = player_defualt_position;
         Player.Instance.actor.can_action = true;
         state = GameState.GAME_PLAY;
         spawnCloud.gameObject.SetActive(false);
-        poisonFog.gameObject.SetActive(false);
-        SceneManager.LoadScene("Chapter1");
-
+        poisonFog.gameObject.SetActive(false);*//*
+        SceneManager.LoadScene("Chapter" + chapter);
        
+    }*/
+    public void GameOverTitle()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
     }
     public void GameOver()
     {
         WaveManager.Instance.ClearMonsterObjectOnStage();
         UIManager.Instance.SetCurrentPage(UIPageInfo.GameOver);
+        //데이터 삭제
         //SceneManager.LoadScene("GameOver");
         state = GameState.GAME_IDLE;
         Time.timeScale = 0;
@@ -293,6 +338,14 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Chapter" + chapter);
         }
 
+        //데이터저장
+        PlayerPrefs.SetInt("Chapter", chapter);
+        PlayerPrefs.SetInt("Stage", stage);
+        PlayerPrefs.SetInt("Gold", cur_gold);
+        PlayerPrefs.SetInt(EnforceType.MAX_Cost.ToString(), ShopManager.Instance.ingame_enforce_cur_lvl[EnforceType.MAX_Cost] );
+        PlayerPrefs.SetInt(EnforceType.Unit_LvL.ToString(), ShopManager.Instance.ingame_enforce_cur_lvl[EnforceType.Unit_LvL] );
+        PlayerPrefs.SetInt(EnforceType.Aura.ToString(), ShopManager.Instance.ingame_enforce_cur_lvl[EnforceType.Aura]);
+        PlayerPrefs.Save();
 
         cur_cost = 0;
         Player.Instance.transform.position = player_defualt_position;
@@ -310,7 +363,9 @@ public class GameManager : MonoBehaviour
     {
         WaveManager.Instance.ClearMonsterObjectOnStage();
         UIManager.Instance.FadeOut.SetActive(true);
-        
+        //데이터 삭제
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
     }
 
 

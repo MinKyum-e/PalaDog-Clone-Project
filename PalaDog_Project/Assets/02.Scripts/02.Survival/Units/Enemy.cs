@@ -100,7 +100,7 @@ public class Enemy: Unit
         if(GameManager.Instance.can_get_gold)
         {
             GameManager.Instance.cur_gold += gold;
-
+            
         }
     }
 

@@ -12,7 +12,7 @@ public class round_text : MonoBehaviour
 
     public void change_end_string()
     {
-        string s = "Stage " + GameManager.Instance.stage.ToString();
+        string s = "Stage " + ((GameManager.Instance.stage - 1) % GameManager.Instance.STAGE_PER_CHAPTER + 1).ToString();
         txt.DOText(s, action_time).OnComplete(() =>
         {
             Color c = txt.color;

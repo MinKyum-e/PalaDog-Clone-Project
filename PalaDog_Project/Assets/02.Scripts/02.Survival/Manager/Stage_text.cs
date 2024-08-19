@@ -17,6 +17,6 @@ public class Stage_text : MonoBehaviour
         {
             tmp.color = Color.red;
         }
-        tmp.text = GameManager.Instance.stage.ToString() + "-" + GameManager.Instance.wave.ToString();
+        tmp.text = GameManager.Instance.chapter.ToString() + "-" + ((GameManager.Instance.stage -1)%GameManager.Instance.STAGE_PER_CHAPTER + 1).ToString();
     }
 }

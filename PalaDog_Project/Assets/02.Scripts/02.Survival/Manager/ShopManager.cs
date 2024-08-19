@@ -69,6 +69,7 @@ public class ShopManager : MonoBehaviour
     public Dictionary<EnforceType, int> ingame_enforce_max_lvl, ingame_enforce_cur_lvl;
     public PoolManager minion_poolManager;
 
+    bool save_file;
 
     public static ShopManager Instance
     {
@@ -127,11 +128,32 @@ public class ShopManager : MonoBehaviour
                 ingame_enforce_cur_lvl[type] = 0;
             }
         }
+
+
+        if (PlayerPrefs.HasKey("savedata"))
+        {
+            save_file = true;
+            ingame_enforce_cur_lvl[EnforceType.MAX_Cost] = PlayerPrefs.GetInt(EnforceType.MAX_Cost.ToString());
+            ingame_enforce_cur_lvl[EnforceType.Unit_LvL] = PlayerPrefs.GetInt(EnforceType.Unit_LvL.ToString());
+            ingame_enforce_cur_lvl[EnforceType.Aura] = PlayerPrefs.GetInt(EnforceType.Aura.ToString());
+        }
     }
+
+    private void Update()
+    {
+        if(save_file)
+        {
+            save_file = false;
+            EnforceIngameBase(EnforceType.MAX_Cost, PlayerPrefs.GetInt(EnforceType.MAX_Cost.ToString())-1);
+            EnforceIngameBase(EnforceType.Unit_LvL, PlayerPrefs.GetInt(EnforceType.Unit_LvL.ToString())-1);
+            EnforceIngameBase(EnforceType.Aura, PlayerPrefs.GetInt(EnforceType.Aura.ToString())-1);
+        }
+    }
+
+
 
     public int GetEnforceMaxLvL(EnforceType type)
     {
-        print(type);
         if (!ingame_enforce_max_lvl.ContainsKey(type))
         {
             print("EnforceIngameBase : containskey error");
@@ -237,8 +259,12 @@ public class ShopManager : MonoBehaviour
         switch(unlock_type)
         {
             case ShopEnums.UnLockType.InGameUnit:
-                
-                unlocked_ingame_unit_list.Add(index);
+                if(!unlocked_ingame_unit_list.Contains(index))
+                {
+                    PlayerPrefs.SetInt(index.ToString(), 1);
+                    unlocked_ingame_unit_list.Add(index);
+                }
+                    
                 break;
             case ShopEnums.UnLockType.Evolution:
                 unlocked_evoluation_unit_list.Add(index);

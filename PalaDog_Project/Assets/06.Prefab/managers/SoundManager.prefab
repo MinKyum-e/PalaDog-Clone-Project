@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4135131689316755148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3812007273901777810}
+  - component: {fileID: 2076183195231308045}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3812007273901777810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4135131689316755148}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2076183195231308045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4135131689316755148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e620cdfe4864747a037792da75606b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_bgmClip:
+  - {fileID: 8300000, guid: 63bc0faa3ccffda419f746c5232cb51d, type: 3}
+  m_sfxClip:
+  - {fileID: 8300000, guid: 8226ee1db3a68d245a301a2ce76f6577, type: 3}
+  - {fileID: 8300000, guid: ca8152b0c5edad148b3892bac005f7d3, type: 3}
+  - {fileID: 8300000, guid: de0f13f216177d54ea7ba7e26143a270, type: 3}
+  - {fileID: 8300000, guid: 65ff3357ff0a18149bf700da71fc0110, type: 3}
+  - {fileID: 8300000, guid: 3f298f21db9b41042bc34d459814e5a6, type: 3}
+  - {fileID: 8300000, guid: 79651b8bdedd87b48bdcdd998b6f4146, type: 3}
+  - {fileID: 8300000, guid: 6ba21b1982db9714ea6ae58075fb36a0, type: 3}
+  - {fileID: 8300000, guid: 09f1fb00a09395c4e85f6b8afdf431e0, type: 3}
+  - {fileID: 8300000, guid: 47a0266d80d289248be4673667beea5d, type: 3}
+  - {fileID: 8300000, guid: 54f0f49275d49d94e9b009c1b6c4e7d1, type: 3}
+  - {fileID: 8300000, guid: 08ce358b253ae5e469ce7cdcf6543acb, type: 3}
+  - {fileID: 8300000, guid: 99245f55cddffbd478b022fb3fe2f169, type: 3}
+  start_time:
+  - 0.35
+  m_player_sfxClip:
+  - {fileID: 8300000, guid: b993df4a93c1d304ab19d8b2eb88c9a5, type: 3}
+  sound_sfx_ratio:
+  - 0.3
+  - 1
+  - 1
+  - 0.7
+  - 1
+  - 1
+  - 0.5
+  - 0.5
+  - 0.7
+  - 0.7
+  - 1
+  - 0.2
+  sfx_master_volumn: 0.5

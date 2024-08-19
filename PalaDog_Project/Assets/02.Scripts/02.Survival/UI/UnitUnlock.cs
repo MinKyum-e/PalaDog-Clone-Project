@@ -52,10 +52,18 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
 
         cost = Parser.minion_status_dict[minion_idx].cost;
 
+
+        if(PlayerPrefs.HasKey(shop_index.ToString()))
+        {
+            UnLock(false);
+        }
+
         if (already_unlock)
         {
             UnLock(false);
         }
+
+
 
         if (ShopManager.Instance != null && is_lock)
         {
@@ -121,6 +129,7 @@ public class UnitUnlock : MonoBehaviour, IPointerClickHandler
     {
         is_lock = false;
         image_renderer.sprite = unlocked_sprite;
+        
         if(cost_object != null)
         {
             cost_object.SetActive(true);
