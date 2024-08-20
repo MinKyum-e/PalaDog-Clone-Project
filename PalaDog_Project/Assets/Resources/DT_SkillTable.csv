@@ -47,16 +47,16 @@ int,string,string,int,enum,float,enum,enum,int,enum,float,int,int,int,enum,float
 10011,Skill_Hammer_rare_001,해머 치기,1004,P,15,Target,Enemy,5,Atk,0.5,5,0,3,-1,0,0,TRUE,3
 10012,Skill_Hammer_rare_001,해머 치기 에픽,1004,A,30,Range,Enemy,8,Atk,0.7,5,0,5,-1,0,0,TRUE,7
 10021,Skill_Archer_Advanced_001,공속증가,1004,P,15,Target,Unit,1,None,0,-1,2,10,1,1.2,6,FALSE,5
-10022,Skill_Archer_hero_001,히어로화살,1004,A,30,Target,Enemy,1,Atk,1,-1,0,0,-1,0,0,TRUE,8
+10022,Skill_Archer_hero_001,히어로화살,1004,A,30,Target,Enemy,1,Atk,0.4,-1,0,0,-1,0,0,TRUE,8
 10031,Skill_Wizard_rare_001,마법스킬,1004,P,20,Range,Enemy,7,Magic,1.5,-1,0,0,-1,0,0,TRUE,7
-10032,Skill_Wizard_rare_001,마법에픽스킬,1004,A,45,Range,Enemy,10,Magic,2.5,-1,0,0,-1,0,0,TRUE,7
+10032,Skill_Wizard_rare_001,마법에픽스킬,1004,A,45,Range,Enemy,10,Magic,2,-1,0,0,-1,0,0,TRUE,7
 ,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,
-20011,Skill_Bat_Boss_001,날개치기,1008,P,15,Range,Unit,5,Atk,0.4,6,8,0,-1,0,0,TRUE,5
+20011,Skill_Bat_Boss_001,날개치기,1008,P,15,Range,Unit,5,Atk,0.8,6,8,0,-1,0,0,TRUE,5
 20012,Skill_Bat_Boss_002,흡혈,1002,P,30,Range,Unit,15,Atk,0.2,-1,100,5,4,50,3,TRUE,4
 20021,Skill_Mushroom_Boss_001,버섯소환,1008,P,20,TargetFar,Unit,1,None,0,8,10211,2,8,10221,2,TRUE,8
-20022,Skill_Mushroom_Boss_002,독구름,1002,P,15,Target,Unit,5,None,0,4,0.07,10,-1,0,0,TRUE,5
+20022,Skill_Mushroom_Boss_002,독구름,1002,P,15,Target,Unit,5,None,0,4,0.05,10,-1,0,0,TRUE,5
 ,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,
 30011,Skill_Player_Player_011,치유의 오라 LV.1,1002,A,0,Ora,Unit,99,None,0,2,10,1,-1,0,0,FALSE,0
