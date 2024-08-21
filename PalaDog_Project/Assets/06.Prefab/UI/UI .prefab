@@ -1806,13 +1806,13 @@ MonoBehaviour:
   targetGO: {fileID: 0}
   tweenTargetIsTargetGO: 1
   delay: 0
-  duration: 2.6
+  duration: 3
   easeType: 37
   easeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 1.6003509
+      time: 1.600351
       value: 0.00020795502
       inSlope: 2.7274508
       outSlope: 2.7274508
@@ -1821,7 +1821,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.035337705
     - serializedVersion: 3
-      time: 2.6000602
+      time: 3.0029838
       value: 1.0053692
       inSlope: 0.3857096
       outSlope: 0.3857096
@@ -3149,8 +3149,8 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 2960, y: 1080}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -15672,7 +15672,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3860779773988356311
 RectTransform:
   m_ObjectHideFlags: 0
