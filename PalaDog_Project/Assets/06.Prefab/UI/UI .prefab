@@ -7176,9 +7176,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBCF4\uC2A4 \uACF5\uB7B5\uC5D0 \uD2B9\uD654\uB418\uC5B4 \uC788\uC73C\uBA70,
-    \uC2A4\uD0AC \uC0AC\uC6A9\uC2DC \uB2E8\uC77C \uC801\uC5D0\uAC8C \uAC15\uB825\uD55C
-    \uD53C\uD574\uB97C \uC904 \uC218 \uC788\uB2E4."
+  m_text: "\uB192\uC740 \uACF5\uACA9\uB825\uACFC \uBE60\uB978 \uACF5\uACA9\uC18D\uB3C4\uB85C
+    \uB2E8\uC77C\uACF5\uACA9\uC5D0 \uD2B9\uD654\uB418\uC5B4 \uC788\uC73C\uBA70\r\n\r\n\uC2A4\uD0AC\uC0AC\uC6A9\uC2DC
+    \uC804\uBC29\uC758 \uC801\uB4E4\uC5D0\uAC8C \uAD11\uC5ED\uD53C\uD574\uB97C \uC904
+    \uC218 \uC788\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fc1d5f0f48b181341890ff1efdbb2a02, type: 2}
   m_sharedMaterial: {fileID: 1595294052976726970, guid: fc1d5f0f48b181341890ff1efdbb2a02, type: 2}
@@ -20110,18 +20111,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2635761291860268282}
-        m_TargetAssemblyTypeName: UIPanelChanger, Assembly-CSharp
-        m_MethodName: changer_sprite_change
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &2635761291860268282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20208,9 +20197,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC2A4\uD0AC\uC744 \uD1B5\uD574\uC11C \uC801 \uC804\uCCB4\uB97C \uAE30\uC808\uC2DC\uD0AC
-    \uC218 \uC788\uB294 \uADFC\uC811 \uC720\uB2DB\uC774\uB2E4.\n\n\uD6C4\uBC29 \uBAAC\uC2A4\uD130\uC758
-    \uC2A4\uD0AC \uC2DC\uC804\uC744 \uBC29\uD574\uD560 \uB54C \uC720\uC6A9\uD558\uB2E4."
+  m_text: "\uC2A4\uD0AC\uC744 \uD1B5\uD574\uC11C \uB2E4\uC218\uC758 \uC801\uC744
+    \uAE30\uC808\uC2DC\uD0AC \uC218 \uC788\uB294 \uADFC\uC811 \uC720\uB2DB\uC774\uB2E4.\r\n\r\n\uD6C4\uBC29\uC5D0
+    \uC788\uB294 \uC801\uC5D0\uAC8C\uB3C4 \uB3C4\uB2EC\uD558\uB294 \uB113\uC740\uBC94\uC704\uB97C
+    \uAC00\uC9C0\uACE0 \uC788\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fc1d5f0f48b181341890ff1efdbb2a02, type: 2}
   m_sharedMaterial: {fileID: 1595294052976726970, guid: fc1d5f0f48b181341890ff1efdbb2a02, type: 2}
@@ -31822,6 +31812,13 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 882723881437249917, guid: 50b6294c49b6a714fa50f83aec4e1349, type: 3}
+      propertyPath: m_text
+      value: "\uAE30\uBCF8\uC73C\uB85C \uC18C\uD658\uD560 \uC218 \uC788\uB294 \uADFC\uAC70\uB9AC
+        \uC720\uB2DB\uC774\uB2E4.\r\n\r\n\uC18C\uD658\uB300\uAE30\uC2DC\uAC04\uC774
+        \uC9E7\uACE0 \uCF54\uC2A4\uD2B8\uAC00 \uB0AE\uC544, \uB2E4\uC591\uD558\uAC8C
+        \uD65C\uC6A9\uC774 \uAC00\uB2A5\uD558\uB2E4."
+      objectReference: {fileID: 0}
     - target: {fileID: 1069087723325962852, guid: 50b6294c49b6a714fa50f83aec4e1349, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -31921,8 +31918,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3443062990646480778, guid: 50b6294c49b6a714fa50f83aec4e1349, type: 3}
       propertyPath: m_text
-      value: "\uC2A4\uD0AC\uC744 \uD1B5\uD574 \uADFC\uCC98 \uC544\uAD70\uC5D0\uAC8C
-        \uBB34\uC801\uC744 \uBD80\uC5EC\uD558\uC5EC \uBCF4\uD638\uD560 \uC218 \uC788\uB2E4."
+      value: "\uC544\uAD70\uC5D0\uAC8C \uBB34\uC801\uC744 \uBD80\uC5EC\uD558\uACE0
+        \uD68C\uBCF5\uC2DC\uD0AC \uC218 \uC788\uB294 \uC2A4\uD0AC\uC744 \uAC00\uC9C0\uACE0
+        \uC788\uC73C\uBA70\r\n\r\n\uC544\uAD70 \uBCF4\uD638\uC640 \uC801 \uC800\uC9C0\uC5D0
+        \uD2B9\uD654\uB418\uC5B4 \uC788\uB294 \uC720\uB2DB\uC774\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 3614038019877020020, guid: 50b6294c49b6a714fa50f83aec4e1349, type: 3}
       propertyPath: m_Sprite
@@ -31931,6 +31930,10 @@ PrefabInstance:
     - target: {fileID: 3664038040007896741, guid: 50b6294c49b6a714fa50f83aec4e1349, type: 3}
       propertyPath: m_fontSize
       value: 44.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770432663398045272, guid: 50b6294c49b6a714fa50f83aec4e1349, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3812837737944735440, guid: 50b6294c49b6a714fa50f83aec4e1349, type: 3}
       propertyPath: m_Name
@@ -31979,8 +31982,9 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: cd17cac6f231891448c0301d4fd86fd4, type: 3}
     - target: {fileID: 5193127448500965392, guid: 50b6294c49b6a714fa50f83aec4e1349, type: 3}
       propertyPath: m_text
-      value: " \uC2A4\uD0AC\uC744 \uD1B5\uD574\uC11C \uD0C0\uAC9F\uC744 \uAE30\uC808\uC2DC\uD0AC
-        \uC218 \uC788\uB294 \uADFC\uC811 \uC720\uB2DB\uC774\uB2E4."
+      value: "\uC2A4\uD0AC\uC744 \uD1B5\uD574\uC11C \uD0C0\uAC9F\uC744 \uAE30\uC808\uC2DC\uD0AC
+        \uC218 \uC788\uB294 \uADFC\uC811 \uC720\uB2DB\uC774\uB2E4.\r\n\r\n\uC801\uC758
+        \uC2A4\uD0AC\uC2DC\uC804\uC744 \uBC29\uD574\uD558\uB294\uB370 \uD2B9\uD654\uB418\uC5B4\uC788\uB2E4.\r"
       objectReference: {fileID: 0}
     - target: {fileID: 5300928974013340717, guid: 50b6294c49b6a714fa50f83aec4e1349, type: 3}
       propertyPath: m_text
@@ -32087,9 +32091,9 @@ PrefabInstance:
     - target: {fileID: 8151471721466401212, guid: 50b6294c49b6a714fa50f83aec4e1349, type: 3}
       propertyPath: m_text
       value: " \uC2A4\uC2A4\uB85C \uD68C\uBCF5\uD560 \uC218 \uC788\uB294 \uC2A4\uD0AC\uC744
-        \uBCF4\uC720\uD558\uACE0 \uC788\uC73C\uBA70, \uACF5\uACA9\uB825\uC740 \uB0AE\uC9C0\uB9CC
-        \uB192\uC740 \uCCB4\uB825\uC73C\uB85C \uC801\uC758 \uACF5\uACA9\uC744 \uBC84\uD168\uB0BC
-        \uC218 \uC788\uB2E4."
+        \uBCF4\uC720\uD558\uACE0 \uC788\uB2E4.\r\n\r\n \uACF5\uACA9\uB825\uC740 \uB0AE\uC9C0\uB9CC
+        \uB192\uC740 \uCCB4\uB825\uC73C\uB85C \uC801\uC758 \uACF5\uACA9\uC744 \uB354
+        \uC624\uB798 \uBC84\uD168\uB0BC \uC218 \uC788\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 8151932043440276314, guid: 50b6294c49b6a714fa50f83aec4e1349, type: 3}
       propertyPath: m_text

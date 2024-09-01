@@ -34,21 +34,25 @@ public class UIPanelChanger : MonoBehaviour
     {
         RectTransform a = panels[0].GetComponent<RectTransform>();
         RectTransform b = panels[1].GetComponent<RectTransform>();
-        
 
-        if(b.gameObject.activeSelf  )
+        //switch
+        Vector3 pos = a.position;
+        a.position = b.position;
+        b.position = pos;
+
+        if(main_img.sprite == archer)
         {
-            Vector3 pos = panels[0].GetComponent<RectTransform>().position;
-            a.position = b.position;
-            b.position = pos;
+            main_img.sprite = knight;
+            sub_img.sprite = archer;
         }
         else
         {
-            Vector3 pos = panels[1].GetComponent<RectTransform>().position;
-            b.position = a.position;
-            a.position = pos;
+            main_img.sprite = archer;
+            sub_img.sprite = knight;
         }
-        
+       
+      
+
     }
 
 
@@ -75,13 +79,11 @@ public class UIPanelChanger : MonoBehaviour
 
         if (seq == 0)
         {
-            main_img.sprite = knight;
-            sub_img.sprite = archer;
+            
         }
         else
         {
-            main_img.sprite =archer;
-            sub_img.sprite = knight;
+            
         }
     }
 
