@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static CartoonFX.CFXR_Effect;
 using static UnityEngine.GraphicsBuffer;
 
 //범위, 데미지, 캐스팅시간, 쿨타임 알고있다고 치고
@@ -165,6 +166,10 @@ public class Skill:MonoBehaviour
        
     }
 
+    public void PlayCameraShake()
+    {
+        GameManager.Instance.CameraShake.SetActive(true);
+    }
 
     private void HeroArrow(int skill_slot_idx)
     {

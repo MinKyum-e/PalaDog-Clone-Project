@@ -172,7 +172,7 @@ public class BuffSystem : MonoBehaviour
                 slot_status[my_slot_idx].coroutines.Add(StartCoroutine(TickBuff(name, value, duration)));
                 break;
             case BuffName.KnockBack:
-                KnockBack(value, free);
+                KnockBack(value, free, duration);
                 break;
 
             case BuffName.Spawn:
@@ -203,18 +203,18 @@ public class BuffSystem : MonoBehaviour
             
         }
     }
-    private void KnockBack(float value, float dir)
+    private void KnockBack(float value, float dir, float duration)
     {
         /*        
                 if(!actor.cur_buff.full_immune)
                 {*/
         if (dir > 0)
         {
-            actor.transform.DOMove(new Vector3(actor.transform.position.x + value, actor.transform.position.y, actor.transform.position.z), 0.3f);
+            actor.transform.DOMove(new Vector3(actor.transform.position.x + value, actor.transform.position.y, actor.transform.position.z), duration).SetEase(Ease.OutQuad);
         }
         else
         {
-            actor.transform.DOMove(new Vector3(actor.transform.position.x - value, actor.transform.position.y, actor.transform.position.z), 0.3f);
+            actor.transform.DOMove(new Vector3(actor.transform.position.x - value, actor.transform.position.y, actor.transform.position.z), duration).SetEase(Ease.OutQuad);
         }
     //}
         

@@ -58,10 +58,11 @@ public class BtnEvent_ActiveSkill : MonoBehaviour
                 {
                     if (actor.skills[i].entry.index == (int)skillName && actor.skills[i].can_use_skill)
                     {
-
+                        
                         actor.can_action = false;
                         actor.animator.SetTrigger("Skill" + i);
                         cooltimeUI.StartCooldown();
+                        
                         return;
                     }
                 }

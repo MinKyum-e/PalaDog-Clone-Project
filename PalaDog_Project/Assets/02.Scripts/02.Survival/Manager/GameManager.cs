@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
     private bool bgm_play = false;
     public ParticleSystem spawnCloud;
     public ParticleSystem poisonFog;
+    public GameObject CameraShake;
 
     public float main_camera_size = 7;
 
@@ -231,7 +232,8 @@ public class GameManager : MonoBehaviour
         state = GameState.GAME_PLAY;
         UIManager.Instance.SetCurrentPage(UIPageInfo.GamePlay);
     }
-
+    
+  
     
 
     
@@ -298,7 +300,7 @@ public class GameManager : MonoBehaviour
             
         }
 
-        skill.NoneTypeBuff(BuffName.KnockBack, 20f, 1, target_list);
+        skill.NoneTypeBuff(BuffName.KnockBack, 12f, 0.6f, target_list);
 
 
     }

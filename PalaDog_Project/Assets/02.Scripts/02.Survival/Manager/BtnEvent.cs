@@ -127,7 +127,7 @@ public class BtnEvent : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("Chapter1");
+            SceneManager.LoadScene("Tutorial");
         }
         
     }

@@ -19,6 +19,11 @@ public class UIPanelChanger : MonoBehaviour
     public Sprite archer;
 
 
+    public Button LeftBtn;
+    public Button RightBtn;
+    public Button StartBtn;
+
+
     public void ChangePanel(int idx)
     {
         if(idx >= panels.Length) { return; }
@@ -72,6 +77,51 @@ public class UIPanelChanger : MonoBehaviour
 
         
         
+    }
+
+    public void ChangePanelSeqInc()
+    {
+        for (int i = 0; i < panels.Length; i++)
+        {
+            panels[i].SetActive(false);
+
+        }
+        seq++;
+        if (seq >= panels.Length)
+        {
+            seq = panels.Length-1;
+        }
+        LeftBtn.gameObject.SetActive(seq != 0);
+        RightBtn.gameObject.SetActive(seq != panels.Length - 1);
+        StartBtn.gameObject.SetActive(seq == panels.Length - 1);
+
+        LeftBtn.gameObject.SetActive(seq != 0);
+        panels[seq].SetActive(true);
+
+
+
+    }
+
+    public void ChangePanelSeqDecs()
+    {
+        for (int i = 0; i < panels.Length; i++)
+        {
+            panels[i].SetActive(false);
+
+        }
+        --seq;
+        if (seq < 0)
+        {
+            seq = 0;
+        }
+
+        LeftBtn.gameObject.SetActive(seq != 0);
+        RightBtn.gameObject.SetActive(seq != panels.Length-1);
+        StartBtn.gameObject.SetActive(seq == panels.Length-1);
+        panels[seq].SetActive(true);
+
+
+
     }
 
     public void changer_sprite_change()
