@@ -300,7 +300,7 @@ public class GameManager : MonoBehaviour
             
         }
 
-        skill.NoneTypeBuff(BuffName.KnockBack, 12f, 0.6f, target_list);
+        skill.NoneTypeBuff(BuffName.KnockBack, 20f, 0.8f, target_list);
 
 
     }
@@ -363,7 +363,15 @@ public class GameManager : MonoBehaviour
 
     public void GameClear()
     {
-        WaveManager.Instance.ClearMonsterObjectOnStage();
+        Destroy(Player.Instance.actor.minion_poolManager.gameObject);
+        Destroy(Player.Instance.actor.enemy_poolManager.gameObject);
+        Destroy(Player.Instance.gameObject);
+
+        Destroy(SoundManager.Instance.gameObject);
+        Destroy(ShopManager.Instance.gameObject);
+
+        Destroy(ArrowPool.Instance.gameObject);
+        Destroy(GameManager.Instance.gameObject);
         UIManager.Instance.FadeOut.SetActive(true);
         //데이터 삭제
         PlayerPrefs.DeleteAll();

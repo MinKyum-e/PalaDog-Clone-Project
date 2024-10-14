@@ -77,9 +77,10 @@ public class BtnEvent : MonoBehaviour
         Destroy(Player.Instance.gameObject);
 
         Destroy(SoundManager.Instance.gameObject);
+
+        Destroy(ArrowPool.Instance.gameObject);
         Destroy(ShopManager.Instance.gameObject);
         Destroy(GameManager.Instance.gameObject);
-        Destroy(ArrowPool.Instance.gameObject);
         SceneManager.LoadScene("Title");
     }
     public void GoTitle()
@@ -89,9 +90,9 @@ public class BtnEvent : MonoBehaviour
         Destroy(Player.Instance.gameObject);
 
         Destroy(SoundManager.Instance.gameObject);
+        Destroy(ArrowPool.Instance.gameObject);
         Destroy(ShopManager.Instance.gameObject);
         Destroy(GameManager.Instance.gameObject);
-        Destroy(ArrowPool.Instance.gameObject);
         SceneManager.LoadScene("Title");
     }
 
