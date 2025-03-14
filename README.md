@@ -12,4 +12,7 @@
 ## 스토브 스토어(pc)
 https://store.onstove.com/ko/games/4229
 
+## 제작과정  
+https://www.youtube.com/playlist?list=PLxHOaDo87dkkRCZ4_gC7lq_R5eYCb5wfr
+
 
